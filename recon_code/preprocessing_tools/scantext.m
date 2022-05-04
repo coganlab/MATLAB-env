@@ -1,17 +1,3 @@
-function data = scantext(filename, delimiter, numheaders, fmt)
-if ~exist('numheaders', 'var') || isempty(numheaders)
-    numheaders = 0;
-end
-
-if ~exist('fmt', 'var') || isempty(fmt)
-    fmt = scanformat(filename, delimiter, numheaders);
-end
-
-fid = fopen(filename, 'rb');
-for n = 1:numheaders
-    fgets(fid);
-end
-
-data = textscan(fid, fmt, Inf, 'Delimiter', delimiter);
-fclose(fid);
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:1b954977fdae1eda5ecc81d37142218b12704fd1af2c561baae4b102be00f5c8
+size 401

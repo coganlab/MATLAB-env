@@ -1,14 +1,3 @@
-function tpt=findTpt(tme,tmes)
-%function tpt=findTpt(tme,tmes)
-%
-% Inputs:
-%   tme  - [scalar] a desired time
-%   tmes - a vector of times
-%
-% Output:
-%   tpt  - the element of tmes that is closest to tme in terms of absolute
-%          difference (L1 norm)
-%
-% Note: tme and tmes should be in the same units (e.g., milliseconds)
-
-[dummy tpt]=min(abs(tme-tmes));
+version https://git-lfs.github.com/spec/v1
+oid sha256:e19dd09095f587372684f485ffcb6447b996c0babae597aa6aee8411c1bf29ba
+size 363

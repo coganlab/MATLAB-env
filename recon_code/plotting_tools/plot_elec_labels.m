@@ -1,6 +1,3 @@
-function handle_labels = plot_elec_labels(elec_xyz, labels, fontsize, fontcolor, label_skip_n)
-
-idx = 1:label_skip_n:numel(labels);
-handle_labels = text(elec_xyz(idx,1), elec_xyz(idx,2), elec_xyz(idx,3), labels(idx), 'color', fontcolor, 'fontsize', fontsize);
-
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:840251ea2477cffd952c9067ca549007c656e4e2a2021fa1fa68b0622be2f222
+size 269

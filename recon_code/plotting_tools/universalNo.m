@@ -1,19 +1,3 @@
-function yesno=universalNo(char_or_num)
-%function yesno=universalNo(char_or_num)
-%
-% Returns 1 if char_or_num is empty, 0, "off", "n", or "no" and 0 otherwise.
-% Useful for interpreting function arguments
-%
-
-if ~isempty(char_or_num)
-    if isnumeric(char_or_num) && isequal(char_or_num,0)
-        yesno=1;
-    elseif strcmpi(char_or_num,'no') || ...
-            strcmpi(char_or_num,'off') || strcmpi(char_or_num,'n')
-        yesno=1;
-    else
-        yesno=0;
-    end
-else
-    yesno=1;
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:7664ddae42c7289ad0d7dd0078c4cbb978f9c3a484552a100c1afd324c46f1e8
+size 489

@@ -1,13 +1,3 @@
-function norm = read_normals (mesh_in, fname)
-
-vnum = length(mesh_in.vertices);
-fnum = length(mesh_in.faces);
-tnum = vnum + fnum;
-
-fid=fopen(fname,'r');
-normals = textscan (fid, '%f %f %f %f',tnum,'headerlines',2);
-fclose(fid);
-
-norm = [normals{1} normals{2} normals{3}]; 
- 
-norm = norm(1:vnum,:);
+version https://git-lfs.github.com/spec/v1
+oid sha256:4fdf13461cf7ff475f4fa0d61c4ee854238a0f7d97ebf68ac205572f7881ad14
+size 297

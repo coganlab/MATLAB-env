@@ -1,10 +1,3 @@
-function totalArea = getFacesArea(mesh_in, ListFaces)
-
-% to measure the area of a ROI given by a list of faces
-
-totalArea = 0;
-
-for iF = 1:size(ListFaces,1)
-    totalArea = totalArea + getFaceArea(mesh_in,ListFaces,iF);
-end
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:0bc43db94013dadadfce3b1871a9d42d489d6edea9ec495615309053c1d233d5
+size 235

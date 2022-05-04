@@ -1,12 +1,3 @@
-function vo = getOrthogonalVector(v)
-
-vn = v ./ norm(v);
-
-vo = [0,0,0];
-while (isequal(vo,[0,0,0]))    
-    vo = rand(1,3)-0.5;
-    vc = vo*vn';
-    vo = vo-(vn*vc);
-end
-
-vo = vo ./ norm(vo);
+version https://git-lfs.github.com/spec/v1
+oid sha256:c92ba4c35fbac5e7a5bdae7f0cff54b2c1123c098413afc503e7ffb576c6c0d7
+size 204

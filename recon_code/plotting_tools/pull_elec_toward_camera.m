@@ -1,17 +1,3 @@
-function pull_elec_toward_camera(handle_elec, magnitude)
-% sc is scatter handle
-if nargin < 2
-    magnitude = 10; % mm
-end
-
-for e = 1:numel(handle_elec.XData)
-    newpoint = campos - [handle_elec.XData(e) handle_elec.YData(e) handle_elec.ZData(e)];
-    newpoint = newpoint/norm(newpoint);
-    newpoint = newpoint * magnitude;
-    handle_elec.XData(e) = handle_elec.XData(e) + newpoint(1);
-    handle_elec.YData(e) = handle_elec.YData(e) + newpoint(2);
-    handle_elec.ZData(e) = handle_elec.ZData(e) + newpoint(3);
-end
-
-drawnow update;
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:fc6078d074cd8f9e228067082df7d96c9e8fe767559d8e0cb366b91a378df17e
+size 555

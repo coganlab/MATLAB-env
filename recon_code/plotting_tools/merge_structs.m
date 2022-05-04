@@ -1,17 +1,3 @@
-function structDefault = merge_structs(structDefault, structSpecified)
-% returns a copy of the structDefault, but replaces fieldname-values with
-% those in structSpecified.
-
-if isempty(structSpecified)
-    return;
-end
-
-fS = fieldnames(structSpecified);
-
-for f = 1:numel(fS)
-    if isfield(structDefault, fS{f}) && ~isempty(structSpecified.(fS{f}))
-        structDefault.(fS{f}) = structSpecified.(fS{f});
-    end
-end
-
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:fbcb310ae29d15e3c938d69236b268f72a63f8f95ce982107353406eda5a168e
+size 437

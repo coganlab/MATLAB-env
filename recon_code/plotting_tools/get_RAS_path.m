@@ -1,5 +1,3 @@
-function fpath = get_RAS_path(subj)
-
-fpath = fullfile(get_recondir, subj, 'elec_recon', sprintf('%s_elec_locations_RAS.txt', subj));
-
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:30da22268a3c1533f60c2908a750222f0382e95e83680e376d06feb8ef82851b
+size 141

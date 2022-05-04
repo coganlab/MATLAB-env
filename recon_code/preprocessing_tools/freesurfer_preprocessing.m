@@ -1,24 +1,3 @@
-function freesurfer_preprocessing(subj)
-
-% freesurfer_makeIniLocTxtFile(subj, 0);
-makeIniLocTxtFile(subj);
-dykstraElecPjct(subj, 0);
-remap_elec_names(subj);
-if ~copy_freesurfer2recon(subj)
-    return;
-end
-
-% vox2ras(subj);
-ras2brainshift(subj, 0);
-
-ras2brainshift(subj, 1);
-
-pial2mat(subj, 'pial');
-pial2mat(subj, 'inflated');
-
-combineannot(subj);
-
-run_elec_location_stats(subj);
-copy_freesurfer2recon_full(subj);
- %freesurfer_print_elec_slices(subj);
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:597256744f207f7fbbbb2f6fcad63ac85b4a9d6a218b3edecc5d5f6f6afc35c0
+size 478

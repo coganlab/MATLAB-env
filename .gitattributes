@@ -1,8 +1,33 @@
-* binary
+*.fig binary
+*.mat binary
+*.mdl binary diff merge=mlAutoMerge
+*.mdlp binary
+*.mexa64 binary
+*.mexw64 binary
+*.mexmaci64 binary
+*.mlapp binary
+*.mldatx binary
+*.mlproj binary
+*.mlx binary
+*.p binary
+*.sfx binary
+*.sldd binary
+*.slreqx binary merge=mlAutoMerge
+*.slmx binary merge=mlAutoMerge
+*.sltx binary
+*.slxc binary
+*.slx binary merge=mlAutoMerge
+*.slxp binary
+## Other common binary file types
+*.docx binary
+*.exe binary
+*.jpg binary
+*.pdf binary
+*.png binary
+*.xlsx binary
+Scripts/** filter=lfs diff=lfs merge=lfs -text
 acoustic_phoneme/** filter=lfs diff=lfs merge=lfs -text
 analyze/** filter=lfs diff=lfs merge=lfs -text
-Scripts/** filter=lfs diff=lfs merge=lfs -text
+recon_code/** filter=lfs diff=lfs merge=lfs -text
 speech/** filter=lfs diff=lfs merge=lfs -text
 svn_code/** filter=lfs diff=lfs merge=lfs -text
-tmp/** filter=lfs diff=lfs merge=lfs -text
-recon_code/* filter=lfs diff=lfs merge=lfs -text

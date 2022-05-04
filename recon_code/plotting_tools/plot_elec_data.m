@@ -1,5 +1,3 @@
-function handle_scatter = plot_elec_data(elec_xyz, elec_size, colors)
-
-handle_scatter = scatter3(elec_xyz(:,1), elec_xyz(:,2), elec_xyz(:,3), elec_size, colors, 'filled');
-
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:a1cccd94c93d6621715be3033788fbe91eb3c247b8e66ff873da7dd1be011c93
+size 180

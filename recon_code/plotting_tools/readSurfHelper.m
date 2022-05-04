@@ -1,11 +1,3 @@
-function cort=readSurfHelper(surf_fname)
-%function cort=readSurfHelper(surf_fname)
-%
-% Same as freesurfer's read_surf.m but adds a 1 to cort.tri if needed
-%
-% -David Groppe
-
-[cort.vert cort.tri]=read_surf(surf_fname);
-if min(min(cort.tri))<1
-    cort.tri=cort.tri+1; %sometimes this is needed sometimes not. no comprendo. DG ??
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:2ddb72dedb95d7b6d26fd33483c299592609865e937d54cdd987b13771182a4b
+size 331

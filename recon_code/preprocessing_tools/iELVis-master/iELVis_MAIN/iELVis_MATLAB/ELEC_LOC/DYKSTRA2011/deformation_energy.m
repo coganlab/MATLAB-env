@@ -1,6 +1,3 @@
-function energy=deformation_energy(coord,coord_orig,pairs)
-
-dist=sqrt(sum((coord(pairs(:,1),:)-coord(pairs(:,2),:)).^2,2));
-dist_orig=sqrt(sum((coord_orig(pairs(:,1),:)-coord_orig(pairs(:,2),:)).^2,2));
-
-energy=(dist-dist_orig).^2;
+version https://git-lfs.github.com/spec/v1
+oid sha256:11be0b570983d76dc5583df44c07c7e7e76f49b694f7c6a84a72cc5fa9bbe25b
+size 236

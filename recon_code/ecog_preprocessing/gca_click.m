@@ -1,20 +1,3 @@
-function gca_click(fig)
-
-ax = gca;
-if nargin > 0
-    figure(fig);
-    ax = gca;
-end
-
-gca_hittest_off;
-ax.ButtonDownFcn = @button_click;
-prev = 0;
-    function button_click(~,event)
-        if event.Button == 1
-            fprintf('%f\t\t%f\n', event.IntersectionPoint(1), event.IntersectionPoint(1)-prev);
-            prev = event.IntersectionPoint(1);
-        elseif event.Button == 3
-            fprintf('%f\n', event.IntersectionPoint(2));
-        end
-    end
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:219e5ec9ec9dfe0a7208f72250841f9ecf661d891dee9c092d06b832aff4fe52
+size 485

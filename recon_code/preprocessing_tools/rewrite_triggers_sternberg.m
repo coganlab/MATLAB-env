@@ -1,12 +1,3 @@
-function rewrite_triggers_sternberg(trigTimes,trialInfo);
-% removes all non first auditory triggers for sternberg neighborhood
-counter=0;
-counter2=0;
-trigTimesA=[];
-for iTrials=1:length(trialInfo);
-    trigTimesA(counter2+1)=trigTimes(counter+1);
-    counter=counter+length(trialInfo{iTrials}.stimulusSounds_idx)-1;
-    counter2=counter2+1;
-end
-    
-    
+version https://git-lfs.github.com/spec/v1
+oid sha256:d9dc149f1ad27390c267a94899b758b7f6fcfeff7cc5785223638fa124a9d1a6
+size 365

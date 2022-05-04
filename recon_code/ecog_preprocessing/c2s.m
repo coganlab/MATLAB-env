@@ -1,7 +1,3 @@
-function x = c2s(cell_or_struct)
-if iscell(cell_or_struct)
-    x = cellfun(@(a) a, cell_or_struct);
-end
-if isstruct(cell_or_struct)
-    x = arrayfun(@(a) a, cell_or_struct, 'un', 0);
-end
+version https://git-lfs.github.com/spec/v1
+oid sha256:2f3799682f8ba77edfb5ac389f10d126994cbecc5ba3918fa1201c90e7c31655
+size 192
