@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb9202230b3eb21fd0f5db9ba12a78abe2abe64f6bd5f6ff164406351a606a5c
-size 239
+function incr(incrVar,incrN)
+%
+% postincr = incr(incrVar) increments incrVar by 1
+% postincr = incr(incrVar,incrN) increments incrVar by incrN
+%
+% see decr
+
+if ~exist('incrN','var'),incrN = 1;end
+assignin('base',inputname(1),incrVar+incrN)

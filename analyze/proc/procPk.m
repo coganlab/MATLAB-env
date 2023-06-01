@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5af2b626db2ed3c3d99d90ba5091507f8de092f55d6f0538c284eaf56b815d2d
-size 209
+function procPk(day,rec)
+%
+% procPk(day, rec);
+%
+% Generate pk files for a recording day.
+%	Run before createMultiunit_Database
+%	Run after procSp
+
+if nargin < 2
+    makePk(day);
+else
+    makePk(day,rec);
+end

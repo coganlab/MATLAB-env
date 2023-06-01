@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6879d8ce306606f6747eccc3e8ce486c55cf36d85bed71f956b1e428173e97ba
-size 311
+function [logLR, Prob1, Prob2] = likLR_SVDSpectral(Spec, Spec1, Spec2)
+%
+% [logLR, Prob1, Prob2] = likLR_SVDSpectral(Spec, Spec1, Spec2) 
+%
+
+% Need to account for difference in variances 
+% logLR = (sum(log(Prob1),1) - sum(log(Prob2),1));
+
+logLR = sum(- ((Spec) - (Spec1)).^2 + ((Spec) - (Spec2)).^2,2);

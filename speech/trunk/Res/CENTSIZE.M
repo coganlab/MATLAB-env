@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:396ee6c286e54cdc9f8e7bc215c84619de87bee635cc3456054b8af9c56b080e
-size 436
+% CENTSIZE: Centroid size of a point configuration.
+%
+%       Usage: csize = centsize(coord)
+%
+%           coord - [n x p] matrix of point coordinates
+%           csize - centroid size: root-mean-square distance of points
+%                     from their centroid
+%
+
+% RE Strauss, 8/2/95
+
+function csize = centsize(coord)
+  [n,p] = size(coord);
+  csize = sqrt(mean(sum(((coord-ones(n,1)*mean(coord)).^2)')));
+
+  return;

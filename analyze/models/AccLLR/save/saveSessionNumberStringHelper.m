@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ac9a9aca8ef138f64f5e4a675358e0bab8964998c8c768386a87c42a771cf5d4
-size 794
+function SessionNumberString = saveSessionNumberStringHelper(Session)
+%
+%  SessionNumberString = saveSessionNumberStringHelper(Session)
+%
+
+
+SessionType = getSessionType(Session);
+
+SessionNumberString = '';
+switch SessionType
+  case 'Spike'
+    SessionNumberString = num2str(Session{6}(1));
+  case 'Field'
+    SessionNumberString = num2str(Session{6}(1));
+  case 'FieldArray'
+    SessionNumberString = num2str(Session{6}(1));
+  case 'SpikeField'
+    SessionNumberString = [num2str(Session{6}(1)) '_' num2str(Session{6}(2))];
+  case 'FieldField'
+    SessionNumberString = [num2str(Session{6}(1)) '_' num2str(Session{6}(2))];
+  case 'SpikeSpike'
+    SessionNumberString = [num2str(Session{6}(1)) '_' num2str(Session{6}(2))];
+  case 'Multiunit'
+    SessionNumberString = num2str(Session{6}(1));
+end

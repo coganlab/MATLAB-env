@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:abc03a2a77cb6f8c9614a5e859553fba08e25e04366e5e3f49f8fe08f2b6e82b
-size 414
+function nt_greetings(reset)
+%nt_greetings - display message the first time the toolbox is used
+
+persistent nt_greeted
+if nargin>0; nt_greeted=reset; return; end
+
+if isempty(nt_greeted)
+    
+    display(' ')
+    display(['NoiseTools, version ',nt_version]);
+    display('http://audition.ens.fr/adc/NoiseTools');
+    display('Please cite relevant methods papers.');
+    display(' ');
+    
+    nt_greeted=1;
+    
+end

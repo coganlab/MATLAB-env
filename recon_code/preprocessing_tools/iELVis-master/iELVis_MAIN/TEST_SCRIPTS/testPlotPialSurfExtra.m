@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:44c2a9b4f5a3692ac53a929f82f2f6027258636b1e67ad7ddbc44585044e8a10
-size 563
+%% DK atlas with elecs and labels
+cfg=[];
+%cfg.view='r';
+cfg.view='l';
+%cfg.view='omni';
+cfg.figId=1;
+cfg.overlayParcellation='DK';
+cfg.showLabels='y';
+cfg.title=[];
+cfgOut=plotPialSurf('TWH013',cfg);
+
+
+%% Inflated with elecs and labels
+cfg=[];
+cfg.view='l';
+cfg.figId=2;
+cfg.surfType='inflated';
+cfg.showLabels='y';
+cfg.title=[];
+cfgOut=plotPialSurf('PT001',cfg);
+
+
+%% Plain Omni
+cfg=[];
+%cfg.view='r';
+cfg.view='omni';
+cfg.figId=3;
+cfg.showLabels='n';
+cfg.title=[];
+cfgOut=plotPialSurf('TWH013',cfg);
+
+%%
+disp('testPlotPialSurfExtra.m completed successfully.');

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2baeb1052919b5d5f6ad1f97c958bdec82d993e0fbca3ed944b62bf516e3aed8
-size 230
+function a = tt_subsubsref(obj,s)
+%TT_SUBSUBSREF Helper function for tensor toolbox subsref.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+if length(s) == 1
+    a = obj;
+else
+    a = subsref(obj, s(2:end));
+end
+

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a84ee2e47c50d89c7deab4cf1299b918b4bf6ac3c2a4866530e153538462f26
-size 457
+function out = isMocapExperiment(experiment)
+%  Returns whether mocap data is available in this experiment
+%
+%  out = isMocapExperiment(experiment)
+%
+%  INPUTS: EXPERIMENT = Data structure.  Experiment data structure 
+%
+%  OUTPUTS: OUT = 0/1 scalar.
+
+if isfield(experiment.software.behavior,'mocap') % Preferred
+  out = experiment.software.behavior.mocap.available;
+elseif isfield(experiment.software,'markerset')  % Legacy
+    out = 1;
+else
+  out = 0;
+end

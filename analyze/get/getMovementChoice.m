@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:41f466d03fee8bc8c0e515ee72af936d2476198a3c6841d6aaee5823b9b9bebe
-size 663
+function MovementChoice = getMovementChoice(Trials)
+%
+% MovementChoice = getMovementChoice(Trials)
+% Defaults to saccade movement for reach and sacc trials
+
+ReachCode = 10;
+SaccadeCode = 12;
+ReachSaccadeCode = 13;
+
+
+SaccadeChoice = [Trials.SaccadeChoice];
+ReachChoice = [Trials.ReachChoice];
+task = [Trials.TaskCode];
+
+% Defaults to saccade movement for reach and sacc trials
+MovementChoice = zeros(1,length(SaccadeChoice));
+MovementChoice([task == SaccadeCode]) = SaccadeChoice([task == SaccadeCode]);
+MovementChoice([task == ReachCode]) = ReachChoice([task == ReachCode]);
+MovementChoice([task == ReachSaccadeCode]) = SaccadeChoice([task == ReachSaccadeCode]);

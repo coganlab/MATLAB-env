@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:52ba34c860b151e3f53cbc84403e17a4d688c905e004293d174e0db1c247211f
-size 480
+% Histfitf: Objective function for histfit. Finds sum-of-squared deviation of 
+%           predicted from observed values, subject to the constraint that 
+%           predicted values must be non-negative.
+%
+%     Usage: sse = histfitf(b,[d1 d2 d3 d4],freqs)
+%
+
+% RE Strauss, 2/25/01
+
+function sse = histfitf(b,devs,freqs)
+  n = size(devs,1);
+  pred = [ones(n,1) devs]*b;
+
+  e = (pred-freqs).^2;
+  i = find(pred<0);
+  e(i) = 10*e(i);
+
+  sse = sum(e);
+
+  return;

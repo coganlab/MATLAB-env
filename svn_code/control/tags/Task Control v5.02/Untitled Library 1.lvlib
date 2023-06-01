@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:09706739a5749e1ff0ae81d997d0439313eed0111121e9b79e788ac478bf1bfd
-size 326
+<?xml version='1.0'?>
+<Library LVVersion="8008005">
+   <Property Name="NI.Lib.ContainingLib" Type="Str">variables - network - RT.lvlib</Property>
+   <Property Name="NI.Lib.ContainingLibPath" Type="Str">variables - network - RT.lvlib</Property>
+   <Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
+</Library>

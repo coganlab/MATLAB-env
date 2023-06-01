@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:14be8953318aa7a97968620264a5c756f9ebbd00b6f98d6d8df7f46a3e04b3a1
-size 363
+%23.2.08 - add filed: from
+%27.3.08 - chenced from entery to entries
+function [enteries] = enteries_struct
+    word = struct('b',[],'e',[],'name',[],'flag',[]);
+    phoneme = struct('b',[],'e',[],'name',[],'flag',[],'from',[]);
+    enteries = struct('ID',[],'sentence',[],'usage',[],'dialect',[],'sex',[],'speaker',[],'phoneme',phoneme,'word',word);    
+end

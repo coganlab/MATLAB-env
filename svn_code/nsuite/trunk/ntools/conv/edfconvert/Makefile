@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4ccb2dc4a70dea01de28eb42565e7a3b32d1097093a978f7ec26f16ff80e31d8
-size 309
+#
+# Makefile for edfconvert 
+#
+
+CC=gcc
+CFLAGS=-g -O2 -Wall -Werror `xml2-config --cflags`
+LDFLAGS=-g `xml2-config --libs`
+OBJS=edfconvert.o hdrxml.o
+
+all: edfconvert 
+
+.c.s:
+	$(CC) $(CFLAGS) $(CPPFLAGS) -S $<
+
+edfconvert: edfconvert.o hdrxml.o
+	$(CC) $(LDFLAGS) $(OBJS) -o $@
+
+clean:
+	$(RM) edfconvert *.o *~

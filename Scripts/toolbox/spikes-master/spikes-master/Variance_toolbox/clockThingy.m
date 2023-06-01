@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a50026489ee4f2956ea93bfa4cb8d641052bb596ac0d63a8af0ca6d9d5c512d6
-size 365
+
+
+function clockThingy(center, radius, color, edgeColor, handColor, range, currentTime)
+
+circleFill(center,radius,color,2,edgeColor);
+
+startLoc = center;
+endLoc = center + radius*[ sin(currentTime/range * 2*pi), cos(currentTime/range * 2*pi) ];
+
+h = plot([startLoc(1), endLoc(1)], [startLoc(2), endLoc(2)]);
+set(h, 'linewidth', 3, 'color', handColor);
+

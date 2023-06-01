@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8b37a6afc94a2bae9079b36a899677958f80cd09a4618b94dcbea7771f016757
-size 605
+function Z = lt(X,Y)
+%LT Less than (<) for tensor.
+%
+%   See also TENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+Z = tenfun(@lt,X,Y);

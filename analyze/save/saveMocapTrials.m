@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2bc66d8973457b42714a385eb23b63c40557f5596055cae6178a3b5afd3e9bb1
-size 481
+function saveMocapTrials(day)
+%
+%   saveMocapTrials(day)
+%
+
+global MONKEYDIR
+
+olddir = pwd;
+if(~isdir([MONKEYDIR '/' day '/mat']))
+   mkdir([MONKEYDIR '/' day '/mat']);
+end
+if isfile([MONKEYDIR '/' day '/mat/MocapTrials.mat'])
+    delete([MONKEYDIR '/' day '/mat/MocapTrials.mat']);
+end
+
+MocapTrials = dbMocapDatabase(day);
+
+cd([MONKEYDIR '/' day '/mat']);
+disp(['Saving MocapTrials matrix: ' num2str(length(MocapTrials)) ' trials']);
+save MocapTrials.mat MocapTrials
+
+cd(olddir);

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a441dff702a5a35404df22b1825603fced8567291473729ccce39a06723baa75
-size 271
+function out=nancat(x,y)
+
+%concatenate into columns adding NANs if needed
+
+if length(x) == length(y)
+	out=horzcat(x,y);
+elseif length(x) > length(y)
+	y(length(y)+1:length(x))=nan;
+	out=horzcat(x,y);
+else
+	x(length(x)+1:length(y))=nan;
+	out=horzcat(x,y);
+end

@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9e95ec165c71019bfc6e58e3d9890529d3175895f0187e891498880c2c9ce2be
-size 462
+function Rec = createRec(filename,day,rec,experiment)
+% creates a recording specific Rec structure for analyze compatibility of
+% human experiments, used by procDay
+Rec.Task = experiment.software.taskcontroller;
+Rec.filename = sprintf('%s/%s/%s',experiment.recording.base_path,day,filename);
+Rec.type = 'Human';
+Rec.Ch = experiment.hardware.acquisition(1).num_channels;
+Rec.Fs = experiment.hardware.acquisition(1).samplingrate;
+Rec.prenum = sprintf('%03d',rec);

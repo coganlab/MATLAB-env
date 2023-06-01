@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b2384bd9ac34df3ec93cd9d6b1f943999e781d91078aa7e83c614c7e5e4633ee
-size 619
+function Z = ge(X,Y)
+%GE Greater than or equal (>=) for tensors.
+%
+%   See also TENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+Z = tenfun(@ge,X,Y);

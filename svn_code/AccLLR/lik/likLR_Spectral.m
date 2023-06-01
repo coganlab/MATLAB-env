@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2edd0c618dbd9faa9bed976ce341a77879aa4fba3959ca41d0e5aab94bbfe465
-size 391
+function [logLR, Prob1, Prob2] = likLR_Spectral(Spec, Spec1, Spec2, DOF)
+%
+% [logLR, Prob1, Prob2] = likLR_Spectral(Spec, Spec1, Spec2, DOF) 
+%
+
+eps = 10.^(-10);
+% 
+ Prob1 = chi2pdf(DOF*Spec./Spec1, DOF).' + eps;
+ Prob2 = chi2pdf(DOF*Spec./Spec2, DOF).' + eps;
+% 
+% logLR = (sum(log(Prob1),1) - sum(log(Prob2),1));
+
+logLR = sum(- ((Spec) - (Spec1)).^2 + ((Spec) - (Spec2)).^2,2);

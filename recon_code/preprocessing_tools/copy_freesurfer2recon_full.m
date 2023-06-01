@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:37e43568337c07a461f49113fb5831dae44452102a14e719b39ec84b8d0c26f2
-size 376
+function copy_freesurfer2recon_full(subj)
+
+global globalFsDir;
+global RECONDIR_FULL;
+
+if isempty(globalFsDir)
+    warning('global variable globalFsDir cannot be empty');
+    return;
+end
+
+if isempty(RECONDIR_FULL)
+    warning('global variable RECONDIR_FULL cannot be empty');
+    return;
+end
+
+copyfile(fullfile(globalFsDir, subj), fullfile(RECONDIR_FULL, subj));

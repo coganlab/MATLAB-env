@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6f9e94dc2932be0535bf4e02852577016c9f5465f33cd6bee881e3745bea00c4
-size 405
+function [h, p] = corrcoef_test(r, n, alpha)
+%
+%  [h, p] = corrcoef_test(r, n, alpha)
+%
+%  Implements the hypothesis test for the null hypothesis
+%  that rho = 0 against the alternative hypothesis that rho is not 0
+%  following Zar (), p381.
+%
+
+if nargin < 3 alpha = 0.05; end
+
+nu = n-2;
+tcrit = abs(tinv(alpha./2,nu));
+
+sr = sqrt((1-r.^2)./nu);
+
+t = r./sr;
+
+h = abs(t) > tcrit;
+
+p = 1 - tcdf(abs(t),nu);

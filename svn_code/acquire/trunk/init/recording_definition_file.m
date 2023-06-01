@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:895cd05227eeaa0008f11ea79c6a3bc81d4a9916fb6ac519e5a33403f9e76bcf
-size 342
+
+%
+%
+% 
+%
+%
+
+global experiment
+
+experiment.recording.subject_name = 'Reggie';
+experiment.recording.base_path = '/mnt/sraid/Reggie';
+experiment.recording.day = [datestr(date,11),datestr(date,5),datestr(date,7)];
+% experiment.recording.number
+% experiment.recording.start_time
+% experiment.recording.size_in_MB
+% experiment.recording.full_path

@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7ddc072282c09f421f4a76e23ea0602a2f869d62beeb0baabd481021cb440fe7
-size 543
+% SUBMATRX: Part of a Wright-style factor analysis.
+%           Given a square correlation matrix and a vector of indices to 
+%           variables (not necessarily contiguous), extracts and returns the 
+%           submatrix.
+%
+%     Usage: sub = submatrx(matrx,vars)
+%
+%           matrx = [n x n] correlation matrix
+%           vars =  m-length vector of vars (specified by row=column)
+%           sub =   [m x m] submatrix
+%
+
+% RE Strauss, 1/21/95
+
+function sub = submatrx(matrx,vars)
+  sub = matrx(vars,vars);
+  return;
+

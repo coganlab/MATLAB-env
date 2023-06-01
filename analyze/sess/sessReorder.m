@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6df787cb9f0a637256e93fd2bf4c9be4677084c265065e2d9e1074b5747e7bbc
-size 295
+function NewSession = sessReorder(Session,order)
+
+%   Session = sessReorder(Session,order)
+%   Takes a session and reorder
+%   Returns the reordered session
+
+
+SSess = splitSession(Session);
+
+for i = 1:length(SSess)
+    mySess{i} = SSess{order(i)};
+end
+
+NewSession = createSession(mySess);
+
+end
+

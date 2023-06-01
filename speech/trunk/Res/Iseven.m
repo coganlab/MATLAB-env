@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7f0e00aa4fe077e4a6d20c318c2c03e83cbba81e05acf1ecd1ef4ddd52a7afa
-size 399
+% IsEven: Boolean function indicating whether the integers in a matrix are (=1)
+%         or are not (=0) even.  Non-integer values are rounded.
+%
+%     Usage: b = iseven(X)
+%
+%         X =  input matrix.
+%         ---------------------------------
+%         b = corresponding boolean matrix.
+%
+
+% RE Strauss, 5/31/02
+
+function b = iseven(X)
+  b = abs(mod(round(X),2)-1);
+  return;
+  

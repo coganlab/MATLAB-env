@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0d9d97ab70c0ee4ff2c4672f46c8a360de94ac31b9bfcaf04336af8c76e41484
-size 349
+% TODEGS: Converts radians to degrees.
+%
+%     Usage: degs = todegs(rads)
+%
+%         rads = matrix of angles in radians.
+%         -------------------------------------------------
+%         degs = corresponding matrix of angles in degrees.
+%
+
+% RE Strauss, 2/26/00
+
+function degs = todegs(rads)
+  degs = rads .* 180 ./ pi;
+  return;

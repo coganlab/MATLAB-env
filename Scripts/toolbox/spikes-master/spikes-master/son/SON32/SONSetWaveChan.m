@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f9376924e3ad587eafee1f7c40ada251fd9973389e21f4a53ba12761920ada39
-size 1464
+function ret=SONSetWaveChan(fh, chan, sPhyCh, dvd, bufsize,...
+                              comment, chantitle, scale, offset, units)
+% SONSETWAVECHAN creates an ADC channel     
+%
+% RET=SONSETWAVECHAN(FH, CHAN, SPHYCH, DVD, BUFSIZE,...
+%                               COMMENT, CHANTITLE, SCALE, OFFSET, UNITS)
+%
+%             FH = SON file handle
+%             CHAN = the channel number for the new channel
+%             SPHYCH = the physical channel number
+%             DVD = the number of clock ticks per sample
+%             BUFSIZE = the size of the internal buffer (up to 32768 bytes)
+%             COMMENT = channel comment string
+%             CHANTITLE = channel title string
+%             SCALE = scale factor
+%             OFFSET = offset
+%             UNITS = channel units string
+% 
+% Returns zero or a negative error
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+global SON_CHANCOMSZ;                          
+global SON_UNITSZ;
+global SON_TITLESZ;
+
+if (bufsize>32768)
+    bufsize=32768;
+end;
+
+comment=comment(1 : min(length(comment), SON_CHANCOMSZ));                             
+chantitle=chantitle(1 : min(length(chantitle), SON_TITLESZ));    
+units=units(1 : min(length(units), SON_UNITSZ)); 
+
+ret=calllib('son32', 'SONSetWaveChan',...
+    fh, chan, sPhyCh, dvd, bufsize,comment, chantitle, scale, offset, units);                             

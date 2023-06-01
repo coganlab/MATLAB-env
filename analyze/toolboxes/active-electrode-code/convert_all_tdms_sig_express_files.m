@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:931bf7da77328a2d7e85c472401a583db5150754988628e2522a2b58e70e6739
-size 935
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% convert_all_tdms_sig_express_files - converts all the tdms files in this folder from
+%     tdms files into .mat file. 
+%   
+%   Uses: Quick_TDMS_Convert.m
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function convert_all_tdms_sig_express_files(pathstr)
+
+% process all tdms files in this directory
+%fileList = dir(strcat(pathstr,'/*.tdms'));
+
+% enhanced version
+fileList = rdir([pathstr, '\**\*.tdms']);
+
+% loop over all files
+for i = 1:size(fileList,1)
+    
+    % make full filename, including path
+    %namestr = strcat(pathstr,'/',fileList(i).name);        
+    namestr = fileList(i).name;        
+    
+    disp(['Working on file:  ' namestr])
+    
+    % work on this file
+    [~] = convertTDMS(true,namestr);
+    
+    % jv hack to delete files
+    %delete(namestr);    
+    
+    [path name ext] = fileparts(namestr);
+    
+    convert2eeg_data([path '\' name '.mat'], 1, 1);
+end
+

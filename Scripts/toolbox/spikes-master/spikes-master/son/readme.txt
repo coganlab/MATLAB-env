@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dae26c7b1d90291c1a92df45ba663bf1bdc06c68a482bb788e66edddb4abcba7
-size 433
+The SON2 library uses features introduced with version 5 of MATLAB and will not work 
+with versions earlier than that.
+
+The SON32 library requires MATLAB version 7.1 or later. 
+
+Unzip the files to the MATLAB work directory. This will create a SON folder containing the SON2 library.
+The SON32 library will be installed into a SON\SON32 subfolder.
+Add these to th MATLAB path as required.
+
+
+
+
+Malcolm Lidierth
+1/10/05
+

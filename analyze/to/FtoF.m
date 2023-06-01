@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:44b92547fc3b3197b09a6933a032937d23d7648ebda3b959727e7a50163e0dc2
-size 461
+function Session = FtoF(InputSession,Chamber)
+%
+%   Session = FtoF(InputSession,Chamber)
+%
+
+if nargin < 2; Chamber = []; end
+
+Session = cell(0,0);
+InputNum = InputSession{6};
+FF_Sessions = FtoFF(InputSession,Chamber);
+if ~isempty(FF_Sessions)
+    SN = getSessionNumbers(FF_Sessions);
+    OutputNum = unique(setdiff(SN(:),InputNum));
+    Session = loadField_Database;
+    Session = Session(OutputNum);
+    disp([num2str(length(Session)) ' Field Sessions']);
+end

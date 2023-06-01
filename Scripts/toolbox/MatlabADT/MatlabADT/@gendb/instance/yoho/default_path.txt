@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e2ff41ac8b7e26dfe29ea57c64fe5c69f8f9cbab46881efc2a1298ff2ef30f7d
-size 36
+"\\piano\Data\DataBases\Speech\YOHO"

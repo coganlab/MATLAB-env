@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:002f92b16b350abd7812d371faac30bda20c237221c373a9c304040195197a0a
-size 604
+%*--------------SETT--(Rowland Sillito, July 2001)-----------------------*
+%|                                                                       |
+%|  sett(objtag,'PropertyName',objvalue) set the value of 'PropertyName' |
+%|                                      as objvalue for all objects with |
+%|                                      the tag objtag.                  |
+%|                                                                       |
+%*-----------------------------------------------------------------------*
+function sett(tag,setting,value)
+set(findobj('tag',tag),setting,value);

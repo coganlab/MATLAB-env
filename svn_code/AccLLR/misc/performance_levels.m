@@ -1,3 +1,52 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e3b2ff5f29fc57427f02fcf2430a886a3acee2179dc9fcbb0d943e19911bfd3
-size 2456
+function [p, ST, Levels] = performance_levels(EventAccLLR, NullAccLLR, DetectType)
+% [p, ST, Levels] = performance_levels(EventAccLLR, NullAccLLR, DetectType);
+%
+% This code is used to match the level for onset time detection between
+% spikes and fields.
+%   The level gives the same correct detect rates spikes and fields
+% than rate of no detect in the context of baseline
+%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+% Input :       EventAccLLR: Accumulated log-likelihood ratios for the
+%                           event distribution
+%               NullAccLLR: Accumulated log-likelihood ratios for the null
+%                       distribution
+%               DetectType = String. 'Hit' or 'Correct'
+%                           Defaults to 'Hit'
+%--------------------------------------------------------------------------
+% Outputs:   Spike_Levels: The range of levels that were tested for spiking
+%            Lfp_Levels: The range of levels that were tested for Lfps
+%       p(:,1) = Prob of correct event detections for each level
+%       p(:,2) = Prob of false miss detections for each level
+% +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+if nargin < 3 || isempty(DetectType)
+    DetectType = 'Hit';
+end
+
+[p, Levels] = characterize_level(EventAccLLR, NullAccLLR);
+
+ST = zeros(1,length(Levels));
+
+switch DetectType
+    case 'Hit'
+        for Levelind = 1:length(Levels)
+            [Eventp, EventST] = DetectAccLLR(EventAccLLR, Levels(Levelind),-Levels(Levelind));
+            if sum(~isnan(EventST))
+                ST(Levelind) = mean(EventST(~isnan(EventST)));
+            end
+        end
+    case 'Correct'
+        for Levelind = 1:length(Levels)
+            [Eventp, EventST] = DetectAccLLR(EventAccLLR, Levels(Levelind),-Levels(Levelind));
+            [Nullp, NullST] = DetectAccLLR(-NullAccLLR, Levels(Levelind),-Levels(Levelind));
+            indEvent = find(~isnan(EventST));
+            indNull = find(~isnan(NullST));
+            if ~isempty(indEvent) & ~isempty(indNull)
+                ST(Levelind) = (sum(EventST(indEvent))+sum(NullST(indNull)))./(length(indNull)+length(indEvent));
+            elseif ~isempty(indEvent) & isempty(indNull)
+                ST(Levelind) = sum(EventST(indEvent))./length(indEvent);
+            elseif isempty(indEvent) & ~isempty(indNull)
+                ST(Levelind) = sum(NullST(indNull))./length(indNull);
+            end
+        end
+end

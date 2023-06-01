@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:545d74e4b3be6a9eae0c2632e8a58b7c882460b96686ce377d1a7e89c237b4e5
-size 486
+function Session = loadSpikeSpikeField_Database(MonkeyDir)
+%
+%  Session = loadSpikeSpikeField_Database(MonkeyDir)
+%
+
+global MONKEYDIR
+
+if nargin == 1 ProjectDir = MonkeyDir; else ProjectDir = MONKEYDIR; end
+
+load([ProjectDir '/mat/SpikeSpikeField_Session.mat']);
+
+%  Checks for legacy Sessions without MONKEYDIR or SESSIONTYPE
+for iSess = 1:length(Session)
+  if length(Session{iSess})==6
+    Session{iSess}{7} = ProjectDir;
+    Session{iSess}{8} = {'Spike','Spike','Field'};
+  end
+end
+

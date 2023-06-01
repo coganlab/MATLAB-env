@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:63b066a29611d7825aed615253175c87f89a3e8d22acfa7eaa04b8b36964bfc4
-size 176
+function z=fztest(r1,n1,r2,n2)
+% Fisher Z Test for correlation coefficients
+
+r1=0.5*log((1+r1)/(1-r1));
+r2=0.5*log((1+r2)/(1-r2));
+
+z=(r1-r2)/sqrt((1/(n1-3))+(1/(n2-3)));

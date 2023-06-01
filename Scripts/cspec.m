@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:314a4a35ce346b445324d53863441eda3c8eb063dfd167e03a3d02e3a264a334
-size 113
+function cmap = cspec(color1,color2,nCol)
+
+for iR=1:3;
+cmap(:,iR)=linspace(color1(iR),color2(iR),nCol);
+end

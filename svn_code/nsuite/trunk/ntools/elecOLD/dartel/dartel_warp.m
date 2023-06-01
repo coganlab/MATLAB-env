@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:067e1e7c7168c31c76b186c93c728a26fcb2193236e513a9baec04e8ff9e6dc7
-size 642
+% List of open inputs
+% Segment: Data - cfg_files
+% Initial Import: Output Directory - cfg_files
+% Deformations: Apply to - cfg_files
+nrun = X; % enter the number of runs here
+jobfile = {'/home/ccarlson/hugh/dartel/dartel_warp_job.m'};
+jobs = repmat(jobfile, 1, nrun);
+inputs = cell(3, nrun);
+for crun = 1:nrun
+    inputs{1, crun} = MATLAB_CODE_TO_FILL_INPUT; % Segment: Data - cfg_files
+    inputs{2, crun} = MATLAB_CODE_TO_FILL_INPUT; % Initial Import: Output Directory - cfg_files
+    inputs{3, crun} = MATLAB_CODE_TO_FILL_INPUT; % Deformations: Apply to - cfg_files
+end
+spm('defaults', 'FMRI');
+spm_jobman('serial', jobs, '', inputs{:});

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ca0b4d9998f3eed30c977b0fab5c7fbd1d54bb4cfea0cc8805722944e7fcca90
-size 317
+function sorted = sortrawDS(rawDS)
+rawDS_names = beautify_filenames(rawDS);
+for jj = 1:length(rawDS_names)
+    this_name = rawDS_names{jj};
+    spaces = findstr(this_name,' ');
+    rawDS_names{jj} = [this_name(1:((spaces(1)-1))) ' !'];
+end
+rawDS_names
+[junk,order] = sort(rawDS_names);
+order
+sorted = {rawDS{order}};

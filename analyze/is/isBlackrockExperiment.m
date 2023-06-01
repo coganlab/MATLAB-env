@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:72a6835bbd481c88de6b2adb55324c0c1e18443c1014d43862f9648f3364884b
-size 443
+function out = isBlackrockExperiment(experiment)
+%  Returns whether plexon data is available in this experiment
+%
+%  out = 1 if plexon
+%
+%  INPUTS: EXPERIMENT = Data structure.  Experiment data structure
+%
+%  OUTPUTS: OUT = 0/1 scalar.
+
+if isfield(experiment.hardware.acquisition(1), 'type') % Preferred
+    if strcmp(experiment.hardware.acquisition(1).type,'Blackrock')
+        out = 1;
+    else
+        out = 0;
+    end
+else
+    out = 0;
+end

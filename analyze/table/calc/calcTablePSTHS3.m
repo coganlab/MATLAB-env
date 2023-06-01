@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a7792373f7428c328cc69506c40fc6a5045dc0e06baf0a7edf9fc69b7c162f59
-size 530
+function Value = calcPSTHS3(Session,CondParams,AnalParams)
+%
+%  Value = calcPSTH(Session,CondParams,AnalParams)
+
+
+global MONKEYDIR
+
+SSess = splitSession(Session);
+Sess = SSess{3};
+
+Type = getSessionType(Sess);
+
+dirPath = [MONKEYDIR '/mat/' Type '/PSTH'];
+fNameRoot = ['PSTH.Sess' num2str(Sess{6}) ];
+
+[p,pMax] = getParamFileIndex([dirPath '/' fNameRoot],CondParams,[]);
+
+if p > 0 
+    PSTH = loadSessPSTH(Sess,CondParams);
+else
+    PSTH = saveSessPSTH(Sess,CondParams);
+end
+
+%load up saved tuning information
+Value = PSTH.PSTH;
+
+

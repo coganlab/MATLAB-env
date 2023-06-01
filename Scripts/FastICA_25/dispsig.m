@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9d81bbc9dacfc0d74acf6a3ef1130b00a4689a61f4ba877c49543de9224fdcb9
-size 402
+function dispsig(signalMatrix, range, titlestr);
+%DISPSIG - deprecated!
+%
+% Please use icaplot instead.
+%
+%   See also ICAPLOT
+
+% @(#)$Id: dispsig.m,v 1.2 2003/04/05 14:23:57 jarmo Exp $
+
+fprintf('\nNote: DISPSIG is now deprecated! Please use ICAPLOT.\n');
+
+if nargin < 3, titlestr = ''; end
+if nargin < 2, range = 1:size(signalMatrix, 1); end
+
+icaplot('dispsig',signalMatrix',0,range,range,titlestr);

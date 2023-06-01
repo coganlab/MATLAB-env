@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4c3d29de4808c41b19fc515e6d89a6f24c5acc3f9cdd31deba0b915627238b66
-size 571
+% CORRCMPL:  Given a data matrix, returns a symmetric distance matrix, where 
+%            the distances are the complements of the rank correlations among
+%            columns.
+%
+%     Usage: dist = corrcmpl(X)
+%
+%            X = (n x p) data matrix.
+%            ------------------------------------------------
+%            dist = (n x n) square symmetric distance matrix.
+%
+
+% RE Strauss, 11/6/97
+%   9/16/99 - put exact zeros on diagonal.
+
+function dist = corrcmpl(X)
+  dist = rankcorr(X);
+  dist = 1-dist;
+  dist = putdiag(dist,0);
+
+  return;
+

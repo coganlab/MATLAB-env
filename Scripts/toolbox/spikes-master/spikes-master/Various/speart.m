@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9e2a8a0fa1bf2e7fb470f722ee93c965e215e573a09a1689e4a1042d6f2677ab
-size 324
+function [rs,t]=speart(x,y)
+
+% Spearmans rs correlation
+
+if length(x)~=length(y)
+   error('Wrong input size')
+end
+
+n=length(x);
+r1=ranks(x);
+r2=ranks(y);
+
+c=(r1-mean(r1));
+d=(r2-mean(r2));
+a=sum(c.*d);
+b=((sqrt(sum((r1-mean(r1)).^2)))*(sqrt(sum((r2-mean(r2)).^2))));
+rs=a/b;
+
+t=rs.*sqrt((n-2)/(1-rs.^2));

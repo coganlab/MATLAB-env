@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c3f8024728b0693f7f52f9490070e6d4fad0f0194af12da1409a61afc99b6878
-size 638
+% SONFILTER tests whether a set of markers are included in the set defined
+% by a filter mask
+% 
+% Implemented though SONFilter.dll
+% 
+% ANS=SONFILTER(MARKERS, FILTERMASK)
+%
+% INPUTS: MARKERS is EITHER
+%             1. a TMarker structure as defined in the SON system
+%               or
+%             2. a 4-byte uint8 vector containing the marker values
+%         FILTERMASK is the filter mask structure
+% OUTPUTS: 1= the markers are included in the filter mask,
+%                  0 otherwise
+%                  
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006

@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab9da5e94426b413013d012d2678fb2630dbeb0e46285962373a263068b1a45e
-size 393
+function [dy] = gaussgrad(beta,x)
+
+%   if length(beta) != 3
+%      error('beta parameter in gaussfit of wrong dimensions');
+%   end
+
+
+nl = length(x);
+dy = zeros(3,nl);
+
+for i=1:nl
+    dx = x(i) - beta(2);
+    expval = exp(-0.5*dx*dx/(beta(3)*beta(3)));
+    dy(1,i) = expval;
+    dy(2,i) = beta(1)*dx*expval/(beta(3)*beta(3));
+    dy(3,i) = beta(1)*dx*dx*expval/(beta(3)*beta(3)*beta(3));
+end
+

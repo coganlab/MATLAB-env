@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:98ec9eaf118db6cbf92a707322a4d9da71cd6b4ca4c020a1e7db4738d7337364
-size 938
+function ret=SONChanDelete(varargin)
+% SONCHANDELETE deletes a channel from a SON file
+%     RET=SONCHANDELETE(FH, CHAN {,QUERY})
+%         FH = file handle
+%         CHAN = channel number 0 to SONMAXCHANS-1
+%         QUERY (if present) =  0 Do not query
+%                            <> 0 Query before deleting (default)
+% Returns 0 if deletion successful, negative error code otherwise
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin < 2
+    ret=-1000;
+    return;
+end;
+
+fh=varargin{1};
+chan=varargin{2};
+if nargin==3
+    query=varargin{3};
+else
+    query=1;
+end;
+
+
+if query~=0
+    s=sprintf('Do you really want to delete Channel %d',chan);
+    button = questdlg(s,'Channel Delete','No','Yes','No');
+    if strcmp(button,'No')
+        ret=0;
+        return;
+    end;
+end;
+
+
+ret=calllib('son32','SONChanDelete',fh,chan);
+return;

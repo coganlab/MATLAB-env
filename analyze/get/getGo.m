@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:19e77467093f0f9c713e55d6cae138ffb93be0252cfdca4986a02c1637f47c4a
-size 123
+function Go = getGo(Trials);
+%
+% Go = getGo(Trials)
+%
+
+[Go{1:length(Trials)}] = deal(Trials.Go);
+Go = cell2num(Go);

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:efa7809fb07258d1e73e06450a64d5d12e1adc3dc6f5206a9700437937ff0b35
-size 303
+function Trials2=recodeStartCodeTrials(Trials);
+Trials2=Trials;
+for iTrials=1:length(Trials2);
+    Trials2(iTrials).StartCode=1;
+    Trials2(iTrials).Start=Trials2(iTrials).FirstStimAuditory;
+    Trials2(iTrials).RespOnset=Trials2(iTrials).ListenCueOnset+30000*Trials2(iTrials).ReactionTime;
+end

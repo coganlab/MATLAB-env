@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b6b16aaf887c1d98b810dceb426fd2dcaf56a6caa06704e6ef1b07650b3d6098
-size 253
+function spikeTrials = read_spikes_from_file(fileName)
+
+    spikeTimes = dlmread(fileName, ' ');
+    spikeTrials = cell(size(spikeTimes, 1), 1);
+    for j = 1:length(spikeTrials)
+        spikeTrials{j} = spikeTimes(j, spikeTimes(j, :) > 0);
+    end
+    

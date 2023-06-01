@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:69721644fe00d88a7ab2a563b124b253efaaee80c0f459550573a2ec1447a35f
-size 585
+inpIdx=pvalsDRAM;
+nPerm=1000;
+for iPerm=1:nPerm
+   sInpIdx=shuffle(reshape(inpIdx,size(inpIdx,1)*size(inpIdx,2),1));
+   pvalsS=reshape(sInpIdx,size(inpIdx,1),size(inpIdx,2));
+   
+for iChan=1:size(pvalsS,1);
+
+    tmp=bwconncomp(sq(pvalsS(iChan,:)));
+    if size(tmp.PixelIdxList,2)>0
+    for ii=1:size(tmp.PixelIdxList,2);
+        ii2(ii)=size(tmp.PixelIdxList{ii},1);
+    end
+    
+   
+    
+    SigClusterSizeS(iChan)=max(ii2);
+    else
+        SigClusterSizeS(iChan)=0;
+    end
+    clear ii2
+end
+pvalsShuff(iPerm)=max(SigClusterSizeS);
+display(iPerm);
+end
+
+

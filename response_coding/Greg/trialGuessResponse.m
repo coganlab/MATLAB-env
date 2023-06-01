@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:357c8a7061352a21b92799d5215d662a381a83bba4648140e85a44d7900236f4
-size 464
+cue_events=load('cue_events.txt');
+response_coding=load('response_coding.txt');
+
+for iTrials=1:length(response_coding);
+    dVal=response_coding(iTrials,1)-cue_events(:,1);
+    ii1=find(dVal>0);   
+    [ii jj]=sort(dVal(ii1),'ascend');
+    trialGuess(iTrials)=ii1(jj(1));
+end;
+
+
+for iTrials=1:length(trialGuess)
+    RT(iTrials,1)=response_coding(iTrials,1)-cue_events(trialGuess(iTrials),1);
+    RT(iTrials,2)=condIdx2(trialGuess(iTrials));
+end
+
+

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2d61496e88d2e2067810da52db7535de3a2d10fe5481c59e0f2a135f11cced1e
-size 416
+function [LR, Res1, Res2] = likLR_Gaussian(Lfp, Evoked1, Evoked2, sigmaLfp1, sigmaLfp2)
+%
+% [LR, Res1, Res2] = likLR_Gaussian(Lfp, Evoked1, Evoked2, sigmaLfp1, sigmaLfp2) 
+%
+
+Evoked1Mat = repmat(Evoked1, size(Lfp,1),1);
+Evoked2Mat = repmat(Evoked2, size(Lfp,1),1);
+
+Res1 = (Lfp-Evoked1Mat);
+Res2 = (Lfp-Evoked2Mat);
+
+LR = log(sigmaLfp2)-log(sigmaLfp1)+Res2.^2/(2*sigmaLfp2.^2)-Res1.^2./(2*sigmaLfp1.^2);

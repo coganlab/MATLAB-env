@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:59d88369df37e0590060506bc4df223bda7a6d07cf448367543ae1f15bd812f3
-size 244
+
+
+x = 5
+
+switch (x)
+  case 1,
+    disp('x is equal to 1');
+    
+  case 2,
+    disp('x is equal to 2');
+    
+  case {3,4}
+    disp('x is equal to 3 or 4');
+    
+%   otherwise
+%     disp('x is less than 1 or greater than 4');
+end;

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:36df7c8700a7a43688684de58712f57c8861bc3bd6fba2e6681bb03452c020e9
-size 503
+function [ts] = PL2StartStopTs(filename, startOrStop)
+% PL2StartStopTs(filename, startOrStop): read recording start or recording stop event timestamps from a .pl2 file
+%
+% [ts] = PL2StartStopTs(filename, 'start')
+% [ts] = PL2StartStopTs(filename, 'stop')
+%
+% INPUT:
+%   filename - if empty string, will use File Open dialog
+%   startOrStop - string, either 'start' or 'stop'
+%
+% OUTPUT:
+%   ts - array of timestamps (in seconds)
+
+[ts] = internalPL2StartStopTs(filename, startOrStop);
+
+end

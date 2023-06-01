@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:894cf9153089eabfd49c9a590144170f7e59fc205951f1e97e01d55888209848
-size 360
+function [retval] = freesurfer_fread3(fid)
+
+% freesurfer_fread3 - read a 3 byte integer out of a file
+% 
+% [retval] = freesurfer_fread3(fid)
+%
+% see also freesurfer_write3, freesurfer_read_surf, freesurfer_write_surf
+% 
+
+b1 = fread(fid, 1, 'uchar') ;
+b2 = fread(fid, 1, 'uchar') ;
+b3 = fread(fid, 1, 'uchar') ;
+retval = bitshift(b1, 16) + bitshift(b2,8) + b3 ;

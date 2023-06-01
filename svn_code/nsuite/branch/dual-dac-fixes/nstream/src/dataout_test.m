@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:166fdc393598d85b041560e1bede8daa698271c23d99dc2ee80108f9fe0375ca
-size 374
+function [nspike_data,comedi_data]=dataout_test
+        fid = fopen('nspikedata.out');
+        nspike_data = fread(fid, [256,inf], 'int16');
+        fclose(fid);
+        fid = fopen('comedidata.out');
+        comedi_data = fread(fid,[7,inf],'ushort');
+        fclose(fid)
+%        for i = 1:256
+%            data2(i,:) = data(i,:)+i*100;
+%        end
+%        plot(data2')
+

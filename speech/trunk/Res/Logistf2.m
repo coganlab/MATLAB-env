@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:90614069377b0cbbcd70f387df2884d3866055621a2db1b6633174b31f0e0b34
-size 387
+% LOGISTF2: Objective function for LOGISTIC for 2-parameter model.
+%
+%     Syntax: ypred = logistf2(b,x)
+%
+%           b = current parameter estimates.
+%           x = vector of abscissa values.
+%           -------------------------------------
+%           ypred = predicted ordinate values.
+%
+
+function ypred = logistf2(b,x)
+  ypred = 1./(1+exp(b(1)-b(2).*x));
+  return;
+

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:595e6ffdaea488e03d45893699ea3bcea24ec7321606ecdb3c63c4f8fda9364a
-size 337
+function s = tt_size2str(sz)
+%TT_SIZE2STR Convert size to a string that can be printed.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+if isempty(sz)
+    s = sprintf('[empty tensor]');
+    return;
+end
+
+if numel(sz) == 1
+    s = sprintf('%d',sz);
+else
+    s = [sprintf('%d x ',sz(1:end-1)) sprintf('%d', sz(end)) ];
+end
+

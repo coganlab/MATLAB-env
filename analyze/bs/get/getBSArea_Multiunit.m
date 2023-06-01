@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dd4a37d1647f84747948ffc14a65f084d03656e5f830cd37d694d0404e9a2791
-size 793
+function Area = getBSArea_Multiunit(Session)
+%
+%  Area = getBSArea_Multiunit(Session)
+%
+
+Tower = sessTower(Session);
+if iscell(Tower); Tower = Tower{1}; end
+if iscell(Tower); Tower = Tower{1}; end
+MultiunitCh = sessChannel(Session);
+if iscell(MultiunitCh); MultiunitCh = MultiunitCh{1}(1); end
+if iscell(MultiunitCh); MultiunitCh = MultiunitCh{1}; end
+
+FSessions = MtoF(Session, Tower);
+Ch = zeros(1,length(FSessions));
+for iSess = 1:length(FSessions)
+  Ch(iSess) = FSessions{iSess}{4};
+end
+
+FSession = FSessions(Ch == MultiunitCh);
+
+if ~isempty(FSession)
+  Area = getBSArea_Field(FSession{1});
+else
+  Area = 'Unlabelled';
+end
+
+
+% F = MtoF(Session, Session{3}, Session{4});
+% if ~isempty(F)
+%     Area = sessBSArea_Field(F{1});
+%     Area = Area{1}{1};
+% else
+%     Area = 'Unlabelled';
+% end

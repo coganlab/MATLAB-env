@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7b19f7bc3561da890c0499a5b35b197a81928233fcf753ef1c39a78395100ab9
-size 34
+numpy
+scipy
+numexpr
+sklearn
+numba

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6333e3064d3891d00fb5d8db862a1d8b222fbe5a922226f157a6f643838455f2
-size 273
+function Y = sep(X1,X2,varargin)
+%SEP Vector p-norm
+%  Y = SEP(X1,X2) calculates the usual 2-norm between two input vectors, 
+%    X1 and X2
+%  Y = SEP(X1,X2,P) calculates the p-norm.
+
+p=2;
+if length(varargin) > 0; p=varargin(1); end
+
+tot=sum((X1-X2).^p);
+Y=tot.^(1./p);
+
+

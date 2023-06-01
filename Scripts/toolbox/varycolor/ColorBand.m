@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:136d04bf708aea745583b164c686e0f3e0708fba1d72f608217b57f79acf8c9d
-size 223
+function C = ColorBand( N )
+%COLORBAND Summary of this function goes here
+%   Detailed explanation goes here
+n = (1:N)';
+R = exp(-(2*n/N).^2);
+G = exp(-(2*(n-N/2)/N).^2);
+B = exp(-(2*(n-N)/N).^2);
+C = [R,G,B];
+end

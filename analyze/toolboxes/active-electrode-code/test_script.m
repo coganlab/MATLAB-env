@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a197f72199bf0da8d008d656be4a92dfd1317522849e5913053737df16d7f2b
-size 124
+
+start = 17
+
+for i = start:0.5:start + 10
+convert2Movie (data, filename, i, i + 0.5, 0, numRow, numCol, Fs);
+pause
+end

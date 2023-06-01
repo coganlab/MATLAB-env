@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:23bc35f4449cc559b18c70414e096f2352ba1a3da12776a71b4878dabcb7bebf
-size 443
+function p = permtest_sk(sample1,sample2,numperm)
+    samples = [sample1 sample2];
+    samplediff = (mean(sample1)-mean(sample2));
+    sampdiffshuff = zeros(1,numperm);
+    for n = 1:numperm
+        sampshuff = samples(randperm(length(samples)));
+        sampdiffshuff(n) = (mean(sampshuff(1:length(sampshuff)/2))-mean(sampshuff(length(sampshuff)/2+1:end)));
+    end    
+    p = length(find((sampdiffshuff)>(samplediff)))/numperm;
+end

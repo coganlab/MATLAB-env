@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f9b1f5469e9ff826a0387085c9e9c3563a7e93b8dcdd0bba1630add0ea1e02f2
-size 807
+function X = tendiag(v,sz)
+%TENDIAG Creates a tensor with v on the diagonal.
+%
+%   TENDIAG(V) creates a tensor with N dimensions, each of size N, where N
+%   is the number of elements of V. The elements of V are placed on the
+%   superdiagonal.
+%
+%   TENDIAG(V,SZ) is the same as above but creates a tensor of size SZ. If
+%   SZ is not big enough, the tensor will be enlarged to accommodate the
+%   elements of V on the superdiagonal.
+%
+%   Examples
+%   X = tendiag([0.1 0.22 0.333]) %<-- creates a 3x3x3 tensor
+%
+%   See also TENSOR, SPTENDIAG.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+% Make sure v is a column vector
+v = reshape(v,[numel(v) 1]);
+
+N = numel(v);
+if ~exist('sz','var')
+    sz = repmat(N,1,N);
+end
+
+X = tenzeros(sz);
+subs = repmat((1:N)', 1, length(sz));
+X(subs) = v;

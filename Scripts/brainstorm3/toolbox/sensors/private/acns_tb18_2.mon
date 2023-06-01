@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:012cc810d2f8f8082b3ff86591d970e23ac83e7a15744da3c2efd9a043e3a194
-size 722
+# American Clinical Neurophysiology Society, 2006
+# Guideline 6: A Proposal for Standard Montages to Be Used in Clinical EEG
+# 
+# https://www.acns.org/practice/guidelines
+# https://www.acns.org/pdf/guidelines/Guideline-6.pdf
+#
+# Transverse Bipolar Montages, 18 electrodes, variant #2
+#
+# Equivalences: T8=T4, P8=T6, T7=T3, P7=T5
+
+Transversal 2
+Fp1-Fp2 : Fp1, -Fp2
+F7-F3   : F7,  -F3  
+F3-Fz   : F3,  -Fz  
+Fz-F4   : Fz,  -F4  
+F4-F8   : F4,  -F8  
+A1-T7   : A1,  -T7  
+T7-C3   : T7,  -C3  
+C3-Cz   : C3,  -Cz  
+Cz-C4   : Cz,  -C4  
+C4-T8   : C4,  -T8  
+T8-A2   : T8,  -A2  
+P7-P3   : P7,  -P3  
+P3-Pz   : P3,  -Pz  
+Pz-P4   : Pz,  -P4  
+P4-P8   : P4,  -P8  
+O1-O2   : O1,  -O2  
+Fz-Cz   : Fz,  -Cz  
+Cz-Pz   : Cz,  -Pz  
+

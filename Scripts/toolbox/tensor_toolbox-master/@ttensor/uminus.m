@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cee1f5e50b04673a9c3391e48d8b66b156b3733ad9dbb4477cf0e69a4422f89a
-size 607
+function t = uminus(t)
+%UMINUS Unary minus for ttensor.
+%
+%   See also TTENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+t.core = -t.core;

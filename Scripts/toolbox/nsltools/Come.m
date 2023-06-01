@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1fce3939788ce8cf28cbc492e1812d0c7f6845b6da0edc1188fafe122c0dabbf
-size 305
+yposition = 10;
+
+str = ['c  ';'o  ';'me ';'h  ';'o  ';'me ';'r  ';'i  ';'ght';'a  ';'w  ';'ay '];
+pos = [50 100 150 280 360 440 530 620 710 800 850 910];
+
+for k = 1:12,
+	text('position', [pos(k), yposition], 'str', deblank(str(k, :)), ...
+		'fonts', 16, 'fontn', 'times', 'fontw', 'b', 'ho', 'ce');
+end;
+

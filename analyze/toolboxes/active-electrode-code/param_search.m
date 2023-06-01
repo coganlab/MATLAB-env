@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f89f05d0b8c5c7b22ff4e1eabed847d99e7c0f0a6aaefd8848090f841a386105
-size 300
+
+
+for j = 0.16:0.02:0.3
+    for i = 1.2:0.02:1.3
+    
+    disp(['response_window_start (s): ' num2str(i)]);
+    disp(['response_window_len   (s): ' num2str(j)]);
+    disp(' ');
+    iso = OrientationColormap(avg_eps, filename, numRow, numCol, numChan, Fs, i, i+j);
+    pause
+    end
+end
+

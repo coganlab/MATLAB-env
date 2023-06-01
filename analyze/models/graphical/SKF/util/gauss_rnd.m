@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cd2078150f56f2139d5a7f204352219bf51ad3cfc5cbef5cd1446b2e3d51ad99
-size 131
+function X = gauss_rnd(M,M2,S,N)
+  if nargin < 4
+    N = 1;
+  end
+  L = chol(S)';
+  X = zeros(M,M2*N) + L*randn(M,M2*N);
+  

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8fc2cf472b263a40e0a52a2f3480e8ef69a593008864a6a6c294aa7b79f9a573
-size 218
+function Peak = sessPeak(Session)
+%
+%   Peak = sessPeak(Session)
+%
+
+Type = sessType(Session)
+switch Type
+  case {'Multiunit')
+    Peak = Session{5}{1}[3];
+  otherwise
+    error('Session is not Multiunit Session');
+end

@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2aa89f56b1138dd9677f3c3e0ddda5115e9211d4b0448170d9e39ab6f55b0268
-size 167
+function r = reverse2(x)
+% REVERSE2   Reverse order of elements in 2-d signal
+
+if ndims(x)~=2, error('X must be a 2-D matrix.'); end
+
+r = x(end:-1:1, end:-1:1);

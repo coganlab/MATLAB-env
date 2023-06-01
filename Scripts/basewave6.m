@@ -1,3 +1,147 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f696ee60cc6c32cf0084ffd3250f353d9e55084c6d4b0de10db9f9827e4a38e9
-size 5072
+% BASEWAVE2 convolves a Morlet-based wavelet with the data to compute the
+% time-frequency representation of any signal.  The function returns the
+% complex number representation of these signals, and it can be utilized as
+% follows:
+%
+%   [WAVE,PERIOD,SCALE,COI] = BASEWAVE2(DATA,Fs,LOWF,HIF,WAITH), 
+%
+% where the variables are:
+%   Y = signal in channels x time or trials x time
+%   WAVE - time-frequency representation of the signal (power and angle can
+%          be calculated from these complex numbers);
+%   PERIOD - inverse of the frequency scale;
+%   SCALE - ?
+%   COI - cone of influence indicates where the wavelet analysis is skewed
+%         because of edge artifacts;
+%   DATA - the signal in the time domain;
+%   srate - sampling frequency;
+%   Laxis - lower frequency of the range for which the transform is to be
+%          done;
+%   Naxis - higher frequency of the range for which the transform is to be
+%         done;
+%   WAITH - a handle to the qiqi waitbar.
+%
+% See also BASEWAVE, ABRA, WAVELET.
+
+% Original code written by Torrence
+% Modified by Peter Lakatos many times
+% Modified by Ankoor Shah to return the complex representation
+
+
+function [waveAll,period,scale,coi]=basewave6(yAll,srate,Laxis,Naxis,k0,winSize,sSize);
+%tic
+%yAll=Y;
+% winSize = window size in seconds
+% sSize = step size in seconds
+%NB: Only Power
+dt      = 1/srate;	% 1/sampling rate	   
+%dj      = 0.22; %??
+dj=0.2;
+%dj      = 0.08; % default
+s0      = 1/(Naxis+(0.1*Naxis));    % the smallest resolvable scale
+%s0      = 1/(Naxis+(0.05*Naxis));    % the smallest resolvable scale
+
+pad     = 0;                        % zero padding (1-on, 0-off)
+% k0      = 6;                        % the mother wavelet parameter (wavenumber), default is 6.
+frq_lo  = Laxis;
+frq_hi  = Naxis;
+
+windowSize=floor(winSize*srate);
+stepSize=floor(sSize*srate);
+
+
+
+nWin=length(windowSize:stepSize:length(yAll));
+for iWin=1:nWin
+    winIdx(iWin,:)=(1:windowSize)+(iWin-1)*stepSize;
+end
+
+J1 = (log2(size(winIdx,2)*dt/s0))/dj;                  % [Eqn(10)] (J1 determines the largest scale)
+scale = s0*2.^((0:J1)*dj);  
+waveAll=zeros(size(yAll,1),length(scale),nWin);
+
+for iWin=1:nWin
+    Y=yAll(:,winIdx(iWin,:));
+
+
+n = length(Y);
+                    % [Eqn(9)]  (choice of scales to use in wavelet transform ([Eqn(9)]))
+scale = s0*2.^((0:J1)*dj);  
+
+%....waitbar
+
+%....az adatsor atalakitasa
+n1 = size(Y,2); 
+%x(1:n1)=Y-mean(Y);
+%x1(1:n1) = Y(1,:) - mean(Y(1,:));
+x(:,1:n1) = Y - mean(Y,2); % mean subtact
+
+if (pad == 1)
+	base2 = fix(log(n1)/log(2) + 0.4999);   % power of 2 nearest to N
+	x = [x,zeros(1,2^(base2+1)-n1)];
+    	x = [x,zeros(size(x,1),2^(base2+1)-n1)];
+
+end
+n = size(x,2);
+
+%....construct wavenumber array used in transform [Eqn(5)]
+k = [1:fix(n/2)];                               % k n/2 elembol all
+k = k*((2*pi)/(n*dt));                  
+k = [0, k, -k(fix((n-1)/2):-1:1)];              % k ismet n elembol all - angular frequency
+
+
+%....compute FFT of the (padded) time series (DFT)
+f = fft(x,[],2);                                     % [Eqn(3)]
+%f=fft(x);
+%....construct SCALE array
+
+fourier_factor = (4*pi)/(k0 + sqrt(2 + k0^2));  % Scale-->Fourier [Sec.3h]
+coi = fourier_factor/sqrt(2);                   % Cone-of-influence [Sec.3g]
+period = fourier_factor*scale;
+xxx=min(find(1./period<frq_lo));
+period=fliplr(period(1:xxx));
+scale=fliplr(scale(1:xxx));
+%....find freqency-equivalent scales
+% aa=1;
+% for a=frq_lo:0.2:frq_hi
+%     ii(aa)=max(find(period<(1/a)));
+%     scale1(aa)=scale(ii(aa));
+%     aa=aa+1;
+% end
+% 
+% fscale=aa-1;
+
+scale1=scale;
+fscale=size(period,2);
+
+%....construct empty WAVE array
+wave = zeros(fscale,n);     % define the wavelet array
+wave = zeros(size(f,1),fscale,n);     % define the wavelet array
+wave = wave + i*wave;       % make it complex
+
+%....loop through all scales and compute transform
+for a1 = 1:fscale
+           
+    expnt = -(scale1(a1).*k - k0).^2/2.*(k > 0.);
+    norm = sqrt(scale1(a1)*k(2))*(pi^(-0.25))*sqrt(n);      % total energy=N   [Eqn(7)]
+    daughter = norm*exp(expnt);
+    daughter = daughter.*(k > 0.);                          % Heaviside step function
+	%wave(a1,:) tmp2= ifft(f(1,:).*daughter); % wavelet transform[Eqn(4)]
+    tmp=ifft(f.*repmat(daughter,size(f,1),1),[],2);
+    wave(:,a1,:)=reshape(tmp,size(tmp,1),1,size(tmp,2));
+    clear expnt,daughter;
+end
+
+period = fourier_factor*scale1;                                 % az �jfajta, fourier frekvenci�knak megfelelo period
+coi = coi*dt*[1E-5,1:((n1+1)/2-1),fliplr((1:(n1/2-1))),1E-5];   % COI [Sec.3g]
+
+% wave = wave(Laxis:fscale,1:n1);                                  % get rid of padding before returning
+% period = period(Laxis:fscale);
+
+%powerx = (abs(wave)).^2;                                        % compute wavelet power spectrum
+%powerx = (powerx*1000)/srate;                                  % ez egy korrekci�, ami a torrence-ben nem volt benne
+waveAll(:,:,iWin)=mean(abs(wave),3);
+
+
+end
+%toc

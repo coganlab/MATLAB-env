@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e4f8ae31cd4e54a174b7f90efac59c53652acaf174c4ccf19e57faceaef52073
-size 349
+% MANNW: Mann-Whitney two-sample rank-sum test
+%
+%     [T,m,n] = mannw(x,grps)
+%
+
+% RE Strauss, 4/26/99
+%   11/29/99 - changed calling sequence.
+
+function [T,m,n] = mannw(x,grps)
+  r = ranks(x);
+  g = uniquef(grps);
+  
+  i = find(grps==g(1));
+  m = length(i);
+  n = length(x)-m;
+  W = sum(r(i));
+  T = W - m*(m+1)/2;
+
+
+  return;

@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:85081b0f84d9cd572001fe740fe4a54d189b9ce9fc24908cd3a9b8eae7679ecd
-size 614
+% GENEIGEN: Performs a generalized eigen analysis for two square matrices,
+%           and returns the sorted eigenvectors and eigenvalues.
+%
+%     Syntax: [evects,evals] = geneigen(A,B)
+%
+%        A,B =    square matrices
+%        ------------------------------------------------------
+%        evects = matrix of eigenvectors (columns)
+%        evals =  vector of eigenvalues in descending sequence
+%
+
+function [evects,evals] = geneigen(A,B)
+  [evects,D] = eig(A,B);
+  evects = real(evects);
+  D = real(D);
+  [evals,k] = sort(diag(-D));
+  evals = -evals;
+  evects = evects(:,k);
+
+  return;
+

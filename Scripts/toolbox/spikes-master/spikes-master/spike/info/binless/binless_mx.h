@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f75af1f5272099ad512507c5ffa5e18bc7147eb5d79d3439366e9c7392ed6f76
-size 416
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+extern struct options_binless *ReadOptionsBinless(const mxArray *in);
+extern mxArray *WriteOptionsBinless(const mxArray *in,struct options_binless *opts);

@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8894e7ff7928a1360117a05487d266f0b36783b15105c14b1194219bb0b4f9ac
-size 987
+function [thetahat kappa] = circ_vmpar(alpha,w,d)
+
+% r = circ_vmpar(alpha, w, d)
+%   Estimate the parameters of a von Mises distribution.
+%
+%   Input:
+%     alpha	sample of angles in radians
+%     [w		number of incidences in case of binned angle data]
+%     [d    spacing of bin centers for binned data, if supplied 
+%           correction factor is used to correct for bias in 
+%           estimation of r, in radians (!)]
+%
+%   Output:
+%     thetahat		preferred direction
+%     kappa       concentration parameter
+%
+% PHB 3/23/2009
+%
+% References:
+%   Statistical analysis of circular data, N.I. Fisher
+%
+% Circular Statistics Toolbox for Matlab
+
+% By Philipp Berens, 2009
+% berens@tuebingen.mpg.de
+
+% alpha = alpha(:); % commented out by D.A. Markowitz on 120612 to enable handling of 2D matrices
+if nargin < 2
+  w = ones(size(alpha));
+end
+if nargin < 3
+  d = 0;
+end
+
+r = circ_r(alpha,w,d);
+kappa = circ_kappa(r);
+
+thetahat = circ_mean(alpha,w);

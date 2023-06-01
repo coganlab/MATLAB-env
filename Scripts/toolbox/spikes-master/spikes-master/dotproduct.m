@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d55938711aa18a3007babbd6ac7bd149a9bcb1e3289e3c6a4439cceff5d3b992
-size 275
+function [norm,rawdp]=dotproduct(m1,m2)
+
+%***************************************************************
+%
+%  DOTPRODUCT
+%
+%***************************************************************
+
+rawdp=sum(m1(:).*m2(:));
+norm=(sum(m1(:).*m1(:))*sum(m2(:).*m2(:)))^0.5;
+

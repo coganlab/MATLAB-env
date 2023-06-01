@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94b3afcfbeed28b54ecb50e3a7f09f1a300d6fe9fbba698b8994bc668b59192d
-size 470
+
+
+function writeNPY(var, filename)
+% function writeNPY(var, filename)
+%
+% Only writes little endian, fortran (column-major) ordering; only writes
+% with NPY version number 1.0.
+%
+% Always outputs a shape according to matlab's convention, e.g. (10, 1)
+% rather than (10,).
+
+
+shape = size(var);
+dataType = class(var);
+
+header = constructNPYheader(dataType, shape);
+
+fid = fopen(filename, 'w');
+fwrite(fid, header, 'uint8');
+fwrite(fid, var, dataType);
+fclose(fid);
+
+
+end
+

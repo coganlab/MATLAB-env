@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4e387b1ac53d8879b2c40ff86442a2e61ea49e102b00cac939f9a5b926a3803a
-size 202
+add_subdirectory(libcfu-0.03)
+
+
+########### install files ###############
+
+
+
+
+#original Makefile.am contents follow:
+
+### Process this file with automake to produce Makefile.in
+#
+#SUBDIRS = libcfu-0.03

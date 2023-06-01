@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:65ad7cbc8e77b4940c8aeb6cce53054f9450c1f649f1a8feb70115fe6e6cffc2
-size 589
+setparallel(0,0);
+pause(1);
+ffp_start_record('/mnt/raid/adam','datalatency');
+pause(1);
+STATE = 0;
+for i = 1:1000
+  if STATE == 0
+    Nspike_pretime(i) = gettime_nspike;
+    Comedi_pretime(i) = gettime_comedi;
+    setparallel(0,1);
+    Nspike_posttime(i) = gettime_nspike;
+    Comedi_posttime(i) = gettime_comedi;
+    STATE = 1;
+  elseif STATE == 1
+    Nspike_pretime(i) = gettime_nspike;
+    Comedi_pretime(i) = gettime_comedi;
+    setparallel(0,0);
+    Nspike_posttime(i) = gettime_nspike;
+    Comedi_posttime(i) = gettime_comedi;
+    STATE = 0;
+  end
+  pause(0.1);
+end
+ffp_stop_record;

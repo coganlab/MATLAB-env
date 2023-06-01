@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:61784909354d442c45ee2d5f4d77ab09e0e5b65fa3d198fa4469bca1f9d7005e
-size 378
+function w=nt_growmask(w,margin)
+%ww=nt_growmask(w,margin) - widen mask
+%
+%  ww: widened mask (samples * 1 or samples * 1 * trials)
+%
+%  w: mask
+%  margin: samples, number of samples by which to widen the mask
+%
+% NoiseTools
+
+[m,n,o]=size(w);
+w=(w~=0);
+w=nt_unfold(w);
+w=filter(ones(margin+1,1),1,w)>0;
+w=flipud(filter(ones(margin+1,1),1,flipud(w))>0);
+w=(w~=0);
+w=nt_fold(w,m);

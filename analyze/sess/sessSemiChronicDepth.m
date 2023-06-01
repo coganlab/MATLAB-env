@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e5572bf8de199b006901731de0533a1f75224ac1f7056c3edd4200cbd0c82178
-size 785
+function depth = sessSemiChronicDepth(Session, Ref)
+%
+%  depth = sessSemiChronicDepth(Session, Ref)
+%
+%	Ref = Reference position. 'TOP' or 'BOTTOM'
+%		Defaults to 'TOP'
+
+if ~exist('Ref','var')
+  Ref = 'TOP';
+end
+
+SN = getSessionNumbers(Session);
+if size(SN,1)==1
+  Session = {Session};
+end
+
+nSess = length(Session);
+depth = zeros(1,nSess);
+for iSess = 1:nSess
+ SessDay = sessDay(Session{iSess}); 
+ SessTower = sessTower(Session{iSess}); SessRec = sessRec(Session{iSess});
+ SessChannel = sessChannel(Session{iSess});
+ mSession = {{SessDay,[],SessTower,[1:32]}};
+ [cDepth,cDay,cRec] = getSemiChronicChannelDepth(Session(iSess),Ref);
+ 
+ dayLocs = find(ismember(cDay,SessDay));
+ recLoc = find(ismember(cRec(dayLocs),SessRec{end}));
+ depth(iSess) = cDepth(dayLocs(recLoc),SessChannel);
+end

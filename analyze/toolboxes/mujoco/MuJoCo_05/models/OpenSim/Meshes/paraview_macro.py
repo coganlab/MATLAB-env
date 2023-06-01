@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ec2b14c5206d150ccfe9f5be812a51880d2200229718b5deb7267cfa97a23ebd
-size 345
+try: paraview.simple
+except: from paraview.simple import *
+
+import os
+
+os.chdir('C:\\opensim3\\geometry')
+ls=os.listdir(os.getcwd())
+for file in ls:
+  suffix=file[-4:]
+  if suffix=='.vtp':
+    reader = XMLPolyDataReader( FileName=file )
+    writer = PSTLWriter(Input=reader, FileName=[file[:-4]+'.stl'])
+    writer.UpdatePipeline()

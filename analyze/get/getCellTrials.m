@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:50cd02840fa3bb0c44151037c1ec740d7c866e87fa2e517d63c566d3d0a06d2f
-size 440
+function Trials = getCellTrials(Trials,sys,ch,cl)
+%   Returns trials that have sys, ch and cl isolated
+%
+%   Trials = getCellTrials(Trials,sys,ch,cl)
+%
+
+SysNum = findSys(Trials,sys);
+
+ind = zeros(1,length(Trials));
+for iTr = 1:length(Trials)
+    if ~isempty(Trials(iTr).Iso)
+        if ~isempty(Trials(iTr).Iso{SysNum(iTr),ch})
+            ind(iTr) = Trials(iTr).Iso{SysNum(iTr),ch}(cl);
+        end
+    end
+end
+Trials = Trials(find(ind));

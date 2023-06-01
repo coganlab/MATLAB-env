@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:82e3780bf252b050a24733233560e0720f8627dca75c64341679e61b27944d39
-size 554
+function y = upsample(x,N,varargin)
+%UPSAMPLE Upsample input signal.
+%   UPSAMPLE(X,N) upsamples input signal X by inserting
+%   N-1 zeros between input samples.  X may be a vector
+%   or a signal matrix (one signal per column).
+%
+%   UPSAMPLE(X,N,PHASE) specifies an optional sample offset.
+%   PHASE must be an integer in the range [0, N-1].
+%
+%   See also DOWNSAMPLE, UPFIRDN, INTERP, DECIMATE, RESAMPLE.
+
+%   Copyright 1988-2002 The MathWorks, Inc.
+%   $Revision: 1.3 $  $Date: 2002/03/28 17:31:14 $
+y = updownsample(x,N,'Up',varargin{:});
+
+% [EOF] 

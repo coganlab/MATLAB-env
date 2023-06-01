@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:41a3cd08d93bef5d903857507d48594dce06572bc78a0a847bda8b1bc6f14dfa
-size 276
+% animate a recorded sequence (see mjsim())
+function animate(DATA)
+
+N   = length(DATA);
+tic;
+for i = 1:N-1
+    mj('set','qpos',DATA(i).qpos);
+    mj kinematics;
+    mjplot;
+
+    dt = max(0, DATA(i+1).time - DATA(i).time);
+    pause(max(0, dt-toc));
+    tic;
+end

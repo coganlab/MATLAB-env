@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6fa766efeb99d6918635d231cfc4326ddbb0f107e2dd491b652d430f8e6034b8
-size 389
+function SessionString = plotSelectionSessionStringHelper(Session)
+%
+%  SessionString = plotSelectionSessionStringHelper(Session)
+%
+
+if(iscell(Session{1}))
+   SessionString = 'MultipleSessions'; 
+else
+    SessionString = [];
+    for iSess = 1:length(Session{6})
+        SessionString = [SessionString '.' num2str(Session{6}(iSess))];
+    end
+    SessionString = SessionString(2:end);
+end
+

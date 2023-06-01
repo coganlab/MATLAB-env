@@ -1,3 +1,53 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c9d4823860a141ee1104325e26666de99015d38ac0fdce1d403f2d52f354f400
-size 1227
+function [observedStateEst] = predictKARMA(neuralDataTest,observedStateInitial,model)
+
+NscaleMeans = model.params.observe_mean;
+NscaleStds  = model.params.observe_std;
+OscaleMeans = model.params.latent_mean;
+OscaleStds  = model.params.latent_std;
+s           = model.params.m;
+r           = model.params.n;
+models      = model.params.libsvm_models;
+
+%% KARMA
+% setup variables
+Ntest=length(neuralDataTest);
+
+xtest = neuralDataTest';
+q = size(xtest,1); %dimensionality of neural data
+
+d = length(OscaleMeans); %dimensionality of observed data
+
+%scale inputs
+for i = 1:q
+    xtest(i,:) = (xtest(i,:)-NscaleMeans(i))/NscaleStds(i);
+end
+    
+%%
+observedStateEst = zeros(d,Ntest);
+
+vXhat = repmat(xtest(:,1),s,1);
+vYhat = repmat(observedStateInitial,r,1);
+
+vhat = [vXhat;vYhat];
+
+Ntest
+for i = 1:(Ntest) 
+    tic
+    for j = 1:d
+        observedStateEst(j,i) = svmpredict(0,vhat',models{j});
+    end
+    if i<Ntest
+        if s>0
+            vXhat = [xtest(:,(i+1)); vXhat(1:end-q)]; 
+        end
+        if r>0
+            vYhat = [observedStateEst(:,i); vYhat(1:end-d)];
+        end
+        vhat = [vXhat;vYhat];
+    end
+    toc
+end
+
+for i = 1:d
+    observedStateEst(i,:) = observedStateEst(i,:)*OscaleStds(i)+OscaleMeans(i);
+end

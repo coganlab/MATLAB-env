@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1add927bb676b91e913c71a27eee02bb7484049a1aa6938b7cf5c1a2f4a86f10
-size 215
+function [s,c,d] = clean(s,c,d)
+first = find(c(:,1)~=0&~isnan(c(:,1))&~isinf(c(:,1)),1);
+last  = find(c(:,1)~=0&~isnan(c(:,1))&~isinf(c(:,1)),1,'last');
+s = s(first:last,:);
+c = c(first:last,:);
+d = d(first:last,:);

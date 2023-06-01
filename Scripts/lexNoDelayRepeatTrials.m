@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6d43c0be7c4a785fb80fa43fe7c63698c2405a091aa60d5ffc9e925fb74ac0d8
-size 365
+function repeatTrials = lexNoDelayRepeatTrials(trialInfo);
+% trialInfo = trialInfo file taken from lex no delay task
+% repeatTrials = index of trials that were repeat
+
+counter=0;
+repeatTrials=[];
+for iTrials=1:length(trialInfo)
+    if strcmp(trialInfo{iTrials}.cue,'Repeat')
+        repeatTrials(counter+1)=iTrials;
+        counter=counter+1;
+    end
+end

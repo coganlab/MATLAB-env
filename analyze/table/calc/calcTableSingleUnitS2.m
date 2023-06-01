@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:14eb3f5add157c55be8aa8d8857d021987975075cdebe0f5a59054fa237b7f82
-size 304
+function Value = calcSingleUnitS2(Session,CondParams,AnalParams)
+%
+%  Value = calcSingleUnitS2(Session,CondParams,AnalParams)
+%  Should be sent a spike or multiunit session
+
+SSess = splitSession(Session);
+
+Type = getSessionType(SSess{2});
+if strcmp(Type,'Spike')
+    Value = 1;
+else
+    Value = 0;
+end
+
+

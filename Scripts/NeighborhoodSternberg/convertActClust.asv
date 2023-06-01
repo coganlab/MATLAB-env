@@ -1,3 +1,106 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:239442deac53c87652da4af83082276791b29c293db7bc1aa765c94042f854c0
-size 3592
+  function  [sigMatS, sigMatA, sigMatD, sigMatR zValsRawS,zValsRawA,zValsRawD,zValsRawR]=convertActClustA(actClustS,actClustA,actClustD,actClustR,zValsRawActS,zValsRawActA,zValsRawActD,zValsRawActR,SN);
+
+    if SN==23
+sigMatS=zeros(length(actClustS),5,30);
+sigMatA=zeros(length(actClustA),5,210);
+sigMatD=zeros(length(actClustD),5,25);
+sigMatR=zeros(length(actClustR),5,81);
+
+zValsRawS=zeros(length(actClustS),5,30);
+zValsRawA=zeros(length(actClustA),5,210);
+zValsRawD=zeros(length(actClustD),5,25);
+zValsRawR=zeros(length(actClustR),5,81);
+    else
+sigMatS=zeros(length(actClustS),5,48);
+sigMatA=zeros(length(actClustA),5,336);
+sigMatD=zeros(length(actClustD),5,64);
+sigMatR=zeros(length(actClustR),5,129);
+
+zValsRawS=zeros(length(actClustS),5,48);
+zValsRawA=zeros(length(actClustA),5,336);
+zValsRawD=zeros(length(actClustD),5,64);
+zValsRawR=zeros(length(actClustR),5,129);
+    end
+    
+    actClust=actClustS;
+    for iChan=1:length(actClust)  
+        for iF=1:5
+            clear sigMat
+            sigMat=zeros(size(sigMatS,3),1);
+            for iZ=1:length(actClust{iChan}{iF}.Z)
+                if actClust{iChan}{iF}.Z{iZ}>actClust{iChan}{iF}.permZ95
+                    sigMat(actClust{iChan}{iF}.Start{iZ}:actClust{iChan}{iF}.Start{iZ}+(actClust{iChan}{iF}.Size{iZ}-1))=1;
+                end
+            end
+            sigMatS(iChan,iF,:,:)=sigMat;
+        end
+    end
+ 
+      actClust=actClustA;
+    for iChan=1:length(actClust)  
+        for iF=1:5
+            clear sigMat
+            sigMat=zeros(size(sigMatA,3),1);
+            for iZ=1:length(actClust{iChan}{iF}.Z)
+                if actClust{iChan}{iF}.Z{iZ}>actClust{iChan}{iF}.permZ95
+                    sigMat(actClust{iChan}{iF}.Start{iZ}:actClust{iChan}{iF}.Start{iZ}+(actClust{iChan}{iF}.Size{iZ}-1))=1;
+                end
+            end
+            sigMatA(iChan,iF,:,:)=sigMat;
+        end
+    end
+     actClust=actClustD;
+    for iChan=1:length(actClust)  
+        for iF=1:5
+            clear sigMat
+            sigMat=zeros(size(sigMatD,3),1);
+            for iZ=1:length(actClust{iChan}{iF}.Z)
+                if actClust{iChan}{iF}.Z{iZ}>actClust{iChan}{iF}.permZ95
+                    sigMat(actClust{iChan}{iF}.Start{iZ}:actClust{iChan}{iF}.Start{iZ}+(actClust{iChan}{iF}.Size{iZ}-1))=1;
+                end
+            end
+            sigMatD(iChan,iF,:,:)=sigMat;
+        end
+    end
+     actClust=actClustR;
+    for iChan=1:length(actClust)  
+        for iF=1:5
+            clear sigMat
+            sigMat=zeros(size(sigMatR,3),1);
+            for iZ=1:length(actClust{iChan}{iF}.Z)
+                if actClust{iChan}{iF}.Z{iZ}>actClust{iChan}{iF}.permZ95
+                    sigMat(actClust{iChan}{iF}.Start{iZ}:actClust{iChan}{iF}.Start{iZ}+(actClust{iChan}{iF}.Size{iZ}-1))=1;
+                end
+            end
+            sigMatR(iChan,iF,:,:)=sigMat;
+        end
+    end
+    
+    zVals=zValsRawActS;
+    for iChan=1:length(zVals)
+        for iF=1:5;
+            zValsRawS(iChan,iF,:)=zVals{iChan}{iF};
+        end
+    end
+    
+       zVals=zValsRawActA;
+    for iChan=1:length(zVals)
+        for iF=1:5;
+            zValsRawA(iChan,iF,:)=zVals{iChan}{iF};
+        end
+    end
+    
+       zVals=zValsRawActD;
+    for iChan=1:length(zVals)
+        for iF=1:5;
+            zValsRawD(iChan,iF,:)=zVals{iChan}{iF};
+        end
+    end
+    
+       zVals=zValsRawActR;
+    for iChan=1:length(zVals)
+        for iF=1:5;
+            zValsRawR(iChan,iF,:)=zVals{iChan}{iF};
+        end
+    end
+    

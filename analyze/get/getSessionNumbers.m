@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:757552aa9c165b1b9d9ac7ccae6499522f222cb22e486037f7bd081d975622ef
-size 414
+function SessionNumbers = getSessionNumbers(Session)
+%
+%  SessionNumbers = getSessionNumbers(Session)
+%
+
+if iscell(Session{1})
+  NumSess = length(Session);
+  NumSessElem = length(Session{1}{6});
+  SessionNumbers = zeros(NumSess,NumSessElem);
+  
+  for iSess = 1:NumSess
+      if ~isempty(Session{iSess})
+          SessionNumbers(iSess,:) = Session{iSess}{6};
+      end
+  end
+else
+  SessionNumbers = Session{6};
+end

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d1f67635e016b923298149ee8eec7234f1f92bfa35d5b03596f05d96551fe53c
-size 400
+%% Converts offline sorter variables into a structure for easy MATLAB manipulation
+%
+%  Kian Torab
+%  ktorab@blackrockmicro.com
+%  Blackrock Microsystems
+
+
+for i = 1:96
+    ChannelName = ['Chan', num2str(i, '%03.0f')];
+    if exist(ChannelName, 'var')
+        VariableName = eval(ChannelName);
+        Channels.(['Chan', num2str(i, '%3.0f')]) = VariableName;
+    end
+end
+
+clear Chan0*;

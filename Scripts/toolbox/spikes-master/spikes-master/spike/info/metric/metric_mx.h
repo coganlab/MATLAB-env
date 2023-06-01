@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:72f4117739212ebef4acb86d26546f11c69503e766e72b6fe41d5fa44e00023c
-size 412
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+extern struct options_metric *ReadOptionsMetric(const mxArray *in);
+extern mxArray *WriteOptionsMetric(const mxArray *in,struct options_metric *opts);

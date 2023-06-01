@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ad12764edb6daae4c3f4b4ae4fe85e768a1498612d268ad8bfa66559f4f123ef
-size 426
+%
+% ntools_decieeg_load_int(filename, start_samp, stop_samp)
+%
+% loads data from a given decieeg datafile starting with start_samp (inclusive)
+% and ending at end_samp (inclusive) into a matlab matrix in [channel,sample]
+% format.
+%
+% example: data = ntools_decieeg_load_int('rec001.decieeg.dat', 100, 200)
+
+function data = ntools_decieeg_load_int(varargin)
+    data = ntools_load_int('decieeg', varargin{:});
+end

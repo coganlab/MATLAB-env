@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c7a0268a559fd5aaf83e3aac7e60cced901510d91a52cc934397dce18c5093d5
-size 519
+
+
+close all
+clear all
+filename = 'I:\jviventi\2010-10-14 cat experiment\done\2010_10_14_file_29_demux.mat';
+%filename = 'I:\jv_electrode_data\2010-05-19 Cat Experiment\done\test_32_demux.mat';
+load(filename);
+
+%data = data(:,round(Fs*35):end);
+
+lowpassF = 50;
+highpassF = 1;
+
+data(1:numRow*numCol,:) = EEGbandpass(data(1:numRow*numCol,:), highpassF,lowpassF, Fs);
+
+[eps,count,x] = multiplexed_ep(data, 1, 1, numRow, numCol, numChan, Fs, 'ORIENT', ELECTRODE);
+
+evoked = squeeze(mean(mean(eps,1),3));
+

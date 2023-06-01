@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:abc3988010a26709f47cc4ed963d7a9ab1bbfc06888cbe6ca87b4dd62047c1a4
-size 414
+function saveMultiunit_Database
+%
+%  saveMultiunit_Database
+%
+
+global MONKEYDIR
+
+Session = loadMultiunit_Database;
+for iSess = 1:length(Session)
+    if length(Session{iSess})==6
+        Session{iSess}{7} = MONKEYDIR;
+        Session{iSess}{8} = {'Multiunit'};
+    elseif ~ismember(Session{iSess}{7},'/')
+        Session{iSess}{7} = MONKEYDIR;
+    end
+end
+
+save([MONKEYDIR '/mat/Multiunit_Session.mat'],'Session');

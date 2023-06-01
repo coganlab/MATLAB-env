@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:807c1222935d61722bc4ad1bcc8073d355b8067ee2fdf119f695974b3780af05
-size 167
+function dofft(data)
+
+nyquist=max(size(data))/2
+
+a=fft(data);
+
+N=length(a);
+a(1)=[];
+power=abs(a(1:N/2)).^2;
+freq=(1:N/2)/(N/2)*nyquist;
+plot(freq,power)
+

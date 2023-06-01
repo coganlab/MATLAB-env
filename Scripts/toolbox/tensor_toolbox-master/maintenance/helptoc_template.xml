@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:320a04118302baa478819d0daf7969f81622aa70942adfec314cabcd4666d0e1
-size 368
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!-- $Revision: 1.1 $ $Date: 2006/08/30 23:22:37 $ -->
+
+<toc version="1.0">
+
+<tocitem target="doc/html/tensor_toolbox_product_page.html" >Tensor Toolbox
+
+INSERT LIST HERE
+
+<tocitem target="https://gitlab.com/tensors/tensor_toolbox"
+image="$toolbox/matlab/icons/webicon.gif">Tensor Toolbox Site</tocitem>
+
+</tocitem>
+</toc>

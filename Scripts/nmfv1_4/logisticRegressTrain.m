@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:493a8aff23e579a87c35c0f26c805d171c8e70bcd5e0a09a7a00d8e3841f07be
-size 1097
+function model=logisticRegressTrain(trainSet,trainClass,option)
+% logistic regression for classification 
+%%%%
+% Copyright (C) <2012>  <Yifeng Li>
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+% 
+% Contact Information:
+% Yifeng Li
+% University of Windsor
+% li11112c@uwindsor.ca; yifeng.li.cn@gmail.com
+% July 04, 2012
+%%%%
+
+numCl=numel(unique(trainClass));
+numTr=numel(trainClass);
+B=mnrfit(trainSet',trainClass+1);
+model.B=B;
+model.numCl=numCl;
+model.numTr=numTr;
+model.option=option;
+end

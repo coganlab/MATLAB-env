@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f5f03b0fccb585638c35754714f2a6a1869bc5f671b97e3b98d8093a1e045631
-size 194
+function mu = mufilter(data,sampling)
+%
+%  mu = mufilter(data,sampling)
+%
+%   SAMPLING defaults to 20kHz
+%
+
+
+if nargin < 2; sampling = 2e4; end
+
+mu = (mtfilter(data,[0.01,3000],sampling,3300));

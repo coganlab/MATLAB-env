@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e2f353b0744cd63b9250744ffe6424e6c73569d4f436d090a6bad570a602841a
-size 357
+function saveTrials_Database
+%
+%  saveTrials_Database;
+%
+
+global MONKEYDIR
+
+Session = loadMultiunit_Database;
+
+Days = sessDay(Session);
+uDays = unique(Days);
+nDay = length(unique(Days));
+Trials = dbSelectTrials(uDays{1});
+for iDay = 2:nDay
+  Trials = [Trials dbSelectTrials(uDays{iDay})];
+end
+
+save([MONKEYDIR '/mat/Trials_Database.mat'],'Trials','-v7.3');

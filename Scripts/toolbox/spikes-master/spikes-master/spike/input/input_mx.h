@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4efdb74b62d88b69b5e08db8fef69d4a3a1c4c1cf99138ace98ef5381e143d5e
-size 433
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+/* Input data structure */
+extern struct input *ReadInput(const mxArray *in);
+extern void mxFreeInput(struct input *X);
+extern mxArray *WriteInput(struct input *X,int L);
+

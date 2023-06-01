@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0ef07e5faab92eef388088f910f49a5b1181020f889269fbd921aa441fd9a274
-size 417
+function MFSession = bsFtoMF(FSession, MultiunitAreaLabel)
+%
+%  bsFtoMF(FSession, MultiunitAreaLabel)
+%
+
+MultiunitSession = loadMultiunit_Database;
+
+MF = FtoMF(FSession);
+MFArea1 = cell(1,length(MF));
+
+for iMF = 1:length(MF)
+  MFArea1{iMF} = getBSArea_Multiunit(MultiunitSession{MF{iMF}{6}(1)});
+end
+
+ind = find(strcmp(MFArea1,MultiunitAreaLabel));
+
+if ~isempty(ind)
+  MFSession = MF(ind);
+else
+  MFSession = {};
+end

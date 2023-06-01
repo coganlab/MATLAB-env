@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7c1d26e220612a76f8bf3dfee9ffd3676f45eba327501a18f052cad9369af64e
-size 285
+% COMPLEX: Converts a two-column real matrix to complex.
+%
+%     Usage: Z = complex(X)
+%
+%        Z = [n x 2] matrix of real values
+%        X = [n x 1] vector of complex values
+%
+
+% RE Strauss, 6/17/93
+
+function Z = complex(X)
+   Z = X(:,1) + X(:,2)*sqrt(-1);
+   return;

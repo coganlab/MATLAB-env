@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ee883d8672c05a66fee672d1516eec07b8aaa458d79e9bb06a8cd451ff8a7037
-size 315
+function ind = getTableIndex(Table,Name)
+
+%  ind = getTableIndex(Table,Name)
+%  When sent a name from the table, returns the index
+
+ind = [];
+for iName = 1:length(Table.Quantity)
+    if strcmp(Name,Table.Quantity(iName).Name)
+        ind = iName;
+    end
+end
+
+if isempty(ind)
+    disp('Name not found in Table')
+end

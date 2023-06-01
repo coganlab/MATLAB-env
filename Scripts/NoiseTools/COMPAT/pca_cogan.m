@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3ea70c2783a7fa5b2faed983fcde7798d5bde16c85d00d2f49b9aaa435aa8dca
-size 607
+function varargout = pca_cogan(varargin)
+% This function is a backward compatibility wrapper based on Robert Oostenveld's
+% wrappers for FieldTrip.
+%
+% Please type 'help nt_xxx' where xxx is the name of you just typed.
+% 
+% NoiseTools.
+
+eval(['persistent ',mfilename,'_been_here_before;']);
+
+if eval(['isempty(',mfilename,'_been_here_before)'])
+disp(['Warning: ', mfilename, ' is an old-style name, replace by nt_', mfilename]);
+eval([mfilename,'_been_here_before=1;']);
+end
+
+prefix    = 'nt_';
+funname   = mfilename;
+funhandle = str2func([prefix funname]);
+[varargout{1:nargout}] = funhandle(varargin{:});

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:68de48440d1926d7624257247416a0385e517f5b4b088eb03422279b617d2c3a
-size 610
+function [comment]=SONGetChanComment(fh, chan)
+% SONGETCHANCOMMENT returns the comment string for the specified channel
+%
+% COMMENT=SONGETCHANCOMMENT(FH, CHAN)
+%                         FH SON file handle
+%                         CHAN Channel number (0 to SONMAXCHANS-1)
+% Returns the channel comment as a string.  
+% 
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+global SON_CHANCOMSZ;
+
+comment=char(zeros(1,SON_CHANCOMSZ));
+comment=calllib('son32','SONGetChanComment',...
+                        fh,chan,comment,SON_CHANCOMSZ);

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70e43ae7d3dbbdbd2eee50baab62525eb1352b0efb3fb1b7da4145e08152c05f
-size 394
+function [err]=SONCloseFile(fh)
+% SONCLOSEFILE closes an opened SON file
+% ERR=SONCLOSEFILE(FH) where FH is the SON32.DLL handle for the file
+% Returns zero if all OK.
+% 
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin ~= 1
+    err=-1000;
+    return;
+end;
+
+err=calllib('son32','SONCloseFile',fh);
+return;

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:988c1eb6a3eba653a2ebd39135f1b3b210239698aba520cf062df3836c8160c3
-size 292
+    function Velocity = calcMarkerVelocity(M,g)
+%
+%  Velocity = calcMarkerVelocity(M, g)
+%
+%   Currently works for one trial
+
+if nargin==1 [b,g]=sgolay(5,11); end
+nt = size(g,1);
+sy = filter(g(:,2),1,M').*200;
+Velocity = sy';
+Velocity(1:nt-1) = Velocity(nt);
+Velocity(end) = Velocity(end-1);

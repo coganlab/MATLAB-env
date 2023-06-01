@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e382494d23eb1a2ba59dd3ffa1557c6486edf69d49aaa66b194b98efccbd935
-size 248
+function [n] = plx_close(filename)
+% plx_close(filename): close the .plx file
+%
+% [n] = plx_close(filename)
+%
+% INPUT:
+%   filename - if empty string, will close any open files
+%
+% OUTPUT:
+%   n - always 0
+
+[n] = mexPlex(22, filename);

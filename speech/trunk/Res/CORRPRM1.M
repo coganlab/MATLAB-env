@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c38bb05d1a1668698151bc1943a4f99bd4091c332ad474f2ea0243b66a129061
-size 349
+% CORRPRM1: Write current 'best' matrix to file
+%
+
+% RE Strauss, 3/10/95
+
+function corrprm1(best);
+  [r,c] = size(best);
+  fid = fopen('best.out','k');
+
+  for i=1:r
+    fprintf(fid,'%8.6f %7.0f', best(i,1:2));
+    for j=3:c
+      fprintf(fid,'%3.0f', best(i,j));
+    end;
+    fprintf(fid,'\n');
+  end;
+
+  fclose(fid);
+  return;
+

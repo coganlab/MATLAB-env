@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:25783ff4cc2ca5b4a3b845269357fd9a944cf3986c251446e45c19b67dcad4dc
-size 365
+function [C,IA,IC,N] = nt_unique(A, varargin)
+%[C,IA,IC,N] = nt_unique(A, varargin) - unique with counts
+%
+%  N: number of occurrences
+%
+% See unique for definition of other variables.
+% 
+% NoiseTools
+
+[Asorted,iSort]=sortrows(A);
+[~,iReverse]=sort(iSort);
+[C,IA,IC]=unique(Asorted,varargin{:});
+p=find([1;diff(IC);1]);  
+N=diff(p); 
+
+IA=iSort(IA);
+IC=IC(iReverse);

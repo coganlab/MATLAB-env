@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ff94c34a8aeff550b4f727ae09710c20ff61fb3c8e2f1467068d60b850ce779
-size 1755
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			Random Data Classification toolbox
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+I - Description:
+
+This toolbox (or set of functions) can be used to create random data sets, assign virtual labels and then run a classification algorithm on the data. In theory such a classification should fail since the data is random. In practice, the chance level depends, among other things, on sample size (the size of the data). The provided tools illusrate the possibility of exceeding theoretical chance levels (e.g. 50% decoding in a 2-class calssification) by chance.
+	
+To this end, we propose a number of Matlab routines that can be used in the following order:
+- b_Create_random_dataset: generates random data 
+- c_Classify_Datasets: classifes the random data and plots the decoding % as a function of sample size 
+- d_Statistic_binomial_distribution: computes the statistical chance level using the cumulative binomial distribution function
+- e_Statistic_permutations: computes a statistical chance level using permutations (non-parametric test)
+
+
+II - Toolbox installation:
+
+Update the variable path with the path where the toolbox is located then run the script: a_Install_RandomDataClassification_Toolbox
+
+
+III - Authors:
+by:
+Etienne Combrisson(1,2) [PhD student] / Contact: etienne.combrisson@inserm.fr 
+Karim Jerbi (1,3) [PhD, Assistant Professor]
+ 
+1 DYCOG Lab, Lyon Neuroscience Research Center, INSERM U1028, UMR 5292, University Lyon I, Lyon, France
+2 Center of Research and Innovation in Sport, Mental Processes and Motor Performance, University of Lyon I, Lyon, France
+3 Psychology Department, University of Montreal, QC, Canada
+

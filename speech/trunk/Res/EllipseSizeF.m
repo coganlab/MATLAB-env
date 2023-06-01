@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d784dc5eac7d810951360ad03b2cfde01428894aeaa7a6350546862abad2a2df
-size 257
+% EllipseSizeF: Objective function for numerical integration in EllipseSize().
+%
+%     Usage: fk = ellipsesizef(theta,k)
+%
+
+% RE Strauss, 12/7/01
+
+function fk = ellipsesizef(theta,k)
+  s = sin(theta);
+  fk = sqrt(1 - (k.*k).*(s.*s));
+  
+  return;

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4111f720adec10bd8d40f9f594d35cb22e84a4bf15a278e1081f51f46b550d7e
-size 404
+function [ret]=SONCanWrite(fh)
+% SONCANWRITE test whether a file can be written to
+% BOOLEAN=SONCANWRITE(FH)
+%                 FH SON32.DLL file handle
+% Returns 0 if FALSE, 1 if TRUE
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin ~= 1
+    ret=-1000;
+    return;
+end;
+
+ret=calllib('son32','SONCanWrite',fh);
+return;

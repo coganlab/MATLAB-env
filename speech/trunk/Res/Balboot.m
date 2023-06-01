@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d780b0f42808722611b133f5d2f28e49db1c5d1ecd0fa0364c38a45768a17595
-size 864
+% BALBOOT: Creates a matrix of randomized observation-indices for a balanced
+%          bootstrap.
+%
+%     Syntax: indx = balboot(nobs,iter)
+%
+%          nobs = number of observations
+%          iter = number of desired bootstrap iterations
+%          -----------------------------------------------------------------
+%          indx = [iter x nobs] matrix of randomized indices, such that each
+%                   observation is equally represented across the matrix
+%
+
+function indx = balboot(nobs,iter)
+  indx = zeros(iter,nobs);              % Allocate index matrix
+
+  for r = 1:iter                        % Randomly permute obs for each iteration
+    indx(r,:) = randperm(nobs);
+  end;
+
+  for c = 1:nobs                        % Randomly permute across iterations
+    i = randperm(iter);
+    indx(:,c) = indx(i,c);
+  end;
+
+  return;

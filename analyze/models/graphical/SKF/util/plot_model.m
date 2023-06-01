@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:51cc2bb2e0ea292ee41a20b3f401d6b62d97e504f5fbb23770a1937d04bf0ddb
-size 457
+% Displays model parameters as images
+
+for i=1:skf.nmodels
+
+    subplot(4,skf.nmodels,i*4-3);
+    imagesc(skf.model{i}.A);
+    colormap('hot');
+    axis off;
+
+    subplot(4,skf.nmodels,i*4-2);
+    imagesc(skf.model{i}.Q);
+    colormap('hot');
+    axis off;
+
+    subplot(4,skf.nmodels,i*4-1);
+    imagesc(skf.model{i}.H);
+    colormap('hot');
+    axis off;
+
+    subplot(4,skf.nmodels,i*4);
+    imagesc(skf.model{i}.R);
+    colormap('hot');
+    axis off;
+end

@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c387a8b3618313d9e4c6a64f7d14e3f84491abdfe779cb85a02a3d3649c5b59d
-size 425
+function Session = StoF(InputSession,Chamber,Ch)
+%
+%   Session = StoF(InputSession,Chamber,Ch)
+%
+
+if nargin < 2; Chamber = []; end
+if nargin < 3; Ch = []; end
+Session = {};
+
+SF_Sessions = StoSF(InputSession,Chamber,Ch);
+    
+for iS = 1:length(SF_Sessions)
+    Session{iS} = SFtoF(SF_Sessions{iS});
+end
+
+%if ~isempty(Session)
+%    disp([num2str(length(Session)) ' Field Sessions']);
+%else
+%    disp('No Field Sessions');
+%end

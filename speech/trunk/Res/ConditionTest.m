@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:99e1d630c608da680c7d21a048b3496d6ffc590a22ab0826f2ae733cf59d449c
-size 177
+x = 1:5;
+i = 1;
+
+while (i <= length(x))
+  x(i) = x(i) + 1;
+  i = i+1;
+end;
+
+x
+
+
+
+
+x = 1:5;
+i = 0;
+
+while (i < length(x))
+  i = i+1;
+  x(i) = x(i)+1;
+end;
+
+x

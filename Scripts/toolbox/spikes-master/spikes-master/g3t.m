@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:be65ba48c19b3f10d5772d6872db3d6b0de3a22cd195f9b8b06043a57dad647d
-size 500
+%*---------------GETT--(Rowland Sillito, July 2001)-----------------*
+%|                                                                  |
+%|  gett(objtag,'PropertyName') returns the value of 'PropertyName' |
+%|                             for all objects with the tag objtag. |
+%|                                                                  |
+%*------------------------------------------------------------------*
+function output=gett(tag,setting)
+output=get(findobj('tag',tag),setting);

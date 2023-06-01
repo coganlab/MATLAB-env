@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:401f746959d20733f25191fc13f87a96273cbb77949b94d8940517c764ceabba
-size 546
+%  Multiunit Spectrogram DRS Tasks panel
+clear CondParams AnalParams CondDiff AnalDiff;
+
+SessType = sessType(Sess);
+
+CondParams(1,1).Name = ['DRS' SessType 'Rate']; 
+
+CondParams(1,1).Task = {{'DelReachSaccade'}};
+CondParams(1,1).conds = {[Dirs(1)]};
+CondParams(1,1).IntervalName = 'Delay';
+CondParams(1,1).IntervalDuration = [0,1500];
+
+CondParams(2,1) = CondParams(1,1)
+CondParams(2,1).conds = {[Dirs(2)]};
+
+AnalParams(1,1).Type = 'SpikeRate';
+AnalParams(1,1).Field = 'TargsOn';
+AnalParams(1,1).bn = [-500,1e3];
+AnalParams(1,1).Smoothing = 30;
+
+

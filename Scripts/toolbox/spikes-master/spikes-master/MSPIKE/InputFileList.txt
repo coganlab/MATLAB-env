@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9e5559b8cb83e045ade184c5ec222dd0d128f34a726a84c6a17e11f4393e2872
-size 24
+shakerspike100804B18.csv

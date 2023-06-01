@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0bbce0f21a676c0c1824bde407e04bbb5da2252b58417e09f47d5a8cee153148
-size 625
+% PATHPLOT: Plots a path, with equal axes and nodes indicated.
+%
+%     Usage: pathplot(path,nonodes)
+%
+%           path =   [n x 2] matrix of point coordinates for a 2D path.
+%           nondes = suppress plotting of path nodes.
+%
+
+% RE Strauss, 8/25/98
+%   11/25/99 - changed plot colors for Matlab v5.
+
+function pathplot(path,nonodes)
+  if (nargin < 2) nonodes = []; end; 
+
+  if (isempty(nonodes))
+    nonodes = 0;
+  end;
+
+  x = path(:,1);
+  y = path(:,2);
+
+  plot(x,y,'k');
+  if (~nonodes)
+    hold on;
+    plot(x,y,'ko');
+    hold off;
+  end;
+  putbnd(x,y);
+  axis('equal');
+  
+  return;
+

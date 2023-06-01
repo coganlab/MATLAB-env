@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fa5972cfc89b66cdcc001be4bb02a979532d574654efc6058af67a518e4082dd
-size 364
+function AnalParams = RedistributePartialCohAnalParams(AnalParams)
+%
+%  AnalParams = RedistributePartialCohAnalParams(AnalParams)
+%
+
+
+SubM = size(AnalParams,1) * 3;
+SubN = size(AnalParams,2) * 2;
+for iSubM = 1:SubM
+    for iSubN = 1:SubN
+        Sub = mod(iSubN+1,2) + 1;
+        tAnalParams(iSubM,iSubN) = AnalParams(1,Sub);
+    end
+end
+
+AnalParams = tAnalParams;

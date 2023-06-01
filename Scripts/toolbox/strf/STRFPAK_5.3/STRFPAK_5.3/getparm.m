@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7ff1c1001a7c56742d690dee79c7af6712f985538a7256d35eea35b9828f396c
-size 272
+% function p=getparm(struct,parmname,parmdef);
+function p=getparm(struct,parmname,parmdef);
+
+if isfield(struct,parmname),
+   p=getfield(struct,parmname);
+elseif strcmp(parmdef,'ERROR'),
+   error(sprintf('parameter %s required!',parmname));
+   p=[];
+else
+   p=parmdef;
+end

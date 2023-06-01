@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:240a0779ea8a81bf8ba5608beac8a1bbb1e52dbde3f1aba53a40710cf6a8718b
-size 450
+function y=nt_normpage(x,w)
+% y=nt_normpage(x,w) - normalize each page so its weighted msq is 1
+% 
+%   y: normalized data
+%
+%   x: data to normalize
+%   w: weight [not implemented]
+% 
+% Weight should be either a column vector, or a matrix (2D or 3D) of same
+% size as data.
+
+if nargin<2; w=[]; end
+
+[m,n,o]=size(x);
+if isempty(w)
+    y=nt_normcol(reshape(x,[m*n,o]));
+    y=reshape(y,[m,n,o]);
+else
+    error('not implemented for weights');
+end
+
+    

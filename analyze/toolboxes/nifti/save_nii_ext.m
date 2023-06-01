@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bbf3bf924caec5943700e1f21918d17c62f44f8404a9b5fc44147cc6e64ad179
-size 1015
+%  Save NIFTI header extension.
+%
+%  Usage: save_nii_ext(ext, fid)
+%
+%  ext - struct with NIFTI header extension fields.
+%
+%  NIFTI data format can be found on: http://nifti.nimh.nih.gov
+%
+%  - Jimmy Shen (jimmy@rotman-baycrest.on.ca)
+%
+function save_nii_ext(ext, fid)
+
+   if ~exist('ext','var') | ~exist('fid','var')
+      error('Usage: save_nii_ext(ext, fid)');
+   end
+
+   if ~isfield(ext,'extension') | ~isfield(ext,'section') | ~isfield(ext,'num_ext')
+      error('Wrong header extension');
+   end
+
+   write_ext(ext, fid);
+
+   return;                                      % save_nii_ext
+
+
+%---------------------------------------------------------------------
+function write_ext(ext, fid)
+
+   fwrite(fid, ext.extension, 'uchar');
+
+   for i=1:ext.num_ext
+      fwrite(fid, ext.section(i).esize, 'int32');
+      fwrite(fid, ext.section(i).ecode, 'int32');
+      fwrite(fid, ext.section(i).edata, 'uchar');
+   end
+
+   return;                                      % write_ext
+

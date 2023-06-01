@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fe30955cef853fef3c4b8b77d984392cb5e35b712a0f85543cb5efb035f92aaf
-size 317
+function [data data_name] = ntools_elec_read_struct_data(s,name)
+% read the data from 1*1 structure into a double array
+
+k = 1;
+for i = 1:length(name)
+    for j = 1:length(s.(char(name{i})))
+        data(k,:) = s.(char(name{i}))(j,:);
+        data_name{k,:} = sprintf('%s%.2d',name{i},j);
+        k = k+1;
+    end
+end

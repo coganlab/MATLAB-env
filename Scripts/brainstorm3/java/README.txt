@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d142557e73d574e403010d9b6a26c3e6592be1a09d8ec06d17c13613227bfc8e
-size 265
+% Java packages used by Brainstorm
+% ================================
+%
+% Some of the icons in this package have been provided courtesy of 
+% Denis Brunet (Cartool software),
+% Functional BrainMapping Lab, Geneva, Switzerland
+% http://brainmapping.unige.ch/

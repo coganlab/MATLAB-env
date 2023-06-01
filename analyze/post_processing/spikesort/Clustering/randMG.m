@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3359270e43d0c16e14224b98213841a71fe49d4f3d9ce35781adfc7fdcab19d8
-size 213
+function [Xo, fr] = randMG(N,pis,mu,Sigma)
+
+ Xo =[];
+
+ [D,L] = size(mu);
+ fr_i = zeros(1,L);
+ 
+ for a=1:L
+
+  Xo = [Xo randvec(round(pis(a)*N),mu(:,a),Sigma(:,:,a))];
+  fr(a) = round(pis(a)*N);
+ end
+
+%X1=Xo(:,1:N);

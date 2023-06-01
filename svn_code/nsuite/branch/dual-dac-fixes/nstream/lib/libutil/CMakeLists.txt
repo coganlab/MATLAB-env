@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:27c636698c671210dd06125ae6b03484dbe6f7555e0e8c569955ddbbcd71ed7a
-size 407
+
+########### next target ###############
+
+SET(util_LIB_SRCS
+   exception.cc
+)
+
+#include_directories(${nstream_SOURCE_DIR}/src)
+
+add_library(util STATIC ${util_LIB_SRCS})
+
+#target_link_libraries(nspike rt m cfu)
+
+set_target_properties(util PROPERTIES VERSION 1.0.0 SOVERSION 1 COMPILE_FLAGS -fPIC)
+#install(TARGETS nstreamclient DESTINATION lib/libnstreamclient)
+
+
+########### install files ###############
+

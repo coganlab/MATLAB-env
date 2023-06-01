@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eccbfa7e722af7585b90da1859a145212db506eb784ddc34caf0f03663d5fa77
-size 744
+% HISTPLTB: Plots histogram bars
+%
+%     Usage: histpltb(n,centers,C)
+%
+%           n =       vector of counts per bin.
+%           centers = corresponding centers of bins.
+%           C =       bar color.
+%           
+
+% RE Strauss, 11/25/99
+
+function histpltb(n,centers,C)
+  half_intrvl = (centers(2)-centers(1))/2;
+
+  hold on;
+  for ib = 1:length(n)                    % Plot bars
+    xlow = centers(ib)-half_intrvl;
+    xhigh = centers(ib)+half_intrvl;
+    ylow = 0;
+    yhigh = n(ib);
+
+    xb = [xlow xlow  xhigh xhigh xlow];
+    yb = [ylow yhigh yhigh ylow  ylow];
+    fill(xb,yb,C);
+
+    if (C~='w')
+      plot(xb(1:4),yb(1:4),'w');
+    else
+      plot(xb(1:4),yb(1:4),'k');
+    end;
+  end;
+
+  return;
+

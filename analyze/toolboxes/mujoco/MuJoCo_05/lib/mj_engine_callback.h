@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ddd75a27e777351b2eaa9860f7838a2a17b2b06fc80e07bb85f5f793ade9dc29
-size 466
+/*******************************************
+This file is part of the MuJoCo software.
+(C) 2012 Emo Todorov. All rights reserved.
+*******************************************/
+
+
+// global callback function pointers
+
+extern mjfCallback mjcb_control;
+extern mjfCallback mjcb_passive;
+extern mjfCallback mjcb_constraint;
+extern mjfCallback mjcb_actgain;
+extern mjfCallback mjcb_actdyn;
+extern mjfCallback mjcb_impulse;
+
+extern int (*mjcb_gettime)(void);

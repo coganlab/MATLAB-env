@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0a1b9645c23c5f4130e5078dce7e81db9722da8b7a7285aa19ad94ee53c9084c
-size 842
+% Description:
+% This code add the folder, where your toolbox is the located, to the
+% Matlab default path.
+
+%
+% by:
+% Etienne Combrisson(1,2) [PhD student] / Contact: etienne.combrisson@inserm.fr 
+% Karim Jerbi (1,3) [PhD, Assistant Professor] 
+% 1 DYCOG Lab, Lyon Neuroscience Research Center, INSERM U1028, UMR 5292, University Lyon I, Lyon, France
+% 2 Center of Research and Innovation in Sport, Mental Processes and Motor Performance, University of Lyon I, Lyon, France
+% 3 Psychology Department, University of Montreal, QC, Canada
+%
+% Version 1.0
+% Created: 21/10/2014
+% Latest update: - 22/10/14
+%
+%--------------------------------------------------------------------------
+
+close all;
+clear all;
+clc;
+
+% Path where the toolbox is located:
+path = 'C:\Users\ECmb\RandomDataClassification';
+addpath(genpath(path))

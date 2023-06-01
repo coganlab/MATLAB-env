@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9c71f8b07c88e77d76f8939ee8c0c2af1e2a4b78feff3d77c0951e1b98e04ab7
-size 47
+"\\piano\Data\DataBases\Speech\Gutenberg-Books"

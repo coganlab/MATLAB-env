@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:33604e0282c1c4555bbf9ab94d0d8a3ea98d957d8b17d455c68d5584e035c790
-size 884
+function nrm = norm(A)
+%NORM Frobenius norm of a symktensor.
+%
+%   NORM(T) returns the Frobenius norm of a symktensor.
+%
+%   See also SYMKTENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+% Retrieve the factors of A
+U = A.u;
+UtU = A.u'*A.u;
+
+% Compute the matrix of correlation coefficients
+coefMatrix = A.lambda * A.lambda';
+coefMatrix = coefMatrix .* ((UtU).^(A.m));
+
+nrm = sqrt(abs(sum(coefMatrix(:))));
+
+return;

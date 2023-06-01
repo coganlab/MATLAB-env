@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f02b18d5d02e75169f833ce90a7f21d114888d6ffb1e21ba1a2bbc42110a79d7
-size 167
+function y=nt_version, y='15-Oct-2019';
+if nargout==0; disp(['version ', y]); disp('check for latest version at http//audition.ens.fr/adc/NoiseTools/'); clear y; end;

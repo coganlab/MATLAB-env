@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1015149061f041bebb0eb4a034f26dbd269e1436e0d93f4f200d41b04f8892b8
-size 579
+
+shuffvals=zeros(iC,nPerm);
+nPerm=1000;
+for iC=1:40 % number of points to shuffle
+    tic
+    for iPerm=1:nPerm
+    testmatrix=zeros(20,50); % size of testmatrix to shuffle
+    fill=shuffle(1:size(testmatrix,1)*size(testmatrix,2));
+    fill=fill(1:iC);
+    testmatrix(fill)=1;
+    CC=bwconncomp(testmatrix);
+    iM=zeros(1,length(CC.PixelIdxList));
+    for ii=1:length(CC.PixelIdxList); % find size of all clusters)
+        iM(ii)=length(CC.PixelIdxList{ii});
+    end
+    shuffvals(iC,iPerm)=max(iM); % record max of shuffled clusters for each iteration
+    end
+    toc
+end
+ 
+
+
+

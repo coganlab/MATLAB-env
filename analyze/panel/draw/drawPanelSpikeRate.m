@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d623ce7d64a42e9511cbc4c2e71ed35f96932b929ef3fb2cb313dbbbffa81efb
-size 220
+function [Axes, DataHandle] = drawPanelSpikeRate(Axes,Data)
+%
+%  Axes = drawPanelSpikeRate(Axes,Data)
+%
+
+DataHandle = plot(Data.t, Data.Data, 'Parent', Axes);
+set(Axes,'XTickLabel','','YTickLabel','','TickDir','out');
+
+

@@ -1,3 +1,73 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b3707c5dc19ba961a54996fb9561c9446bee080a772dcb72e14e62720597a272
-size 4255
+mujoco (!)                    version discardvisual 
+   compiler (?)               maxcontact maxjacobian fixmass 
+                              uniquevertex settotalmass autofitgeom 
+                              fitscale inertiafromgeom 
+   engine (?)                 modelname nuserdata nuserstack 
+                              timestep gravity viscosity wind 
+                              eqerrreduce imperrreduce eqsoftweight 
+                              softclamp sclsoftness sclmindist 
+                              expdist disableflags integrator 
+                              collisionmode eqsoft consolidate 
+                              remotecontact algorithm atype maxiter 
+   default (?)                
+      joint (?)               limtype fritype stiffness softness 
+                              mindist armature damping frictionloss 
+                              maxvel makeactuator 
+      geom (?)                contype condim colmask friction 
+                              mindist softness density rgba meshscale 
+                              meshpos meshquat 
+      tendon (?)              limtype softness mindist stiffness 
+                              damping makeactuator 
+      actuator (?)            dyntype trntype gaintype dynprm 
+                              trnprm gainprm range 
+   world (!)                  coordinate angle euler meshdir 
+      body (R)                name tag pos quat visccoef viscscale 
+                              axisangle xyaxes zaxis euler 
+         inertial (?)         pos quat mass inertia axisangle 
+                              xyaxes zaxis euler fullinertia 
+         joint (*)            name type limtype fritype tag pos 
+                              axis stiffness limit softness mindist 
+                              reference armature damping frictionloss 
+                              maxvel makeactuator 
+      site (*)                name group tag pos quat camera 
+                              axisangle xyaxes zaxis euler 
+      geom (*)                name type contype condim colmask 
+                              group tag size rgba friction density 
+                              softness mindist fromto pos quat 
+                              mass inertia axisangle xyaxes zaxis 
+                              euler fullinertia meshfile meshscale 
+                              meshpos meshquat hfielddim hfieldfile 
+                              hfielddir 
+   collision (?)              makepair defaultpairstate 
+      enable (*)              geom1 geom2 dim friction softness 
+                              mindist 
+      disable (*)             geom1 geom2 
+   constraint (?)             
+      point (*)               name tag body1 body2 pos1 pos2 
+      joint (*)               name tag joint1 joint2 polycoef 
+      tendon (*)              name tag tendon length 
+      user (*)                name tag type1 type2 name1 name2 
+                              size ndata data 
+   tendon (?)                 
+      spatial (*)             name limtype tag limit softness 
+                              mindist stiffness damping makeactuator 
+         site (*)             site 
+         geom (*)             geom sidesite 
+         pulley (*)           divisor 
+      fixed (*)               name limtype tag limit softness 
+                              mindist stiffness damping makeactuator 
+         joint (*)            joint coef 
+   actuator (?)               
+      motor (*)               name tag range joint gear 
+      muscle (*)              name tag range tau tendon 
+      pneumatic-slidercrank (*)name tag range dynprm area cranksite 
+                               slidersite rod diameter 
+      pneumatic-joint (*)     name tag range dynprm area joint 
+                              gear diameter 
+      pneumatic-tendon (*)    name tag range dynprm area tendon 
+                              diameter 
+      general (*)             name tag range dyntype trntype 
+                              gaintype dynprm trnprm gainprm 
+                              target slidersite 
+   custom (?)                 
+      field (*)               name tag size data 

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1f9f8403e93f75ce2677ded070dffbdfd1d82ff635c26fc21bc7f47b27b4d3c6
-size 409
+% PCA: Default principal component analysis of data matrix X, using:
+%            covariance matrix
+%          3 components
+%       1000 bootstrap iterations
+%        95% confidence intervals on loadings and percents variance
+%
+
+% RE Strauss, 6/16/93
+%   9/21/99 - changed sequence call for PCACOV.
+
+[loadings,percvar,scores,not_used,CI_loadings,CI_percvar] ...
+   = pcacov(X,3,[],[],1000);
+whos

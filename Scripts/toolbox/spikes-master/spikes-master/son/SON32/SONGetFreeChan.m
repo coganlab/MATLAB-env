@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d9a5e428d9b6fefecbbd259d60abb2e0eedb48cb57a5de0a191f04c6481e869d
-size 334
+function chan=SONGetFreeChan(fh)
+% SONGETFREECHAN returns the number of the first free channel in a file
+%
+% CHAN=SONGETFREECHAN(FH)
+% where FH is the SON file handle
+% 
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+chan=calllib('son32', 'SONGetFreeChan', fh);

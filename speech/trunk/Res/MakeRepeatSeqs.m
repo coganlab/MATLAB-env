@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2f7ce0af74d7c30aa2f5415e9dbba0c83c0577953e9c9150c16627c95d4e402b
-size 511
+% MakeRepeatSeqs: Produces a column vector of k repeated sequences of the integers
+%                 1 through n: [1,2,...,n, 1,2,...,n, ...]'
+%
+%     Usage: seqs = makerepeatseqs(n,k)
+%
+%         n = max value within sequence.
+%         k = number of sets of sequences.
+%         -----------------------------------------
+%         seqs = resulting [k*n x 1] column vector.
+%
+
+% RE Strauss, 3/14/03
+
+function seqs = makerepeatseqs(n,k)
+  s = [1:n]' * ones(1,k);
+  seqs = s(:);
+  
+  return;
+  

@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:33b647b123423a9004270acd23347456351f6aa5d682b1f1d50a051bdc90618e
-size 241
+function tickdir(in)
+
+if strcmp(in,'in')
+    set(gca,'TickDir','in')
+elseif strcmp(in,'out')
+    set(gca,'TickDir','out')
+else
+    errordlg('You need to specify ''in'' or ''out'' for the tick direction')
+    error('Input error')
+end

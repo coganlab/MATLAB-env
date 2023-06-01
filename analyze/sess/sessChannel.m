@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3bd7068993c83cd796b93d20489b676fea4f3e13e60d76edc9dad8fe02873c84
-size 281
+function Channels = sessChannel(Sessions)
+% Return the Channel fields from an array of Sessions
+%
+%   Channels = sessChannel(Sessions)
+%
+
+
+if ~iscell(Sessions{1})
+  Channels = Sessions{4};
+else
+  for iSess = 1:length(Sessions)
+    Channels(iSess,:) = Sessions{iSess}{4};
+  end
+end

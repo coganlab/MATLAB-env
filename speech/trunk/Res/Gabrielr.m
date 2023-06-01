@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0889c837f5e7fad972871309b676c767f0d6690f36cc8001422f578196654d11
-size 554
+% GABRIELR: Investigate edge lengths of random graphs
+
+function gabrielr(N,distrib_size)
+
+  distrib = zeros(distrib_size,1);
+  nb = 1;
+  ne = 2;
+
+  while (ne < distrib_size)
+    crds = rand(N,2);
+    [connect,dist] = gabriel(crds,1);
+    t = trilow(dist);
+    d = t(t>0);
+    lend = length(d);
+
+    ne = nb+lend-1;
+    if (ne > distrib_size)
+      ex = ne-distrib_size;
+      lend = lend - ex;
+      ne = distrib_size;
+    end;
+    distrib(nb:ne) = d(1:lend);
+    nb = ne+1;
+  end;
+
+  figure;
+  histgram(distrib);
+
+  return;

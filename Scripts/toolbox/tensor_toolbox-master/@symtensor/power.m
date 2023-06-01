@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:92d36bbb844d32ea61df57687ca934d3ad32181d2cb60f6525b6d774b65c85ae
-size 647
+function Z = power(X,Y)
+%POWER Elementwise power (.^) operator for a symmetric tensor.
+%
+%   See also SYMTENSOR.
+% 
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+Z = tenfun(@power,X,Y);

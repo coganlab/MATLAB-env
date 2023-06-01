@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:364d591980abc702ff7f36af613ca807ef7a596b535e2f00f07c536cddc9fb7a
-size 586
+% PUTTITLE: Adds title text to the current figure, with default font 
+%           characteristics.
+%
+%     Syntax: puttitle(textstring,{fontsize})
+%
+%           textstring - character string to be printed above figure.
+%           fontsize -   optional font size [default = 16].
+%
+
+% RE Strauss, 12/8/96
+%   11/5/98 - added optional font size specification.
+
+function puttitle(textstring,fontsize)
+  if (nargin < 2) fontsize = []; end;
+
+  if (isempty(fontsize))
+    fontsize = 16;
+  end;
+
+  title(textstring,'FontName','helvetica','FontSize',fontsize);
+  return;
+

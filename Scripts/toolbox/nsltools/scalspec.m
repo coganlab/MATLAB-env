@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c884e995d0842ce6ad2113311dcab571ef031d4a8df65e3886866111a43b5dd4
-size 506
+function s = scalspec(z, S)
+% SCALSPEC scale spectrum
+%	s = scalspec(z);
+%	s = scalspec(z, S);
+%	z	: static cortical representation difference (M-by-K)
+%	s	: scale spectrum (1-by-K)
+%	S	: (optional) power option
+%	
+%	SCALSPEC return the squared scale response S for complex cortical 
+%	response Z.
+%	See also: AUD2CORS, AUD_PLTS
+
+% Auther: Powen Ru (powen@isr.umd.edu), NSL, UMD
+% v1.00: 01-Jun-97
+% v1.01: 12-Nov-97, add power option
+
+if nargin < 2, S = 2; end;
+s = abs(z).^S;
+s = sum(s);
+s = (s).^(1/S);

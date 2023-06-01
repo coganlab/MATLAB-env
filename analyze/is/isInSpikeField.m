@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b4ce16f38c7f575cdc27dbca73d3a2c1c8867393c9dd2e3b3660e6cb0b43a16e
-size 401
+function [flag,ind] = isInSpikeField(SpikeSess,FieldSess,Session)
+%
+%  [flag,ind] = isInSpikeField(SpikeSess,FieldSess,Session)
+%
+
+SN1 = sessNumber(SpikeSess);
+SN2 = sessNumber(FieldSess);
+
+
+if isempty(Session)
+    ind = [];
+    flag = 0;
+else
+    A = getSessionNumbers(Session);
+    ind = find(A(:,1)==SN1 & A(:,2)==SN2);
+    if ~isempty(ind)
+        flag = 1;
+    else
+        flag = 0;
+    end
+end

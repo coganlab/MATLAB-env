@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:65bd600b1a6df5439a308d07c35594e079a53a7677cd98b7ea911d78f1e5564f
-size 298
+function Angle = calcEyeTargetAngle_minus_piby8(Trials);
+%
+%  Angle = calcEyeTargetAngle_minus_piby8(Trials)
+%
+%	Returns angle of position of eye target for each trial
+%	minus pi/8 to allow for bin boundaries to be shifted
+%
+
+E = getEyeTargetLocation(Trials);
+
+Angle = atan2(E(:,2),E(:,1)) - pi/8;

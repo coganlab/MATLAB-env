@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d7e8d444551ee8014ab264d54ab039e4737c4dbcc52cae2101098e3e65088d49
-size 461
+function idx = tt_sub2ind(siz,subs)
+%TT_SUB2IND Converts multidimensional subscripts to linear indices.
+%
+%   INDS = TT_SUB2IND(SIZ,SUBS) returns the linear indices
+%   equivalent to the subscripts in the array SUBS for a tensor of
+%   size SIZ.  
+%
+%   See also TT_IND2SUB, SUB2IND.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+if isempty(subs)
+    idx = [];
+    return;
+end
+
+mult = [1 cumprod(siz(1:end-1))];
+idx = (subs - 1) * mult' + 1;
+

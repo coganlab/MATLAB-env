@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7280e89f5aea1917a57a01a89003a8793204642fcbd010f9e0bbee973c5f406b
-size 682
+%%
+iELVisFsurf2BIDS('PT001','~/Desktop/HandMotor',1);
+
+%%
+yangWangElecPjct('PT001','~/Desktop/HandMotor',1);
+
+%%
+dykstraElecPjct('PT001',0,'~/Desktop/FaceMotor',1);
+
+%% plotPialSurf test
+cfg=[];
+cfg.view='l';
+cfg.figId=1;
+cfg.elecCoord='LEPTO';
+cfg.title='PT001: iEEG-BIDS';
+cfg.bidsDir='/Users/davidgroppe/GIT/iELVis/PRIVATE_FILES/HandMotor'; % Note this differs from path on wiki
+cfgOut=plotPialSurf('PT001',cfg);
+
+%% plotMgridOnSlices test
+cfg=[]; 
+cfg.printFigs='~/Desktop/SLICE_FIGS';
+cfg.bidsDir='/Users/davidgroppe/GIT/iELVis/PRIVATE_FILES/HandMotor'; % Note this differs from path on wiki
+plotMgridOnSlices('PT001',cfg);
+
+%%
+disp('Script testBids.m completed successfully.')

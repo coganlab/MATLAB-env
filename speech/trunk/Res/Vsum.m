@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b6bd30a83024832c2dc87c64eca339e6377f115cb5bc5835791b167631c914c2
-size 332
+% VSUM: sum of a vector, ignoring non-finite values.
+%
+%     Usage: s = vsum(x)
+%
+%         x = any vector.
+%         -------------------------
+%         s = sum of finite values.
+%
+
+function s = vsum(x)
+  
+  s = 0;
+  for i = 1:length(x)
+    if (isfinite(x(i)))
+      s = s + x(i);
+    end;
+  end;
+
+  return;
+  

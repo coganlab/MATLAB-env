@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1cec97aff95c399ae36fbbb088fcf9c33dbf6bc4c476c1a4b41abb3fa58f4a0b
-size 246
+function y = logdet(A)
+% log(det(A)) where A is positive-definite.
+% This is faster and more stable than using log(det(A)).
+
+% Written by Tom Minka
+% (c) Microsoft Corporation. All rights reserved.
+
+U = chol(A);
+y = 2*sum(log(diag(U)));

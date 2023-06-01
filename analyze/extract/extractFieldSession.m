@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8316c71d69ea7de4cbbff7ccc61f679b2afb396feb09cf6a37de1e93cef120ed
-size 635
+function FieldSession = extractFieldSession(Session)
+%
+%  FieldSession = extractFieldSession(Session)
+%
+
+global MONKEYDIR
+
+if length(Session{5}) == 1
+    if ~iscell(Session{5})
+        if Session{5} > 100
+            FieldSession = Session;
+        end
+    elseif iscell(Session{5})
+        if Session{5}{1}(1) > 100
+            FieldSession = Session;
+        end
+    end
+elseif length(Session{5}) == 2
+    if Session{5}{1}(1) > 100
+        FieldSessionNum = Session{6}(1);
+    else
+        FieldSessionNum = Session{6}(2);
+    end
+    load([MONKEYDIR '/mat/Field_Session.mat']);
+    FieldSession = Session{FieldSessionNum};
+end
+end
+

@@ -1,3 +1,368 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c5e01474750b900e51adf50c382b1338cb150a747690f4b1d2eb5d10d4de9905
-size 13862
+HD updates on 2.1  August 27, 2006
+Fixed cumulative display for each task
+Fixed left hand / right hand switch in check hands vi
+Made smoothing apply to joystick, not touch
+Changed Read Analog Channels to make gain arrays more intuitive (top numbers go with upper quadrant)
+
+
+BP Updates on 2.3 Sept 4, 2006
+Change TargetAq analog state to 5 from 6
+Change Success analog state to 7 from 32(?)
+
+
+BP Updates on 24 Sept 5,2006
+Adding joystick trajectory control
+
+
+BP Updates on 9 Sept 2006
+Fixing shared variable problem with target
+
+
+HD Updates on 9 Sept 2006
+Fixed filled window bug in Host for StartAq in Suppress Saccade and Touch task
+
+
+HD Updates on 10 Sept 2006
+Fixed eye position bug in Update Cumulative Display
+Added toggles on Host panel for plotting eye or touch position in Cumulative Display (for Matt)  ;-)
+
+
+HD Updates on 30 Sept 2006
+Added user defined target (UD Target) and target override button
+
+
+BP Updates on 2 October 2006
+Modified state change logic for delayed reach and fixate and delayed saccade and touch in targ acquire state.
+Added "Successful Trial" initialization to init trial sequence.
+	- Hopefully addresses trial balancing errors introduced when pause is hit
+
+
+HD Updates on 3 Oct 2006
+Added button for track eye option on Delayed Reach task
+Added user defined Start Eye Location and Start Hand Position
+Fixed switch wires in blink for Delayed Reach and Fixate
+
+
+BP Updates 20 Oct 2006
+Added "max cumulative trials" control to erase cumulative trials display automatically
+
+
+HD Updates 27 Oct 2006
+Now turns room lights off upon program exit
+
+
+HD Updates 27 Nov 2006
+Requires sensors held during Delayed Saccade Task
+
+
+SL Updates 1 Dec 2006
+Single Target Reward Magnitude Task
+Add reward magnitude as a task condition
+Add a block design
+Add an interleaved block design with Reaction Trials
+Add book keeping - how many trials of each type
+This Task COntroller now sends Reward Type and 
+Reward Magnitude Number to the broker in the trial
+preamble
+
+
+BP Updates 1 Jan 2007
+Added Memory variants for each task
+Added Memory transparency control for training
+Added Cue off and Target On states with analog state values 9 and 10
+
+
+BP Updates 5 Jan 2007
+Added Microstimulation parameters - during pause condition
+
+
+BP Updates 7 Jan 2007 
+Added Delayed Reach then Saccade and Delayed Saccade then Reach tasks
+Added reach go and saccade go states with analog state values 11 and 12
+Added reach acquire and saccade acquire states with analog state values 13 and 14
+Added intervening hold state and intervening delay parameter controls
+Added selector to randomly interleave instruction subsets
+Added sensor type control to select left or right sensor training as well as both.
+
+
+BP Updates 9 Jan 2007
+Added time control using Srt and RRT based on Go and when position signal leaves window to 
+	stop cheating.  Min Saccade RT and Min Reach RT.
+
+
+BP Updates 12 Jan 2007
+Added display sensor stimulus commands.  
+	Turn on display sensor at start on.
+	Turn off display sensor stimulus at targon
+	Turn on display sensor stimulus at go or saccade go for sacc then reach or reach go for reach then sacc
+	Turn off display sensor stimulus at reach go for sacc then reach or saccade go for reach then sacc
+
+
+BP Updates 14 Jan 2007
+Modify Delay Saccade then Reach and Delayed Reach then Saccade so that Intervening hold starts after saccade or
+reach go not saccade or reach acquire.
+	Saccade Acquire checks Time since Saccade Go, 
+		if less then SaccadeAcquire, not acquiring and more than Intervening go to
+		Reach Go then back to Saccade Acquire without requiring reach at start then to Reach Acquire		
+		The saccade acquire does not require the ra
+		Reach Acquire checks time since Reach Go
+		if less than reach acquire, not aquiring and more than intervening, go to
+		Saccade Go then reach acquire, without requiring saccade a start then to saccade acquire
+
+
+BP/HD Updates 14 February 2007
+Fixed CheckHands to require sensors throughout trial 
+
+
+HD Updates 8 May 2007
+Added Min Saccade RT and Min Reach RT to Target Aquire
+
+
+HD Updates 11 May 2007
+Fixed abort bug (endless looping after abort) - now goes to intertrial interval state)
+Added Target Onset Asynchrony task
+
+
+HD Updates 31 May 2007
+Finalized Target Onset Asynchrony task
+Reaches and Saccades now have adjustable min and max acquire times for all tasks
+(Old Target Acquire in use only for touch task)
+These acquire times now start at visual onset time defined by display sensor, not just state change times
+Added button to host display to show sensor on/off
+All analog inputs had to be put in the same Project, so Project Hand-Eye is now Project Analog Inputs, 
+  with the 7th channel bringing in the display sensor data
+
+
+BP Updates 7 June 2007
+Fix code for 2 target reward magnitude for fixation reach, saccade, reach and saccade
+
+
+HD Updates 3 July 2007
+Fixed TOA task so that there is always a Saccade Acquire state
+
+
+HD Updates 4 July 2007
+Further debugged TOA task
+Made both targets in TOA task appear with Saccade Go
+
+
+BP Updates on 3.11  5 July 2007
+Add Joystick Transparent option for Reach Type and Joystick Transparency variable
+
+
+HD Updates on 3.12  22 July 2007
+Added min and max RT check for all trial types
+Added option to make red/green target a single yellow target for DelReachSaccade, MemReachSaccade and TOA tasks
+Added Project Auditory Out 
+Fixed wiring bug in TargetAquire on Target
+Fixed bug in TOA task that led to longer than expected TOAs (I was using Segment Start Time in Intervening, 
+	which was reset after saccade acquire)
+
+
+HD Updates on 3.12  25 July 2007
+Added new task - Memory Target Onset Asynchrony
+Combined Check Display Sensor and Read Analog Input to speed up Target
+Added auditory second cue for TOA and MemTOA
+
+
+HD Updates on 3.13  30 July 2007
+General debugging - Auditory Cue now works
+Added option for separate hand and eye targets. There is now an array of target options. I  had to create a 4D Goal 
+	and make a Condition to Separate Targets VI to handle that. If Paired Target Button is true, targets are pulled
+	only from the Hand Target panel in the first element of the array. Also, if One Eye/Hand target is true, Paired
+	Target must also be true.
+Added a Task Code for Eye Target Location (see 3.13 Task Codes.txt) - MUST use new Proc code!!!
+
+
+HD Updates on 3.13  3 August 2007
+Changed Check Hands so that removing hand from sensors during reward doesn't abort state before stop reward cammand is given
+Added option to turn lights on between trials
+Added Check Comedi Calibration button - sends states 0-59 out so that you can check values received by Broker
+Can now interleave trial types - doesn't balance targets separately for each trial type though. (How important is this? We'd 
+	have to have separate One Successes, One Distribution, etc.)
+
+
+HD Updates on 3.13  9 August 2007
+Made PlaySound into a control to either play the reward sound or not (was having trouble with sound not working on some trials)
+Added transparency control to Auditory 2nd Cue for training purposes (transparency = 1 - TargetMemoryTransparency)
+
+
+HD Updates on 3.14  17 August 2007
+Added block count option to Host
+Added Time btwn States control to Target
+
+
+HD Updates on 3.15  24 August 2007
+Added new Reward Type for Sam - 4T Reward Probability - allows for looks and reaches in opposite directions, otherwise like 2T Reward Prob
+Added Display Sensor Stimulus change to Instruction On State - MUST CHANGE PROCDAY!!!
+
+
+HD Updates on 3.15  2 September 2007
+Added option to dim only uninstructed choice in instructed trials
+Added option to dim targets at instruction on rather than throughout trial
+Changed ound back to an indicator (we were getting double beeps)
+
+
+HD Updates on 3.16 3 September 2007
+Added option to use LED Display instead of monitor
+Sends another state to record whether or not LED board is in use - NEW getStateCodes and proc code!!!!
+
+
+HD Updates on 3.17 30 September 2007
+Added option to use Adaptation LED Display 
+Sends two more states to record adaptation phase, adaptation action, and whether or not there's feedback - NEW getStateCodes and proc code!!!!
+
+
+HD Updates on 3.17 4 October 2007
+Added separate control for start fixation window size
+
+
+HD Updates on 3.17 10 October 2007
+Fixed bug for TOAs that included Intervening state (removed Segment Start Time update from  Saccade Acquire)
+Fixed bug in adaptation that limited phases to 0-2 in Target (encoded wrong in network variable type)
+Updated Abort Status Structure to have both current state and previous state
+
+
+HD Updates on 3.18 26 October 2007
+Added adaptation acquire state (takes place of target acquire for Delayed Saccade adaptation trials)
+
+
+HD Updates on 3.18 26 November 2007
+Made Current Phase = 9 if not running adaptation
+Added LED sensor changes everywhere sensor changes occur on monitor
+
+
+HD Updates on 3.18 2 December 2007
+Added "Send 3 LED Stat" and "Send 2 LED Stat" functions to change 3 or 2 LEDs at once.
+Changed Time To Wait in Target from 15 to 13 ms (12 ms is too short - TOA problems)
+Moved commands to send State into same timestep as LED change commands
+
+
+HD Updates on 3.19 18 December 2007
+Added 4T Reward Magnitude task
+Added extra mapping targets for LED task - uses new PXI 6224 card!!!
+Added Variable Block Size
+Added list for 4T Reward Conbinations and added this number to the header - NEW getStateCodes and proc code!!!!
+Added 3 new tasks - Reach Race, Saccaade Race, Reach and Saccade Race
+ 
+
+HD Updates on 4.00 2 January 2008
+Added more mapping targets - uses new PXI 6723 card!!!
+Made blue-white LEDs analog in order to match brightness (LEDs 13-18 will be temporarily unused)
+
+
+HD Updates on 4.01 14 January 2008
+Mapping target numbers too big to be sent as states, so I divided target and  eye target into tens and units
+
+
+HD Updates on 4.01 19 January 2008
+Added X and Y components of window size 
+  - had to change some subfunctions - DrawPos, Update Cumulative Display etc.
+  - replaced subfuntions like In One Window with In One Rec Window, etc.
+Cleaned up Target display - organized variables according to function to make debugging easier
+
+
+HD Updates on 4.02 26 January 2008
+Added new task - Calibrate Eye 
+Added new code to preamble for separate hand and eye reward blocks for Sam's update
+
+SG Updates on 4.02 26 January 2008
+Separated Hand and Eye in 4T Reward tasks. 
+
+
+HD Updates on 4.03 28 January 2008
+Expanded and re-defined Mapping Targets
+Split LEDs 13-24, so rewrote Update LED Array
+Added Target Hold and Target Hold Invisible to Adaptation parameters
+Expanded Adaptation Parameter to have Decrease and Increase 5 degrees as well as the existing 4 degrees
+
+
+SG Updates on 4.04 March 2008
+Added Labview output file
+
+
+HD Updates on 4.05 May 2008
+Started Color Discrimination and Color Discrimination Proximate task types
+Added Reward On, Reward Off, and Intervening Reward states - to be used for Sam's tasks
+Optimized variable types
+Removed most globals - made variables local
+Fixed TOA (SOA) timing bug
+
+
+HD Updates on 4.05 18 May 2008
+Added new tasks - Delay Race Reach, Delay Race Saccade, Delay Race Reach and Saccade, Mem Race Reach, Mem Race Saccade, and Mem Race Reach and Saccade
+
+
+SG Updates on 4.06 June 2008
+
+
+BP Updates on 4.07 3 July 2008
+Added Random Target option  for simple reward - works for Delayed Reach alone at the moment
+Added Target Location File writing in directory that contains the Labview directory for the code being run.  ie LabVIEW Data/Jug
+Modified 4T code to save file in the directory that contains the Labview directory for the code being run.
+Added Target Dimming option
+
+
+HD Updates on 4.08 11 July 2008
+Made display sensor changes a toggle
+Changed DRS and DST so that some states are skipped if delay=0 (change the rest later)
+Added new tasks - Immediate Double Step, PostSacc Double Step, PeriReach Double Step, PostReach Double Step, Saccade Double Step
+   (only PeriReach Double Step and Saccade Double Step are debugged)
+Cleaned up code
+
+
+SG Updates on 4.09 26 July 2008
+Added drifting 4T Reward Magnitude Task
+
+
+BP Updates on 4.09 30 July 2008
+Fixed bug in peri-reach double step
+Added Room lights state exit control on target
+
+
+BP Updates on 4.10 9 August 2008
+Change target dimming to include max dim setting before abort
+Add reward dimming 
+Add reach acquire dimming for delayed reach 
+
+
+HD Updates on 4.10 17 August 2008
+Fixed bug in SOA task
+Added targets 13 and 14 for monitor
+
+
+SG Updates on 4.11 2 September 2008
+
+
+HD Updates on 5.00 1 October 2008
+Separated out most states into sub VIs. May need some debugging.
+
+
+BP Updates on 5.01 October 2008
+
+
+HD Updates on 5.01 15 October 2008
+Fixed bugs. Made eye instruction for DelSacc and DelSaccTouch red. Updated to Labview 8.6 Developer
+
+
+HD Updates on 5.01 1 January 2009
+Made sure Target and Rew are always saved in their respective files. Consolidated Sam's many Rew Print sub-functions.
+Added Target and EyeTarget code numbers to output Target file. (This will help in lining up data when time stamps are off!)
+
+
+HD Updates on 5.02 4 January 2009
+Fixd a bug in SOA Target Acquire. Generally cleaned up some Target Acquire code.
+
+
+YW Updates on 5.02 11/1/09 
+Added shared variable "Penalty Delay". In the Target added a check to see whether the higher value target
+was chosen and if not waits for the specified penalty time. The code is in the Reward case.
+Added counting of corect choice trials
+
+
+HD Updates on 5.02 20 January 2009
+Added output file for min and max RT and acquire times (important for speed-accuracy experiments)
+
+
+
+

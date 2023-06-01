@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:af7296bb8011c32cc3ff5355681e0d16c449aa1f08112584937c7c1b9ee6c694
-size 435
+function weight = bisquare(residual)
+%  calculate robustness weights using bisquare technique
+%  weight = bisquare(residual)
+%  refer to Cleveland, Visualizing Data
+
+% Copyright (c) 1998 by Datatool
+% $Revision: 1.00 $
+
+%  use median absolute deviation of residuals as scale factor
+s = median(abs(residual));
+%  make 0<= scaled residuals <=1
+u = min(abs(residual/(6*s)),1);
+%  use bisquare function
+weight = (1-u.^2).^2;

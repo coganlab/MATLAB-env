@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:66edc3aa07ef9d521d1d998b9afd8f46e4294fe5d8a13e33d0748b262815e5a0
-size 546
+function SONSetFileComment(fh, which, comment)
+% SONSETFILECOMMENT sets one of the five file comment fields
+% 
+% SONSETFILECOMMENT(FH, WHICH, COMMENT)
+%         FH is the SON file handle
+%         WHICH selects the comment (0 - 4)
+%         COMMENT is a string
+% 
+% No return value
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+global SON_COMMENTSZ;
+
+comment=comment(1:min(SON_COMMENTSZ,length(comment)));
+calllib('son32','SONSetFileComment', fh, which, comment);

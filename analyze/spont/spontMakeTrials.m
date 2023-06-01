@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:17604c80562dc4eb60aa22e5f4112debacb1608cae7c1d30ada8d82ba620a695
-size 587
+function trDat = spontMakeTrials(dat, trLen, Fs)
+
+%trDat = spontMakeTrials(dat, trLen, Fs)
+%
+%divides raw time-series data into arbitrary trials, trLen long
+%
+%INPUT:  dat   - time-series of data (ch x time)
+%        trLen - length of trials (s)
+%        Fs    - sampling rate (Hz)
+%OUTPUT: trDat - trial-sorted data (ch x time x trials)
+%
+%A. Orsborn, 2015
+
+
+%split up into 'trials' of trLen long
+nTr = floor(size(dat,2)/ (trLen*Fs));
+trDat = nan(size(dat,1), trLen*Fs, nTr); %ch x time x tr
+for it = 1:nTr
+    ind = (1:trLen*Fs) + (trLen*Fs)*(it-1);
+    trDat(:,:,it) = dat(:,ind);
+end

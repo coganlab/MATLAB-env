@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c3d1e2abf2d4baa2ad95123d30f23f53805516376f33de2925bf0e08f6d5a096
-size 660
+function recon=fsvd_rcn(X,mask)
+%FSVD_RCN Returns the first index of space to the dimension of mask
+%
+% RECON = FSVD_RCN(SPACE,MASK) returns the first index of space to
+% that of mask filling the entries where mask is 1.
+%
+
+% Author:  Bijan Pesaran, version date 10/08/98
+
+nch=size(X,1);
+nt=size(X,2);
+nnch=length(find(mask > 0));
+szMask=size(mask);
+indices=find(mask > 0);
+
+if length(szMask) == 2 recon=zeros(szMask(1),szMask(2),nt); end
+if length(szMask) == 3 recon=zeros(szMask(1),szMask(2),szMask(3),nt); end
+
+for ii=1:nt
+tmp=mask;
+tmp(indices)=X(:,ii);
+if length(szMask) == 2 recon(:,:,ii)=tmp; end
+if length(szMask) == 3 recon(:,:,:,ii)=tmp; end
+end
+	
+
+

@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7cc0da91ed330d535ce0d8e745039f118415ba86f03ec2883c9793030bc1b493
-size 224
+function [f,g,h] = fminunc_wrapper(x,F,G,H)
+% [f,g,h] = fminunc_wrapper( x, F, G, H )
+% for use with Matlab's "fminunc"
+f = F(x);
+if nargin > 2 && nargout > 1
+    g = G(x);
+end
+if nargin > 3 && nargout > 2
+    h = H(x);
+end

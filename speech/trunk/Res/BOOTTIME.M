@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:db79502f5f3c561b8cf15e59c1dfca36be888a3f3f7d7e1e1b96f07898a110b9
-size 584
+% BOOTTIME: Computes and displays the elapsed time of a bootstrapped analysis,
+%           given the start and stop clock times, determined from calls to
+%           clock().
+%
+%     Usage: boottime(time_in, time_out)
+%
+
+% RE Strauss, 4/9/94
+
+function boottime(time_in, time_out)
+  et = etime(time_in, time_out);
+  min = floor(et/60);
+  sec = floor(et-(min*60));
+  if (min < 1)
+    disp(sprintf('  Bootstrap time: %5.0f seconds\n', sec));
+  else
+    disp(sprintf('  Bootstrap time: %5.0f minutes %5.0f seconds\n', ...
+                 min, sec));
+  end;
+  return;

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:281e45ceb1d34983bf21c6e12c2dc066b07282cfd8563bd71ad6bf715711801c
-size 554
+function sample_rate = getSampleRate(acquisition_type)
+% GETSAMPLERATE returns sample rate for specified hardware
+%
+%     ACQUISITION_TYPE - String - hardware type e.g. 'Broker' 
+%  
+
+
+    global experiment
+    
+    acquisition = experiment.hardware.acquisition;
+    acquisitiontype = cell(1,length(acquisition));
+    [acquisitiontype{:}] = deal(acquisition.type);  
+    hardware = find(ismember(acquisitiontype,acquisition_type));  
+    if(isempty(hardware))
+        hardware = 1;
+    end  
+    sample_rate = acquisition(hardware).samplingrate;
+    
+end

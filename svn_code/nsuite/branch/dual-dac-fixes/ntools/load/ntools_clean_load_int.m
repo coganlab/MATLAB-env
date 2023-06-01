@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c0aaaa85768c1434a1ecb09c9f908d207f43c3a0d5e6aeac866d64f6e97c213a
-size 418
+%
+% ntools_clean_load_int(filename, start_samp, stop_samp)
+%
+% loads data from a given ieeg datafile starting with start_samp (inclusive)
+% and ending at end_samp (inclusive) into a matlab matrix in [channel,sample]
+% format.
+%
+% example: data = ntools_clean_load_int('rec001.nspike.dat', 100, 200)
+
+function data = ntools_clean_load_int(varargin)
+    data = ntools_load_int('cleanieeg', varargin{:});
+end

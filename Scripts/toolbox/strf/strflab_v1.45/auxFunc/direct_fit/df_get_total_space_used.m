@@ -1,3 +1,3 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a1d3f484871be3c8cd33b8c8bd4346474ece15f4193ce29339aa2be6e374ff22
-size 138
+function total_space_used = df_get_total_space_used(cached_dir)
+dirout = dir(cached_dir);
+total_space_used = sum([dirout(:).bytes])/2^30;

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b2e8a31d6b06ce5803038b112e70e8830ac06745657814522628866af31d6f99
-size 303
+function [v,i]=minim(data,value)
+
+%MINIM        [value,index]=minim(data,val)
+%
+%     Finds the closest number in a data vector to the value specified
+
+v=0;
+x=inf;
+
+for j=1:max(size(data));
+   s=abs(data(j)-value);
+   if s<=x
+      x=s;
+      v=data(j);
+   end
+end
+
+i=find(data==v);
+

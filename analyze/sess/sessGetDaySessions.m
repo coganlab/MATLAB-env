@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c545b6efeb4cd2d2ba6e3b31589cd8423a7be15b20e95a5e057359c729a9874f
-size 350
+function DaySession = sessGetDaySessions(Session,Day)
+%
+%  DaySession = sessGetDaySessions(Session,Day)
+%
+
+Days = cell(1,length(Session));
+for iSess = 1:length(Session)
+    if ischar(Session{iSess}{1})
+        Days{iSess} = Session{iSess}{1};
+    else
+        Days{iSess} = Session{iSess}(1).Day;
+    end
+end
+
+DaySession = Session(strcmp(Days,Day));

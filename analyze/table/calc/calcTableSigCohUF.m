@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e045f05eae60b54858940ab829e702c3a60af63fed1ee2912be26d286d0b2fd
-size 605
+function Value = calcSigCohUF(Session,CondParams,AnalParams)
+%
+%  Value = calcSigCohUF(Session,CondParams,AnalParams)
+
+iPanel = CondParams(1).iPanel;
+isubPanel = CondParams(1).isubPanel;
+timeind = CondParams.timeind;
+freqind = CondParams.freqind;
+
+Panels = loadPanels(Session, CondParams, AnalParams);
+if isempty(Panels) || ~isfield(Panels.Data(iPanel,1).SubPanel(1,isubPanel).Data,'SuppData')
+    savePanels(Session, CondParams, AnalParams,1)
+    Panels = loadPanels(Session, CondParams, AnalParams);
+end
+Value = Panels.Data(iPanel,1).SubPanel(1,isubPanel).Data.SuppData.pCoh(timeind,freqind) < 0.05;
+
+
+

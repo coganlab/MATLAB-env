@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:896d39022321cab37de1601051e74e4fcf42c84e02e5efebe3dd24a148dc37c0
-size 761
+function rate=SONIdealRate(fh, chan, newrate)
+% SONIDEALRATE gets or sets the ideal sampling rate on a channel
+%
+% RATE=SONIDEALRATE(FH, CHAN)
+% returns the current rate on channel CHAN in file FH
+%
+% RATE=SONIDEALRATE(FH, CHAN, NEWRATE)
+% returns the rate at the time of the call an sets a new rate if NEWRATE>0
+% Caution: this ovewrites the existing rate setting in the file
+%
+% FH is the SON file handle, CHAN is the channel number (0-SONMaxChans()-1)
+%
+% Note that the ideal rate setting does not influence the real rate of 
+% sampling
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin<3
+    newrate=-1;
+end;
+rate=calllib('son32','SONIdealRate', fh, chan, newrate);

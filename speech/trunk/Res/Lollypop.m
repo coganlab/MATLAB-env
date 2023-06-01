@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bfc80d690a45b2083e8e66512468208ad3c000c0c0a119ed45cad9eefdbd9df8
-size 802
+% LOLLYPOP: Produces 3D scatterplot in which points are anchored onto the 
+%           X,Y plane by a stem (subtended line).  Does not open a new figure window.
+%           Calls lollipop().
+%
+%     Syntax:  lollypop(x,y,z,{color})  OR  lollypop([x,y,z],{color})
+%
+%           x,y,z = column vectors of identical length.
+%           color = optional character value indicating color or circle and line
+%                     [default = 'k'].
+%
+
+% RE Strauss, 2/18/98
+%   6/6/03 - added optional color argument.
+
+function lollypop(x,y,z,color)
+  if (nargin < 3)
+    if (nargin < 2)
+      color = [];
+    else
+      color = y;
+    end;
+    z = x(:,3);
+    y = x(:,2);      
+    x = x(:,1);
+  elseif (nargin < 4)
+    color = [];
+  end;
+  
+  lollipop(x,y,z,color);
+  return;
+  

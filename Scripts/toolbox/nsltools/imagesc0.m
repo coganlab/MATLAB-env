@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:43f226761eebfc3af616689886c5d469485c0becb6e88d252325d8ad22918efd
-size 428
+function h = imagesc0(varargin)
+%IMAGESC0 Scale data and display as image, centering on zero.
+%   IMAGESC0(...) is the same as IMAGESC(...) except the data is scaled
+%   to use to center the colormap on zero.
+
+imagetoplot = varargin{end};
+maxsc = max([max(max(imagetoplot)) -min(min(imagetoplot))]);
+newvararg = varargin;
+newvararg{length(varargin)+1} = [-1 1]*maxsc;
+hh = imagesc(newvararg{:});
+
+if nargout > 0
+    h = hh;
+end

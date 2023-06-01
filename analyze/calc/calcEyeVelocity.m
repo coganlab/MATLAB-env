@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb8c0a08854c7f2cb78881edd752d1e48942b0c7ad1ad19c220d5346c9cffc1d
-size 251
+    function Velocity = calcEyeVelocity(E,g)
+%
+%  Velocity = calcEyeVelocity(Eye, g)
+%
+%   Currently works for one trial
+
+if nargin==1 [b,g]=sgolay(5,51); end
+sy = filter(g(:,2),1,E').*1e3;
+Velocity = sqrt(sum(sy'.^2));
+Velocity(1:50) = Velocity(51);

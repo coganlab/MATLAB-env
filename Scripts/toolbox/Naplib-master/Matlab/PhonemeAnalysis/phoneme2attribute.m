@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eeb578d9d1b8be136d5249c6c1828611fac01e96a737e84669947b7cb50d2881
-size 710
+function atr = phoneme2attribute (phn,cmd,mode)
+% phn = phoneme string
+% cmd = 'list' or [] 
+% mode = 'IPA' or 'Arpabet'
+% e.x. : atr=phoneme2attribute('axh',[],'IPA') => atr = {'voiced'
+% 'sonorant'    'syllabic'    'approximant'}
+% atr= phoneme2attribute('AA') => atr = {'voiced'    'sonorant'
+% 'syllabic'    'back'    'low'}
+% 
+% Neural Acoustic Processing Lab, 
+% Columbia University, naplab.ee.columbia.edu
+
+if ~exist('mode','var') || isempty(mode)
+    mode = 'Arpabet';
+end
+
+atr = [];
+atlist = attribute2phoneme([],'list',mode);
+for cnt1 = 1:length(atlist)
+    thisphn = attribute2phoneme(atlist{cnt1},[],mode);
+    if ~isempty(find(strcmpi(thisphn,phn)))
+        atr{end+1} = atlist{cnt1};
+    end
+end

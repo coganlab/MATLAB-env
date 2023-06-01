@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2745e12ac0dc74898a1d02749a1d446e2efbba381058fa7494e8b7b93b231a4
-size 319
+figure
+[x y z] = sphere(20); 
+s = surface(x,y,z,'facecolor','interp','cdata',z);
+set(s,'edgecolor','black','facealpha','flat','alphadata',x.*z);
+alpha('scaled'); 
+axis equal
+box on
+grid on
+campos([2 13 10]); 
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+title('Sphere with Alpha Data');
+plot2svg('sphere.svg');

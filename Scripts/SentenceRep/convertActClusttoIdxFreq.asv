@@ -1,3 +1,209 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ddad8c1d9baa903915c6770bebd296b79c085081026fa4d5f5e3c9291a4c94d
-size 7139
+function [iiA iiP iiSM sigMatLSA sigMatLMA sigMatJLA sigMatLSP sigMatLMP sigMatJLP]=convertActClusttoIdxFreq(actClustLSA,actClustLMA,actClustJLA,actClustLSP,actClustLMP,actClustJLP,zVal)
+actClust=actClustLSA;
+sigMatAll=zeros(5,length(actClust),40);
+for iF=1:5
+sigMat=zeros(length(actClust),40);
+counter=0;
+iiVal=[];
+for iChan=1:length(actClust)
+    if zVal==0
+        for iS=1:length(actClust{iChan}{iF}.Size)
+            if iscell(actClust{iChan}{iF}.Size)
+                
+                if actClust{iChan}{iF}.Size{iS}>actClust{iChan}{iF}.perm95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}{iF}.Start{iS}:actClust{iChan}{iF}.Start{iS}+actClust{iChan}{iF}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    elseif zVal==1
+        for iS=1:length(actClust{iChan}.Size)
+            if iscell(actClust{iChan}.Size)
+                if actClust{iChan}.Z{iS}>actClust{iChan}.permZ95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}.Start{iS}:actClust{iChan}.Start{iS}+actClust{iChan}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    end
+end
+iiLSA{iF}=iiVal;
+sigMatAll(iF,:,:)=sigMat;
+end
+sigMatLSA=sigMatAll;
+
+actClust=actClustLMA;
+sigMatAll=zeros(5,length(actClust),40);
+for iF=1:5
+sigMat=zeros(length(actClust),40);
+counter=0;
+iiVal=[];
+for iChan=1:length(actClust)
+    if zVal==0
+        for iS=1:length(actClust{iChan}{iF}.Size)
+            if iscell(actClust{iChan}{iF}.Size)
+                
+                if actClust{iChan}{iF}.Size{iS}>actClust{iChan}{iF}.perm95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}{iF}.Start{iS}:actClust{iChan}{iF}.Start{iS}+actClust{iChan}{iF}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    elseif zVal==1
+        for iS=1:length(actClust{iChan}.Size)
+            if iscell(actClust{iChan}.Size)
+                if actClust{iChan}.Z{iS}>actClust{iChan}.permZ95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}.Start{iS}:actClust{iChan}.Start{iS}+actClust{iChan}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    end
+end
+iiLMA{iF}=iiVal;
+sigMatAll(iF,:,:)=sigMat;
+end
+sigMatLMA=sigMatAll;
+
+
+actClust=actClustJLA;
+sigMatAll=zeros(5,length(actClust),40);
+for iF=1:5
+sigMat=zeros(length(actClust),40);
+counter=0;
+iiVal=[];
+for iChan=1:length(actClust)
+    if zVal==0
+        for iS=1:length(actClust{iChan}{iF}.Size)
+            if iscell(actClust{iChan}{iF}.Size)
+                
+                if actClust{iChan}{iF}.Size{iS}>actClust{iChan}{iF}.perm95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}{iF}.Start{iS}:actClust{iChan}{iF}.Start{iS}+actClust{iChan}{iF}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    elseif zVal==1
+        for iS=1:length(actClust{iChan}.Size)
+            if iscell(actClust{iChan}.Size)
+                if actClust{iChan}.Z{iS}>actClust{iChan}.permZ95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}.Start{iS}:actClust{iChan}.Start{iS}+actClust{iChan}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    end
+end
+iiJLA{iF}=iiVal;
+sigMatAll(iF,:,:)=sigMat;
+end
+sigMatJLA=sigMatAll;
+
+actClust=actClustLSP;
+sigMatAll=zeros(5,length(actClust),40);
+for iF=1:5
+sigMat=zeros(length(actClust),40);
+counter=0;
+iiVal=[];
+for iChan=1:length(actClust)
+    if zVal==0
+        for iS=1:length(actClust{iChan}{iF}.Size)
+            if iscell(actClust{iChan}{iF}.Size)
+                
+                if actClust{iChan}{iF}.Size{iS}>actClust{iChan}{iF}.perm95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}{iF}.Start{iS}:actClust{iChan}{iF}.Start{iS}+actClust{iChan}{iF}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    elseif zVal==1
+        for iS=1:length(actClust{iChan}.Size)
+            if iscell(actClust{iChan}.Size)
+                if actClust{iChan}.Z{iS}>actClust{iChan}.permZ95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}.Start{iS}:actClust{iChan}.Start{iS}+actClust{iChan}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    end
+end
+iiLSP=iiVal;
+sigMatLSP=sigMat;
+
+actClust=actClustLMP;
+sigMat=zeros(length(actClust),40);
+counter=0;
+iiVal=[];
+for iChan=1:length(actClust)
+    if zVal==0
+        for iS=1:length(actClust{iChan}{iF}.Size)
+            if iscell(actClust{iChan}{iF}.Size)
+                
+                if actClust{iChan}{iF}.Size{iS}>actClust{iChan}{iF}.perm95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}{iF}.Start{iS}:actClust{iChan}{iF}.Start{iS}+actClust{iChan}{iF}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    elseif zVal==1
+        for iS=1:length(actClust{iChan}.Size)
+            if iscell(actClust{iChan}.Size)
+                if actClust{iChan}.Z{iS}>actClust{iChan}.permZ95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}.Start{iS}:actClust{iChan}.Start{iS}+actClust{iChan}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    end
+end
+iiLMP=iiVal;
+sigMatLMP=sigMat;
+
+actClust=actClustJLP;
+sigMat=zeros(length(actClust),40);
+counter=0;
+iiVal=[];
+for iChan=1:length(actClust)
+    if zVal==0
+        for iS=1:length(actClust{iChan}{iF}.Size)
+            if iscell(actClust{iChan}{iF}.Size)
+                
+                if actClust{iChan}{iF}.Size{iS}>actClust{iChan}{iF}.perm95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}{iF}.Start{iS}:actClust{iChan}{iF}.Start{iS}+actClust{iChan}{iF}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    elseif zVal==1
+        for iS=1:length(actClust{iChan}.Size)
+            if iscell(actClust{iChan}.Size)
+                if actClust{iChan}.Z{iS}>actClust{iChan}.permZ95
+                    iiVal(counter+1)=iChan;
+                    sigMat(iChan,actClust{iChan}.Start{iS}:actClust{iChan}.Start{iS}+actClust{iChan}.Size{iS}-1)=1;
+                    counter=counter+1;
+                end
+            end
+        end
+    end
+end
+iiJLP=iiVal;
+sigMatJLP=sigMat;
+
+iiA1=intersect(iiLSA,iiLMA);
+iiA2=intersect(iiA1,iiJLA);
+iiP1=intersect(iiLSP,iiLMP);
+iiSM=intersect(iiA1,iiP1);
+%iiA=setdiff(iiA2,iiSM);
+iiA=setdiff(iiA1,iiSM); % remove dependence on JL?
+iiP=setdiff(iiP1,iiSM);

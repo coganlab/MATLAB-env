@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:568fc73487df1b508b1f4190f1de21f60f90a4a0ac5ee1c17831f3cd3e478eb1
-size 591
+function SONSetADCScale(fh, chan, scale)
+% SONSETADCSCALE sets the scale on an ADC channel
+% 
+% SONADCOFFSET(FH, CHAN, SCALE)
+% where FH is the SON file handle, CHAN is the channel number and SCALE is
+% the new value to be written to the file
+%
+% An ADC value is converted to a real value as:
+%         Real value=(16-bit ADC value * scale / 6553.6) + offset
+%
+% see also: SONSetADCOffset
+%
+% No return value
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+calllib('son32','SONSetADCOffset', fh, chan, scale);

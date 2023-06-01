@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cc8d45b54bafd67a6e39523685174df4e023d5b574d8d8634802c88eabc6f106
-size 530
+function [lDivide]=SONChanDivide(fh, chan)
+% SONCHANDIVIDE returns the clock ticks per ADC value from the specified
+% channel
+% LDIVIDE=SONCHANDIVIDE(FH, CHAN)
+%                             FH SON file handle
+%                             CHAN Channel number
+%
+% See also SONGETUSPERTIME
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin ~= 2
+    lDivide=-1000;
+    return;
+end;
+
+
+lDivide=calllib('son32','SONChanDivide',fh,chan);
+return;

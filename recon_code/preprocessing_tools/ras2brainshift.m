@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:701a15b6a42e4f1e58ed3a1bb14e0538f6411adde1c5432d444c57ab48831652
-size 550
+function ras2brainshift(subj, brainshifted)
+if brainshifted
+    suffix = '_brainshifted';
+else
+    suffix = '';
+end
+data = get_RAS_brainshifted_data(subj, brainshifted);
+fid = fopen(fullfile(get_recondir, subj, 'elec_recon', sprintf('%s_elec_locations_RAS%s.txt', subj, suffix)) ,'w');
+for d = 1:numel(data.labelprefix)
+    towrite = sprintf('%s %d %f %f %f %s %s\n', data.labelprefix{d}, data.labelnumber(d), data.xyz(d,1), data.xyz(d,2), data.xyz(d,3), data.hemisphere{d}, data.type{d});
+    fprintf(fid, towrite);
+end
+fclose(fid);
+end

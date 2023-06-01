@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:84a9117d9e5cfffbc2514c8828d31130efa74b16922ade6c0a72fda80f3085f0
-size 336
+
+which_channels = 33:2:55;
+dataf = EEGbandpass(data(which_channels,round(10*Fs):end-round(10*Fs)),1,floor(Fs/2),Fs);
+
+headstage_gain = 10;
+
+%std(dataf,0,2) * 2 * sqrt(2) / headstage_gain
+
+% report noise in uV RMS for sample 2,
+Fs
+noise_rms = (std(dataf,0,2) * 1000 * 1000) / headstage_gain
+mean_noise = mean(noise_rms(2:end))

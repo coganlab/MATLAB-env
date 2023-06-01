@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9108d8a6fae7f8d748288df873c75d8bccddd24a0cfe14f23b7dc4424be51ca0
-size 1179
+%  Delay Normalized Spectrogram Tasks panel
+clear CondParams AnalParams;
+SessType = sessType(Sess);
+
+fk = 200; tapers = [.5,5]; 
+clim = [-5,5]; 
+AnalNorm.bn = [-500, 1e3];
+
+CondParams(1,1).Name = ['Delay' SessType 'zScoreDifferentialDirectionSpectrogram']; 
+CondParams(1,1).Task = {{'DelReachSaccade'}};
+CondParams(1,1).conds = {[Dirs(1)]};
+CondDiff.Task = {{'DelReachSaccade'}};
+CondDiff.Cond = {[Dirs(2)]};
+CondParams(1,1).Diff = CondDiff;
+
+CondParams(2,1).Task = {{'DelSaccadeTouch','DelSaccade'}};
+CondParams(2,1).conds = {[Dirs(1)]};
+CondNorm.Task = {{'DelSaccadeTouch','DelSaccade'}};
+CondNorm.Cond = {[Dirs(2)]};
+CondParams(2,1).Diff = CondDiff;
+
+AnalParams(1,1).Field = 'TargsOn';
+AnalParams(1,1).bn = [-500,1e3];
+AnalParams(1,1).fk = fk;
+AnalParams(1,1).tapers = tapers;
+AnalParams(1,1).Type = [SessType 'zScoreSpectrogram'];
+AnalParams(1,1).CLim = clim;
+AnalNorm.Field = 'TargsOn';
+AnalParams(1,1).Norm = AnalNorm;
+
+AnalParams(1,2) = AnalParams(1,1);
+AnalParams(1,2).Field = 'SaccStart';
+AnalParams(1,2).bn = [-500,1e3];
+AnalParams(1,2).Type = [SessType 'zScoreSpectrogram'];
+AnalParams(1,2).CLim = clim;
+AnalNorm.Field = 'SaccStart';
+AnalParams(1,2).Norm = AnalNorm;
+

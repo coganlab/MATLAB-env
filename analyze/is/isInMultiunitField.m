@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:48862b7fb186e1ffb8462224f0d28fc95469af614a4ee34d6bd5e3235354e89d
-size 421
+function [flag,ind] = isInMultiunitField(MultiunitSess,FieldSess,Session)
+%
+%  [flag,ind] = isInMultiunitField(MultiunitSess,FieldSess,Session)
+%
+
+SN1 = sessNumber(MultiunitSess);
+SN2 = sessNumber(FieldSess);
+
+
+if isempty(Session)
+    ind = [];
+    flag = 0;
+else
+    A = getSessionNumbers(Session);
+    ind = find(A(:,1)==SN1 & A(:,2)==SN2);
+    if ~isempty(ind)
+        flag = 1;
+    else
+        flag = 0;
+    end
+end

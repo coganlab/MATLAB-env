@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:053eaa36b60d2631793e4876efe0228bb60845df95d678b11d2c5136e3f55df6
-size 301
+% PB performance measure begin
+%	pb; 
+%
+%	PB starts performance measure by storing current CLOCK (t0_clock),
+%	and CPUTIME (t0_cputime).
+%	See also: PD, TIME_EST, ALARMSIG
+
+% Auther: Powen Ru (powen@isr.umd.edu), NSL, UMD
+% v1.00: 01-Jun-97
+
+t0_clock = clock;
+t0_cputime = cputime;
+%n0_flops = flops;

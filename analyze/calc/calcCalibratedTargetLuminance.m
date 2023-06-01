@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:007bad41d132f6efa3bc7a2fc08ab7a63fcb5b29003341a6e582cfb11205986f
-size 443
+function luminance = calcCalibratedTargetLuminance(brightness_calibration,target_size_degrees,brightness_values);
+
+for i=1:length(brightness_calibration)
+  if  brightness_calibration(i).target_size_degrees == target_size_degrees
+   p = brightness_calibration(i).polynomial_fit_parameters;
+   break;
+  end
+end
+
+luminance = zeros(size(brightness_values));
+for i=1:length(p)
+  luminance = luminance + p(i).*brightness_values.^(length(p)-i); 
+end

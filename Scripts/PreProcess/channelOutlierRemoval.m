@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:53fb6cc4ed53b805e2bbb54ec7d8cb8e37bda6af60c4f752f00d013a3bde9b62
-size 915
+function badChannels = channelOutlierRemoval(Subj,Task,Trials,Field)
+global BOX_DIR
+global TASK_DIR
+global experiment
+outlierSD=3;
+ieeg=trialIEEG(Trials,Subj.ChannelNums,Field,[-2000 5000]);
+%ieegR=zeros(size(ieeg,2),size(ieeg,1)*size(ieeg,3));
+% for iChan=1:size(ieeg,2);
+%     disp([iChan '/' size(ieeg,2)]);
+%     ieegR(iChan,:)=reshape(ieeg(:,iChan,:),1,size(ieeg,1)*size(ieeg,3));
+% end
+ieeg=permute(ieeg,[2,1,3]);
+ieegR=reshape(ieeg,size(ieeg,1),size(ieeg,2)*size(ieeg,3));
+
+
+ieegR2=detrend(ieegR').^2;
+iiZero=find(ieegR2==0);
+ieegR2(iiZero)=.000000001;
+
+ieegSTD=std(log(ieegR2),[],1);
+ieegSTD=std(ieegR2,[],1);
+
+[m s]=normfit(ieegSTD);
+iiOutPlus1=find(ieegSTD>(outlierSD*s+m));
+chanIn=setdiff(1:size(ieegSTD,2),iiOutPlus1);
+[m s]=normfit(ieegSTD(chanIn));
+iiOutPlus2=find(ieegSTD(chanIn)>(3*s+m));
+
+badChannels=sort(cat(2,iiOutPlus1,chanIn(iiOutPlus2)));
+
+
+
+
+
+
+
+
+
+
+
+

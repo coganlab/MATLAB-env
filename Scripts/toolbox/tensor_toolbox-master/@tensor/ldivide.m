@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7d4a3b35ff77bae530288b7897e1539706dd37eec47578df5d0df5960865f2fe
-size 846
+function Z = ldivide(X,Y)
+%LDIVIDE Left array divide for tensor.
+%
+%   LDIVIDE(A,B) is called for the syntax 'A .\ B' when A or B is a tensor.
+%   A and B must have the same size, unless one is a scalar.  
+%
+%   Examples
+%   X = tenrand([4 3 2],5);
+%   X .\ 3
+%   X .\ X
+%
+%   See also TENSOR, TENSOR/RDIVIDE.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+Z = tenfun(@ldivide,X,Y);

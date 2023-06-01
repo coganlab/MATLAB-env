@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e65f80a556dc4aba2ff9ea1f8b38e35301a129dd4e5f92c8829b2fcce12b044c
-size 233
+function outv=addscatter(in,amount)
+%adds amount of scatter for plotting, normal distribution
+
+if nargin==1
+	amount=10;
+end
+
+rn=(Scale(randn(size(in)))-0.5)*2;
+
+maxx=max(max(in));
+
+rn=rn*((maxx/100)*amount);
+
+outv=in+rn;

@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:56003e1293d15e3cd18df7a5cdef5bc7ba11122a6b61396b70884c383ba1e55e
-size 521
+function Value = calcPartialCoh(Session,CondParams,AnalParams)
+%
+%  Value = calcPartialCoh(Session,CondParams,AnalParams)
+
+iPanel = CondParams(1).iPanel;
+isubPanel = CondParams(1).isubPanel;
+timeind = CondParams.timeind;
+freqind = CondParams.freqind;
+
+Panels = loadPanels(Session, CondParams, AnalParams);
+if isempty(Panels)
+    savePanels(Session, CondParams, AnalParams)
+    Panels = loadPanels(Session, CondParams, AnalParams);
+end
+Value = Panels.Data(iPanel,1).SubPanel(1,isubPanel).Data.Data(timeind,freqind);
+
+
+
+
+
+

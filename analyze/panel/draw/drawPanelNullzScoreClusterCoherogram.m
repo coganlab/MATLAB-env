@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b8126f2fe923a2b2c2242aacc6f8c92377ca79597726ba0d16ca2ecdddc0bc9f
-size 252
+function [Axes, DataHandle] = drawPanelNullzScoreClusterCoherogram(Axes,Data)
+%
+%  Axes = drawPanelNulllzScoreCoherogram(Axes,Data)
+%
+
+DataHandle = imagesc(flipud(Data.Data'),'Parent',Axes);
+set(Axes,'XTickLabel','','YTickLabel','','TickDir','out');
+
+

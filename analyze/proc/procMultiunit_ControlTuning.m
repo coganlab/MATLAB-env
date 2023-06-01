@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0381e65a4487ce9ff72ccd159b6c7fa49f36278c134a845eda92b44ea1359b5c
-size 257
+function procMultiunit_ControlTuning(day)
+%
+%  procMultiunit_ControlTuning(day)
+%
+
+Session = loadMultiunit_Database;
+Days = sessDay(Session);
+DayInd = find(strcmp(Days,day));
+
+for iSess = 1:length(DayInd)
+  updateMultiunit_ControlTuning(DayInd(iSess));
+end

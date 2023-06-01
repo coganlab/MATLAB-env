@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8f6bec1ed011c305e89a67629781625e9228ab20ce98dfed02a586309c31f48c
-size 725
+function Value = calcTunedUnitS2(Session,CondParams,AnalParams)
+%
+%  Value = calcTunedUnit(Session,CondParams,AnalParams)
+
+
+% [RateDiff.p,~,~,~,~] = sessTestRateDiff(Sess{1}, CondParams{1}, CondParams{2});
+
+global MONKEYDIR
+
+Sess = splitSession(Session);
+
+Type = getSessionType(Sess{2});
+dirPath = [MONKEYDIR '/mat/' Type '/RateDiff'];
+fNameRoot = ['RateDiff.Sess' num2str(Sess{1}{6}) ];
+
+[p,pMax] = getParamFileIndex([dirPath '/' fNameRoot],CondParams,[]);
+
+if p > 0 
+    RateDiff = loadSessTestRateDiff(Sess{1},CondParams{1}, CondParams{2});
+else
+    RateDiff = saveSessTestRateDiff(Sess{1},CondParams{1},CondParams{2});
+end
+
+%load up saved tuning information
+if RateDiff.p < 0.05
+    Value = 1;
+else
+    Value = 0;
+end
+
+
+

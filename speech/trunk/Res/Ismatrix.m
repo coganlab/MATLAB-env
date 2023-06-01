@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e27e27a2d391286e5b5253a50e65807db64a6516da41322e11797ce30cc496f
-size 302
+% ISMATRIX: Returns 1 if the input matrix is 2+ dimensional, 0 if it is a scalar 
+%           or vector.
+%
+%     Usage ismat = ismatrix(X)
+%
+
+% RE Strauss, 5/19/00
+
+function ismat = ismatrix(X)
+  [r,c] = size(X);
+  if (r>1 & c>1)
+    ismat = 1;
+  else
+    ismat = 0;
+  end;
+
+  return;

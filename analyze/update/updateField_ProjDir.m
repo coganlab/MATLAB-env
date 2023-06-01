@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:07dc30682c75a95da63388ded8ff7328ff292253c9d17b305219981545a4d276
-size 281
+function updateField_ProjDir(NewProjDir)
+%
+% updateField_ProjDir(NewProjDir)
+%
+
+global MONKEYDIR
+
+PROJDIR_INDEX = 7;
+Session = loadField_Database;
+for iSess = 1:numel(Session)
+  Session{iSess}{PROJDIR_INDEX} = NewProjDir;
+end
+save([MONKEYDIR '/mat/Field_Session.mat'],'Session');
+

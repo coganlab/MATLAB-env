@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e38a8a895b7dd908d4075a8378acd8495693f7aaf5f3da8206b5a862a0d7fc34
-size 689
+function [data,sv]=spikescache(spikesfile,save)
+
+global spikecache
+global data
+global sv
+
+if isempty(data) | isempty(sv)
+	return;
+end
+
+if ~isfield(spikecache,'size')
+	spikecache.size=0;
+	spikecache.index=0;
+end
+
+for i=1:spikecache.size
+	fname=[spikecache.cell(i).data.filename ' | Cell ' num2str spikecache.cell(i).data.cell];
+	if strcmp(fname,spikesfile)
+		if exist('save','var') %we want to save
+			spikecache.size=spikecache.size+1;
+			spikecache.index=spikecache.index+1;
+			spikecache.cell(spikecache.size).data=data;
+			spikecache.cell(spikecache.size).sv=sv;
+		else
+			data=spikecache.cell(i).data;
+			sv=spikecache.cell(i).sv;
+			return;
+		end
+	end
+end

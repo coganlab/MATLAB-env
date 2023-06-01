@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2ae6d2f6134bc80ad3de7c7368777d0bd761732873c815b0f36c37e0e644bf66
-size 522
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+
+/* Make header C++ compatible */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mex.h"
+#include "hist_mx.h"
+#include "gen_mx.h"
+#include "../input/input_mx.h"
+#include "../entropy/entropy_mx.h"
+
+/* Make header C++ compatible */
+#ifdef __cplusplus
+}
+#endif
+

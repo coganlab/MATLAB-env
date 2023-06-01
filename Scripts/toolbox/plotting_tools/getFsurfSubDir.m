@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f0828f89d5123962a3b4aa215667fcbb3f023c4a155a4d8ae93932253f01898
-size 811
+function fsurfSubDir = getFsurfSubDir()
+%function fsurfSubDir = getFsurfSubDir()
+%   Returns the Freesurfer Subject Directory as defined by the global
+%   Matlab variable globalFsDir or the shell variable SUBJECTS_DIR
+
+global RECONDIR;
+
+if ~isempty(RECONDIR)
+    fsurfSubDir=RECONDIR;
+else
+    if ispc,
+%         error('Hey mon, if you be using Windows you need to define the global variable "globalFsDir" and put the path to your FreeSurfer subject folder in it.');
+        fsurfSubDir=uigetdir(userpath,'select freesurfer directory');
+    else
+        fsurfSubDir=getenv('SUBJECTS_DIR');
+        if isempty(fsurfSubDir)
+            error('Could not read shell variable SUBJECTS_DIR. Try storing the path to your FreeSurfer subjects folder in the global variable globalFsDir.');
+        end
+    end
+end
+
+
+end
+

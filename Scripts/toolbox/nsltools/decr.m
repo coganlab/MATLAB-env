@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:297c15799d2844bdde5a348f425e0c55a29bf5723a35f3eb7277cac589065e07
-size 239
+function decr(decrVar,decrN)
+%
+% postdecr = decr(decrVar) decrements decrVar by 1
+% postdecr = decr(decrVar,decrN) decrements decrVar by decrN
+%
+% see incr
+
+if ~exist('decrN','var'),decrN = 1;end
+assignin('base',inputname(1),decrVar-decrN)
