@@ -1,0 +1,102 @@
+function nyu_ieeg_elec_plot(varargin)
+% a stand-alone program that shows the elecs
+
+%% Get the elec info
+[FileName,PathName] = uigetfile('*.txt','Select the electrodes text file','R:\DATA\');
+[name x y z] = textread([PathName, FileName],'%s %f %f %f');
+elec_cell = [name,num2cell(x),num2cell(y),num2cell(z)];
+g = strmatch('G',name);
+elec_grid = elec_cell(g,:);
+d = strmatch('D',name);
+elec_depth = elec_cell(d,:);
+elec_cell([g;d],:) = [];
+
+%% Get the surf info
+[surfname, surfpath] = uigetfile('*.mat','Select the patient brain surf',PathName);
+a = findstr(surfname,'_')+1;
+sph = surfname(a(1):a(1)+1);
+
+%% Plot the elecs
+plt = menu('Do you want to plot the result?','Grid only', 'Strip only',...
+    'Both Grid and Strip','No, thanks');
+if plt==1
+    load([surfpath surfname]);
+    nyu_plot(surf_brain,sph,cell2mat(elec_grid(:,2:4)),char(elec_grid(:,1)),'r');
+elseif plt==2
+    load([surfpath surfname]);
+    nyu_plot(surf_brain,sph,cell2mat(elec_cell(:,2:4)),char(elec_cell(:,1)),'b');
+elseif plt ==3
+    load([surfpath surfname]);
+    elec = cell2mat(elec_cell(:,2:4));
+    elec_name = char(elec_cell(:,1));
+    nyu_plot(surf_brain,sph,cell2mat(elec_grid(:,2:4)),char(elec_grid(:,1)),'r'); hold on;
+    for i=1:length(elec)
+        plot3(elec(i,1),elec(i,2),elec(i,3),'bo','MarkerFaceColor','b');
+        text('Position',[elec(i,1) elec(i,2) elec(i,3)],'String',elec_name(i,:),'Color','w');
+    end
+    hold off;
+else 
+    return;
+    
+
+end
+
+%% nyu_plot
+function nyu_plot(surf_brain,sph,elec,elecname,color)
+sub.vert = surf_brain.coords;
+sub.tri = surf_brain.faces;
+
+tripatch(sub, '', [.7 .7 .7]);
+
+shading interp;
+lighting gouraud;
+material dull;
+l=light;
+axis off
+hold on
+for i=1:length(elec)
+    plot3(elec(i,1),elec(i,2),elec(i,3),[color 'o'],'MarkerFaceColor',color);
+    %text('Position',[elec(i,1) elec(i,2) elec(i,3)],'String',elecname(i,:),'Color','w');
+end
+if strcmp(sph,'lh')
+    view(270, 0);
+    set(l,'Position',[-1 0 1]); % left hemi
+elseif strcmp(sph,'rh') 
+    view(90,0);
+    set(l,'Position',[1 0 1]); % right hemi
+end
+set(gcf, 'color','black','InvertHardCopy', 'off');
+
+%% Tripatch
+function handle=tripatch(struct, nofigure, varargin)
+% TRIPATCH handle=tripatch(struct, nofigure)
+
+if nargin<2 | isempty(nofigure)
+   figure
+end% if
+if nargin<3
+   handle=trisurf(struct.tri, struct.vert(:, 1), struct.vert(:, 2), struct.vert(:, 3));
+else
+   if isnumeric(varargin{1})
+      col=varargin{1};
+      varargin(1)=[];
+      if [1 3]==sort(size(col))
+         col=repmat(col(:)', [size(struct.vert, 1) 1]);
+      end% if
+      handle=trisurf(struct.tri, struct.vert(:, 1), struct.vert(:, 2), struct.vert(:, 3), ...
+         'FaceVertexCData', col, varargin{:});
+      if length(col)==size(struct.vert, 1)
+         set(handle, 'FaceColor', 'interp');
+      end% if
+   else
+      handle=trisurf(struct.tri,struct.vert(:,1),struct.vert(:,2),struct.vert(:,3),varargin{:});
+   end% if
+end% if
+axis tight
+axis equal
+hold on
+if version('-release')>=12
+   cameratoolbar('setmode', 'orbit')
+else
+   rotate3d on
+end% if

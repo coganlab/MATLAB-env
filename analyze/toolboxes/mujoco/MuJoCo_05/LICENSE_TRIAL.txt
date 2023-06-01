@@ -1,0 +1,14 @@
+MuJoCo 0.5.0 Free Limited-time No-distribution License
+
+Roboti LLC hereby grants you license to use MuJoCo 0.5.0
+without fee for a limited time, subject to the following terms:
+
+1. You will not disassemble or reverse engineer the software.
+
+2. You will not distribute any part of the software in any form,
+   including as a library linked to another program.
+
+3. You will not use the software after Dec 31, 2013.
+
+MuJoCo is distributed without any warranty.
+In no event will Roboti LLC be liable to you for any damages.

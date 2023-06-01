@@ -1,0 +1,113 @@
+<mujoco version="1.0">
+	<compiler inertiafromgeom="true" maxjacobian="200" maxcontact="150"/>
+	<engine modelname="rhesus arm and toy"  gravity="0 0 -9.8" integrator="interleave" timestep="0.01" softclamp="0" 
+            sclsoftness="0.001 0.001" imperrreduce="0.001" algorithm="GS" atype="full" maxiter="5" viscosity="1"/>
+	<default>
+		<geom contype="1" condim="3" colmask="0 0" mindist="0.001" rgba=".9 .5 .8 1" friction=".7 .1 .1"/>
+		<joint limtype="1" damping=".0001"/>
+	</default>
+
+	<world angle="radian" coordinate="local">
+	
+		<geom type="plane" pos="0.15 0 -0.03" size="1 1 3" rgba=".6 .6 .5 1" />
+
+		<!--  ================= ARM ================= /-->
+		
+
+		<body name="prepelvis" pos="0 0 0" quat="0.70710678 0.70710678 0 0" viscscale="1">
+            <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+            <joint name="lower_torso_TZ_root" type="free" limtype="0" pos="0 0 0" axis="0 0 1" />
+            <body name="pelvis" pos="0 0 0" viscscale="1">
+                <inertial pos="-0.0893 -0.025796 0" mass="8.3775" inertia="0.053993 0.061279 0.067263" />
+                <body name="lumbar" pos="-0.043398 0.012031 0" viscscale="1">
+                    <inertial pos="0.0145 0.075 0" mass="7.5375" inertia="0.014659 0.009207 0.019836" />
+                    <joint name="lumbar_pitch" type="hinge" limtype="0" pos="0 0 0" axis="0 0 1" />
+                    <joint name="lumbar_roll" type="hinge" limtype="0" pos="0 0 0" axis="1 0 0" />
+                    <joint name="lumbar_yaw" type="hinge" limtype="0" pos="0 0 0" axis="0 1 0" />
+                    <body name="torso" pos="-0.004536 0.057536 0" viscscale="1">
+                        <inertial pos="0.0145 0.152288 0" mass="16.68" inertia="0.137572 0.086407 0.18616" />
+                        <body name="clavicler" pos="0.014314 0.102024 0.010345" viscscale="1">
+                            <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                            <joint name="sternoclavicular_r_r2" type="hinge" pos="0 0 0" axis="0.01530000 0.98929870 -0.14509996" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                            <joint name="sternoclavicular_r_r3" type="hinge" pos="0 0 0" axis="-0.99447254 0 -0.10499695" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                            <body name="shouldermarkerr" pos="-0.010714 0.0125 -0.010344" viscscale="1">
+                                <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                            </body>
+                            <body name="clavphantr" pos="-0.005809 0.008135 0.055061" viscscale="1">
+                                <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                <joint name="unrotscap_r_r3" type="hinge" pos="0 0 0" axis="-0.99447254 0 -0.10499695" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                <joint name="unrotscap_r_r2" type="hinge" pos="0 0 0" axis="0.01530000 0.98929870 -0.14509996" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                <body name="scapular" pos="0 0 0" viscscale="1">
+                                    <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                    <joint name="acromioclavicular_r_r2" type="hinge" pos="0 0 0" axis="0.15709493 0.94726859 -0.27929088" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                    <joint name="acromioclavicular_r_r3" type="hinge" pos="0 0 0" axis="-0.75408404 0.29759402 0.58548703" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                    <joint name="acromioclavicular_r_r1" type="hinge" pos="0 0 0" axis="0.63769985 0.11859997 0.76109982" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                    <body name="scapphantr" pos="-0.003871 -0.013782 0.003656" viscscale="1">
+                                        <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                        <joint name="unrothum_r_r1" type="hinge" pos="0 0 0" axis="0.63769985 0.11859997 0.76109982" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                        <joint name="unrothum_r_r3" type="hinge" pos="0 0 0" axis="-0.75408404 0.29759402 0.58548703" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                        <joint name="unrothum_r_r2" type="hinge" pos="0 0 0" axis="0.15709493 0.94726859 -0.27929088" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                        <body name="humphantr" pos="0 0 0" viscscale="1">
+                                            <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                            <joint name="elevation_angle_r" type="hinge" pos="0 0 0" axis="0.00480000 0.99908918 0.04240001" limit="-1.57079633 3.83972435" softness="0.0001" mindist="0.01" />
+                                            <body name="humphant1r" pos="0 0 0" viscscale="1">
+                                                <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                                <joint name="shoulder_elevation_r" type="hinge" pos="0 0 0" axis="-0.99826136 0.00230000 0.05889802" limit="0 3.14159265" softness="0.0001" mindist="0.01" />
+                                                <joint name="shoulder1_r_r2" type="hinge" pos="0 0 0" axis="0.00480000 0.99908918 0.04240001" limit="-99999.9 99999.9" softness="0.0001" mindist="0.01" />
+                                                <body name="humerusr" pos="0 0 0" viscscale="1">
+                                                    <inertial pos="0 -0.081501 0" mass="2.0325" inertia="0.002932 0.001012 0.003291" />
+                                                    <joint name="shoulder_rotation_r" type="hinge" pos="0 0 0" axis="0.00480000 0.99908918 0.04240001" limit="-1.57079633 2.09439510" softness="0.0001" mindist="0.01" />
+                                                    <body name="elbowmarkerr" pos="0 0 0" quat="0.99973860 0.02001526 0.00044540 0.01104178" viscscale="1">
+                                                        <inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                                    </body>
+                                                    <body name="ulnar" pos="0.004 -0.141 -0.005" viscscale="1">
+                                                        <inertial pos="0.00483735 -0.0707474 0.0350708" mass="2.11654033" inertia="0.00355656 0.00074392 0.00385719" />
+                                                        <joint name="elbow_flexion_r" type="hinge" pos="0 0 0" axis="0.04940001 0.03660001 0.99810825" limit="0 2.26892803" softness="0.0001" mindist="0.01" />
+                                                        <body name="radiusr" pos="0.0004 -0.007 0.012" viscscale="1">
+                                                            <inertial pos="0.00604668 -0.0707474 0.0120934" mass="2.11654033" inertia="0.00355656 0.00074392 0.00385719" />
+                                                            <joint name="pro_supination_r" type="hinge" pos="0 0 0" axis="-0.01716099 0.99266564 -0.11966796" limit="-1.04719755 1.04719755" softness="0.0001" mindist="0.01" />
+                                                            <body name="wristmarkerr" pos="-0.0004 0.011503 -0.02" quat="0.70613772 -0.09841024 0.70022527 -0.03700711" viscscale="1">
+                                                                <site name="fingertip" pos="0.1 0 0" />
+								<inertial pos="0 0 0" mass="0.000001" inertia="0 0 0" />
+                                                            </body>
+                                                        </body>
+                                                    </body>
+                                                </body>
+                                            </body>
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+
+
+
+		<!--  ================= TOY ================= /-->
+		<body name="toy" pos="0.15 0 3.25" quat="1 0.01 0.01 0" >
+			<geom type="capsule" fromto="-.03 0 0 .03 0 0" size="0.015" rgba=".3 .5 .8 1" />
+			<geom type="capsule" fromto="0 -.03 0 0 .03 0" size="0.015" rgba=".3 .5 .8 1" />
+			<geom type="capsule" fromto="0 0 -.03 0 0 .03" size="0.015" rgba=".3 .5 .8 1" />
+			<site name="point" pos="-.045 0 0" />
+			<joint name="free" type="free" pos="0 0 0" limtype="0" damping="0"/>
+			<body name="link1" pos="0.08 0 0"  >
+				<joint name="jlink1" type="ball" pos="-0.04 0 0" limtype="0"/>
+				<geom type="box" size=".03 0.01 0.01"  rgba=".3 .5 .8 1" />
+				<body name="link2" pos="0.08 0 0"  >
+					<joint name="jlink2" type="ball" pos="-0.04 0 0" limtype="0"/>
+					<geom type="box" size=".03 0.01 0.01"  rgba=".3 .5 .8 1" />
+					<body name="link3" pos="0.08 0 0"  >
+						<joint name="jlink3" type="ball" pos="-0.04 0 0" limtype="0"/>
+						<geom type="box" size=".03 0.01 0.01"  rgba=".3 .5 .8 1" />
+					</body>
+				</body>				
+			</body>
+		</body>		
+		
+
+	</world>
+	
+</mujoco>

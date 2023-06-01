@@ -1,0 +1,11 @@
+<mujoco version="1.0">
+	<engine modelname="downhill"  timestep="0.01" imperrreduce="0.01" gravity="1 0 -10"	sclsoftness="0.01 0.01"/>
+	<world coordinate="local" angle="radian">
+		<geom name="ground" type="plane" contype="1" mindist="0.01" pos="0 0 0" size="4 4 4" rgba="0.9 0.9 0.9 1"/>
+		<body pos="-4 0 0.3">
+			<joint type="free" pos="0 0 0"/>
+			<geom type="cylinder" size="0.2 0.02" quat="1 1 0 0" contype="1"/>
+		</body>
+	</world>
+</mujoco>
+

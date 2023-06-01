@@ -1,0 +1,13 @@
+Entry-point instructions:
+
+1) Type 'set_path'.
+
+2) 'mj' is the mex interface to the MuJoCo physics engine. 
+	Type 'mj' for quick help.
+
+3) Load a model with mj('load','filename'). For example try
+   mj('load', which('cartpole.xml'))
+
+4) Plot the model by typing 'mjplot'.
+
+5) Hit 'spacebar' to simulate.

@@ -1,0 +1,25 @@
+This folder will be used for benchmark models for online decoding.  Each folder is for one model, and contains Matlab files with a standard interface.  Currently, that interface is:
+
+[params hyperparams] = train( arm_data, neural_data, hyperparams )
+	output:
+		params - struct containing all the parameters of the model
+		hyperparams - struct containing hyperparameters of the model.  Identical to the input if input is provided.  If no input hyperparameters are provided, returns default values.
+	input:
+		arm_data - double array of arm kinematics (i.e. joint angles) over time
+		neural_data - double array of neural data (i.e. threshold crossing counts) over time
+		hyperparams - struct of hyperparameters (e.g. slack parameter for KARMA).
+state = initialize( params )
+	output:
+		state - struct containing initial state of the decoder (i.e. mean and covariance for Kalman filter)
+	input:
+		params - struct containing all the parameters of the model
+[state prediction] = decode( state, params, neural_data )
+	output:
+		state - struct containing the updated state after one time step, passed to "decode" again at next time step
+		prediction - double array containing the decoded joint angles for that time step
+	input:
+		state - struct containing current state of the decoder (e.g. mean and covariance for Kalman filter)
+		params - struct containing all the parameters of the model
+		neural_data - double array containing neural data for that time step (i.e. count of threshold crossings for each electrode)
+
+For some decoders such as KARMA, there are free parameters that need to be optimized after the "fit" step, and another function "validate" should be included.  Since we primarily want a speed benchmark right now and are not as concerned with decoding accuracy, we can save this for later.

@@ -1,0 +1,20 @@
+MATLAB Benchmark Data.
+$Revision: 1.1.6.3.4.1 $ $Date: 2012/01/31 18:02:25 $
+Copyright 1984-2012 The MathWorks, Inc.
+Get latest revision from:
+   http:/www.mathworks.com/matlabcentral/fileexchange/Files.jsp?field=1836
+                                                             LU      FFT     ODE    Sparse   2-D     3-D
+Windows XP (32-bit) 2.66 GHz Intel Core 2                    0.2307  0.2666  0.1323 0.2341   0.3719  0.5556
+  2 threads, Windows XP SP3, 2.66 GHz Intel Core 2 CPU 6700, 3.25 GB memory, NVidia Quadro FX 1500, 7.14.0.657 (R2012a)
+Windows 7 Enterprise (64-bit) 2.66 GHz Intel Core 2 Quad     0.1201  0.2605  0.1493 0.2565   0.4723  0.7182
+  4 threads, Windows 7 Enterprise x64, 2.66 GHz Intel Core 2 Quad, 4 GB memory, NVidia Quadro FX 1500, MATLAB 7.14.0.657 (R2012a)
+Windows 7 Enterprise (64-bit) 3.47 GHz Intel Xeon            0.0664  0.0722  0.1056 0.1305   0.2772  0.7000
+  6 threads, Windows 7 Enterprise x64, 3.47 GHz Intel Xeon W3690, 24 GB memory, NVidia Quadro 400, MATLAB 7.14.0.657 (R2012a)
+Windows 7 Enterprise (64-bit) 2.7 GHz Intel Core i7          0.0834  0.1147  0.0902 0.1424   0.2927  0.6880
+  2 threads, Windows 7 Enterprise x64, Intel Core i7-2620M 2.7 GHz, 8 GB memory, NVidia NVS 4200M, MATLAB 7.14.0.657 (R2012a)
+Mac OS X Lion (64-bit) 2.66 GHz Intel Xeon                   0.0445  0.1251  0.1829 0.1858   0.6658  0.6193
+  12 threads, OS X 10.7.2, 2.66 GHz Intel Xeon X5650, 16 GB memory, ATI Radeon HD 5770, MATLAB 7.14.0.657 (R2012a)
+Mac OS X Snow Leopard (64-bit) 2.66 GHz Intel Xeon           0.1395  0.3060  0.2042  0.2990  0.8073  0.9341
+  4 threads, OS X 10.6.8, 2.66 GHz Intel Xeon, 4 GB memory, NVidia GeForce 7300GT, MATLAB 7.14.0.657 (R2012a)
+Linux (64-bit) 3.47 GHz Intel Xeon                           0.0582  0.0541  0.1468  0.1208  0.1969  0.0889
+  6 threads, 2.6.32-5-amd64 kernel, 3.47 GHz Intel Xeon W3690, 24 GB memory, NVidia Quadro FX, MATLAB 7.14.0.657 (R2012a)

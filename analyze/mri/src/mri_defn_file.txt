@@ -1,0 +1,52 @@
+
+# ------ autorecon1 -------------------------------------------------------------
+
+# motion correct original files and volume and surface coil files
+motion_correction.csh 001.nii 002.nii 003.nii
+
+# correct for coil bias
+bias_correction.csh
+
+# conform data for what freesurfer expects
+conform_data.csh
+
+# reset axes to account for sphinx position of scanning
+sphinx_correction.csh
+
+# register the data as freesurfer expects
+# for manual editing, click 'SAVE REG' > replace
+registration.csh
+
+# nonuniform + susan normalization
+normalization_nu.csh
+
+# normalize so that white matter has 110 intensity
+normalization_T1.csh
+
+# create brain mask
+skull_strip.csh
+
+
+# ------ autorecon2 -------------------------------------------------------------
+
+# segment white matter
+segment_wm.csh
+
+# create filled wm volume. 
+fill_wm.csh
+
+# make surfaces
+make_surf.csh
+
+
+# ------ autorecon3 -------------------------------------------------------------
+
+# make final spherical inflation and jacobian
+make_sphere.csh
+
+# cortical statistics calculation, thickness, etc
+make_gm_stats.csh
+
+# make ribboon volume (labeled gray and white matter)
+make_ribbon.csh
+

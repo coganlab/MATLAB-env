@@ -1,0 +1,13 @@
+Make a copy of plotting_tools/ and use addpath() to add that folder to your matlab search paths (put this command in your startup.m)
+
+Sync Box/ECoG_Recon to your PC (~1GB in size)
+
+define global RECONDIR in matlab, which is the directory of wherever ECoG_Recon is on your PC. (put these commands in your startup.m)
+
+e.g.
+
+global RECONDIR;
+RECONDIR = 'c:/users/sf225/Box Sync/ECoG_Recon';
+
+
+type "edit demo_plot_functions" in matlab command line. This file has examples of basic usage for the various tools.

@@ -1,0 +1,2 @@
+Make a copy of preprocessing_tools/ and plotting_tools/ and use addpath(genpath()) to add those folders to your matlab search paths (put this command in your startup.m)
+

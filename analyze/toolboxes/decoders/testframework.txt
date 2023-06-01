@@ -1,0 +1,73 @@
+Interface to decoders
+----------------------
+
+- decoders are functions that take a sequence of inputs and produce a sequence of outputs
+- a flag is specifying whether their learning is enabled or not 
+
+- parameter conventions
+ * input sequence: a 2D matrix of one d-dimensional 
+ 		feature vector (binary or continuous-valued) per time-step
+ * dt: the real-world time [in ms] between two input vectors
+ * target dt ~20Hz
+ * output sequence: 2D matrix? of positions? velocities? joint angles?
+ 
+- if the decoders are not state-less:
+ * (optional) x_0: some representation of initial state 
+ * (optional output) x_T: some representation of final state 
+ 
+- meta-data, e.g.:
+ * what type are the inputs: bins, spikes, other features?
+ * target outputs: which subsequences are task-driven, when is the movement initiated?
+
+
+Data preprocessing
+------------------
+
+- spike threshold crossings (multiple)
+- correlation features
+- binning
+
+
+Training data
+--------------
+
+- Electrodes don't move in 4-hour sessions, which are split into ~10min recordings, 
+	which in turn are split into 2-10sec trials, each ending with a successful grasp.
+- Endpoint positions are distributed in 3D space (probably not uniformly)
+- Trajectory data might be marker positions, later should be joint angles (matching sequences)
+
+
+ 
+Performance measures
+--------------------
+
+- Variants:
+ * MSE on position at each time-step
+ * possibly weighted by that joint/bone's range
+ * possibly using a temporal matching?
+ * MSE on endpoint
+
+- Test data:
+ * sequence immediately following training sequence (same monkey, day, recording session)
+ * test sequence after some delay
+ * same day, different recording session
+ * different day, same monkey
+ * different monkey
+ * each of the above with same or different target behavior
+ * each of the above with a similar subspace of endpoints, or with a different subspace of endpoints
+
+- Online learning scenarios
+ * ...
+ 
+ 
+
+Lua networks:
+-------------
+Decoder function is a wrapper around 
+		{save data, 
+		 run lua script, 
+		 load outputs from newly produced file}.
+
+
+
+

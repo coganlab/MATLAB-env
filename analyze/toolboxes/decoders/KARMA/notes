@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+Introductory remarks
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The KARMA implementation uses the libsvm implementation of support vector regression (SVR). The relevant parts of this have been bundled. The many outputs displayed come from the mex files in the libsvm. Libsvm has been mexed for 64 bit linux (mexa64).
+
+performance is currently better than a basic Kalman filter.
+
+Code is not very fast for large datasets - SVR training (in fitKARMA) automatically subsamples the data.  Kernel computation is redundant right now for model fitting.
+
+To run code, relevant parts of libsvm are required and then there are two functions which work with similar input structure to the Kalman Filter code.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+Code Description
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Fit KARMA model
+[models, NscaleMeans, NscaleStds, OscaleMeans, OscaleStds,s,r] = fitKARMA(neuralData, observedState, s,r, gamma, C)
+
+s and r are the model order for the ARMA model.  
+neuralData and observedState correspond to training data.
+gamma and C are SVR (hyper)parameters - they have been coarsely optimized so may be kept as they are in testKARMA
+
+
+Predict KARMA model estimates
+[observedStateEst] = predictKARMA(neuralDataTest,observedStateInitial,models, NscaleMeans, NscaleStds, OscaleMeans, OscaleStds, s, r)
+
+feed back many parameters returned by fitKARMA
+neuralDataTest is the test data and observedStateInitial is the initial arm pose (keep in mind observedState values have been normalized with OscaleMeans and OscaleStds)
+
+
+testKARMA.m is a script which demos the use of the code.
+
+%%
+Josh Merel Jan 13 2012
+updated Jan 25 2012

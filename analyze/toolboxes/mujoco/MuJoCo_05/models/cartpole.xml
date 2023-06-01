@@ -1,0 +1,27 @@
+<mujoco version="1.0">
+	<compiler maxjacobian="6" inertiafromgeom="true" />
+	<default>
+		<geom contype="0"  mindist="0.01" friction="1 0.1 0.1" rgba="0.7 0.7 0 1" />
+		<actuator range="-1 1"/>
+	</default>
+	<engine modelname="cart-pole" timestep="0.05" sclsoftness="1 0" sclmindist="1" integrator="RK4"/>
+
+	<world coordinate="local" angle="radian">
+		<geom name="plane" type="plane" contype="1" softness="0.001" mindist="0.01" pos="0 0 -1" colmask="1 0" size="4 4 4" rgba="0.9 0.9 0.9 1" />
+			
+		<geom name="rail" type="capsule" pos="0 0 0" quat="0.707 0 0.707 0" size="0.02 1" rgba="0.3 0.3 0.7 1" />
+		<body name="cart" pos="0 0 0">
+			<joint name="slider" type="slide" limtype="1" pos="0 0 0" axis="1 0 0" limit="-1 1" mindist="0.01"/>
+			<geom name="cart" type="capsule" pos="0 0 0" quat="0.707 0 0.707 0" size="0.1 0.1" />
+			<body name="pole" pos="0 0 0">
+				<joint name="hinge" type="hinge" pos="0 0 0" axis="0 1 0" damping="0.1"/>
+				<geom name="cpole" type="capsule" fromto="0 0 0 0.01 0 0.6" size="0.05 0.3" />			
+			</body>
+		</body>
+	</world>
+		
+	<actuator >
+		<motor name="slide" joint="slider" gear="100"/>
+	</actuator>
+</mujoco>
+

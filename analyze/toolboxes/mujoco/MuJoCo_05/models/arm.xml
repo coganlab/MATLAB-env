@@ -1,0 +1,62 @@
+<mujoco version="1.0">
+	<compiler inertiafromgeom="true" maxjacobian="200" maxcontact="150"/>
+	<engine modelname="arm and toy"  gravity="0 0 -9.81" integrator="interleave" timestep="0.001" softclamp="0" 
+            sclsoftness="0.001 0.001" imperrreduce="0.001" algorithm="GS" atype="full" maxiter="5" viscosity="1"/>
+	<default>
+		<geom contype="1" condim="3" colmask="1 1" mindist="0.001" rgba=".9 .5 .8 1" friction=".7 .1 .1"/>
+		<joint limtype="1" damping=".0001"/>
+	</default>
+
+	<world angle="degree" coordinate="local">
+	
+		<geom type="plane" pos="0.15 0 -0.03" size="1 1 3" rgba=".6 .6 .5 1" />
+
+		<!--  ================= ARM ================= /-->
+		
+		<body name="upperarm" pos="-0.15 0 0.45" tag="1">
+			<geom type="capsule" fromto="0 0 0 0 0 -0.345" size="0.05" colmask="0 1" tag="1"/>
+			<joint name="s_abduction" type="hinge" pos="0 0 0" axis="1 0 0" limit="-40 40"/>
+			<joint name="s_flexion" type="hinge" pos="0 0 0" axis="0 -1 0" limit="-40 85"/>
+			<joint name="s_rotation" type="hinge" pos="0 0 0" axis="0 0 1" limit="-70 70"/>
+			
+			<body name="forearm" pos="0 0 -0.36" tag="1">
+				<geom type="capsule" fromto="0 0 0 0.225 0 0" size="0.035" colmask="0 1"/>
+				<joint name="e_flexion" type="hinge" pos="0 0 0" axis="0 -1 0" limit="-90 60"/>
+				<joint name="e_pronation" type="hinge" pos="0 0 0" axis="-1 0 0" limit="-40 40"/>
+				
+				<body name="hand" pos="0.26 0 0" tag="1">
+					<site name="fingertip" pos="0.1 0 0" />
+					<geom type="ellipsoid" pos="0.05 0 0" size="0.05 0.04 0.02" colmask="0 1"/>
+					<joint name="w_abduction" type="hinge" pos="0 0 0" axis="0 0 1" limit="-30 30" stiffness=".1"/>
+					<joint name="w_flexion" type="hinge" pos="0 0 0" axis="0 -1 0" limit="-60 60" stiffness=".1"/>
+				</body>
+				
+			</body>
+		</body>
+
+
+		<!--  ================= TOY ================= /-->
+		<body name="toy" pos="0.15 0.15 0.25" quat="1 0.01 0.01 0" >
+			<geom type="capsule" fromto="-.03 0 0 .03 0 0" size="0.015" rgba=".3 .5 .8 1" />
+			<geom type="capsule" fromto="0 -.03 0 0 .03 0" size="0.015" rgba=".3 .5 .8 1" />
+			<geom type="capsule" fromto="0 0 -.03 0 0 .03" size="0.015" rgba=".3 .5 .8 1" />
+			<site name="point" pos="0 .045 0" />
+			<joint name="free" type="free" pos="0 0 0" limtype="0" damping="0"/>
+			<body name="link1" pos="0.08 0 0"  >
+				<joint name="jlink1" type="ball" pos="-0.04 0 0" limtype="0"/>
+				<geom type="box" size=".03 0.01 0.01"  rgba=".3 .5 .8 1" />
+				<body name="link2" pos="0.08 0 0"  >
+					<joint name="jlink2" type="ball" pos="-0.04 0 0" limtype="0"/>
+					<geom type="box" size=".03 0.01 0.01"  rgba=".3 .5 .8 1" />
+					<body name="link3" pos="0.08 0 0"  >
+						<joint name="jlink3" type="ball" pos="-0.04 0 0" limtype="0"/>
+						<geom type="box" size=".03 0.01 0.01"  rgba=".3 .5 .8 1" />
+					</body>
+				</body>				
+			</body>
+		</body>		
+		
+
+	</world>
+	
+</mujoco>

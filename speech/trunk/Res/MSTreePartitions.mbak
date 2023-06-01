@@ -1,0 +1,98 @@
+% MSTreePartitions: Given a set of 2D points (vertices) and edges specifying a minimum 
+%     spanning tree, determines the sizes and identities of point partitions resulting from 
+%     the removal of each edge.
+%
+%     Usage: [partsizes,partitions] = MSTreePartitions(pts,edges)
+%
+%         pts =        [N x 2] matrix of point coordinates specifying vertices.
+%         edges =      [N-1 x 2] list of points defining edges, in arbitrary sequence.
+%         --------------------------------------------------------------------------------
+%         partsizes =  [N-1 x 2] matrix of partition sizes corresponding to each edge.
+%         partitions = [N-1 x 2 x N] matrix of corresponding partitioned point identifiers.
+%       
+    
+% RE Strauss, 10/3/03
+
+function [partsizes,partitions] = MSTreePartitions(pts,edges)
+  [Np,Pp] = size(pts);
+  if (Pp~=2)
+    error('  MSTreePartitions: 2D points only.');
+  end;
+  
+  [Ne,Pe] = size(edges);
+  if (Ne ~= Np-1)
+    error('  MSTreePartitions: invalid number of points or edges.');
+  end;
+  
+  partsizes = zeros(Ne,2);                % Allocate output matrices
+  partitions = zeros(Ne,2,N);          
+  
+  [u,f] = uniquef(edges(:),1);          % Classify points as tip, branch and node
+  tips = u(f==1)
+  branch = u(f==2)
+  node = u(f==3)
+  
+  ntips = length(tips);
+  
+%   partsizes(tips,1) = (N-2)*ones(ntips,1)
+
+  tipgrps = zeros(Np,Np-1);             % Convex groups of points
+
+  for it = 1:ntips                      % Classify points along tip branches till reach node
+it    
+    curtip = tips(it);                     % Begin with tip point
+%     partsizes(curtip,1) = N-1;
+%     p1 = [];
+%     p2 = 1:N;
+%     p2(curtip) = NaN;
+%     partitions(curtip,1,1:N-1) = p2(isfinite(p2));
+%     prev = [];
+
+    next_is_branch = 1;
+    while (next_is_branch)                % Follow pts along branch till reach node
+curtip      
+      i = find(edges(:,1)==curtip);          % Follow edge to next point
+      next = edges(i,2);
+      i = find(edges(:,2)==curtip);
+      next = [next; edges(i,1)];
+next      
+      if (length(next)>1)
+        i = find(next ~= prev);
+        next = next(i);
+      end;
+next
+
+      if (isin(next,node))                % If next pt is a node, stash partition for node and quit
+        j = 1;
+        while (partsizes(next,j)>0)
+          j = j+1;
+        end;
+j        
+        p1 = [p1; curtip];
+p1        
+        partsizes(next,j) = length(p1);
+partsizes        
+        partitions(next,j,1:length(p1)) = p1;
+        next_is_branch = 0;
+      else                                  % Else update partition sizes and continue
+        partsizes(next,1:2) = partsizes(curtip,1:2) + [-1,+1];
+        p1 = [p1; curtip];
+        p2(next) = NaN;
+        p2s = p2(isfinite(p2));
+        partitions(next,1,1:length(p1)) = p1;
+        partitions(next,2,1:length(p2s)) = p2s;
+        prev = curtip;
+        curtip = next;
+partsizes        
+      end;
+    end;
+  end;
+  
+  % Works moving in from tips.  Need to handle branch points between nodes.
+  
+  % Search thru partsizes for rowsums == 0.  For first of these, trace along branch till get to
+  % node, then proceed in opposite direction till get to other node.  Search for rowsums == 0 and
+  % repeat.
+
+  return;
+  

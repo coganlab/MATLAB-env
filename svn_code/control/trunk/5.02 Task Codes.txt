@@ -1,0 +1,44 @@
+These are the codes for the v4.02 task controller
+
+Preamble contains these codes in the following order:
+% Reordered for v4.02 !!!!!
+
+1.  TaskCode + 10 - 1
+2.  JoystickCode + 50
+3.  HandCode + 10
+4.  StartEye + 30 - 1
+5.  StartHand + 10 - 1
+6.  HandTarget(tens) + 30 - 1
+7.  HandTarget(units) + 10 - 1
+8.  EyeTarget(tens) + 30 - 1
+9.  EyeTarget(units) + 10 - 1
+10. RewardTask + 30 - 1 (e.g. "simple", "4T Reward"...)
+11. HandRewardBlock + 10 - 1 (i.e 4T Reward Hand Mag Number)
+12. EyeRewardBlock + 30 - 1 (i.e 4T Reward Eye Mag Number)
+13. Choice + 10 - 1 (instructed vs. free)
+14. RewardConfig + 30 - 1 (instruction/target position: e.g 4T Hand Instruction)
+15. Stimulus Presentation + 10    % =0 monitor =1 LED board =2 Adaptation board
+16. Adaptation Phase + 30 
+17. Adaptation Action and Feedback + 10 % (=0 none, =1 decrease =2 increase) + 5*Feedback (=0 no feedback)
+18. 4T Reward Combination Number + 30  (0=Insep, 1=Sep-Add, 2=Sep-Mult) 
+19. Target2 + 10  (for double step tasks) 
+
+
+The state codes that follow are
+
+CODE.StartOn = 1;
+CODE.StartAq = 2;
+CODE.TargetOn = 3;
+CODE.Go = 4;
+CODE.TargetAq = 5;
+CODE.Success = 7;
+CODE.Abort = 8;
+CODE.InstOn = 6;
+CODE.TargetOff = 9;
+CODE.TargetRet = 10;
+CODE.ReachGo = 11;
+CODE.SaccadeGo = 12;
+CODE.ReachAq = 13;
+CODE.SaccadeAq = 14;
+CODE.Inst2On = 15;  %Added for v3.20
+CODE.Cue2On = 16;  %Added for v4.7
