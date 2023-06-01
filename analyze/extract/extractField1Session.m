@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d29c0fa5d9696c6b8ba23f62b7473121f1fecc053ffa286b9011214af15ddeab
-size 301
+function FieldSession = extractField1Session(Session)
+%
+%  FieldSession = extractField1Session(Session)
+%
+
+if length(Session{5}) == 2
+        if Session{5}{1}(1) > 100
+           FieldSessionNum = Session{6}(1);
+	   Session = loadField_Database;
+	   FieldSession = Session{FieldSessionNum};
+	end
+end
+

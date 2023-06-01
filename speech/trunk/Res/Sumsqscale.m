@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9232bf1d826f1408d9e40a2a9f18425466cb7b530a224321caf0af3f8c1ea37b
-size 487
+% SUMSQSCALE: Scales the columns of a matrix so that the squared elements sum to 
+%             unity.
+%
+%     Usage: S = sumsqscale(X)
+%
+%             X = [r,c] matrix.
+%             --------------------------------
+%             S = corresponding scaled matrix.
+%
+
+% RE Strauss, 5/2/00
+
+function S = sumsqscale(X)
+  [r,c] = size(X);
+
+  s = sign(X);
+  sq = X.^2;
+  ssq = sum(sq);
+  for i = 1:c
+    sq(:,i) = sq(:,i)./ssq(i);
+  end;
+  S = s.*sqrt(sq);
+
+  return;

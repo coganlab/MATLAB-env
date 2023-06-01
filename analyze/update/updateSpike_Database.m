@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62a2c7be808a0831c1489e9f5c3f136468ed013fc1c3fcf6b7c03f2b805988b5
-size 415
+function updateSpike_Database(SessNum)
+%
+%   UpdateSpike_Database(SessNum)
+%
+%   
+%
+
+if nargin == 1
+    replaceSpikeSessInfo(SessNum);
+    updateSpike_NumTrials(SessNum);
+%     updateSpike_NumTrialsConds(SessNum);
+%     updateSpike_ControlTuning(SessNum);
+%     updateSpike_Figs(SessNum);
+else
+    updateSpike_NumTrials;
+%     updateSpike_NumTrialsConds;
+%     updateSpike_ControlTuning;
+%     updateSpike_Figs;
+end

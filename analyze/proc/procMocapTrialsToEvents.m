@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c6776aa63388ff54c7e995d59cddd61eee6287c19958b39d3509d8d909000ab4
-size 572
+function procMocapTrialsToEvents(day)
+%
+%  procMocapTrialsToEvents(day, recs)
+%
+
+global MONKEYDIR
+
+if nargin < 2 recs = dayrecs(day); end
+
+trials = dbSelectTrials(day);
+
+for iTr = 1:length(trials)
+   rec_num(iTr) = str2num(trials(iTr).Rec); 
+end
+
+
+for iRec = 1:length(recs)
+    tmp = fieldnames(trials);
+    
+    for iField = 1:length(tmp)
+        Events.(tmp{iField}) = [trials(rec_num == iRec).(tmp{iField})]';
+    end
+    
+    rec = recs{iRec};
+    disp(['Saving : rec' rec '.Events.mat']);
+    save([MONKEYDIR '/' day '/' rec '/rec' rec '.Events.mat'],'Events');
+end
+

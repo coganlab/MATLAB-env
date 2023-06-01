@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b622b94f7399f3b7113a8f538b151dac2827e2ff9dc410305baad0fbaabcc3b2
-size 528
+% ALLOM: Converts column vectors of loadings to allometric coefficients by 
+%        scaling to a mean of 1.
+%
+%     Usage: A = allom(L)
+%
+%        L = [p x c] matrix of size eigenvector coefficients.
+%        -----------------------------------------------------------
+%        A = [p x c] matrix of multivariate allometric coefficients.
+%
+
+% RE Strauss, 11/21/97
+
+function A = allom(L)
+  [P,C] = size(L);
+  A = zeros(P,C);
+  meanL = mean(L);
+  for c = 1:C
+    A(:,c) = L(:,c)./meanL(c);
+  end;
+
+  return;

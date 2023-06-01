@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3fcf8ad59d21836f4e74a9f31da565b46c4db30abf0cf6bd0113e28538672748
-size 327
+% SONFACTIVE tests filter mask layers to see if they are active
+% 
+% Implemented through SONFActive.dll
+%
+% ANS=SONFActive(FilterMask)
+% 
+% Bits 0 to 3 are set in ANS if filter mask layers 0 to 3 are active.
+% 
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006

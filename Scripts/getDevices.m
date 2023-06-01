@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cb8bd1fc9957ae4be0513b01c74d313599039b1232755f1c8fc3f6ab6cdc2fa0
-size 634
+function [playbackdevId,capturedevId] = getDevices
+
+devices = PsychPortAudio('getdevices');
+
+playbackdevId=[];
+for iD=1:length(devices);
+    if contains(devices(iD).DeviceName,'DigiHug') && devices(iD).DefaultSampleRate==44100
+        playbackdevId = devices(iD).DeviceIndex;
+    end
+end
+if isempty(playbackdevId)
+    display('Could Not Find playbackdevID')
+end
+
+capturedevId=[];
+for iD=1:length(devices)
+    if contains(devices(iD).DeviceName,'USB Audio CODEC') && devices(iD).DefaultSampleRate==44100
+        capturedevId=devices(iD).DeviceIndex;
+    end
+end
+if isempty(capturedevId)
+    display('Could Not Find capturedevID')
+end
+

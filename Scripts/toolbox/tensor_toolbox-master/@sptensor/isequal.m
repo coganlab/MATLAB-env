@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a4c55b9a9974febd7c868e6ea0d4f7f65a5c88188db8dab08bd4c6bbe904a90b
-size 954
+function z = isequal(x,y)
+%ISEQUAL Compare spares tensors for equality.
+%
+%   ISEQUAL(A,B) compares the sparse tensors A and B for equality.
+%
+%   See also SPTENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+%% Observations for sparse matrix case.
+% The result of isequal(a,full(a)) is true!
+
+%%
+if ~isequal(x.size,y.size) 
+    z = false;
+elseif isa(x,'sptensor') && isa(y,'sptensor') 
+    z = (nnz(x-y) == 0);
+elseif isa(y,'tensor')
+    z = isequal(full(x),y);
+else
+    z = false;
+end

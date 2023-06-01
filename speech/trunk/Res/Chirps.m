@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:090b4b2faf014486632aa5775528828744a44dd976e85a385d1babb7f164b9ea
-size 377
+% CHIRPS: Estimate temperature from rate of cricket chirping.
+%
+%     Usage:  Temp = chirps(ChirpsPerMin)
+%
+%         ChirpsPerMin = number of chirps per minute.
+%         -----------------------------------------------
+%         Temp = estimated temperature in degree Celcius.
+%
+
+function Temp = chirps(ChirpsPerMin)
+
+  Temp = (ChirpsPerMin+40)./4;
+
+  return;
+  

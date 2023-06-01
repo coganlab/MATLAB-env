@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7c345f5db7dc6f854b045cadbc4f58390e5f479d4cea5fb9eb5deb39bb92e6e9
-size 399
+function  [results] = VerifyError(expr, results)
+wasError = 0;
+try 
+    eval(expr);
+catch ex
+    wasError=1; 
+end
+if wasError == 0
+    disp ([expr ' <-- expected error, but was no error'])
+    count = 0;
+    if(isfield(results, 'failedTests'))
+        count = size(results.failedTests, 1);
+    end
+    results.failedTests{count+1,1} = expr;
+    results.allTestsPassed = 0;
+end
+return

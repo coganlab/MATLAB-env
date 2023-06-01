@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62c0102c2f7ec0d1c85aa0edc4c0c2d40c0b0f0cf92a9118d83da26f857f5722
-size 502
+function Session = loadMultiunitFieldField_Database(MonkeyDir)
+%
+%  Session = loadMultiunitFieldField_Database(MonkeyDir)
+%
+
+global MONKEYDIR
+
+if nargin == 1 ProjectDir = MonkeyDir; else ProjectDir = MONKEYDIR; end
+
+load([ProjectDir '/mat/MultiunitFieldField_Session.mat']);
+
+%  Checks for legacy Sessions without MONKEYDIR or SESSIONTYPE
+for iSess = 1:length(Session)
+  if length(Session{iSess})==6
+    Session{iSess}{7} = ProjectDir;
+    Session{iSess}{8} = {'Multiunit','Field','Field'};
+  end
+end
+

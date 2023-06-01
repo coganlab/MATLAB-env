@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:347810bc3a66ad3c8d2d3f942cef75ecf79f579a317ab3cd5ad2fdbd55a57c1c
-size 315
+function n=SONMaxChans(fh)
+% SONMAXCHANS returns the  number of channels supported by a SON file
+% 
+% N=SONMAXCHANS(FH)
+% where FH is the SON file handle
+% 
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+n=calllib('son32','SONMaxChans',fh);
+

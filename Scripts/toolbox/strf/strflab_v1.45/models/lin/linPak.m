@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:01315b80b2d4b122c22c7cebc9c3904b5551e8e3abedb137e8e6bf82987fa0f2
-size 538
+function [strf,w]=linPak(strf)
+%function [strf, w] = linPak(strf)
+% Combines weights and biases of a linear model into one weight vector.
+%	
+% Takes a strf data structure [strf] and  combines them
+% into a single row vector [w]
+%
+% INPUTS:
+%	
+%	strf = a linear model strf structure (see linInit)
+%
+%
+% OUTPUTS:
+% strf = unmodified strf structure
+%	 w = parameter vector for [strf] (ex. w=strfPak(strf))
+%
+%
+%
+%	SEE ALSO
+%   linInit, linUnpak
+%
+%(Some code modified from NETLAB)
+
+w=strf.w1(:)';
+if isfield(strf,'b1')
+  w=[w,strf.b1];
+end
+

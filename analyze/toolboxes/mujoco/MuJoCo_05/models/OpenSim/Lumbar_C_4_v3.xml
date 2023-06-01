@@ -1,3 +1,120 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3f9c1ddde9f1a681a110aa74bcb52586f5ddaeabba5208fecd00bc36ed7f7127
-size 11565
+<mujoco version="1.0">
+    <compiler uniquevertex="false" />
+    <default>
+        <joint limtype="1" makeactuator="false" />
+        <geom colmask="0 0" contype="0" friction="1 0.1 0.1" rgba="0.7 0.7 0 1" />
+        <tendon makeactuator="false" />
+        <actuator dyntype="none" trntype="joint" gaintype="fixed" dynprm="0 0" trnprm="1 0 0 0 0" gainprm="1 0" range="0 1" />
+    </default>
+    <engine modelname="Lumbar_C_4" timestep="0.001" gravity="0 0 -9.81" viscosity="0" wind="0 0 0" eqerrreduce="0.05"
+	imperrreduce="0.05" softclamp="0" integrator="semiimplicit" collisionmode="broadphase"
+	/>
+    <world coordinate="local" angle="radian" meshdir="Meshes/">
+        <body name="pelvis" pos="0 0 0.979" viscscale="1">
+            <inertial pos="0 0 0" mass="0.001" inertia="0.000001 0.000001 0.000001" />
+            <geom name="pelvis_rv" type="mesh" pos="-0.087969 -0.063142 -0.038021" quat="-0.084921 0.514236 -0.838634 -0.158248" meshfile="pelvis_rv.stl" />
+            <geom name="pelvis_lv" type="mesh" pos="-0.087969 0.063142 -0.038021" quat="0.158248 0.838634 -0.514236 0.084921" meshfile="pelvis_lv.stl" />
+            <site name="rect_abd_r-P1" pos="-0.041582 0.01069 -0.09648" />
+            <site name="rect_abd_l-P1" pos="-0.041582 -0.01069 -0.09648" />
+            <site name="ercspn_r-P1" pos="-0.14 -0.022455 0.01224" />
+            <site name="ercspn_l-P1" pos="-0.14 0.022455 0.01224" />
+        </body>
+        <body name="sacrum" pos="0 0 0.93" viscscale="1">
+            <inertial pos="0 0 0" mass="7.486" inertia="0.075 0.03 0.08" />
+            <geom name="sacrum" type="mesh" pos="-0.124011 0.000083 0.038158" quat="-0.017451 0.952760 -0.007286 -0.303135" meshfile="sacrum.stl" />
+            <body name="lumbar5" pos="-0.098 0 0.071" viscscale="1">
+                <inertial pos="0.053744 0 0.02" mass="1.824" inertia="0.01219 0.00546 0.01765" />
+                <joint name="flex_extension" type="hinge" pos="0 0 0" axis="0 -1 0" limit="-1.221730 0.453786" mindist="0.01" />
+                <joint name="lat_bending" type="hinge" pos="0 0 0" axis="1 0 0" limit="-0.436332 0.436332" mindist="0.01" />
+                <joint name="axial_rotation" type="hinge" pos="-0.098 -0.071 0" axis="0 0 1" limit="-0.785398 0.785398" mindist="0.01" />
+                <geom name="lumbar5" type="mesh" pos="0.001575 0 0.020652" quat="0 0.763995 0 0.645222" meshfile="lumbar5.stl" meshscale="0.87 0.87 0.87" />
+                <body name="lumbar4" pos="0.01 0 0.0296" viscscale="1">
+                    <inertial pos="0.017030 0 0.018" mass="1.799" inertia="0.01123 0.0052 0.01643" />
+                    <joint name="L4_L5_FE" type="hinge" pos="-0.001 0 0.0025" axis="0 -1 0" limit="-99999.9 99999.9" mindist="0.01" />
+                    <joint name="L4_L5_LB" type="hinge" pos="-0.001 0 0.0025" axis="1 0 0" limit="-99999.9 99999.9" mindist="0.01" />
+                    <joint name="L4_L5_AR" type="hinge" pos="0.011 -0.0296 -0.0025" axis="0 0 1" limit="-99999.9 99999.9" mindist="0.01" />
+                    <geom name="lumbar4" type="mesh" pos="-0.007654 0 0.019620" quat="0 0.655175 0 0.755478" meshfile="lumbar4.stl" meshscale="0.87 0.87 0.87" />
+                    <body name="lumbar3" pos="0 0 0.032" viscscale="1">
+                        <inertial pos="0.013685 0 0.018" mass="1.67" inertia="0.01066 0.00551 0.01608" />
+                        <joint name="L3_L4_FE" type="hinge" pos="0.0006 0 0.0012" axis="0 -1 0" limit="-99999.9 99999.9" mindist="0.01" />
+                        <joint name="L3_L4_LB" type="hinge" pos="0.0006 0 0.0012" axis="1 0 0" limit="-99999.9 99999.9" mindist="0.01" />
+                        <joint name="L3_L4_AR" type="hinge" pos="-0.0006 -0.032 -0.0012" axis="0 0 1" limit="-99999.9 99999.9" mindist="0.01" />
+                        <geom name="lumbar3" type="mesh" pos="-0.013507 0 0.017902" quat="0 0.556196 0 0.831051" meshfile="lumbar3.stl" meshscale="0.87 0.87 0.87" />
+                        <body name="lumbar2" pos="-0.008 0 0.0312" viscscale="1">
+                            <inertial pos="0.024527 0 0.018" mass="1.689" inertia="0.01091 0.00591 0.01682" />
+                            <joint name="L2_L3_FE" type="hinge" pos="0.0013 0 0.0039" axis="0 -1 0" limit="-99999.9 99999.9" mindist="0.01" />
+                            <joint name="L2_L3_LB" type="hinge" pos="0.0013 0 0.0039" axis="1 0 0" limit="-99999.9 99999.9" mindist="0.01" />
+                            <joint name="L2_L3_AR" type="hinge" pos="-0.0093 -0.0312 -0.0039" axis="0 0 1" limit="-99999.9 99999.9" mindist="0.01" />
+                            <geom name="lumbar2" type="mesh" pos="-0.014295 0 0.012578" quat="0 0.482735 0 0.875767" meshfile="lumbar2.stl" meshscale="0.87 0.87 0.87" />
+                            <body name="lumbar1" pos="-0.01 0 0.025" viscscale="1">
+                                <inertial pos="0.039 0 0.017" mass="1.677" inertia="0.01113 0.0064 0.01753" />
+                                <joint name="L1_L2_FE" type="hinge" pos="-0.0014 0 0.0038" axis="0 -1 0" limit="-99999.9 99999.9" mindist="0.01" />
+                                <joint name="L1_L2_LB" type="hinge" pos="-0.0014 0 0.0038" axis="1 0 0" limit="-99999.9 99999.9" mindist="0.01" />
+                                <joint name="L1_L2_AR" type="hinge" pos="-0.0086 -0.025 -0.0038" axis="0 0 1" limit="-99999.9 99999.9" mindist="0.01" />
+                                <geom name="lumbar1" type="mesh" pos="-0.014577 0 0.014130" quat="0 0.493922 0 0.869506" meshfile="lumbar1.stl" meshscale="0.87 0.87 0.87" />
+                                <body name="torso" pos="0.0025 0 -0.089" viscscale="1">
+                                    <inertial pos="0.0046 0 0.246" mass="18.619" inertia="0.165 0.125 0.15" />
+                                    <geom name="thoracic12_s" type="mesh" pos="-0.028724 0 0.128879" quat="0.000005 0.473601 -0.000007 0.880740" meshfile="thoracic12_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic11_s" type="mesh" pos="-0.038121 0 0.155501" quat="0.000005 0.489677 -0.000007 0.871904" meshfile="thoracic11_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic10_s" type="mesh" pos="-0.046216 0 0.182943" quat="0.000005 0.510136 -0.000008 0.860094" meshfile="thoracic10_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic9_s" type="mesh" pos="-0.052715 0 0.210517" quat="0.000006 0.612130 -0.000008 0.790757" meshfile="thoracic9_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic8_s" type="mesh" pos="-0.055894 0 0.232765" quat="0.000007 0.604085 -0.000009 0.796920" meshfile="thoracic8_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic7_s" type="mesh" pos="-0.058656 0 0.256058" quat="0.000002 0.586630 -0.000006 0.809855" meshfile="thoracic7_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic6_s" type="mesh" pos="-0.059542 0 0.279515" quat="0.000003 0.631844 -0.000006 0.775096" meshfile="thoracic6_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic5_s" type="mesh" pos="-0.055874 0 0.302765" quat="0.000005 0.675517 -0.000008 0.737345" meshfile="thoracic5_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic4_s" type="mesh" pos="-0.052346 -0.001304 0.325035" quat="0.000006 0.681183 -0.000014 0.732113" meshfile="thoracic4_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic3_s" type="mesh" pos="-0.046497 -0.000557 0.346312" quat="-0.000205 0.706674 0.000784 0.707539" meshfile="thoracic3_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic2_s" type="mesh" pos="-0.039936 -0.000525 0.366235" quat="-0.000227 0.721094 0.000623 0.692837" meshfile="thoracic2_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="thoracic1_s" type="mesh" pos="-0.034129 -0.000077 0.385307" quat="-0.002511 0.758676 0.002758 0.651457" meshfile="thoracic1_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <geom name="ribcage_s" type="mesh" pos="0.004683 0.000026 0.232047" quat="0.695940 0.693494 -0.132116 0.131449" meshfile="ribcage_s.stl" meshscale="0.87 0.87 0.87" />
+                                    <site name="rect_abd_r-P2" pos="0.08806 0.03445 0.22257" />
+                                    <site name="rect_abd_l-P2" pos="0.08806 -0.03445 0.22257" />
+                                    <site name="ercspn_r-P2" pos="-0.07843 -0.05665 0.230342" />
+                                    <site name="ercspn_l-P2" pos="-0.07843 0.05665 0.230342" />
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </world>
+    <constraint>
+        <joint name="L4_L5_FE_con" tag="0" joint1="flex_extension" joint2="L4_L5_FE" polycoef="1.152 0 0 0 0 0" />
+        <joint name="L4_L5_AR_con" tag="0" joint1="axial_rotation" joint2="L4_L5_AR" polycoef="1.392094 0 0 0 0 0" />
+        <joint name="L4_L5_LB_con" tag="0" joint1="lat_bending" joint2="L4_L5_LB" polycoef="1.335442 0 0 0 0 0" />
+        <joint name="L3_L4_FE_con" tag="0" joint1="flex_extension" joint2="L3_L4_FE" polycoef="1.63796 0 0 0 0 0" />
+        <joint name="L3_L4_AR_con" tag="0" joint1="axial_rotation" joint2="L3_L4_AR" polycoef="1.392150 0 0 0 0 0" />
+        <joint name="L3_L4_LB_con" tag="0" joint1="lat_bending" joint2="L3_L4_LB" polycoef="1.809233 0 0 0 0 0" />
+        <joint name="L2_L3_FE_con" tag="0" joint1="flex_extension" joint2="L2_L3_FE" polycoef="1.972944 0 0 0 0 0" />
+        <joint name="L2_L3_AR_con" tag="0" joint1="axial_rotation" joint2="L2_L3_AR" polycoef="1.099021 0 0 0 0 0" />
+        <joint name="L2_L3_LB_con" tag="0" joint1="lat_bending" joint2="L2_L3_LB" polycoef="1.844602 0 0 0 0 0" />
+        <joint name="L1_L2_FE_con" tag="0" joint1="flex_extension" joint2="L1_L2_FE" polycoef="2.353456 0 0 0 0 0" />
+        <joint name="L1_L2_AR_con" tag="0" joint1="axial_rotation" joint2="L1_L2_AR" polycoef="0.952486 0 0 0 0 0" />
+        <joint name="L1_L2_LB_con" tag="0" joint1="lat_bending" joint2="L1_L2_LB" polycoef="1.386431 0 0 0 0 0" />
+    </constraint>
+    <tendon>
+        <spatial name="rect_abd_r">
+            <site site="rect_abd_r-P1" />
+            <site site="rect_abd_r-P2" />
+        </spatial>
+        <spatial name="rect_abd_l">
+            <site site="rect_abd_l-P1" />
+            <site site="rect_abd_l-P2" />
+        </spatial>
+        <spatial name="ercspn_r">
+            <site site="ercspn_r-P1" />
+            <site site="ercspn_r-P2" />
+        </spatial>
+        <spatial name="ercspn_l">
+            <site site="ercspn_l-P1" />
+            <site site="ercspn_l-P2" />
+        </spatial>
+    </tendon>
+    <actuator>
+        <general name="rect_abd_r_actuator" trntype="tendon" gainprm="-263 0" target="rect_abd_r" />
+        <general name="rect_abd_l_actuator" trntype="tendon" gainprm="-263 0" target="rect_abd_l" />
+        <general name="ercspn_r_actuator" trntype="tendon" gainprm="-1293 0" target="ercspn_r" />
+        <general name="ercspn_l_actuator" trntype="tendon" gainprm="-1293 0" target="ercspn_l" />
+    </actuator>
+</mujoco>

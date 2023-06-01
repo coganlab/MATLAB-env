@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c40a3c62323d004d183b0f858f266b2436f1d77aafd7764b168bc93ff7c441b0
-size 228
+function Angle = calcEyeTargetAngle(Trials);
+%
+%  Angle = calcEyeTargetAngle(Trials)
+%
+%	Returns angle of position of eye target for each trial
+%
+
+E = getEyeTargetLocation(Trials);
+
+Angle = atan2(E(:,2),E(:,1));
+Angle = Angle';

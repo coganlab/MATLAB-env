@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab40c134a531247ba6b10c69a6f9de4a43ffe74ac88594e229b08e605b17ecbd
-size 748
+% GTEST: 2-way contingency table test using the log-likelihood G-statistic.
+%
+%     Usage: [G,pr,df] = gtest(obs)
+%
+%         obs = two-dimensional contingency table of counts.
+%         --------------------------------------------------
+%         G = observed value of G-statistic.
+%         pr = probability of observed statistic value.
+%         df = degrees of freedom for the text.
+%
+
+function [G,pr,df] = gtest(obs)
+  [r,c] = size(obs);
+  if (min([r,c])<2)
+    error('Error: two-dimensional table needed for test');
+  end;
+
+  R = sum(obs);
+  C = sum(obs')';
+  N = sum(R);
+
+  f = obs(:);
+  G = 2*(sum(f.*log(f)) - sum(R.*log(R)) - sum(C.*log(C)) + N*log(N));
+  df = (r-1)*(c-1);
+
+  pr = 1-chi2cdf(G,df);
+
+  return;

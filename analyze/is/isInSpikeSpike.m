@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a8970212660738bb37b1f02c12a94ca595e4099c43018a89de45b41719125f07
-size 515
+function [flag,ind] = isInSpikeSpike(SpikeSess1,SpikeSess2,Session)
+%
+%  [flag,ind] = isInSpikeSpike(SpikeSess,SpikeSess,Session)
+%
+
+SN1 = sessNumber(SpikeSess1);
+SN2 = sessNumber(SpikeSess2);
+
+if ~isempty(Session)
+    SessionNumbers = getSessionNumbers(Session);
+
+    ind = find((SessionNumbers(:,1)==SN1 & SessionNumbers(:,2)==SN2) | ...
+        (SessionNumbers(:,2)==SN1 & SessionNumbers(:,1)==SN2));
+    if ~isempty(ind)
+        flag = 1;
+    else
+        flag = 0;
+    end
+else
+    ind = [];
+    flag = 0;
+end

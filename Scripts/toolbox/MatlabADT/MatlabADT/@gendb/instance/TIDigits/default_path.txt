@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a09235467824d2e9a349ee7f299f209c21171d0bfd4706be8b58857b7f007ff7
-size 53
+"\\piano\Data\DataBases\Speech\TIDigits\TIDIGITS-Wav"

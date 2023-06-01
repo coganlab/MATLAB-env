@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a3efcb5302f31b7a7a48dfdb0048a7d9ca6edd8c5e9c1a5332f5b5c7d4ca919
-size 521
+
+function locations = choiceThresholdMovements(locations,threshold)
+% Given either hand or eye data, detect whether the data passes a
+% threshold and is deterined a movement in a direction
+% 3 no movement, 1 right or up movement, 2 left or down movement
+
+    locations(find(locations > threshold)) = threshold + 1;
+    locations(find(locations < -threshold)) = threshold + 2;
+    locations(intersect(find(locations < threshold),find(locations > -threshold))) = threshold + 3;
+    locations = locations - threshold;
+return

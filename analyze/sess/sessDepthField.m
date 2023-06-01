@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8365904495bd7b9e5ff64d5cdb53d8d25eab3c2b3e1d5c630a6c4ea3ecf3fec6
-size 278
+function Depths = sessDepthField(Sessions)
+% Return the Depth fields from an array of Sessions
+%
+%   Depths = sessDepth(Sessions)
+%
+
+
+if ~iscell(Sessions{1})
+  Depths = Sessions{5}{1};
+else
+  for iSess = 1:length(Sessions)
+    Depths(iSess,:) = Sessions{iSess}{5}{1};
+  end
+end

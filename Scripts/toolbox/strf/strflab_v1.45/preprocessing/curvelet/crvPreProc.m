@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9364ed717180863c7c1f6f6b4c29e5b1238fbaff5d22012c569a63102e3060e5
-size 519
+function [dat,cfStr]=crvPreProc(dat,opt)
+
+
+
+
+% Take curvelet tranform
+%--------------------
+[dat.eStim,cfStr]=mov2crvlet(dat.eStim,opt.crv);
+[dat.vStim,cfStr]=mov2crvlet(dat.vStim,opt.crv);
+if ~isempty(dat.cStim)
+  [dat.cStim,cfStr]=mov2crvlet(dat.cStim,opt.crv);
+end
+
+
+% Threshold curvelet coefficients
+%--------------------
+if opt.thresh>0
+  dat.eStim=rowThresh(dat.eStim,'ncoef',opt.thresh);
+  dat.vStim=rowThresh(dat.vStim,'ncoef',opt.thresh);
+  dat.cStim=rowThresh(dat.cStim,'ncoef',opt.thresh);
+end
+
+
+
+keyboard
+
+

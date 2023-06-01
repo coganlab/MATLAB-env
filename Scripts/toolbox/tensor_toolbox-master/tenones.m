@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:420fd44f9bffaf030e383d5dcdcb2d0d58fa39512dcc120e8963a920f96c2364
-size 448
+function X = tenones(varargin)
+%TENONES Ones tensor.
+%
+%   X = TENONES(SZ) forms a tensor of size SZ with all ones.
+%
+%   TENONES(SZ) is equivalent to TENSOR(ONES(SZ(1),SZ(2),...),SZ).
+%
+%   See also TENSOR, ONES.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+if nargin == 1
+    sz = varargin{1};
+else
+    sz = cell2mat(varargin);
+end
+
+if isempty(sz)
+    X = tensor();
+    return;
+end
+
+data = ones([sz 1 1]);
+X = tensor(data,sz);

@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a27bc7d0c7b72bc00edb7efe0352f5bb7679e1e525390525db0880460fec6ae3
-size 693
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+extern struct options_ctwmcmc *ReadOptionsCTWMCMC(const mxArray *in);
+extern mxArray *WriteOptionsCTWMCMC(const mxArray *in,struct options_ctwmcmc *opts);
+
+extern mxArray *WriteCTWTree(struct ctwtree **pptree, int ntrees, int format);
+extern void WriteCTWNode(mxArray *pstruct, struct ctwtree *ptree, struct ctwnode *pnode);
+extern struct ctwtree **ReadCTWTree(const mxArray *pmx, int &ntrees, int format, double memory_expansion);

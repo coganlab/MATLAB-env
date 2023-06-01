@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7977e6c60accba2708e4fc2398a429808a23d163c614ea7228a23abb74f4bd2b
-size 292
+function [ path ] = full_path( db,enterie )
+%FULL_PATH Summary of this function goes here
+%   Detailed explanation goes here
+   path=[db.path '\'];
+   for ii=1:length(db.metaNames)
+       path = [path enterie.(db.metaNames{ii}),'\'];       
+   end
+   path =[path(1:end-1),'.',db.format];
+end

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f7075466b091cc8343ca67efed8304b7326d7809af56d69a4a25df629aa10b82
-size 290
+function isi = calcIsi(Spike)
+%
+%  isi = calcIsi(Spike)
+%
+
+isi = [];
+
+if iscell(Spike)
+  nTr = length(Spike);
+  for iTr = 1:nTr
+    isi = [isi diff(Spike{iTr})'];
+  end
+else
+  nTr = size(Spike,1);
+  for iTr = 1:nTr
+    sptimes = find(Spike(iTr,:));
+    isi = [isi diff(sptimes)];
+  end
+end

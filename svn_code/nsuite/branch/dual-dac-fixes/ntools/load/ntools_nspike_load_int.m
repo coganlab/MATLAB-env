@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eae1c0a2065ac89bfe9c7f45a0793c2dde5ee51a174b4c518cca264d50043bd9
-size 413
+%
+% ntools_nspike_load_int(filename, start_samp, stop_samp)
+%
+% loads data from a given nspike datafile starting with start_samp (inclusive)
+% and ending at end_samp (inclusive) into a matlab matrix in [channel,sample]
+% format.
+%
+% example: data = nspike_load_int('rec001.nspike.dat', 100, 200)
+
+function data = ntools_nspike_load_int(varargin)
+    data = ntools_load_int('nspike', varargin{:});
+end

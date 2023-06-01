@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d6af3c51b9314f60a896d30f3e55527aa2bbb6ceb41628af252c97852ede57ab
-size 279
+function MuPower = calcMuPower(Mu,sm)
+%
+%  MuPower = calcMuPower(Mu,sm)
+%
+%  INPUT: Mu = Array in Trial, Time format from one channel.
+%         sm = Scalar.  Number of bins to smooth powre estimate over
+
+a = reshape(Mu,[size(Mu,1),sm,size(Mu,2)./sm]);
+MuPower = sq(std(a,[],2));

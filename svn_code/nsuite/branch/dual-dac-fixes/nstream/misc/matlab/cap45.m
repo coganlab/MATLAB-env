@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:76c9be537998a02eb6f0e3b613f65cdca67be3ece611a2de8a5c33c87ce392c0
-size 347
+function [nspike_data,comedi_data]=cap5
+ffp_start_record('comedidata', 'nspikedata')
+pause(15);
+ffp_stop_record
+fid = fopen('../nspikedata');
+nspike_data = fread(fid, [256,inf], 'int16');
+fclose(fid);
+fid = fopen('../comedidata');
+comedi_data = fread(fid,[7,inf],'ushort');
+fclose(fid);
+figure;
+imagesc(nspike_data);
+figure
+imagesc(comedi_data);
+

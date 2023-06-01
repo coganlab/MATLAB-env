@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:80ca3a0baa4d20ddcfadc695ca1e5e7417ff90b316e3734b45e2bf8d15e09a50
-size 810
+function [h,alldata] = edfread_fast(fn, channels)
+tic
+h = edfread(fn);
+
+if nargout > 1
+    fid = fopen(fn, 'r');
+
+    fseek(fid, h.bytes, -1);
+
+    total_bytes = h.records * sum(h.samples) * 2;
+
+    alldatao = fread(fid, [total_bytes 1], 'int16=>int16');
+
+    fclose(fid);
+    
+    alldatao = double(alldatao);
+
+    alldata = reshape(alldatao, sum(h.samples), h.records);
+
+    alldata = mat2cell(alldata, h.samples, h.records);
+
+    if nargin > 1
+        alldata = alldata(channels);
+    end
+
+    scalefac = (h.physicalMax - h.physicalMin)./(h.digitalMax - h.digitalMin);
+    dc = h.physicalMax - scalefac .* h.digitalMax;
+
+    for i = 1:numel(alldata)
+        alldata{i} = alldata{i}(:)' * scalefac(i) + dc(i);
+    end
+    
+    alldata = vertcat(alldata{:});
+end
+
+toc
+
+end

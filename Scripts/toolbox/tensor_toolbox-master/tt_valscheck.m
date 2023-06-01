@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7dcf3dd119e4189736d2c361939073cb79d6f5524d948335356d8a887d827732
-size 512
+function ok = tt_valscheck(vals)
+%TT_VALSCHECK Checks for valid values.
+%
+%  TT_VALSCHECK(S) throws an error if S is not a valid values
+%  array, which means that S is a column array.
+%
+%  X = TT_VALSCHECK(S) returns true if S is a valid and false otherwise.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+if isempty(vals)
+    ok = true;
+elseif ndims(vals) == 2 && size(vals,2) == 1
+    ok = true;
+else
+    ok = false;
+end
+
+if ~ok && nargout == 0
+    error('Values must be a column array');
+end

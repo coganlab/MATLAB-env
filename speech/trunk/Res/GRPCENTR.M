@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:12cf1396a48916a54a65fe4eaa6f2bf773a217c3f1f3b9f46c802e6996fb7d17
-size 615
+% GRPCENTR: Zero-center the columns of a data matrix by group
+%
+%     Usage: Z = grpcentr(X,grps)
+%
+%         X =    [n x p] data matrix.
+%         grps = group-identification vector of length n.
+%         -----------------------------------------------
+%         Z =    [n x p] group-centered data matrix.
+%
+
+% RE Strauss, 6/19/93
+%   11/29/99 - changed calling sequence.
+
+function Z = grpcentr(X,grps)
+   G = design(grps);             % ANOVA-type design matrix
+   mean_W = (G'*G)\G'*X;         % Within-group means
+   Z = X - G*mean_W;             % Group-center all variables
+
+   return;
+
+

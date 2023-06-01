@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:777ff9f163596f9689d1be5f7282c277601efa025efbfcb1cbb80399af635803
-size 167
+This folder contains the EDF Access API C DLL for Windows:
+- edfapi.dll
+- edfapi64.dll
+- zlibwapi.dll
+
+The EDFAccess API is owned and maintained by SR Research.

@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:59a399a355fd9b339b35d1697b700ceb0c23c601a232e38716ff4c5604e6efcf
-size 369
+% RANDTREE: Provides the ancestor function for a random tree based on Rohlf's M.
+%
+%     Usage: anc = randtree(T)
+%
+%           T = number of terminal taxa.
+%           ----------------------------
+%           anc = ancestor function.
+%
+
+% RE Strauss, 12/26/99
+
+function anc = randtree(T)
+  M = floor(rand*treenum(T));
+  anc = treemanc(T,M);
+
+  return;

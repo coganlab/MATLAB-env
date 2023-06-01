@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5b728a19c09951d3030428c2e12198cc24cc7a4d7ebb5fb1fada2794a7b590cd
-size 452
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+
+#include "../shared/toolkit_c.h"
+
+int entropy_plugin(struct hist1d *in,struct options_entropy *opts,struct estimate *entropy)
+{
+	entropy->value = EntropyPlugin(in);
+	return EXIT_SUCCESS;
+}
+

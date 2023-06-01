@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7d09c4109b5a92ea35bff9d8e07c8aaa11c632527c6006fb483c020cf388586
-size 555
+function [verticesList, facesList] = getVerticesAndFacesInSphere(mesh_outer, iV, radius)
+
+% find all the vertices included in a sphere
+verticesList = [];
+
+for vertex = 1:length(mesh_outer.vertices)
+    if isVertexInRadius(mesh_outer.vertices(vertex,:), mesh_outer.vertices(iV,:), radius)
+        verticesList = [verticesList,vertex];
+    end
+end
+
+% find faces to which those vertices belong
+facesList = [];
+for vert = verticesList
+    facesList = [facesList, mesh_outer.facesOfVertex(vert).faceList];
+end
+
+facesList = unique(facesList);

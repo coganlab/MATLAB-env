@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:33a87da195e2248c14bed6f09dcb6d8e59cf00d6e3c7f8d23ae4c9b97554795e
-size 619
+function index = ML_gaussian(x,mu,sigma)
+% function index = ML_gaussian(x,mu,sigma)
+% x is a vector drawn from some multivariate gaussian
+% mu(i,:) is the mean of the ith Gaussian
+% sigma(:,:,i) is the covariance of the ith Gaussian
+% 
+% Returns the index of the Gaussian with the highest value of p(x).
+
+N = size(mu,1);  % number of Gaussians
+
+if( N == 0 )
+    index = 0;
+else
+    for i=1:N,
+        % leave out factor of 1/(2*pi)^(N/2) since it doesn't affect argmax
+        p(i) = 1/sqrt(det(sigma(:,:,i)))*exp(-0.5*(x-mu(i,:))*inv(sigma(:,:,i))*(x-mu(i,:))');
+    end
+    [m index] = max(p);
+end

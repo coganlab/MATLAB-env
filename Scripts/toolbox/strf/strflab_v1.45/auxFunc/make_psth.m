@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:36eda51f43a51d062ec44f8bd7d7a9d256f373b84d59cb60effe2fb272eae629
-size 505
+function psth = make_psth(spikeTrials, stimdur, binsize)
+
+    nbins = round(stimdur/binsize);
+    psth = zeros(1, nbins);
+
+    ntrials = length(spikeTrials);
+
+    for k = 1:ntrials
+
+        stimes = spikeTrials{k};
+        indx = ((stimes > 0) & (stimes < stimdur));
+
+        stimes = stimes(indx);
+        sindxs = round(stimes/binsize) + 1;
+        sindxs(sindxs < 1) = 1;
+        sindxs(sindxs > nbins) = nbins;
+        
+        psth(sindxs) = psth(sindxs) + 1;    
+    end
+
+    psth = psth / ntrials;

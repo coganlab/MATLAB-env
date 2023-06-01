@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3ede5779de777cd4b75cb55cb6ffbe07cdef5b66c244884292bd5b99e59bdf2e
-size 595
+function probeIdx = probeIdx(trialInfo)
+
+for iTrials=1:length(trialInfo)
+    if isfield(trialInfo{1},'ProbeType') && strcmp(trialInfo{iTrials}.ProbeTypeName,'in_sequence')
+        probeIdx(iTrials)=1;
+    elseif isfield(trialInfo{1},'ProbeType') && strcmp(trialInfo{iTrials}.ProbeTypeName,'out_of_sequence')
+        probeIdx(iTrials)=0;
+    elseif isfield(trialInfo{1},'ProbeCategory') && trialInfo{iTrials}.ProbeCategory==1
+        probeIdx(iTrials)=1;
+    elseif isfield(trialInfo{1},'ProbeCategory') && trialInfo{iTrials}.ProbeCategory==0
+        probeIdx(iTrials)=0; 
+    end
+end

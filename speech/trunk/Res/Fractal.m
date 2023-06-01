@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:34f6a089fd4aeba19baaf3d0af1d7cd329cc1f641cbbe9db86b56558d88519c6
-size 783
+% Fractal: fractal texture generator
+%
+%   Usage: fractal(target,fraction,iter)
+%
+%             target =   [n x 2] set of target points
+%             fraction = fractional value between 0 and 1
+%                           triangle:  1/2 or 2/3
+%                           rectangle: 2/3
+%                           pentagon:  2/3
+%                           hexagon:   2/3
+%             iter = number of iterations (plotted points)
+%
+
+function fractal(target,fraction,iter)
+  [n,p] = size(target);
+
+  plot(target(:,1),target(:,2),'ko');
+  putbnd(target(:,1),target(:,2));
+  hold on;
+
+  p = mean(target);
+  plot(p(1),p(2),'b.');
+
+  for it = 1:iter
+    r = ceil(rand*n);
+    p = p + fraction*(target(r,:)-p);
+    plot(p(1),p(2),'b.');
+  end;
+
+  return;
+

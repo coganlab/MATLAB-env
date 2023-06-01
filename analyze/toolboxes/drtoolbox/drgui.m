@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:760e8b44065026f0bfc299c49188f365065f7f31254796b6f0596741956b5d03
-size 571
+function drgui
+%DRGUI Runs the graphical user interface of the DR toolbox
+%
+%   drgui
+% 
+% Runs the graphical user interface of the dimensionality reduction toolbox.
+
+% This file is part of the Matlab Toolbox for Dimensionality Reduction.
+% The toolbox can be obtained from http://homepage.tudelft.nl/19j49
+% You are free to use, change, or redistribute this code in any way you
+% want for non-commercial purposes. However, it is appreciated if you 
+% maintain the name of the original author.
+%
+% (C) Laurens van der Maaten, Delft University of Technology
+
+
+    drtool;

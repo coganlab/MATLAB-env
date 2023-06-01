@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8136f37b3c0ed2c266e7f08dafcf7bd93caf01d9a9e320820b9861b7440abbf0
-size 30
+usage dialect speaker sentence

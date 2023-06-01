@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:27a6563bd51ec66da7d43735e80a78bcc30459c15f2a545e3aba234475e935e6
-size 312
+function [PD,phi] = calcPrefDir(F)
+%
+%  [PD,phi] = calcPrefDir(F)
+%
+
+
+% because PD is NaN if any F = -Inf
+for i=1:length(F)
+    if abs(F(i))>1000
+        F(i)=0;
+    end
+end
+
+Theta = [0:pi./4:7.*pi./4];
+C = sum(F.*cos(Theta));
+S = sum(F.*sin(Theta));
+
+r = sqrt(C.^2+S.^2);
+phi = atan2(S,C);
+PD = phi2dir(phi);
+
+

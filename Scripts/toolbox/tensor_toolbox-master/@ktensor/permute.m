@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cafd6cdbdc9c9d0d21549defb4b3f92978ec4abb9041ba5273cb8b1ac35b9fb1
-size 1103
+function b = permute(a,order)
+%PERMUTE Permute dimensions of a ktensor.
+%
+%   B = PERMUTE(A,ORDER) rearranges the dimensions of A so that they
+%   are in the order specified by the vector ORDER. The output is a ktensor
+%   with components rearranged as specified by ORDER. The corresponding 
+%   tensor has the same components as A but the order of the subscripts
+%   needed to access any particular element is rearranged as specified by 
+%   ORDER.
+%
+%   See also KTENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+N = ndims(a);
+
+if ~isequal(1:N,sort(order))
+  error('Invalid permuation');
+end
+
+b = ktensor(a.lambda, a.u(order));
+
+
+
+

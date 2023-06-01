@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dc5b0dac2c9b2cdcd6b7cbf2f27b40c4001c7d9ea3264147aff8e47f85192305
-size 552
+function X = tenzeros(varargin)
+%TENZEROS Create zeros tensor.
+%
+%   X = TENZEROS(SZ) forms a tensor of size SZ with all zeros.
+%
+%   TENZEROS(SZ) is equivalent to TENSOR(ZEROS(SZ(1),SZ(2),...),SZ).
+%
+%   See also TENSOR, ZEROS.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+if nargin == 1
+    sz = varargin{1};
+else
+    sz = cell2mat(varargin);
+end
+
+if isempty(sz)
+    X = tensor;
+    return;
+end
+
+if nargin == 2
+    order = sz;
+    dim = varargin{1};
+    sz = dim * ones(1,order);
+end
+
+data = zeros([sz 1 1]);
+X = tensor(data,sz);
+

@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ab89698fcca9cdd6c6f93bcd9b7bc66507e078afcf22e1b3230439a782692f67
-size 561
+function out = isbetween(input,limits,excflag)
+
+% function out = isbetween(limits,input)
+%
+% Outputs 1 or 0 for each input based on whether 
+% or not it is between the specified limits. input 
+% is between limits.
+%
+% Limits is a 2x1 or 1x2 ro or column vector. 
+% Output is of the same dimension as input.
+% If Excflag is set to one, equality with results in a zero.
+% Excflag defaults to zero.
+
+if nargin<3
+    excflag=0;
+end
+
+limits=sort(limits);
+if excflag
+    out=(input>limits(1))&(input<limits(2));
+else
+    out=(input>=limits(1))&(input<=limits(2));
+end

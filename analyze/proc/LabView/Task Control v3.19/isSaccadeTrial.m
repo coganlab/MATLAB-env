@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:57fb949410719867c838b8263c886b459b062b38f5272b347a9e57d85a0187d8
-size 251
+function flag = isSaccadeTrial(TaskCode)
+%  
+%  flag = isSaccadeTrial(TaskCode)
+%
+
+switch TaskCode
+  case {0,1,2,3,4,5,6,7,8,9,10,14,15}  %  No visually-guided saccade
+    flag = 0;
+  case {11,12,13,16,17,18,19,20,21,22}  %  Saccade
+    flag = 1;
+end

@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94afecadd7eed2081796a9dedaa8eff17ba3785c9ff6ac689902b85e4243b844
-size 1426
+function [ieegall,microphone,trigger] = intanWrap(path,channel,fileNum,isDecimate,isTask)
+    d = dir([path '*.rhd']);
+    d.name
+    ieegall = []; microphone = []; trigger = [];
+    for iFile = fileNum
+        disp(strcat('Recording ',num2str(iFile)));
+        fullPathToFile = [path d(iFile).name]        
+        ieegsamp = [];
+        [amplifier_data] = read_Intan_RHD2000_file_path_update(path,iFile,channel);
+        if(isDecimate)
+            ieegsamp = (resample(amplifier_data',2000,20000))';
+        else
+            ieegsamp = amplifier_data;
+        end
+%         for iChan = 1:size(channel,2)   
+%             
+%             %[amplifier_data] = read_Intan_RHD2000_file_path_update_EDIT_ELIM_OVERHEAD(fullPathToFile,channel(iChan));
+%             if(isDecimate)
+%                 ieegsamp(iChan,:) = decimate(amplifier_data(iChan,:),10);
+%                 %ieegsamp(iChan,:) = decimate(amplifier_data,10);
+%             else
+%                 ieegsamp(iChan,:) = amplifier_data(iChan,:);
+%                 %ieegsamp(iChan,:) = amplifier_data;
+%             end
+%         end
+        ieegall =[ieegall ieegsamp];
+        if(isTask)
+            [~,board_adc_data] = read_Intan_RHD2000_file_path_update_EDIT_ELIM_OVERHEAD(fullPathToFile,channel(1));
+            trigger = [trigger board_adc_data(1,:)];
+            microphone = [microphone board_adc_data(2,:)];
+        end
+    end
+end

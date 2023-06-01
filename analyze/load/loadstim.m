@@ -1,3 +1,42 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:86dbbc4f99040df99179c409534aa0ef2e0c35d6316616712df42bdb16cf6119
-size 1101
+function Stim = loadstim(file, Events, trials, field, bn, format, FS)
+%  LOADSTIM loads stim data 
+%
+%  STIM = LOADSTIM(FILE, EVENTS, TRIALS, FIELD, BN, FORMAT, FS)
+%
+%  Inputs:  FILE    = String.  Display sensor data file prefix.
+%           EVENTS  = Structure.  Trial events data structure.
+%           TRIALS  = Vector.  Trials to load data for.
+%           FIELD   = Scalar.  Event to align data to.
+%           BN      = Vector.  Time to start and stop loading data.
+%	    FORMAT  = String.  Data format
+%	    FS
+%
+%   Outputs:    STIM  = [TRIAL,TIME] Array. Display sensor data.
+%
+
+%  Written by:  Ryan Shewcraft
+%
+
+global experiment
+
+if nargin < 6 || isempty(format)
+  format = getFileFormat('Broker');
+end
+ss = 2;
+
+if ~isstr(field) error('FIELD needs to be a string'); end
+bn = double(bn);
+ntr = length(trials);
+Stim = zeros(ntr,diff(bn));
+
+fid = fopen([file '.stimraw.dat']);
+for i = 1:ntr
+  at = getfield(Events,field,{trials(i),1});
+  start = at+bn(1);
+  fseek(fid,start.*ss*FS./1e3,'bof');
+  tmp = fread(fid,[1,diff(bn)*FS./1e3],format);
+  Stim(i,1:size(tmp,2)) = tmp;
+end
+
+fclose(fid);
+

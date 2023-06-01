@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:55633127c3cf22ff1de8291c68d80a1244535f185288438ee6ca0034dba0315e
-size 322
+function trialCorrectIdx = correctIdx(trialInfo)
+
+for iTrials=1:length(trialInfo)
+    if isfield(trialInfo{1},'ResponseCorrect')
+    trialCorrectIdx(iTrials)=trialInfo{iTrials}.ResponseCorrect;
+    elseif isfield(trialInfo{1},'RespCorrect')
+    trialCorrectIdx(iTrials)=trialInfo{iTrials}.RespCorrect;
+    end 
+end

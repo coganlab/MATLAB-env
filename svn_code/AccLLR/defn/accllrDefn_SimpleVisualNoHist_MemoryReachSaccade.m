@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:faeec2c590db9b5897697bb1e1f430202d30e861e4a52f65a2b7bc9a7586868b
-size 978
+clear Params
+Params.Selection = 'Simple';
+Params.Type = 'Visual';
+
+Params.Task = {'MemoryReachSaccade'};
+Params.MaximumTimetoOnsetDetection = 200;
+Params.TrialAvgdDetect = 1;
+
+bn = [-200,Params.MaximumTimetoOnsetDetection+100]; 
+Params.Event.Task = Params.Task; Params.Null.Task = Params.Task;
+Params.Event.Field = 'TargsOn'; Params.Event.bn = bn;
+Params.Null.Field = 'TargsOn'; Params.Null.bn = bn;
+Params.StartofAccumulationTime = -bn(1);
+
+% Params.compbound2 = 190; Params.MaxGLMOrder = 20;
+Params.Hist = 0; Params.NoHist = 1; Params.VarNoHist = 0; 
+
+if iscell(Sess{1})
+    for iSess = 1:length(Sess)
+        Dirs = loadSessionDirections(Sess{iSess});
+        
+        Params.Event.Target(iSess) = Dirs.Pref;
+        Params.Null.Target(iSess) = Dirs.Null;
+        Params.Subject{iSess} = MonkeyName;
+    end
+    Params.Label = 'PooledPopulation';
+else
+    Dirs = loadSessionDirections(Sess);
+    
+    Params.Event.Target = Dirs.Pref;
+    Params.Null.Target = Dirs.Null;
+end
+

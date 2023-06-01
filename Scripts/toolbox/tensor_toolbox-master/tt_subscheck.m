@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:46b1f996d00648d2a0f63c8b68da65d82d6311220812fca102478183c9f98204
-size 781
+function ok = tt_subscheck(subs)
+%TT_SUBSCHECK Checks for valid subscripts.
+%
+%  TT_SUBSCHECK(S) throws an error if S is not a valid subscript
+%  array, which means that S is a matrix of real-valued, finite,
+%  positive, integer subscripts.
+%
+%  X = TT_SUBSCHECK(S) returns true if S is a valid and false
+%  otherwise.
+%
+%  See also TT_SIZECHECK, TT_VALSCHECK.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+%
+% Includes improvements offered by Marcus Brubaker.
+
+if isempty(subs)
+    ok = true;
+elseif ndims(subs) == 2 && isreal(subs) ...
+        && all(isfinite(subs(:)) & subs(:) > 0) ...
+        && isequal(subs,round(subs)) 
+    ok = true;
+else
+    ok = false;
+end
+
+if ~ok && nargout == 0
+    error('Subscripts must be a matrix of real positive integers');
+end

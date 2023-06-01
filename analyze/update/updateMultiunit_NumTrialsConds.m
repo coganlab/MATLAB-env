@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:007e3c1b36399a58a4536458fcc3116bd056b986052c77745b7bdaff9acaef28
-size 328
+function updateMultiunit_NumTrialsConds(SessNum)
+%
+%   updateMultiunit_NumTrialsConds(SessNum)
+%
+%   Adds NumTrialsConds data structure to the Multiunit_NumTrialsConds file
+%
+%   Modified to accept sessnum list
+
+if nargin == 0
+  updateType_NumTrialsConds('Multiunit');
+else
+  updateType_NumTrialsConds('Multiunit',SessNum);
+end

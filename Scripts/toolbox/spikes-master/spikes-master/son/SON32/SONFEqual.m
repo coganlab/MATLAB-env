@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b9d589720008ea81ac763501d582f9ab8a0b99c9df4117b3e22b31acd869c2b7
-size 349
+% Tests a filter mask structure for active layers
+% 
+% Implemented through SONFEqual.dll
+% 
+% ANS=SONFEQUAL(FILTERMASK)
+% 
+% Sets bits 1 to 4 in the output if layers 1 to 4 of the filter mask
+% do anything i.e. have cleared bits
+% 
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006

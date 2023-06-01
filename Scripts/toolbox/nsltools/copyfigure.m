@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a269118960524b5947dfc47a569c2c904d98368e0182c10a2890fa0cc2a2d9a
-size 479
+function fidnew = copyfigure(varargin)
+%
+% figID = copyfigure
+% figID = copyfigure(figold)
+%
+% Copies a figure window to a new figure window.
+
+if nargin == 0
+	figIDold = gcf;
+else
+	figIDold = varargin{1};
+end
+
+tmpname = 'tempmat';
+
+print(fullfile(tempdir,tmpname), '-dmfile',['-f',num2str(figIDold)]);
+addpath(tempdir)
+eval(tmpname);
+rmpath(tempdir)
+delete(fullfile(tempdir,[tmpname,'.m']));
+delete(fullfile(tempdir,[tmpname,'.mat']));
+
+if exist('figIDnew')
+	figIDnew = gcf;
+end

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ce843d812dc61fca328d53587ff6e6b5eaf1de1bc5e7b4cff63d148c0b17d317
-size 363
+% run this to combine trialInfo files into one
+
+ti = {};
+i = 1;
+while 1
+    tn = sprintf('trialInfo%d.mat', i);
+    if exist(tn, 'file')
+        load(tn);
+        ti{i} = trialInfo;
+        i = i + 1;
+    else
+        break;
+    end
+end
+
+trialInfo = horzcat(ti{:});
+save('trialInfo', 'trialInfo');
+
+trialInfo_struct = cellfun(@(a) a, trialInfo);

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c86c26249909b7121014eb939ce2cd68486dd7913216e3b52f36cbec9f5e8f00
-size 318
+matlab_dir = fileparts(mfilename('fullpath'));
+
+addpath(matlab_dir);
+
+addpath([matlab_dir filesep 'mex']);
+addpath([matlab_dir filesep 'utilities']);
+addpath([matlab_dir filesep 'iLQG']);
+
+root_dir = matlab_dir(1:find(matlab_dir==filesep,1,'last'));
+addpath([root_dir 'models']);
+addpath([root_dir 'bin']);

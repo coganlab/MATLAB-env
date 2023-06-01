@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:22b5c9fbffd03af8a89e2b60455d0030a52e1c9c8406082b7eaeafcc5467f681
-size 611
+% epoch_data = ntools_subtract_reference(epoch_data, ref_channel_num)
+%
+% Subtracts out the data of a reference channel from all other channels,
+% and returns the result as a new epoch_data structure.
+%
+% E.g.:
+%   ref_channel_num = 28;
+%   ref_epoch_data = ntools_subtract_reference(epoch_data, ref_channel_num);
+
+function epoch_data = ntools_subtract_reference(epoch_data, ref_channel_num)
+    num_conditions = length(epoch_data.epochs);
+    
+    for i=1:num_conditions
+        epoch_data.epochs(i).data = bsxfun(@minus, epoch_data.epochs(i).data,  epoch_data.epochs(i).data(ref_channel_num,:,:));
+    end
+end

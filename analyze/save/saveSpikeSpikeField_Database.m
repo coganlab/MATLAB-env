@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c3ef7ee91ad051ad1186552d00e396091677b1c4e64e95361ae434ee44de12e7
-size 437
+function saveSpikeSpikeField_Database
+%
+%  saveSpikeSpikeField_Database
+%
+
+global MONKEYDIR 
+
+Session = loadSpikeSpikeField_Database;
+for iSess = 1:length(Session)
+    if length(Session{iSess})==6
+        Session{iSess}{7} = MONKEYDIR;
+        Session{iSess}{8} = {'Spike'};
+     elseif ~ismember(Session{iSess}{7},'/')
+        Session{iSess}{7} = MONKEYDIR;
+    end
+end
+
+save([MONKEYDIR '/mat/SpikeSpikeField_Session.mat'],'Session');
+

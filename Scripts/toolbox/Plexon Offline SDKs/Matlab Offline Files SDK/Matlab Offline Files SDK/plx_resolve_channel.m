@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:31d70b811095f9f0a35c0a24fdbbc335fb07888da8699d111d14241f9fbe32d6
-size 1102
+function [channelNumber] = plx_resolve_channel(filename, channel)
+% plx_resolve_channel(filename, channel): returns .plx file spike channel number for the specified channel name
+%
+% [channelNumber] = plx_resolve_channel(filename, channel)
+%
+% INPUT:
+%   filename - file name
+%   channel - 1-based channel number or channel name
+%
+% OUTPUT:
+%   channelNumber - 1-based channel number. 
+%                   if channel is a channel name, returns channel number for the specified channel name.
+%                      if channel with the specified name is not found, returns -1
+%                   if channel is a number, returns this number
+
+channelNumber = -1;
+
+if nargin ~= 2
+    error 'Expected 2 input arguments';
+end
+
+channelNumber = -1;
+if ischar(channel) == 1
+    [numNames, names] = plx_chan_names(filename);
+    [numMapped, chans] = plx_chanmap(filename);
+    for i=1:numNames
+        if strcmp(deblank(names(i,:)), deblank(channel)) == 1
+            channelNumber = chans(i);
+            break
+        end
+    end
+else
+    channelNumber = channel;
+end
+
+end
+
+ 

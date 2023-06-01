@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:349ce57ff6d977b8d9c0876da159ce20ae62a2748b56540c56092c51a271af4d
-size 393
+function [nAtA,normA,nBtB,normB,nAtB]=normalizeKernelMatrix(AtA,BtB,AtB)
+% normalize random kernel
+% Yifeng Li
+% Feb. 08, 2012
+
+nAtA=[];
+normA=[];
+nBtB=[];
+normB=[];
+nAtB=[];
+
+normA=sqrt(diag(AtA));
+nAtA=AtA./(normA*normA');
+
+if nargin==1
+   return; 
+end
+
+normB=sqrt(diag(BtB));
+nBtB=BtB./(normB*normB');
+
+if nargin==2
+   return; 
+end
+
+nAtB=AtB./(normA*normB');
+end

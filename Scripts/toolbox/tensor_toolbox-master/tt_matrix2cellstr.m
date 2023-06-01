@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f1ec4815a80daa86af4cb5da667c54d90de97506ea25b91da87fdb8c93b99467
-size 369
+function S = tt_matrix2cellstr(M)
+%TT_MATRIX2CELLSTR Convert a matrix to a cell array of strings.
+%
+%MATLAB Tensor Toolbox. Copyright 2018, Sandia Corporation.
+
+
+fmt = get(0,'FormatSpacing');
+format compact
+S = evalc('disp(M)');
+if isempty(S)
+    S = {''};
+    return;
+end
+set(0,'FormatSpacing',fmt)
+S = textscan(S,'%s','delimiter','\n','whitespace','');
+S = S{1};
+end

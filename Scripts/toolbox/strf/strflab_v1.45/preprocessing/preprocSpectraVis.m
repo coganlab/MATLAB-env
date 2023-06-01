@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d2253a4b65c625da99c7bd6db40c48734a9c4c23776710cd6405b7b0829e8a4
-size 715
+function preprocSpectraVis(net);
+%function preprocSpectraVis(net);
+%
+% A visualizer of glm net preprocessed by preprocSpectra
+% 
+% INPUT:
+% [net] = strf structure to be visualized
+%
+
+params = net.params;
+
+fsize = params.fSize;
+w = net.w1;
+delays = net.delays;
+
+k = reshape(w, [fsize length(delays)]);
+
+maxk = max(abs(k(:)));
+
+for pi=1:fsize(4)
+	figure(pi); clf;
+	for ti=1:fsize(3)
+		for di=1:length(delays)
+			subplot(length(delays), fsize(3), ti+(di-1)*fsize(3));
+			thisim = squeeze(k(:,:,ti,pi,di));
+			imagesc(thisim, [-maxk maxk]);
+			axistickoff();
+			if ti==1, ylabel(sprintf('d: %d', delays(di))), end
+		end
+	end
+end
+
+return;
+
+
+function axistickoff()
+
+set(gca, 'xtick', []);
+set(gca, 'ytick', []);
+
+return;

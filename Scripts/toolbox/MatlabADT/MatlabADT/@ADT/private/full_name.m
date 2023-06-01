@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0ff0375afa1e5c715eb41c16938ebc940c2e30eee756372b4f2854a9803c09e7
-size 300
+%returns full path and name (without exeontion) of a file by index
+
+function [full_name] = full_name(db,index)
+    full_name = [db.path,'\',db.enteries(index).usage,'\',db.enteries(index).dialect...
+    ,'\',db.enteries(index).sex,db.enteries(index).speaker,'\',db.enteries(index).sentence];
+end

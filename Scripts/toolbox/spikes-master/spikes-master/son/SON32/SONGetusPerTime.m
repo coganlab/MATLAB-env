@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:734cee9fcd5c63df445ac8f75885fd9c85243045866b8064ec8aca43aa4a2001
-size 470
+function usPerTime=SONGetusPerTime(fh)
+% SONGETUSPERTIME returns the tick interval in units of SONTimeBase()
+% USPERTIME=SONGETUSPERTIME(FH)
+%                         FH SON file handle
+%     
+% See also SONGETTIMEPERADC, SONCHANDIVIDE
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin ~= 1
+    usPerTime=-1000;
+    return;
+end;
+
+usPerTime=calllib('son32','SONGetusPerTime',fh);
+return;

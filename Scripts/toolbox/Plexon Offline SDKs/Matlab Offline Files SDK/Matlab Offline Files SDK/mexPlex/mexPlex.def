@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5ac1b41f28f64b481dee869e68abc541105d82028fcd5589c4b28395e0e7606c
-size 42
+LIBRARY mexPlex.dll
+EXPORTS mexFunction

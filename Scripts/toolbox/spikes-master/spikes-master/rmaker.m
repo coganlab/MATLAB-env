@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9cb8f290976ef56ec4cf4ea18d503557ce0502232bb7feb006f23ec01c64e7e7
-size 233
+function rmaker(cell1,index)
+
+% Raster Plotter for the Spike Times
+
+if size(index,2)~=2
+    errordlg('Sorry, incorrect selection of variable')
+end
+
+strain=cell1.raw{index}
+ntrials=strain{1}.ntrials
+maxtime.cell1.trialtime

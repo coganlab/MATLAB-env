@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6786b187ab39b58993ebb6838524e7736fb5de0b6c694f01d22be185f2606b92
-size 345
+function p = confusionmatrix(Pred, Actual)
+%
+%   p = confusionmatrix(Pred, Actual)
+%
+
+uCat = unique(Actual);
+nCat = length(uCat);
+p = zeros(nCat,nCat);
+for iActual = 1:nCat
+  CatInd = find(Actual==uCat(iActual));
+  nCatInd = length(CatInd);
+  for iPred = 1:nCat
+    p(iActual,iPred) = length(find(Pred(CatInd)==uCat(iPred)))./nCatInd;
+  end
+end

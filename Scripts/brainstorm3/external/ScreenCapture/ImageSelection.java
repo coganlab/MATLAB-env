@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1bb7bd379e0137e8ab40e12d69abccc2798575eaa4e47f1c76959051235a68b9
-size 1053
+/*
+ * Based on code snippet from
+ * http://java.sun.com/developer/technicalArticles/releases/data/
+ *
+ * Copyright © 2008, 2010 Oracle and/or its affiliates. All rights reserved. Use is subject to license terms.
+ */
+
+import java.awt.image.BufferedImage;
+import java.awt.datatransfer.*;
+
+public class ImageSelection implements Transferable {
+    
+    private static final DataFlavor flavors[] =
+    {DataFlavor.imageFlavor};
+    
+    private BufferedImage image;
+    
+    public ImageSelection(BufferedImage image) {
+        this.image = image;
+    }
+    
+    // Transferable
+    public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException {
+        if (flavor.equals(flavors[0]) == false) {
+            throw new UnsupportedFlavorException(flavor);
+        }
+        return image;
+    }
+    
+    public DataFlavor[] getTransferDataFlavors() {
+        return flavors;
+    }
+    
+    public boolean isDataFlavorSupported(DataFlavor
+    flavor) {
+        return flavor.equals(flavors[0]);
+    }
+}

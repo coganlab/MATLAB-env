@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6142479819298a1371577af3be711ccb8590b00882f1aaf773d106d28089fcc9
-size 28
+age usage type speaker digit

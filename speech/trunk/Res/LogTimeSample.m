@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9b9283a7aa4558670f134ec2f9d221bc7943fbb4e3d62fcf29a6534d0b903947
-size 632
+% LogTimeSample: Given the first and last days of sampling and the number of desired
+%                samples, returns the sequence of sampling days on a logarithmic scale.
+%
+%     Syntax: days = logtimesample(first,last,N)
+%
+%         first = scalar indicating first sampling day.
+%         last =  scalar indicating last sampling day.
+%         N =     number of sampling days.
+%         ---------------------------------------------
+%         days =  row vector of sampling days.
+%
+
+% RE Strauss, 6/22/03
+
+function days = logtimesample(first,last,N)
+  days = exp(linspace(log(first),log(last),N));
+
+  return;
+  

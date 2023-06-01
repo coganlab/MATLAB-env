@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:928eec2b47ea128aae90a02b83ab9fc6341479a69cb4c3b6b82b58dca13642ec
-size 340
+function [avgcvr] = lfpspikebin(spec, cvr, width_ms)
+
+nbins = size(spec,2);
+
+for i = 1:nbins
+    start_ts = i-1*(floor(width_ms/2));
+    end_ts   = i*(floor(width_ms/2));
+    
+    for iCvr = 1:length(cvr)
+        idx = find(cvr{iCvr}(:,1) >= start_ts & cvr{iCvr}(:,1) < end_ts);
+        avgcvr(i,iCvr) = mean(cvr{iCvr}(idx,2));
+    end
+end

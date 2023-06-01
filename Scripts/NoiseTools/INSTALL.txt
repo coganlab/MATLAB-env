@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:08b88a0da89894f4cd45995c0149aff621859a66e1ae09dbd6a408690d8c2390
-size 338
+Put this directory (../NoiseTools/) in your matlab path.  You may need also to add ../compat.
+
+Functions in the main directory are prefixed 'nt_' to reduce likelihood of name conflicts
+with other tooboxes. Functions in compat/ lack the 'nt_' prefix and may conflict.  If so
+remove compat/ from the path or remove the offending function.
+

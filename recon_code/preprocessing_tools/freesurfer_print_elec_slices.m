@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6dc653290ba9c88acc33563d3af23c5030a13f2be4114cf564ded374823908ea
-size 373
+function freesurfer_print_elec_slices(subj)
+
+
+%plotMgridOnSlices(subj, struct('cntrst', get_contrast(subj), 'figvisible', 0, 'printFigs', 1));
+plotMgridOnSlices(subj, struct('cntrst', get_contrast(subj),'printFigs', 1));
+
+    function contrast = get_contrast(subj)
+        switch subj
+            otherwise
+                contrast = .8;
+        end
+    end
+end

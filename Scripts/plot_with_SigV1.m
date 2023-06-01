@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:45ea322759377a517112e90421086a76465c72360ba335616eed167cf7b4b804
-size 162
+figure;
+t=linspace(-.5,1,30);
+sig1=sin(2*pi*1*t);
+plot(t,sig1)
+% make 10 to 20 significant
+hold on;
+plot(t(10:20),min(sig1)*ones(11,1),'k-','LineWidth',10);

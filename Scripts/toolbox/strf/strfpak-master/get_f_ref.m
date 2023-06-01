@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:42720f6419cc03695bdc19a0c475d061405c4e5bce6c9520025798b7d62476f8
-size 274
+function out = get_f_ref(filename)
+%  Returns the name of the function whose result was cached in the metadata
+%  file "filename"
+
+out = '*unknown*';
+
+if exist(filename,'file')
+    load(filename);
+    if exist('function_name','var')
+        out = function_name;
+    end
+end

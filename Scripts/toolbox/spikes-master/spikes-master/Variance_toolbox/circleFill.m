@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:89e6bcca9c2064e427d6dafbf020657bed3e3e56582bac0b1564db22d3fea4d5
-size 249
+
+function h = circleFill(center,radius,color,width,edgeColor)
+
+nums = 0:360;
+
+x = center(1) + radius * cos(2*pi*nums/360);
+y = center(2) + radius * sin(2*pi*nums/360);
+
+
+h = fill(x,y,color);
+set(h,'linewidth',width,'EdgeColor', edgeColor);

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5d012780e7b1fd80f039cc1d6c81a47a59504defe2e5a34ad6b61333d2b09704
-size 389
+function blocks=SONDelBlocks(fh, chan)
+% SONDELBLOCKS returns the number of deleted blocks in file FH on channel CHAN
+%
+% BLOCKS=SONDELBLOCKS(FH, CHAN)
+% 
+% 
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin<2
+    blocks=-1000;
+    return;
+end;
+
+blocks=calllib('son32','SONDelBlocks', fh, chan);
+
+    

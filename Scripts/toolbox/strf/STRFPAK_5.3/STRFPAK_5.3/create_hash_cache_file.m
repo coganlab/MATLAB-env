@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2874a4b5bf20a95d02fc12f60965e8ed32e69e9ec80ccae03cec45ccab3bc14a
-size 485
+function hashes_of_stims = create_hash_cache_file(outputPath,DS);
+%  Creates the file with the hashes of the stimuli
+hashes_of_stims = {};
+rec_make_dir(fullfile(outputPath,'stim_hashes'))
+for ii = 1:length(DS)
+    filename = fullfile(outputPath,'stim_hashes',DS{ii}.stimfiles);
+    if ~exist(filename,'file')
+        this_hash = checksum_from_file(DS{ii}.stimfiles);
+        save(filename,'this_hash');
+    else
+        load(filename);
+    end
+    hashes_of_stims{ii} = this_hash;
+end

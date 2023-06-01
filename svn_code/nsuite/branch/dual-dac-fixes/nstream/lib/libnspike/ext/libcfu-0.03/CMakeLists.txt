@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9b0aaf7d7f75b0766a26dd9af7183b50801bf1c21c440424d58c834a6cdaac3c
-size 464
+add_subdirectory(src)
+
+include_directories(${CMAKE_SOURCE_DIR}/include )
+
+
+########### install files ###############
+
+
+
+
+#original Makefile.am contents follow:
+
+#SUBDIRS = src examples doc
+#if DEBUG
+#AM_CFLAGS = -Wall -W -DCFU_VERSION="\"@VERSION@\"" -DCFU_DEBUG=1
+#else
+#AM_CFLAGS = -Wall -W -DCFU_VERSION="\"@VERSION@\""
+#endif
+#
+#LIBCFU_TYPE_u_int=@LIBCFU_TYPE_u_int@
+#
+#INCLUDES = -I$(top_srcdir)/include
+#
+#EXTRA_DIST = include/cfutypes.h.in include/cfu.h.in

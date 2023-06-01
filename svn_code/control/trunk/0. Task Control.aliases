@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:30dbaccceba808c1c0037e221fd915a4039288041c306d15dd53426578f9cebf
-size 76
+[My Computer]
+My Computer = "192.168.1.1"
+
+[pxi]
+pxi = "192.168.1.2"
+

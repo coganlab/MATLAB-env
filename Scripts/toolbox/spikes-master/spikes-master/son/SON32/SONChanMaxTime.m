@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:706c97da4a6de3f8f611a47615ec8f4e0844a4a8c009170cb6426a692ad49eef
-size 476
+function MaxTime=SONChanMaxTime(fh, chan)
+% SONCHANMAXTIME returns the sample time for the last data item on a channel
+% 
+% MAXTIME=SONCHANMAXTIME(FH, CHAN) 
+% where  FH is the SON file handle
+%        CHAN the channel (0-SONMaxChannels()-1)
+%
+%        MAXTIME is returned in clock ticks
+% 
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+MaxTime=calllib('son32','SONChanMaxTime',fh,chan);
+return;

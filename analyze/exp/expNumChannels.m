@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:09cd87e53379a7c0f9202d217e39c0248e9aeb37b65b1a0fe8b98d2fd733e83e
-size 502
+function numChannels = expNumChannels(experiment, tower)
+%
+%   numChannels = expNumChannels(experiment, tower)
+%
+
+numChannels = 0;
+nTower = length(experiment.hardware.microdrive);
+for iTower = 1:nTower
+  if strcmp(experiment.hardware.microdrive(iTower).name,tower)
+    nElectrode = length(experiment.hardware.microdrive(iTower).electrodes);
+    for iElectrode = 1:nElectrode
+      numChannels = numChannels + experiment.hardware.microdrive(iTower).electrodes(iElectrode).numContacts;
+    end
+  end
+end

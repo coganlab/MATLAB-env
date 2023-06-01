@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:79da9815c300f346e78b94f94cb01a403ac05e2f89be11047a246b5c505f34a5
-size 924
+%DIRECTCONDFORMAL Condition data on both category and time slice.
+%   Y = DIRECTCONDFORMAL(X,OPTS) reorganizes a 2-D cell array (such as
+%   is given by the output of DIRECTBIN) into a 1-D cell column vector
+%   where each element corresponds to a particular category-time slice
+%   combination
+%
+%   There are currently no user-specified options or parameters for
+%   this function. Therefore OPTS is ignored.
+%
+%   Y = DIRECTCONDFORMAL(X) has exactly the same behavior as above.
+%
+%   [Y,OPTS_USED] = DIRECTCONDFORMAL(X,OPTS) copies OPTS into OPTS_USED.
+% 
+%   See also DIRECTBIN, DIRECTCONDCAT, DIRECTCONDTIME,
+%   DIRECTCOUNTCLASS, DIRECTCOUNTCLASS, DIRECTCOUNTCOND.
+
+%
+%  Copyright 2010, Weill Medical College of Cornell University
+%  All rights reserved.
+%
+%  This software is distributed WITHOUT ANY WARRANTY
+%  under license "license.txt" included with distribution and
+%  at http://neurodatabase.org/src/license.
+%

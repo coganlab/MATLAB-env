@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:22d2f5f7b6aefb0dcf3a39b26ff02df1a7555785a3e01de809e360d73ffd5818
-size 342
+% ZScores: Standardizes the columns of an [n,p] matrix X.  Ignores missing data.
+%
+%     Usage: z = zscores(X)
+%
+%         X = [n x p] data matrix.
+%         ----------------------------------------
+%         z = [n x p] matrix of standardized data.
+%
+
+% RE Strauss, 1/3/03
+
+function z = zscores(X)
+  z = zscore(X);
+  return;
+  

@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4ca1717bfd2b1710f68830befef1a11f57bea2c5eba943e8c502b4724805f3f7
-size 224
+function phase = ph(X);
+%PH calculates the phase of a complex series without phase-fixing.
+%
+%  PHASE = PH(X) calculates the phase of X on a [-pi,pi] range.
+
+%  Author:  Bijan Pesaran 04/25/98
+
+phase=atan2(imag(X),real(X));

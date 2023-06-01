@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0ce2e62138ff2bc4ad13ab5721bf6f1ac5b5e14f3ef55684995f63f49e7c2cb2
-size 859
+function simulink2svg
+% Show the hidden handles to get access to the simulink figures
+set(0,'ShowHiddenHandles','on');
+% Iterate over all children of the root
+child = get(0,'children');                                
+for i = 1:length(child)                                  
+    % Pick all scope figures
+    if strcmp(get(child(i),'Tag'),'SIMULINK_SIMSCOPE_FIGURE')
+        % In order to get the correct background turn inverted background
+        % off. If you like a white background you should invert all labels
+        % and lines.
+        set(child(i),'InvertHardcopy','off');
+        % Use plot2svg
+        plot2svg(['Scope_' num2str(i) '.svg'], child(i))          
+        set(0,'ShowHiddenHandles','off')                         
+    end                                                      
+end                                       

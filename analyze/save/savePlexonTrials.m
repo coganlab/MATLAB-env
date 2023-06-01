@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8c938220b1260be4f55c7d04bf2e6930a4a390811aad9c7cb93e2d130a6bbc33
-size 459
+function savePlexonTrials(day)
+%
+%   savePlexonTrials(da,rec)
+%
+
+global MONKEYDIR
+
+olddir = pwd;
+if(~isdir([MONKEYDIR '/' day '/mat']))
+   mkdir([MONKEYDIR '/' day '/mat']);
+end
+if isfile([MONKEYDIR '/' day '/mat/Trials.mat'])
+    delete([MONKEYDIR '/' day '/mat/Trials.mat']);
+end
+
+Trials = dbPlexondatabase(day);
+
+
+cd([MONKEYDIR '/' day '/mat']);
+disp(['Saving Trials matrix: ' num2str(length(Trials)) ' trials']);
+save('Trials.mat', 'Trials')
+
+cd(olddir);

@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3e4a3a74637a67ab3e4ec0d7c10ce1a735d2c570a321d8bf3d94f675bd67824d
-size 823
+function createMultiunit_Database
+%
+% createMultiunit_Database
+%
+
+% Run GenerateMultiunitPk.m prior to this script!
+
+global MONKEYDIR MONKEYNAME
+
+if ~exist([MONKEYDIR '/m/Multiunit_Database.m'],'file')
+    fid = fopen([MONKEYDIR '/m/Multiunit_Database.m'], 'w');
+    
+    fwrite(fid,'function Session = Multiunit_Database;','char'); fprintf(fid,'\n\n');
+    fwrite(fid,['% ' MONKEYNAME ' multiunit database.']); fprintf(fid,'\n\n');
+    fwrite(fid,['Session = {};']); fprintf(fid,'\n\n');
+    fwrite(fid,['ind = 1']); fprintf(fid,'\n\n');
+    fclose(fid);
+    Session = {}; save([MONKEYDIR '/mat/Multiunit_Session.mat'],'Session');
+else
+    saveMultiunit_Database;
+end
+
+Session = loadField_Database;
+for sid = 1:length(Session)
+    Session{1}
+  addMultiunitDatabaseTextFromField(Session{sid});
+end
+
+saveMultiunit_Database;

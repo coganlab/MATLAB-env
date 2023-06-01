@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b278a6dfbda2ce1ae8d479e2a4d9ba3f05d0891ae49e93cf38050960eacf685f
-size 393
+function updateField_Database(SessNum)
+%
+%   UpdateField_Database
+%
+%
+
+
+
+if nargin == 1
+    replaceFieldSessInfo(SessNum);
+    updateField_NumTrials(SessNum);
+    updateField_NumTrialsConds(SessNum);
+    updateField_ControlTuning(SessNum);
+    %updateField_Figs(SessNum);
+else
+    updateField_NumTrials;
+    updateField_NumTrialsConds;
+    updateField_ControlTuning;
+    %updateField_Figs;
+end

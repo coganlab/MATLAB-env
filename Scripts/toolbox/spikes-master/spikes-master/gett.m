@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:97f27e2f94e7f55728432ddf9e7facc4ec9f00c6d3428dd7d113c87fc52ad3ce
-size 656
+%*---------------GETT--(Rowland Sillito, July 2001)-----------------*
+%|                                                                  |
+%|  gett(objtag,'PropertyName') returns the value of 'PropertyName' |
+%|                             for all objects with the tag objtag. |
+%|                                                                  |
+%*------------------------------------------------------------------*
+function output=gett(tag,setting)
+if nargin==2
+   output=get(findobj('tag',tag),setting);
+elseif nargin==1
+   output=get(findobj('tag',tag));
+elseif nargin<1 | nargin>2
+   disp('Invalid syntax');
+   help gett;
+end
+   
+

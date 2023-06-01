@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a1e460bc1402031f36172f32a16b21abc682bf1cd73edc7f74cd9044b7cc3a0a
-size 852
+% top level wrapper for preProcess workflow
+%global BOX_DIR
+%global RECONDIR
+%BOX_DIR='C:\Users\gcoga\Box';
+%RECONDIR='C:\Users\gcoga\Box\ECoG_Recon';
+global BOX_DIR
+global RECONDIR
+%global TASK_DIR
+BOX_DIR='H:\Box Sync';
+RECONDIR='H:\Box Sync\ECoG_Recon';
+Task=[];
+Task.Name='Phoneme_Sequencing';%'LexicalDecRepDelay';
+Task.Name='SentenceRep';
+Task.Name='LexicalDecRepNoDelay'
+Task.Directory=([BOX_DIR '/CoganLab/D_Data/' Task.Name]);
+%Task.Name='Neighborhood_Sternberg';
+%TASK_DIR=([BOX_DIR '/CoganLab/D_Data/' Task.Name]);
+%Task.Name='LexicalDecRepNoDelay';
+Task.Name='LexicalDecRepDelay';
+Task.Outlier.Field='Auditory'; % this is used to define the field for outlier channel removals
+preProcess_LineFilter(Task);
+preProcess_ChannelOutlierRemoval(Task);
+%preProcess_ResponseCoding;
+%preProcess_Specgrams
+%preProcess_Stats
+

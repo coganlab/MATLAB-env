@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ba2eb48e1ba117fee0b587a4f780dfef075af600d46c84740a1c92e9f7c45bf0
-size 348
+function SONCommitFile(fh, bDelete)
+% SONCOMMITFILE flushes data to disc
+% FH is the SON file handle
+% BDELETE ,if non-zero, causes the data buffers to be deleted
+%     
+% 
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+calllib('son32','SONCommitFile', fh, bDelete);
+return;

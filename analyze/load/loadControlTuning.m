@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a9522c567e9fa8d89e0713e642273dc41f8d9c0b1daeccbe26718eb7c54b6e83
-size 592
+function ControlTuning = loadControlTuning(SessType, SessNum, Task, Epoch)
+%
+%  ControlTuning = loadControlTuning(SessType, SessNum, Task, Epoch)
+%
+%  Inputs:  SessType = String.  'Spike' or 'Field'
+%           SessNum  = Scalar.  Session number
+%           Task     = String.  Task name.  (Optional)
+%           Epoch    = String.  Epoch name (Optional) 
+%
+
+
+global MONKEYDIR
+
+load(fullfile(MONKEYDIR, 'mat', SessType, [SessType '_ControlTuning.' num2str(SessNum) '.mat']));
+
+if nargin > 2 ControlTuning = ControlTuning.(Task); end
+if nargin > 3 ControlTuning  = ControlTuning.(Epoch); end
+

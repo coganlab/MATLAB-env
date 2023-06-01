@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1d18fe1165c5a88b3a75490e3fdd6bafd6191e4aab8ad0696b09f93999124d91
-size 562
+function isSpiking = sessIsSpiking(Session)
+%
+%  isSpiking = sessIsSpiking(Session)
+%
+
+% global MONKEYDIR
+if iscell(Session{1})
+  nSess = length(Session);
+else
+  nSess = 1;
+  Session = {Session};
+end
+
+olddir = pwd;
+
+isSpiking = zeros(1,nSess);
+
+for iSess = 1:nSess
+    monkeyDir = sessMonkeyDir(Session{iSess});
+    day = sessDay(Session{iSess});
+    tower = sessTower(Session{iSess});
+    channel = sessElectrode(Session{iSess});
+    cd([monkeyDir '/m/depth/']); 
+    eval(['Movement_' tower{1} '_' day]);
+    isSpiking(iSess) = endSP(channel);
+end
+cd(olddir);

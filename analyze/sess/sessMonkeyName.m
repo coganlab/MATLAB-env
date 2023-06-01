@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:913bc9bba37edaadcdb421cd488cc98de5ec170aded1f7c862b9d39a57a06705
-size 287
+function MonkeyName = sessMonkeyName(Sessions)
+% Return the Day field from an array of Sessions
+%
+%   MonkeyName = sessMonkeyName(Sessions)
+%
+
+if ~iscell(Sessions{1})
+  MonkeyName = Sessions{7};
+else
+  for iSess = 1:length(Sessions)
+    MonkeyName{iSess} = Sessions{iSess}{7};
+  end
+end

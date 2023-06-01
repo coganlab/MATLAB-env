@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0ea83ff4471c404a6ac6e066d36fc09a39d7fc4514fe26c55b7af893801b7c81
-size 696
+
+SIMPS = Strategy Simplex
+
+Constrained minimizer, based on iterations of full-dimensional
+simplex calls (Nelder-Mead direct search method), each time followed
+by a series of two-dimensional simplex calls (local improvements by
+subspaces).
+
+
+Files included:
+
+README.TXT  - This file
+GO.M        - Example of how to use SIMPS minimizer
+SIMPS.M     - SIMPS constrained minimizer itself
+FUN.M       - Exemplar target function
+
+For additional information call HELP SIMPS, and look into the
+commented code of M-files as listed above.
+
+
+Authors:
+Zeljko Bajzer (bajzer@mayo.edu) and Ivo Penzar (penzar@mayo.edu)
+Mayo Clinic and Foundation, Rochester, Minnesota, USA
+July, 1998.
+

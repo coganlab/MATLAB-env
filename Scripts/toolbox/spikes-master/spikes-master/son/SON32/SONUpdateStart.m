@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7b3b578e14b9f4a0bd63c38bb77b04e8d79b2bf07c7765f92bf43360299f688c
-size 349
+function ret=SONUpdateStart(fh)
+% SONUPDATESTART flushes the SON file header to disc
+% 
+% RET=SONUPDATESTART(FH)
+% where FH is the SON file handle
+%
+% Returns zero or a negative error
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+ret=calllib('son32', 'SONUpdateStart', fh);

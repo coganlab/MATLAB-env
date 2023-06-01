@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:02207bc18e37c1485a9dbad2ca3c4473261c2d781a62c25723a8e57483f745f8
-size 615
+<productinfo>
+
+<matlabrelease>13</matlabrelease>
+<name>Spikes</name>
+<type>toolbox</type>
+<icon>$toolbox/matlab/icons/matlabicon.gif</icon>
+
+<list>
+
+<listitem>
+<label>VS Applications Panel</label>
+<callback>vs</callback>
+<icon>$toolbox/matlab/icons/figureicon.gif</icon>
+</listitem>
+
+<listitem>
+<label>Spikes Analysis Package</label>
+<callback>spikes</callback>
+<icon>$toolbox/matlab/icons/figureicon.gif</icon>
+</listitem>
+
+<listitem>
+<label>DOGFit Model Fitting</label>
+<callback>dogfit</callback>
+<icon>$toolbox/matlab/icons/figureicon.gif</icon>
+</listitem>
+
+</list>
+</productinfo>

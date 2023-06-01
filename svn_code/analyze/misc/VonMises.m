@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9ee8063303e74770d40d9a939b592905326d0d0ecad4c0c6079b78eebabd15b2
-size 149
+function y=VonMises(beta,x);
+mu=beta(1);
+kappa=beta(2);
+B=beta(3);
+A=beta(4);
+Io=besseli(0,kappa);
+y=A+B.*1./sqrt(2.*pi.*Io).*exp(kappa.*cos(x-mu));

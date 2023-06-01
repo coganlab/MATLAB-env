@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5cd15a572bdf2e195a5316bf644f50dff106a30511b422d61a5aec556b8c0156
-size 550
+    function Speed = calcJointSpeed(Data,Filter)
+%
+%  Speed = calcJointSpeed(Data, Filter)
+%
+%   INPUTS:  DATA = Array.  [Trial,Time]
+%	     FILTER
+%
+%  OUTPUTS:  SPEED = Array.  Marker speed for each trial
+%
+
+if nargin==1 
+  [b,Filter] = sgolay(5,11); 
+end
+if length(Filter)==1 
+  [b,Filter] = sgolay(5,Filter); 
+end
+nt = size(Filter,1);
+
+  nTr = size(Data,1) ; nT = size(Data,2);
+  sy = filter(Filter(:,2),1,Data').*200;
+  Speed = abs(sy');
+  for iTr = 1:nTr
+    Speed(iTr,1:nt-1) = Speed(iTr,nt);
+    Speed(iTr,end) = Speed(iTr,end-1);
+  end
+end
+

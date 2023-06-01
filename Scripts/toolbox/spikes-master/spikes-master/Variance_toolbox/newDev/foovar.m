@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c8110635ff331ddcde4a34a83871053476ca5e97193a4621f1c9be7f42f0232b
-size 254
+
+
+function out = foovar(rate, trials, reps)
+
+window = 100;
+varC = zeros(reps,1);
+
+for r = 1:reps
+    x = rand(trials,window) < rate/1000;
+    counts = sum(x,2);
+    varC(r) = var(counts);
+end
+
+out = var(varC);  % sampling error
+    
+    

@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3be78cf10b24c23e7b33d072a94315e5731a256fb7718d923681627b620be4a0
-size 804
+function swapbyte(fnamein, fnameout)
+% SWAPBYTE to swap high/low byte
+%	swapbyte(fname);
+%	swapbyte(fnamein, fnameout);
+%	SWAPBYTE swaps high/low byte for [fnamein]. The new file will be
+%	[fnameout]. If the output filename is not given, the input file will
+%	be overwriten. This utiliy is good to convert files from other OS.
+%	See also: LOADFILE
+
+% Auther: Powen Ru (powen@isr.umd.edu), NSL, UMD
+% v1.00: 20-Oct-97
+
+if nargin < 2, fnameout = fnamein; end;
+
+fid = fopen(fnamein);
+if fid ~= -1,
+        [x, count] = fread(fid, Inf, 'int8');
+        fclose(fid);
+
+	if rem(count, 2),
+		error('File size not an even number');
+	else,
+		x = reshape(x(:), 2, count/2);
+		x = x([2 1], :);
+		fid = fopen(fnameout, 'w');
+		fwrite(fid, x, 'int8');
+		fclose(fid);
+	end;
+else,
+        error('File not found');
+end;
+

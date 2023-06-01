@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:160b62f48fb7b82a832fc536608d6691c2481110b14a8c3fbfe61016217b0bbe
-size 251
+function skf = one_kf_model()
+
+model = {};
+model{1}.A = [1 0 1 0; 0 1 0 1; 0 0 1 0; 0 0 0 1];
+model{1}.Q = 0.1*eye(4);
+model{1}.H = [1 0 0 0; 0 1 0 0];
+model{1}.R = 1*eye(2);
+
+skf.Z = 1;
+skf.X_0 = [10 10 1 0]';
+skf.P_0 = 10*eye(4);
+skf.model = model;

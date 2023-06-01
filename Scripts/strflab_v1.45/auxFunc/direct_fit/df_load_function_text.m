@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b9edbbeb40effd654d9b31078c27b363db5ba584c03b930a7cf440ba9afa83aa
-size 221
+function out = df_load_function_text(function_name);
+function_path = which(function_name);
+fid = fopen(function_path);
+if fid > 0
+    out = char(fread(fid,inf,'char')');
+    fclose(fid);
+else
+    out = function_name;
+end

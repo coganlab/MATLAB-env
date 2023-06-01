@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6a3bb0a717d83def6bbc6bf543469273f4102bc6fbf772beb074b588fa85cf4f
-size 778
+function t = ones(t)
+%ONES Replace nonzero elements of sparse tensor with ones.
+%
+%   S = ONES(T) generates a sparse tensor with the same sparsity
+%   structure as T, but with ones in the nonzero position.
+%
+%   See also SPTENSOR, SPONES.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+t.vals = ones(size(t.vals));

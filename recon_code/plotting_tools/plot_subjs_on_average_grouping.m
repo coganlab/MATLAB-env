@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0e84e628ae79366bebc4d5e6341204080d8c76da9345eb4b8af07719d989bc48
-size 799
+function handles = plot_subjs_on_average_grouping(subj_labels, grouping_idx, avgsubj, cfg)
+% PLOT_ELEC_ON_AVERAGE_GROUPING    Plots electrodes on average brain.
+% Electrodes with the same grouping_idx will have the same color.
+%
+% subj_labels  : cell array in subj-label format, e.g. {'D14-RPIP10', 'D14-RPIP9',...}
+% grouping_idx : is an Nx1 matrix, where N is number of elements in subj_labels
+% avgsubj      : char, the name of the average subject folder, e.g.
+%                'fsaverage'
+
+subjs = {};
+for s = 1:numel(subj_labels)
+    label_split = strsplit(subj_labels{s}, '-');
+    subjs = cat(1, subjs, label_split(1));
+end
+usubjs = unique(subjs);
+
+cfg.subj_labels = subj_labels;
+cfg.grouping_idx = grouping_idx;
+
+handles = plot_subjs_on_average(usubjs, avgsubj, cfg);
+end

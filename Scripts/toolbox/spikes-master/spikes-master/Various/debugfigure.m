@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d8eb622e1d975a9eb47a3e9a94d5a39197d318234a9024923f6112b3d2d6574e
-size 947
+% DEBUGFIGURE Script
+% Repairs 'uneditable' figures recreated from saved 'fig'-files
+
+% Author: Boyko Stoimenov
+% E-mail: boyko@tribo.mech.tohoku.ac.jp
+% Revision:1.0
+% Date: 14-Sep-2001
+
+% Specify a figure handle
+debug_fig_handle = input('Specify a figure handle. Type ''gcf'' for current figure, -> ');
+
+%Get the 'ApplicationData' property of current figure
+debug_fig_AppData = get(debug_fig_handle, 'ApplicationData');
+
+%Get the cell array which is in ScribeClearModeCallback-field
+debug_fig_ScribeClearCB = debug_fig_AppData.ScribeClearModeCallback;
+
+% Repair the handle to point to the selected figure's handle
+debug_fig_ScribeClearCB{2} = debug_fig_handle;
+
+
+% Write this new info to 'Read-only' 'ApplicationData' property
+setappdata(gcf,'ScribeClearModeCallback',debug_fig_ScribeClearCB);
+
+% Clear the variables used in this script from the workspace
+clear debug_fig_handle debug_fig_AppData debug_fig_ScribeClearCB

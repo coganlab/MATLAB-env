@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8f9e848550928cbc3b2844c539fc1bfdd22a45a69abc75ebc15e6c080907c525
-size 1125
+function  y=nt_resample_interp1(x,p,q,method)
+%y=resample_interp1(x,p,q,method) - Resample using interp1 (no antialiasing)
+%
+%  y: resampled signal
+%
+%  x: data to resample
+%  p,q: resample to p/q original sampling rate (can be fractional)
+%  method: interpolation method [default: 'spline']
+% 
+% From interp1:
+%       'linear'   - linear interpolation
+%       'nearest'  - nearest neighbor interpolation
+%       'next'     - next neighbor interpolation
+%       'previous' - previous neighbor interpolation
+%       'spline'   - piecewise cubic spline interpolation (SPLINE)
+%       'pchip'    - shape-preserving piecewise cubic interpolation
+%       'cubic'    - same as 'pchip'
+%       'v5cubic'  - the cubic interpolation from MATLAB 5, which does not
+%                    extrapolate and uses 'spline' if X is not equally
+%                    spaced.
+%       'makima'   - modified Akima cubic interpolation
+%
+% NoiseTools
+nt_greetings;
+
+if nargin < 4|| isempty(method); method='spline';   end
+if nargin<3; error('!'); end
+
+nsamples=size(x,1);
+querypoints=1+(0:q/p:nsamples-1);
+y=interp1((1:nsamples)',x,querypoints(:));
+
+

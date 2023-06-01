@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b74b156897af4895215383e816f6b8f46c34df4ce569cb8cf1487129f5659df4
-size 410
+function out = isLaserAwakeExperiment(experiment)
+%  Returns whether plexon data is available in this experiment
+%
+%  out = 1 if plexon
+%
+%  INPUTS: EXPERIMENT = Data structure.  Experiment data structure
+%
+%  OUTPUTS: OUT = 0/1 scalar.
+
+if isfield(experiment.hardware, 'stim') % Preferred
+    if strcmp(experiment.hardware.stim,'Laser')
+        out = 1;
+    else
+        out = 0;
+    end
+else
+    out = 0;
+end

@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9eaad050a336a764cd5c3c7d519f48b9085ba5f94f7062210ca9c78209bfa329
-size 1187
+function init_software_modules
+%
+%  init_software_modules
+%
+%
+
+global experiment;
+
+if isfield(experiment.software,'module')
+    nModule = length(experiment.software.module);
+    for iModule = 1:nModule
+        index = findstr('(',experiment.software.module(iModule).path);
+        if(isempty(index))
+            tmp_path = experiment.software.module(iModule).path;
+        else
+            tmp_path =  experiment.software.module(iModule).path(1:index -1);
+        end
+        if(exist(tmp_path, 'file'))
+            if(isempty(index))
+                disp(['Starting data acquisition module ' experiment.software.module(iModule).path]);
+                system(['rxvt -title "' experiment.software.module(iModule).terminal_title '" -e ' experiment.software.module(iModule).path ' &']);
+                pause(1);
+            else
+                disp(['Running software module ' experiment.software.module(iModule).path]);
+                eval(experiment.software.module(iModule).path);
+                pause(1);
+            end
+        else
+            disp(['Module: ' experiment.software.module(iModule).path ' does not exist']);
+            exit
+        end
+    end
+end
+
+
+
+    return
+

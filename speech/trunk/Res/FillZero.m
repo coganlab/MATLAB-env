@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3a75cb9dd59ee13a0f6cb59e155f6dcdb2b72af1cd287dfba1aa6cdc44bcb50c
-size 108
+x = [1 4 6 5 7 9 2 3 2 3 6 7]
+
+for i = length(x):-1:1
+  if (x(i) < 5)
+    x(i) = 0;
+  end;
+end;
+
+x

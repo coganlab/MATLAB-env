@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0fc56ea2ed2c4676a6c424c0701bb352e537646c62777e8213a525876c64ab47
-size 708
+<productinfo
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="optional">
+<?xml-stylesheet type="text/xsl" href="optional"?>
+
+<matlabrelease>R2018a</matlabrelease>
+<name>Tensor</name>
+<type>toolbox</type>
+<icon>$toolbox/matlab/icons/unknownicon.gif</icon>
+<help_location>doc/html</help_location>
+
+<list>
+  <listitem>
+    <label>Help</label>
+    <callback>doc tensor_toolbox</callback>
+    <icon>$toolbox/matlab/icons/webicon.gif</icon>
+  </listitem>
+  <listitem>
+    <label>Tensor Toolbox Web Site</label>
+    <callback>web http://www.sandia.gov/~tgkolda/TensorToolbox</callback>
+    <icon>$toolbox/matlab/icons/webicon.gif</icon>
+  </listitem>
+</list>
+
+</productinfo>

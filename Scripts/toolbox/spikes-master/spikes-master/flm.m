@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fa245ab8ecface2ba1a18644f20943445ccc0f4bb6709cc99563e55fe9a4837d
-size 209
+function x=flm(y)
+
+z=1;
+for i=1:10
+   a=y/i;
+   if ceil(a)/a==1
+      x(z)=i;
+      z=z+1;
+   end
+end
+
+for i=1:max(size(x))
+   m(i)=y/x(i);
+end
+
+n=abs(m-x);
+
+[o,i]=min(n);
+
+x=x(i);
+   
+   

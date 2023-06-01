@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a281aff2d8ba4d538e2577073b7188713ac6956eafda82099162b632ff55894e
-size 252
+function flag = isReachTrial(TaskCode)
+%  
+%  flag = isReachTrial(TaskCode)
+%
+
+TaskCode
+switch TaskCode
+  case {0,1,2,3,4,5,6,7,8,11,12,16,17}  %  No visually-guided reach
+    flag = 0;
+  case {9,10,13,14,15,18,19,20,21,22}  %  Reach
+    flag = 1;
+end

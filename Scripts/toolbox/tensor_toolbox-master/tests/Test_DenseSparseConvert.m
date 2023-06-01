@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:51de195657c869bbac5c75a71d144cc9d5ab936b6d3bf4e707fc85b0809a55ef
-size 1185
+% Testing conversions between tensor and sptensor
+classdef Test_DenseSparseConvert < matlab.unittest.TestCase
+    methods (Test)
+
+        function Empty(testCase)
+            x = sptensor;
+            y = tensor;
+            testCase.verifyEqual(x, sptensor(y));
+            testCase.verifyEqual(y, tensor(x));
+        end
+            
+        function Zero(testCase)
+            x = sptensor([5 4 3]);
+            y = tensor(@zeros, [5 4 3]);
+            testCase.verifyEqual(x, sptensor(y));
+            testCase.verifyEqual(y, tensor(x));
+        end
+        
+        function ThreeWay(testCase)
+            x = sptenrand([4 3 2], 0.4);
+            y = tensor(x);
+            testCase.verifyEqual(x, sptensor(y));
+            
+            y = tenrand([4 3 2]);
+            x = sptensor(y);
+            testCase.verifyEqual(y, tensor(x));            
+        end
+        
+        function OneWay(testCase)
+            x = sptenrand(10,0.4);
+            y = tensor(x);
+            testCase.verifyEqual(x, sptensor(y));
+            
+            y = tenrand([10]);
+            x = sptensor(y);
+            testCase.verifyEqual(y, tensor(x));            
+        end
+        
+    end
+end

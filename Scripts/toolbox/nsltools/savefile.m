@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b1aa091a833d3b59963bd4bc6bc56bffcd20057ebe27a128fdac3ec0fe46fed4
-size 358
+function savefile(x, fname, prec)
+% SAVEFILE save a data file
+%	savefile(x, fname, prec);
+%	fname: filename with full path and extension
+%	prec: precision, e. g., 'short' (default), 'float'
+
+% Auther: Powen Ru (powen@isr.umd.edu), NSL, UMD
+% v1.00: 01-Jun-97
+
+fid = fopen(fname, 'w');
+if nargin < 3,
+	prec = 'short';
+end;	
+fwrite(fid, x, prec);
+fclose(fid);

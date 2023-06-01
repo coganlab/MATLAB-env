@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d973052636bc83f217c390f8750c9306a1d5b74fd7aea04ee84cc6693fd806de
-size 305
+function ccheck(M)
+% Check covariance matrices
+
+if all(eig((M+M')/2) >=0)
+    % positive semi-definite
+else
+    [ST,I] = dbstack;
+    dbstack
+    fprintf('%s: line %d: CCHECK failed\n',ST(2).file, ST(2).line);
+    keyboard
+end
+
+if ~isequal(M,M')
+    dbstack
+    fprintf('NOT SYMMETRIC');
+    keyboard
+end

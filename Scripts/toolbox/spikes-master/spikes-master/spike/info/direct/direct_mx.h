@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9deb03b80e9dc519127c6845170fa2063af33f7968b00df1beb9294adfdf9ec7
-size 412
+/*
+ *  Copyright 2010, Weill Medical College of Cornell University
+ *  All rights reserved.
+ *
+ *  This software is distributed WITHOUT ANY WARRANTY
+ *  under license "license.txt" included with distribution and
+ *  at http://neurodatabase.org/src/license.
+ */
+extern struct options_direct *ReadOptionsDirect(const mxArray *in);
+extern mxArray *WriteOptionsDirect(const mxArray *in,struct options_direct *opts);

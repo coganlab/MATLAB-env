@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77b048b99fc8398db64e84ddebd9c77c884d6be0e9bba82367251a832ec9155c
-size 365
+function Session = FtoS(InputSession,Chamber, Ch)
+%
+%   Session = FtoS(InputSession,Chamber, Ch)
+%
+
+if nargin < 2; Chamber = []; end
+if nargin < 3; Ch = []; end
+
+SF_Sessions = FtoSF(InputSession, Chamber, Ch);
+Session =[];
+for iS = 1:length(SF_Sessions)
+    Session{iS} = SFtoS(SF_Sessions{iS});
+end
+
+disp([num2str(length(Session)) ' Spike ' Chamber ' Sessions']);

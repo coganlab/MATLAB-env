@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ac3febb436075e7764f01814e97833472eda6e6befa59cf5f2e54295337d769f
-size 588
+function hashes_of_spikes = create_spike_cache_file(outputPath,DS);
+%  Creates the file with the hashes of the stimuli
+hashes_of_spikes = {};
+rec_make_dir(fullfile(outputPath,'spike_hashes'));
+for ii = 1:length(DS)
+    dsname = DS{ii}.respfiles;
+    [dsdir,dsname,dsext] = fileparts(dsname);
+    dsname = [dsname dsext];
+    filename = fullfile(outputPath,'spike_hashes',dsname);
+    if ~exist(filename,'file')
+        this_hash = checksum_from_file(DS{ii}.respfiles);
+        save(filename,'this_hash');
+    else
+        load(filename);
+    end
+    hashes_of_spikes{ii} = this_hash;
+end

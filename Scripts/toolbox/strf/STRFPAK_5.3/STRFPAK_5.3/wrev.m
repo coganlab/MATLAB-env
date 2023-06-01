@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7a8f86af6ff5e2d1e72a3b8ca3c4e653c02f25161706663b4ea85399cf6a8dca
-size 370
+function y = wrev(x)
+%WREV Flip vector.
+%   Y = WREV(X) reverses the vector X.
+%
+%   See also FLIPLR, FLIPUD.
+
+%   M. Misiti, Y. Misiti, G. Oppenheim, J.M. Poggi 01-May-96.
+%   Last Revision: 01-Jun-1998.
+%   Copyright 1995-2000 The MathWorks, Inc.
+% $Revision: 1.8 $
+
+% Check arguments.
+if errargn(mfilename,nargin,[1],nargout,[0:1]), error('*'), end
+
+y = x(end:-1:1);

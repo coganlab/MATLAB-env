@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:62c9f255d550294cecc56f01345325396b67ed2509364c1bf2af5d525f0bf3b0
-size 373
+@article{crosse2016mtrf,
+  title={The multivariate temporal response function (mTRF) toolbox: a MATLAB toolbox for relating neural signals to continuous stimuli},
+  author={Crosse, Michael J and Di Liberto, Giovanni M and Bednar, Adam and Lalor, Edmund C},
+  journal={Frontiers in Human Neuroscience},
+  volume={10},
+  pages={604},
+  year={2016},
+  publisher={Frontiers}
+}

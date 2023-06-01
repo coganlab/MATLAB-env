@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1c20513431d9a9830af5e3f290d61e5fb178d394afcfc0b7f43de43b7b626115
-size 601
+function strf=strfUnpak(strf,w)
+%function strf=strfUnpak(strf,w)
+%
+% Separates weights vector into weight and bias matrices and returns a strf 
+% data structure identical to the input network, except that the componenet 
+% weight matrices have all been set to the corresponding elements of w.  
+%
+% INPUT:
+% [strf] = strf model structure
+%    [w] = Parameter vector for STRF, (ex. w=strfPak(strf))
+%
+% OUTPUT:
+% [strf] = strf model structure
+%
+%
+%(Some code modified from NETLAB)
+
+unpakstr=[strf(1).type,'Unpak'];
+
+for ii=1:size(w,1)
+  strf(ii)=feval(unpakstr,strf(1),w(ii,:));
+end
+strf(ii+1:end)=[];

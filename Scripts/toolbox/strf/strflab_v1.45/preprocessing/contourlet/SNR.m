@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:572969c2110c93119f65081f56905589c1286455020e0447459fad9bcbdeaa70
-size 248
+function r = SNR(in, est)
+% To find SNR between input (in) and estimate (est) in decibels (dB).
+%
+% Reference: Vetterli & Kovacevic, "Wavelets and Subband Coding", p. 372
+
+error = in - est;
+
+r = 10 * log10(var(in(:), 1) / mean(error(:).^2));

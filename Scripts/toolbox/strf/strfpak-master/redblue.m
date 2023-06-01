@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:038520d3fc889db13d15532dab213598a0f4615a74e8255d303081bb3f4f7fe4
-size 433
+% function pal=redblue(expon);
+%
+% passed to colormap() function to set blue-->white-->red palette
+%
+% expon is the exponent of coloration. 
+% (ie, 1= linear, <1 more white, >1 more color)
+% 
+function pal=redblue(expon);
+
+if ~exist('expon','var'),
+   expon=0.75;
+end
+
+skbottom=[linspace(0,1,32).^expon' linspace(0,1,32).^expon' ones(32,1)];
+sktop=[ones(32,1) linspace(1,0,32).^expon' linspace(1,0,32).^expon'];
+pal=[skbottom;sktop];

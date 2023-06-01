@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d2059f4bb9de05cb6d3fc1734fbc6c8c2cc352a3eeddab187c61f6f4d7b0d460
-size 507
+% GEOMSIZE: Geometric size of a point configuration, the geometric mean 
+%           of all possible interpoint distances.
+%
+%       Usage: gsize = geomsize(coord)
+%
+%           coord - [n x p] matrix of point coordinates
+%           gsize - centroid size: root-mean-square distance of points
+%                     from their centroid
+%
+
+% RE Strauss, 8/2/95
+
+function gsize = geomsize(coord)
+  [n,p] = size(coord);
+  dist = trilow(eucl(coord));
+  gsize = exp(mean(log(dist)));
+
+  return;

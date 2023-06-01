@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:be1a7c450f6af02de34025b1042a4720fd5a3a999d3032263be5cde5b1c4d4ee
-size 726
+function y=nt_squeeze_all(x)
+%y=nt_squeeze_all(x) - squeeze structs and cell arrays
+%
+%  x: object to squeeze
+%  
+%  y: result of squeezing
+%
+% If x is a struct, all fields and subfields will be concatenated.  If x is
+% a cell array, all elements will be concatenated.
+
+VERBOSE=1;
+
+x=squeeze(x);
+
+if isnumeric (x)
+    y=x;
+    return;
+elseif iscell(x);
+    if VERBOSE; disp('cell to matrix'); end
+    try
+        y=cell2mat(x);
+    catch
+        error('could not convert cell array to matrix'); 
+    end
+elseif isstruct(x);
+    if VERBOSE; disp('struct to cell'); end
+    try
+        y=struct2cell(x);
+    catch
+        error('could not convert structure to cell array');
+    end
+else
+    error('!');
+end
+
+y=nt_squeeze_all(y);

@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:751a7396fd4a6674b955a7c39686424a899468f64efbb9cbc4950f65da6a1a2f
-size 270
+load sample_stm_paper_data.mat
+start = 1;
+stop = size(data,2);
+minVal = 	-100
+maxVal = 	100
+minAmp =	0.000
+maxAmp =	0.015
+q =	[1 1 1 1 1 0 1 0 0 1 1 1 1 1 1 0 0 0];
+maxBPM = 	100
+[g xAvg] = CreateMapAmp(data,start,stop,minVal,maxVal, q, minAmp, maxAmp, maxBPM);

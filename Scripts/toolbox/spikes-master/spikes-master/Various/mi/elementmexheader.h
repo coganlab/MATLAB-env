@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:91181baa13bd9ff95f1f3c3086eefebd62a82eecb8eea1971b79cb57f71876a5
-size 477
+//=========================================================
+//
+//This is a common header for mex functions
+//
+//Disclaimer: The author of program is Hanchuan Peng
+//      at <hanchuan.peng@gmail.com> 
+//
+//The CopyRight is reserved by the author.
+//
+//========================================================
+//
+
+#ifndef __ELEMENTARY_INCLUDE_H_
+#define __ELEMENTARY_INCLUDE_H_
+
+#include "mex.h"
+#include "matrix.h"
+
+#define BYTE signed char
+#define UBYTE unsigned char
+
+#endif

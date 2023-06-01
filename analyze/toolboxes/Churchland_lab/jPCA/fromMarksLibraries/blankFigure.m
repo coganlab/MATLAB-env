@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4060e1b590d35d51ce161a958cfa97a82534e97fc07ca6187989b0e13c8f21a5
-size 263
+% produces a blank figure with everything turned off
+% hf = blankFigure(axLim)
+% where axLim = [left right bottom top]
+function hf = blankFigure(axLim)
+
+hf = figure; hold on; 
+set(gca,'visible', 'off');
+set(hf, 'color', [1 1 1]);
+axis(axLim); axis square;

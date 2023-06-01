@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bc5686ea6d0cccffabdd08eaa6d0230dfaa1e92b42552f7fe8046d37a7b62923
-size 493
+function SessionType = sessTypeCell(Session)
+%
+%  SessionType = sessTypeCell(Session)
+%
+%  SessionType = {'Spike'}, {'Field'}, {'Spike','Field'}, etc
+
+if ~iscell(Session{1})
+    Session = {Session};
+end
+for iSess = 1:length(Session)
+    if ~iscell(Session{iSess}{8})
+        Session{iSess}{8} = {Session{iSess}{8}};
+    end
+    nComponent = length(Session{iSess}{8});
+    for iComponent = 1:nComponent
+        SessionType{iSess,iComponent} = Session{iSess}{8}{iComponent};
+        
+    end
+end

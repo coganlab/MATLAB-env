@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2ac37a7f3d14cbb12a35ac42fce5d08797235c5537176885ca3db90d63be50e4
-size 466
+function y=rms(x, dim)%RMS - Root-mean-square% %  y=rms(x): If x is a matrix the rms is calculated columnwise.%  y=rms(x,dim): calculate rms according to dim.% %  see also nt_bsrms, nt_bsplot%% NoiseTools % if row vector transpose to columnif size(x,1) == 1 ; x = x'; end if nargin == 2    if dim == 0;         y=sqrt(sum(sum(x.^2))/prod(size(x)));    else        y=sqrt(sum(x.^2,dim)/size(x,dim));    endelse    y=sqrt(sum(x.^2)/size(x,1));end

@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70cf025394df4086810de009d1b14167c0f4795a640f36c5110a00b3674b4629
-size 552
+function printSelectionTimeCurve(Onset, ModelType, DetectType)
+%
+%  printSelectionTimeCurve(Onset, DetectType)
+%
+%   Inputs: Onset      = Data structure
+%           DetectType = String. 'Hit', 'Reject' or 'Correct'
+%                           Defaults to 'Hit'
+%
+
+global MONKEYDIR
+
+
+if nargin < 2 || isempty(ModelType)
+    ModelType = 'NoHist';
+end
+if nargin < 3 || isempty(DetectType)
+    DetectType = 'Hit';
+end
+
+
+FigureHandle = plotSelectionTimeCurve(Onset, ModelType, DetectType);
+
+printSelectionHelper(FigureHandle, 'SelectionTimeCurve', Onset);
+

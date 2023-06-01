@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c6c85a3f15cc0e6e07d8fa9ae95c4af65cd934eed63bce15df1c4151a91d433b
-size 245
+function X=fread_3d(fid,sz,length);
+% FREAD_3D Read three-dimensional arrays
+%   X = FREAD_3D(FID,SZ,LENGTH)
+%
+
+%  Author:  Bijan Pesaran
+%
+
+X=zeros(sz);
+N=size(sz);
+N=N(2);
+for i=1:sz(N);
+	tmp=fread(fid,sz([1:N-1]),length);
+	X(:,:,i)=tmp;
+end
+

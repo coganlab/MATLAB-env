@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:feb143d2e39597cd52a8c57e9e675afabf4d58c0ef0a5ac0fef5e0ea35024312
-size 767
+function state=SONExtMarkAlign(fh, n)
+% SONEXTMARKALIGN gets and sets the alignment state for marker channels
+% This is a feature of V7 of the SON filing system
+% Using aligned markers improves cross-platform portability of SON files
+% STATE=SONEXTMARKALIGN(FH,N)
+%         FH= SON file handle
+%         N = -2, Check channel alignment
+%             -1, Check the file header alignment flag
+%             0, Set the file header flag to unaligned
+%             1, Set the file header flag to aligned
+% See CED documentation for details
+% 
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin<2
+    state=-1000;
+    return;
+end;
+
+state=calllib('son32','SONExtMarkAlign', fh, n);

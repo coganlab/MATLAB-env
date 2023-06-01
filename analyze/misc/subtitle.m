@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:33299c4133a1bd20c8f4aba6bd423d67e807c9964bd726d33b299ab069edf0e1
-size 442
+function [ax,h]=subtitle(text)
+%
+%Centers a title over a group of subplots.
+%Returns a handle to the title and the handle to an axis.
+% [ax,h]=subtitle(text)
+% returns handles to both the axis and the title.
+% ax=subtitle(text)
+% returns a handle to the axis only.
+
+ax=axes('Units','Normal','Position',[.075 .075 .85 .85],'Visible','off');
+
+set(get(ax,'Title'),'Visible','on');
+title(text);
+if (nargout < 2)
+  return
+end
+h=get(ax,'Title');
+
+

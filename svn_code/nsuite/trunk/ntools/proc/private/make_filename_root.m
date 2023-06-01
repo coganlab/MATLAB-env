@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:04bdb9f59145d30daa1db4fa8efecbb2a234082e0c59da3e9ccc69a17c0dd9d6
-size 203
+function new_root = make_filename_root(old_file)
+    [d f e] = fileparts(old_file);
+    if(~isempty(e))
+        new_root = strip_double_suffix(old_file);
+    else
+        new_root = old_file;
+    end
+end

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d45ecc7874f4a730126d4089780f33810e4cd2632a5acf7b481b1a6535cedc8a
-size 327
+function bytes=SONFileBytes(fh)
+% SONFILEBYTES Returns the number of bytes in the file 
+%    BYTES=SONFILEBYTES(FH) where FH is the file handle
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+             
+
+bytes=calllib('son32','SONFileBytes',fh);
+return;

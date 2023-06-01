@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b8ed36f62eb8125ea880f7ba3ec9f49d681fd6b07ade9156a3b20c979baf501b
-size 313
+function [x, y, z] = sessBSCoord(session)
+
+%Returns Brainsight Coordinates for a given day and tower
+
+eval([MONKEYDIR '/m/BS_Coordinates'])
+
+
+for n = 1: length(BSCoord)
+    if BSCoord{n,1} == Day && BSCoord{n,2} == Tower
+        x = BSCoord(n,3)
+        y = BSCoord(n,4)
+        z = BSCoord(n,5)
+    end
+end
+
+end

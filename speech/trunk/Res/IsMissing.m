@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77f4456520fe1c6b212c1bdaee927fe8bd86926728310e691b3b29ec01ee43f6
-size 634
+% IsMissing: Finds addresses (indices) of missing data, along with the total number and proportion.
+%
+%     Usage: [nmiss,pmiss,rowmiss,colmiss] = IsMissing(X)
+%
+%         X = [r x c] matrix.
+%         ----------------------------------------------------------
+%         nmiss = number of missing values.
+%         pmiss = proportion of missing values.
+%         rowmiss,colmiss = corresponding indices of missing values.
+%
+
+% RE Strauss, 2/25/04
+
+function [nmiss,pmiss,rowmiss,colmiss] = IsMissing(X)
+  [rowmiss,colmiss] = find(~isfinite(X));
+  nmiss = length(rowmiss);
+  pmiss = nmiss/prod(size(X));
+
+  return;
+  

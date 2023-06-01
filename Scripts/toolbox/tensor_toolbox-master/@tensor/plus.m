@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d4ba6e9efa9da51652c636795f7fe492baca8978cdc5470fdc097f67812f28a8
-size 908
+function Z = plus(X,Y)
+%PLUS Binary addition (+) for tensors. 
+%
+%   PLUS(A,B) is called for the syntax 'A + B' when A or B is a tensor. A
+%   and B must have the same size, unless one is a scalar. A scalar can be
+%   added to a tensor of any size. 
+%
+%   See also TENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+if isa(Y,'sumtensor') %If the 2nd component is a sumtensor, treat as such
+    Z=plus(Y,X)
+else
+    Z = tenfun(@plus,X,Y);
+end

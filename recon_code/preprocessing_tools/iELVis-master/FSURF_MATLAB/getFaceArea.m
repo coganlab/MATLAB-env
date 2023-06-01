@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dc4d7f0bb1aa85b152b33e44cc5031f1d5544dc444edf09e729c9149089a71c6
-size 973
+function farea = getFaceArea(mesh_in,ListFaces, face)
+
+% to measure the area of a single face (given by the index of a face in a list of faces)
+
+v1 = ListFaces(face,1);
+v2 = ListFaces(face,2);
+v3 = ListFaces(face,3);
+
+first_comp = [mesh_in.vertices(v1,2), mesh_in.vertices(v1,3), 1; ...
+              mesh_in.vertices(v2,2), mesh_in.vertices(v2,3), 1; ...
+              mesh_in.vertices(v3,2), mesh_in.vertices(v3,3) 1];
+        
+scnd_comp = [mesh_in.vertices(v1,3), mesh_in.vertices(v1,1), 1; ...
+             mesh_in.vertices(v2,3), mesh_in.vertices(v2,1), 1; ...
+             mesh_in.vertices(v3,3), mesh_in.vertices(v3,1), 1];
+       
+third_comp = [mesh_in.vertices(v1,1), mesh_in.vertices(v1,2), 1; ...
+              mesh_in.vertices(v2,1), mesh_in.vertices(v2,2), 1; ...
+              mesh_in.vertices(v3,1), mesh_in.vertices(v3,2), 1];
+        
+a = det(first_comp)^2;
+b = det(scnd_comp)^2;
+c = det(third_comp)^2;
+
+farea = 0.5*(sqrt(a+b+c));

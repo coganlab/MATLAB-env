@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:09458292dbdfeda107b854e8c23f40b6f004183df2a71c0feaa2ea66fa9c8be9
-size 234
+% function erase_and_display(old_str, new_str)
+%   Backspaces the number of chars of the length of old_str, then prints new_str
+
+function erase_and_display(old_str, new_str)
+    fprintf([repmat('\b', 1, length(old_str)) new_str]);
+end

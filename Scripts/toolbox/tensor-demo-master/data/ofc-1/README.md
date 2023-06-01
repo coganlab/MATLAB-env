@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f11563c78d385aa606425a9e876373273138c012e21a2ac0eefcf3df8e583e5e
-size 540
+# [Orbitofrontal Cortex - Dataset 1](http://dx.doi.org/10.6080/K0QC01D2)
+
+Original publication:
+
+> Feierstein, C. E., Quirk, M. C., Uchida, N., Sosulski, D. L., & Mainen, Z. F. (2006). Representation of spatial goals in rat orbitofrontal cortex. Neuron, 51(4), 495-507.
+
+CRCNS citation:
+
+> Claudia E. Feierstein, Michael C. Quirk, Naoshige Uchida, Dara L. Sosulski, Zachary F. Mainen (2016). Single-neuron spike train recordings from rat orbitofrontal cortex during an odor discrimination task. CRCNS.org. http://dx.doi.org/10.6080/K0QC01D2

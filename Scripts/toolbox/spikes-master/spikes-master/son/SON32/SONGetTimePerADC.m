@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:07a258521c716b859c618153c7f725088f762df4d15c3049dde4ec6f534812aa
-size 495
+function ticks=SONGetTimePerADC(fh)
+% SONGETTIMEPERADC returns the number of clock ticks per ADC conversion
+%     TICKS=SONGETTIMEPERADC(FH)
+%             FH = file handle
+% Returns the number of ticks (no error codes)
+% 
+% See also SONGETUSPERTIME, SONCHANDIVIDE
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+if nargin ~= 1
+    ticks=-1000;
+    return;
+end;
+
+ticks=calllib('son32','SONGetTimePerADC',fh);
+return;

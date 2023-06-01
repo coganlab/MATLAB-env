@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:476b523b463fd60c0860b24620911b3362556070b8bb30fc3848d7effa3bc03a
-size 290
+function day = getDatabaseDays(Database, int)
+
+% function day = getDatabaseDays(Database, int)
+% Database = Database from which to pull days
+% int = [1 6] - which database entries we want to pull
+
+
+Alldays = Database;
+
+day = {};
+
+for i = int(1):int(2)
+   day = [day Alldays{i}{1}];
+end
+
+
+
+

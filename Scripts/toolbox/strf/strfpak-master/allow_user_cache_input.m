@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:95aa1bad239db028963c89e586d68698af6527ef948df9ed19b54581cd97fb55
-size 274
+function using_cache = allow_user_cache_input
+
+[cached_dir,maxsize] = dir_of_caches;
+
+if strcmp(cached_dir,'null')
+    using_cache = 0;
+    disp(['First type "help Caching_Readme", then type "edit dir_of_caches.m" to get started with caching.'])
+else
+    using_cache=1;
+end

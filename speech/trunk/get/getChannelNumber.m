@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:85083954f84f0f7d055f5d2d6a54f41e78cb43f3bd8f2851bedb80147c24734b
-size 725
+function ChannelNumber = getChannelNumber(ChannelName);
+%
+%  ChannelNumber = getChannelNumber(ChannelName)
+%
+%
+%  Inputs:
+%    ChannelName = String or cell array of strings.  Names of channels
+%
+%  Outputs:
+%    ChanneNumber = Scalar or array of scalars.  Indices in experiment global
+%
+
+global experiment
+
+channels = experiment.channels;
+
+a = cell(1,length(channels));
+[a{1:length(a)}] = deal(channels.name);
+[dum, ChannelNumber] = intersect(a,ChannelName);
+
+if iscell(ChannelName)
+  if length(ChannelNumber)~=length(ChannelName)
+    error('ChannelName does not match experiment variable');
+  end
+elseif ischar(ChannelName)
+  if isempty(ChannelNumber)
+    error('ChannelName does not match experiment variable');
+  end 
+end

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2845bb44160523776464a9eadca79ca8f18bca230ac83ec9661c5e365481c335
-size 240
+function Session = loadLaminar_Database(MonkeyDir)
+%
+%  Session = loadLaminar_Database(MonkeyDir)
+%
+
+global MONKEYDIR
+
+if nargin == 1 ProjectDir = MonkeyDir; else ProjectDir = MONKEYDIR; end
+
+
+load([ProjectDir '/mat/Laminar_Session.mat']);

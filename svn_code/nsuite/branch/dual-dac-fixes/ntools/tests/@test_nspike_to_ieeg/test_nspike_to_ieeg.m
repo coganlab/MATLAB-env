@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0e1d41a5ad246a6f0ab84a75bfd3928ad1fb0679c01f87da47245bc6f14f70ac
-size 270
+function self = test_nspike_to_ieeg(name)
+    self.NUM_CHANNELS = [];
+    self.recording_filename_root = [];
+    self.fid_nspike = [];
+    self.fid_ieeg = [];
+    self.orig_data = [];
+    
+    tc = test_case(name);
+    self = class(self, 'test_nspike_to_ieeg', tc);
+
+end

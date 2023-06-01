@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:37ed4d18cbe54c3eec1be8b9912e289ad9db7c869c02614a5b1f4888d24d3294
-size 653
+function Value = calcWaveformSNRS1(Session,CondParams,AnalParams)
+%
+%  Value = calcWaveformSNR(Session,CondParams,AnalParams)
+
+global MONKEYDIR
+
+SSess = splitSession(Session);
+Sess = SSess{1};
+
+Type = getSessionType(Sess);
+
+dirPath = [MONKEYDIR '/mat/' Type '/SpikeWaveformSNR'];
+fNameRoot = ['SpikeWaveformSNR.Sess' num2str(Sess{6}) ];
+
+[p,pMax] = getParamFileIndex([dirPath '/' fNameRoot],CondParams,AnalParams);
+
+if p > 0 
+    SpikeWaveformSNR = loadSessSpikeWaveformSNR(Sess,CondParams,AnalParams);
+else
+    SpikeWaveformSNR = saveSessSpikeWaveformSNR(Sess,CondParams,AnalParams);
+end
+
+%load up saved SNR information
+Value = SpikeWaveformSNR.SNR;
+
+

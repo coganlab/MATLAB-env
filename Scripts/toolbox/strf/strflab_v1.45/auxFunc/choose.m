@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2fd08106b861e18292758e473f590f3e7950a0b6b00a9264c3eca211d573da0a
-size 221
+function f = choose(flag,yes,no)
+
+% function f = choose(flag,yes,no)
+%
+% <flag> is 0/1
+% <yes> is something
+% <no> is something
+%
+% if <flag>, return <yes>.  otherwise, return <no>.
+
+if flag
+  f = yes;
+else
+  f = no;
+end

@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4a0652cfe0f88824c02939d09cc2e3040a0fda350bfbd6274cbb47d739e1a0e6
-size 559
+% BINTOSTR: Converts binary matrix to character equivalent.
+%
+%     Usage: s = bintostr(b)
+%
+%           b = binary matrix.
+%           ---------------------------------------------------
+%           s = character matrix of same size as binary matrix.
+%
+
+% RE Strauss, 1/22/00
+
+function s = bintostr(b)
+  [r,c] = size(b);
+
+  s = char(b);                            % Allocate output matrix
+
+  for i = 1:r
+    for j = 1:c
+      if (b(i,j))
+        s(i,j) = '1';
+      else
+        s(i,j) = '0';
+      end;
+    end;
+  end;
+
+  return;

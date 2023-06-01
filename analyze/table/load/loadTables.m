@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e737c0296e17ee1bd1ae99888f1cb3fa38114d2b5a563f73e5650fc455191886
-size 304
+function [Table] = loadTables(Table)
+%
+%  Table = loadTables(Table)
+%
+% You need to run your definition file first to get your table name.
+
+global MONKEYDIR
+
+TableNameString = getTableNameString(Table.CondParams);
+
+filemat = fullfile(MONKEYDIR, 'mat', ['Table.' TableNameString '.mat']);
+load(filemat);
+

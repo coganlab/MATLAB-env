@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e78b6cc5413133b6ddfaada5e955689f5d3af6c7802a022201898da9249b1ab2
-size 505
+function saveAOTrials(day)
+%
+%   saveAOTrials(day)
+%   Saves AO trials
+
+global MONKEYDIR
+
+olddir = pwd;
+if(~isdir([MONKEYDIR '/' day '/mat']))
+   mkdir([MONKEYDIR '/' day '/mat']);
+end
+if isfile([MONKEYDIR '/' day '/mat/AOTrials.mat'])
+    delete([MONKEYDIR '/' day '/mat/AOTrials.mat']);
+end
+
+experiment = loadExperiment(day);
+
+AOTrials = dbAOdatabase(day);
+
+cd([MONKEYDIR '/' day '/mat']);
+disp(['Saving AOTrials matrix: ' num2str(length(AOTrials)) 'aotrials']);
+save AOTrials.mat AOTrials
+
+cd(olddir);

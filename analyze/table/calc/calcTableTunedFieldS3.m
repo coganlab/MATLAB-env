@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d0a56bfa192d2cc6ea1d32767e0bd2b02c19ff0b2c330052f4d205c6b786fa54
-size 892
+function Value = calcTunedFieldS3(Session,CondParams,AnalParams)
+%
+%  Value = calcTunedFieldS3(Session,CondParams,AnalParams)
+%  Should be sent a field session
+
+% I have to make this specific for UFF right now
+% (or third session in a multipart session)
+
+% [p,~,~,~,~] = sessTestSpecDiff(Sess{3}, CondParams{1}, CondParams{2}, AnalParams);
+
+global MONKEYDIR
+
+Sess = splitSession(Session);
+
+Type = getSessionType(Sess{3});
+dirPath = [MONKEYDIR '/mat/' Type '/SpecDiff'];
+fNameRoot = ['SpecDiff.Sess' num2str(Sess{3}{6}) ];
+
+[p,pMax] = getParamFileIndex([dirPath '/' fNameRoot],CondParams,AnalParams);
+
+if p > 0
+    SpecDiff = loadSessTestSpecDiff(Sess{3},CondParams{1},CondParams{2},AnalParams);
+else
+    SpecDiff = saveSessTestSpecDiff(Sess{3},CondParams{1},CondParams{2},AnalParams);
+end
+
+%load up saved tuning information
+if SpecDiff.p < 0.05
+    Value = 1;
+else
+    Value = 0;
+end
+
+
+
+
+
+
+
+

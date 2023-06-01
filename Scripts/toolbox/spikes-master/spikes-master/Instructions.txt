@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c76dd95e33334be496aa4ebcdc81b991e4efb276c79ac8c68477c85941748888
-size 312
+Essential Toolboxes:
+
+Statistics (for OPro and Drug Curve fitter)
+Optimisation (for DogFitter)
+Matlab Report Generator (for Spike Report)
+
+Useful:
+
+Curve Fitting
+Excel Link
+Spline Toolbox
+Neural Network
+Wavelet
+
+Essential Paths to Add:
+
+/user
+/user/Various
+/user/rowland2
+/user/Movie_Creator

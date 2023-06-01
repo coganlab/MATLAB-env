@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d01ec3a618d0e667d118a640c3965d762a4e842d889c277dea5c63c72d6fa9cb
-size 537
+%MULTISITESUBSET Extract a subset of sites from a multi-site
+%input data structure.
+%   Y=MULTISITESUBSET(X,INDEX) Creates an input data structure Y
+%   from an input data structure X that includes only the sites
+%   given in the vector INDEX.
+%
+%   See also STAREAD, MULTISITEARRAY.
+
+%
+%  Copyright 2010, Weill Medical College of Cornell University
+%  All rights reserved.
+%
+%  This software is distributed WITHOUT ANY WARRANTY
+%  under license "license.txt" included with distribution and
+%  at http://neurodatabase.org/src/license.
+%

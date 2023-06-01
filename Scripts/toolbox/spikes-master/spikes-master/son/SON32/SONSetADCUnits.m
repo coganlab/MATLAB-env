@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9fa9118ab5a8da52025936bbe21b1d071608461269a4caed1de659d16b191b5f
-size 526
+function SONSetADCUnits(fh, chan, units)
+% SONSETADCUNITS sets the units string for a channel
+% 
+% SONADCUNITS(FH, CHAN, UNITS)
+% where FH is the SON file handle, CHAN is the channel number and UNITS is
+% the string  to be written to the file.
+% 
+% No return value
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+global SON_UNITSZ;
+
+units=[units(1:min(length(units),SON_UNITSZ)) ''];
+size(units)
+calllib('son32','SONSetADCUnits', fh, chan, units);

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c6282e4e0d1243f66b58a19c2097e6641e19793dcf6b262456351f82c6b276a4
-size 397
+function script_text = initialize_STRFPAK_script(script_filename);
+if ~exist('script_filename','var')
+    global outputPath
+    initialize_outputPath;
+    script_filename = fullfile(outputPath,'STRFPAK_script.m');
+end
+
+fid = fopen(which('SP_script_header.m'),'r');
+script_text = char(fread(fid,'char')');
+fclose(fid);
+fid = fopen(script_filename,'w');
+fwrite(fid,script_text,'char');
+fclose(fid);

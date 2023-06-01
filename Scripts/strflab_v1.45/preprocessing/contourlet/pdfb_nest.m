@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5d26f8044bc1cd06c2fcb75571a8c5f5474025942198d3f60b0ab4f449a8ce5d
-size 931
+function nstd = pdfb_nest(nrows, ncols, pfilt, dfilt, nlevs)
+% PDFB_NEST  Estimate the noise standard deviation in the PDFB domain
+%
+%   nstd = pdfb_nest(nrows, ncols, pfilt, dfilt, nlevs)
+%
+% Used for PDFB denoising.  For an additive Gaussian white noise of zero
+% mean and sigma standard deviation, the noise standard deviation in the
+% PDFB domain (in vector form) is sigma * nstd.
+
+% Number of interations
+niter = 10;
+
+% First run to get the size of the PDFB
+x = randn(nrows, ncols);
+y = pdfbdec(x, pfilt, dfilt, nlevs);
+[c, s] = pdfb2vec(y);
+
+nstd = zeros(1, length(c));
+nlp = s(1, 3) * s(1, 4);	% number of lowpass coefficients
+nstd(nlp+1:end) = nstd(nlp+1:end) + c(nlp+1:end).^2;
+
+for k = 2:niter
+    x = randn(nrows, ncols);
+    y = pdfbdec(x, pfilt, dfilt, nlevs);
+    [c, s] = pdfb2vec(y);
+    
+    nstd(nlp+1:end) = nstd(nlp+1:end) + c(nlp+1:end).^2;
+end
+
+nstd = sqrt(nstd ./ (niter - 1));

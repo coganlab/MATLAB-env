@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9844d5df6de9ef0b43655df98cbfd257e5a64ea82a2dbe5a376f6501c6aad682
-size 277
+
+
+
+step = 5; % seconds
+startMin = 41    ;
+startSec = 41  ;
+start = startMin * 60 + startSec;
+
+stopMin = 42  ;
+stopSec = 21  ;
+stop = stopMin * 60 + stopSec;
+
+for i = start:step:stop
+    convert2Movie (data, filename, i, i+step, 0, numRow, numCol, Fs);
+end
+
+
+

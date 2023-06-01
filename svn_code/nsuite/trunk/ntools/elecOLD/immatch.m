@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:92885fd60d8bf2ef8e3e844fdc102876bc8d5642c5144692c620e2162775804b
-size 607
+clear all; close all;
+[input_img input_img_path] = uigetfile({'*.jpg';'*.png';'*.bmp';'*.*'},'Select the target image');
+[base_img base_img_path] = uigetfile({'*.jpg';'*.png';'*.bmp';'*.*'},'Select the template image',input_img_path);
+input = imread([input_img_path input_img]);
+base = imread([base_img_path base_img]);
+[input_points,base_points] = cpselect(input,base,'Wait',true);
+input_points_corr = cpcorr(input_points, base_points,input(:,:,1),base(:,:,1));
+t_concord = cp2tform(input_points_corr,base_points,'lwm');
+input_trans = imtransform(input,t_concord,'bicubic');
+imshow(input_trans,[])

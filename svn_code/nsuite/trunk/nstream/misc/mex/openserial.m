@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:85d09cd9c94c136fa862f9e4941f0d52c6e9c63790be63d44205c3633cddcb29
-size 148
+% openserial.c - a mex function to open a serial port.
+%                port settings are hardwired in source for now.
+%
+%
+% usage:  openserial();
+

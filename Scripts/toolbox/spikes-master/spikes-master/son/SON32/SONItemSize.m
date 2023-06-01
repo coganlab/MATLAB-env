@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:020a17180de9e44ab7a69243b0b6c4e7442a4f5ab6840d35f5a5d6c30747326d
-size 406
+function bytes=SONItemSize(fh, chan)
+% SONITEMSIZE returns the size of a data item on the specified channel (bytes)
+% 
+% BYTES=SONITEMSIZE(FH, CHAN)
+% where FH is the SON file handle and CHAN is the channel number 
+% (0 - SONMaxChan()-1)
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006
+
+bytes=calllib('son32','SONItemSize', fh, chan);

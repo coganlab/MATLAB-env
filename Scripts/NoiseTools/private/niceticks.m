@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:04dc4df64f47c45a48afa1c99d3d234fa7ec7e53b228925d280537882424b90d
-size 338
+function y=niceticks(x,factor)%y=nicescale(x) - calculate a nice set of values for ticks, based on x%% x: maximum value along scale% y: array of ticksif nargin<2; factor=1; end% closest power of 10 smaller than x:a = 10^floor(log10(x));a=a/factor;if (x/a) <= 2	a = a/2;elseif (x/a) > 5	a = a*2;endy = a * (0:floor(x/a));

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:248af40de29cffe0fb07cfb9bdf96a7e40a0532aa64b61ad099a605b66516be2
-size 497
+%
+% ntools_audio_load_int(filename, start_samp, stop_samp)
+%
+% loads data from a given audio datafile starting with start_samp (inclusive)
+% and ending at end_samp (inclusive) into a matlab matrix in [channel,sample]
+% format.
+%
+% example: data = ntools_audio_load_int('rec001.audio.dat', 100, 200)
+
+function data = ntools_audio_load_int(varargin)
+    error('This will not work at the moment! Does anything even call this?');
+    data = ntools_load_samples('audio', varargin{:});
+end

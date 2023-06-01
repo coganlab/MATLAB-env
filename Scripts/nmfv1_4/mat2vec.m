@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e6527a1428881f7253a5b128f239c70045454451b0658f892fa36044e63b7b62
-size 254
+% y = MAT2VEC(X)  Given an m x n matrix X, this produces the vector y of length
+%   m*n that contains the columns of the matrix X, stacked below each other.
+%
+% See also vec2mat.
+
+function y = mat2vec(X)
+[m n] = size(X);
+y = reshape(X,m*n,1);
+end

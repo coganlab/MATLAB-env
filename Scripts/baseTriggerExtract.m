@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5948d7d1c419a07d24d42e3eee7f7185b006dfe12f7a1e33ebf81b68737e2264
-size 185
+
+cutoff=2e4
+
+newtrigs1=zeros(1,length(triggerdata));
+
+    tt1=find(triggerdata>cutoff);
+    newtrigs1(tt1)=1;
+newtrigs3=diff(newtrigs1);
+newtrigs4=find(newtrigs3>0);
+
+
+    

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2eaca17bdceab7e73bc5866493522e6c282183195915ed9ba1daca571ff20eea
-size 270
+function [Axes, DataHandle] = drawPanelFieldNormalizedSpectrogram(Axes,Data)
+%
+%  Axes = drawPanelFieldNormalizedSpectrogram(Axes,Data)
+%
+size(Data.Data);
+DataHandle = imagesc(flipud(Data.Data'),'Parent',Axes);
+set(Axes,'XTickLabel','','YTickLabel','','TickDir','out');

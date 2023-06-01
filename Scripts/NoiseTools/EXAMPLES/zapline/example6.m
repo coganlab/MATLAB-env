@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e7bf5ddafe1d3623c0cc1ed77addfc47b392a9aa99cf28ae0252aee86c38e5a5
-size 787
+disp('test example for nt_zapline()');
+disp('MEG, 5 line noise components');
+
+clear
+fname='../data/example6/fig_9_data.mat';
+
+% check for NoiseTools
+try, nt_greetings; catch, disp('You must download NoiseNools from http://audition.ens.fr/adc/NoiseTools/'); return; end
+
+% check for data
+if ~exist(fname, 'file');
+    disp([fname, ' not found'])
+    disp('You must download from')
+    disp('http://audition.ens.fr/adc/NoiseTools/DATA/figures_deCheveigne_Arzounian_2018/fig_9_data.mat');
+    disp('and adjust paths');
+    return
+end
+
+% load data
+load(fname, 'x', 'sr');
+
+x=nt_demean(x);
+
+% parameters
+FLINE=50/sr; % line frequency
+NREMOVE=1; % number of components to remove
+
+tic; nt_zapline(x,FLINE,NREMOVE); toc;
+
+set(gcf, 'PaperPositionMode', 'auto');
+print ('-dtiff', 'example6.tif');

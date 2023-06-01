@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:329afabcc3d02f03acb7c9deefccf1851b958590c82c184909768a0b3402a1f9
-size 179
+% VARUNI: Calculate variance of the interval [p,q] on the uniform distribution [0,1].
+%
+
+function s2 = varuni(p,q)
+  nint = 1000;
+  s2 = var([p:((q-p)/nint):q]);
+  return;

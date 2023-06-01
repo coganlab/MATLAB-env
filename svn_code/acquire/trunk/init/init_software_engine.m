@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1a44402016cd0f07ccfac2c9b497da3c813707d61f420b021606cf102624941f
-size 504
+function init_software_engine
+%
+%  init_software_engine
+%
+%  Initialize the data acquisition engine software
+
+global experiment;
+
+if(exist(experiment.software.engine.path, 'file'))
+    disp(['Starting data acquisition engine ' experiment.software.engine.path]);
+    system(['rxvt -title "' experiment.software.engine.terminal_title '" -e ' experiment.software.engine.path ' &']);
+    pause(1);
+else
+    disp(['Software engine: ' experiment.software.engine.path ' does not exist']);
+    exit
+end
+return
+
+

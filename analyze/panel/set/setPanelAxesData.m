@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f2deba341f9a032f21c4f9238b404788037db1d04bca13d33f6aa37c712f4f06
-size 828
+function PanelAxes = setPanelAxesData(PanelAxes, PanelData, AnalParams)
+%
+%  PanelAxes = setPanelAxesData(PanelAxes, PanelData, AnalParams)
+%
+
+M = size(PanelAxes,1);
+N = size(PanelAxes,2);
+
+for iM = 1:M
+    for iN = 1:N
+        SubM = size(PanelAxes(iM,iN).SubPanel,1);
+        SubN = size(PanelAxes(iM,iN).SubPanel,2);
+        for iSubM = 1:SubM
+            for iSubN = 1:SubN
+                Ax = PanelAxes(iM,iN).SubPanel(iSubM,iSubN).Axes;
+                Data = PanelData(iM,iN).SubPanel(iSubM,iSubN).Data;
+                Type = AnalParams(iSubM,iSubN).Type;
+                eval(['[Ax, DataHandle] = drawPanel' Type '(Ax, Data);']);
+                PanelAxes(iM,iN).SubPanel(iSubM,iSubN).Axes = Ax;
+                PanelAxes(iM,iN).SubPanel(iSubM,iSubN).DataHandle = DataHandle;
+            end
+        end
+    end
+end
+
+

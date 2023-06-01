@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70c7cc6433455797e00da4f174175ce8cae0cb5fe554d39e3de1431b4b72ecb1
-size 1014
+function x = tovec(K,lambdaflag)
+%TOVEC Convert Ktensor to vector.
+%
+%   V = TOVEC(K) converts the Ktensor to a column vector of length
+%   sum(size(K)+1)*ncomponents(K). The format is 
+%      [ K.lambda; K.U{1}(:); K.U{2}(:); ... ]
+%
+%   V = TOVEC(K,false) ignores lambda in the conversion, so the vector V is
+%   of length P where = sum(size(K))*ncomponents(K).
+%
+%   Examples
+%   K = ktensor([3; 2], rand(4,2), rand(5,2), rand(3,2));
+%   V = tovec(K);
+%   Kcopy = ktensor(V, size(K), ndims(K), true);
+%   norm(K-Kcopy) %<- Zero (or close to it)
+%
+%   K = ktensor({rand(4,2), rand(5,2), rand(3,2)});
+%   V = tovec(K);
+%   Kcopy = ktensor(V, size(K), ndims(K), false);
+%   norm(K-Kcopy) %<- Zero (or close to it)
+%
+%   See also KTENSOR, KTENSOR/SIZE, KTENSOR/NCOMPONENTS.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2017, Sandia Corporation.
+
+if ~exist('lambdaflag','var')
+    lambdaflag = true;
+end
+
+xcell = cellfun(@(x) x(:), K.u, 'UniformOutput', false);
+x = cell2mat(xcell);
+
+if lambdaflag
+    x = [K.lambda; x];
+end

@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dafc9c59511d928ad25833f84e31de962b7e43c93fcad9130a2fde02e1756ee3
-size 47
+"\\piano\Data\DataBases\Speech\CTIMIT\LIB\DATA"

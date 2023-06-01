@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a95f29cc2e6d2245a01628f444bdb9dfc41091e253761eb1170d0931c5635579
-size 188
+function exec_KeyPressFcn(f,event,varargin)
+    for v = 1:numel(varargin)
+        fhand = varargin{v}{1};
+        fargs = varargin{v}{2};
+        fhand(f,event,fargs{:});
+    end
+end

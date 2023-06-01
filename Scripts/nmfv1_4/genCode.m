@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a6ffc4304476ee2435b0af839abcee73fb7a8ebafe982100a849d094e4be5fd9
-size 495
+function codes=genCode(W)
+% generate codes for columns of logical matrix W
+% W: logical, matrix of m x n
+% code: column vector of n x 1
+% Yifeng Li
+% Mar. 18, 2013
+% example:
+% W=[true,false,false,true,true,true,;
+%    false,false,true,false,true,true];
+% codes=genCode(W)
+
+[m,n]=size(W);
+codes=zeros(n,1);
+for i=1:n
+    if codes(i)==0
+        codes(i)=i;
+    end
+   for j=i+1:n
+      if codes(j)==0 && sum(W(:,i)==W(:,j))==m
+         codes(j)=i; 
+      end
+   end
+end
+end

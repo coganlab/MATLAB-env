@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3b4dd250e06258254e17878037c8c9597e67419085f32c802d8b45689b8d3131
-size 209
+function retu = shuffle(inpt)
+%shuf = shuffle(inpt)
+nn = length(inpt);
+retu = inpt;
+for i = 1:nn-1
+    j = floor(rand(1,1)*(nn-i+1)+i);
+    temp = retu(i);
+    retu(i) = retu(j);
+    retu(j)=temp;
+end

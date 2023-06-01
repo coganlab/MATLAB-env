@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4015c57d8f9aa6a0297ba9bf715e8f307e15f4ecfe1ce0d6ef0652745edfb535
-size 247
+function trialsCollapse = collapseTrials(Trials)
+
+for iTrials=1:length(Trials);
+    Trials(iTrials).StartCode=1;
+    Trials(iTrials).AuditoryCode=26;
+    Trials(iTrials).DelCode=51;
+    Trials(iTrials).GoCode=76;
+end
+trialsCollapse=Trials;

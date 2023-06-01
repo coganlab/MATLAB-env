@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:21205a525b515da3b3cc73d9fe7f25a5f2440daeec20bf7a5427b773319032cf
-size 51
+"\\piano\Data\DataBases\Speech\NTIMIT\disk1\NTIMIT"

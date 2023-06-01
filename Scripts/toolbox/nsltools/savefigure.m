@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5c87016e53e7dc9726387ee80980501d6697a39d12fc25cbec4eba9b6fab80e2
-size 238
+function savefigure(figNum,figStr)
+% SAVEFIGURE(figNum,figNamev)
+%
+% savefigure saves figure number figNum, using the name figName
+% (actually saving 2 files, figName.m and figName.mat). 
+%
+print('-dmfile',['-f',num2str(figNum)],figStr)
+

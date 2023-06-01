@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e52486293cd84e0a8eee8f96932c0818ed4072de851afaaa448148c023dbb560
-size 123
+ffp_start_record('x', 'y')
+pause(1);
+ffp_stop_record()
+pause(1);
+ffp_start_record('x1', 'y1')
+pause(1);
+ffp_stop_record()
+

@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:26c4169352b4a89f14ecda258511c031447ebff7d5dd0db7199d9b8eca564176
-size 489
+#ifndef __UTIL_H__
+#define __UTIL_H__
+
+void print_matrix(int M, int N, double * A);
+void dlmwrite(char * fname, double * A, int M, int N);
+double * allocate_and_zero(int N);
+double * allocate_and_copy(int N, const double * d);
+double * allocate_and_transpose(int M, int N, int lda, const double * d);
+double * rand_array(int N);
+#define max(x,y) (x>y)?x:y;
+#define Calloc(size,type) (type *) calloc(size, sizeof(type));
+#define Malloc(size,type) (type *) malloc(size*sizeof(type));
+
+#endif

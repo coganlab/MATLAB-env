@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:424d0e9c74e4fc10be3b8ceeba89c270c0317787415d210016f02d37dc20e46d
-size 316
+function [ddtData] = get_all_from_ddt(filename)
+
+ddtData  =[];
+[dirstr, name, ext] = fileparts(filename);
+ddtData.FileName = [name ext];
+
+[ddtData.raw.nch, ddtData.raw.npoints, ddtData.raw.freq, ddtData.raw.d] = ddt(filename);
+[ddtData.v.nch, ddtData.v.npoints, ddtData.v.freq, ddtData.v.d] = ddt_v(filename);

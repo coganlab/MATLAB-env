@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7ce7219f08a787a57d1135a332d8bc843efcea028f0a26446f873d63904eff80
-size 378
+function Area = getBSArea_Field(Session)
+%
+% Area = getBSArea_Field(Session)
+%
+
+global BSAREALIST
+
+SN = getSessionNumbers(Session);
+
+BSAreas = BSAreaFields;
+
+ind = zeros(1,length(BSAREALIST));
+for iArea = 1:length(BSAREALIST)
+  ind(iArea) = length(find(BSAreas.(BSAREALIST{iArea})==SN));
+end
+
+if ~isempty(find(ind))
+  Area = BSAREALIST{find(ind)};
+else
+  Area = 'Unlabeled';
+end

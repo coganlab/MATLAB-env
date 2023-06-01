@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:219e19b7370c14154523918a337375b97e0cfa57800dc88868bf18fbdca2aa51
-size 404
+% BoxCoxNormf: Objective function for boxcoxnorm().  x must be strictly positive.
+%         This application minimizes -W rather than maximizes W.
+
+% RE Strauss, 1/1/03, modified from boxcoxf().
+
+function W = boxcoxf(lambda,x,censdir)
+  if (abs(lambda) > eps)
+    xp = ((x.^lambda)-1)/lambda;
+  else
+    xp = log(x);
+  end;
+
+  W = normaltest(real(xp),0,censdir);
+  W = -W;
+  
+  return;
+

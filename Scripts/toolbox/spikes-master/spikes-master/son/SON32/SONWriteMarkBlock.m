@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5471985156c5e0da0908b5bfb8fe38eab1310f699d111af5f75dc4dfc9841a8a
-size 1081
+function ret=SONWriteMarkBlock(fh, chan, buffer, count)
+% SONWRITEMARKBLOCK writes data to a marker channel
+% 
+% Implemented through SONWriteMarkBlock.dll
+%
+% RET=SONWRITEMARKBLOCK(FH, CHAN, TIMESTAMPS, MARKERS, COUNT)
+% INPUTS: FH the SON file handle
+%         CHAN the target channel
+%         TIMESTAMPS a vector of int32 timestamps for the markers
+%                   which should be at least COUNT in length
+%         MARKERS the 4xCOUNT array of uint8 marker values, one set of
+%                   4 for each timestamp
+%         COUNT the number of marker items to write to the buffer
+%         
+% Returns zero or a negative error code.
+% 
+% For efficient use of disc space, COUNT should be  a multiple of 
+% (BUFSIZE bytes - 20)/4 , where BUFSIZE is supplied in a prior call to
+% SONSETEVENTCHAN (20 is the size of the block header on disc)
+% 
+% see CED documentation
+% 
+% See also SONSETEVENTCHAN, SONWRITEEVENTBLOCK, SONWRITEEXTMARKBLOCK
+%
+% Author:Malcolm Lidierth
+% Matlab SON library:
+% Copyright © The Author & King's College London 2005-2006

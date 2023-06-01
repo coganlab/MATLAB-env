@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bd7d22609e163e4e7f9111fe92c84225d4470d196b1a24f8cb8e91fa32654dfc
-size 1135
+function [channelNumber] = plx_ad_resolve_chennel(filename, channel)
+% plx_ad_resolve_chennel(filename, channel): returns .plx file raw a/d channel number for the specified channel name
+%
+% [channelNumber] = plx_ad_resolve_chennel(filename, channel)
+%
+% INPUT:
+%   filename - .plx file name
+%   channel - 0-based channel number or channel name
+%
+% OUTPUT:
+%   channelNumber - 0-based channel number. 
+%                   if channel is a char array (channel name), returns channel number for the specified channel name.
+%                      if channel with the specified name is not found, returns -1
+%                   if channel is a number, returns this number
+
+channelNumber = -1;
+
+if nargin ~= 2
+    error 'expected 2 input arguments';
+end
+
+channelNumber = -1;
+if ischar(channel) == 1
+    [numNames, names] = plx_adchan_names(filename);
+    [numMapped, adchans] = plx_ad_chanmap(filename);
+    for i=1:numNames
+        if strcmp(deblank(names(i,:)), deblank(channel)) == 1
+            channelNumber = adchans(i);
+            break
+        end
+    end
+else
+    channelNumber = channel;
+end
+
+end

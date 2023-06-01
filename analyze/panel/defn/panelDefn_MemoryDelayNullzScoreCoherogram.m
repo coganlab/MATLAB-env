@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:92d1400546e53523a4ce948f9c5df2df80c183bd30a52b3754d46d2a61a6d919
-size 879
+%  Memory and Delay Coherence Tasks panel
+clear CondParams AnalParams;
+
+fk = 200; tapers = [.5,5]; 
+coh_clim = [0,4];
+
+CondParams(1,1).Name = 'MemoryDelayNullzScoreCoherogram';
+CondParams(1,1).Task = {{'MemoryReachSaccade','DelReachSaccade'}};
+CondParams(1,1).conds = {[Dirs(1)]};
+CondParams(1,2).Task = CondParams(1,1).Task;
+CondParams(1,2).conds = {[Dirs(2)]};
+
+CondParams(2,1).Task = {{'MemorySaccadeTouch','DelSaccadeTouch','DelSaccade'}};
+CondParams(2,1).conds = {[Dirs(1)]};
+CondParams(2,2).Task = CondParams(2,1).Task;
+CondParams(2,2).conds = {[Dirs(2)]};
+
+AnalParams(1,1).Field = 'TargsOn';
+AnalParams(1,1).bn = [-500,1e3];
+AnalParams(1,1).fk = fk;
+AnalParams(1,1).tapers = tapers;
+AnalParams(1,1).Type = 'NullzScoreCoherogram';
+% AnalParams(1,1).CLim = coh_clim;
+
+AnalParams(1,2) = AnalParams(1,1);
+AnalParams(1,2).Field = 'SaccStart';
+AnalParams(1,2).bn = [-500,1e3];
+

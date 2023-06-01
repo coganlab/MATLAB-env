@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dbaa07f8de3604c5afc5c62e198c3f29b98c08e5901e798911794169cef05141
-size 572
+function cleanMemory
+mb = 1024^2;
+fprintf('\n================================\n')
+fprintf('Max Memory:   %g MB\n', java.lang.Runtime.getRuntime.maxMemory / mb)
+fprintf('Total Memory: %g MB\n', java.lang.Runtime.getRuntime.totalMemory / mb)
+init = java.lang.Runtime.getRuntime.freeMemory / mb;
+fprintf('Free Memory:  %g MB\n', init)
+fprintf('->Run Garbage Collection<-\n')
+java.lang.Runtime.getRuntime().gc;
+new = java.lang.Runtime.getRuntime.freeMemory / mb;
+fprintf('Free Memory:  %g MB -- %g MB freed up\n', new, new-init)
+fprintf('================================\n\n')

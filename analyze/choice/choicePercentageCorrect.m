@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:af90bd5f999ac21e66889a4b3a5a9d91eaffcd3cca04c4de4105607d1c07c125
-size 486
+function [reward_values, percent_correct, number_trials] = choicePercentageCorrect(correct, rewardDist)
+
+reward1 = rewardDist(:,1);
+reward2 = rewardDist(:,2);
+
+reward_values = unique(reward1)';
+percent_correct = zeros(1,length(reward_values));
+number_trials = zeros(1,length(reward_values));
+for i = 1:length(reward_values)
+   
+    percent_correct(i) = mean(correct(find(reward1 == reward_values(i)))); 
+   
+   number_trials(i) = length(find(reward1 == reward_values(i)));
+end
+
+return;

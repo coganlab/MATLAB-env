@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1cfcb8ab60f7081176c6314e0a7b0b8def50a63185c71e494ee3f0f35fd04ab3
-size 543
+function state_seq = HMM_state_seq (HMM, length_seq)
+%HMM_SEQ Compute a sequence of length n from the transition probability matrix a, and initial probabilities pi
+%
+% state_seq = HMM_state_seq (HMM, length_seq)
+% 
+% Inputs:
+%   HMM = HMM structure containing states, a, and pi
+%   length_seq = length of sequence to be generated 
+
+state_list = 1:HMM.states;
+state_seq = zeros(1, HMM.states);
+state_seq(1) = randsample(state_list,1,true,HMM.pi);
+for t=2:length_seq
+    state_seq(t) = randsample(state_list,1,true,HMM.a(state_seq(t-1),:));
+end

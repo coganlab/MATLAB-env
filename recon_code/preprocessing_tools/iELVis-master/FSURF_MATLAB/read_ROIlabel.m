@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4e8f986640adf3a113f6206f31562f2a2ef14026d40b144efd96058338b17695
-size 441
+function [ pialROI ] = read_ROIlabel (fname)
+
+
+l = [];
+
+% open it as an ascii file
+fid = fopen(fname, 'r') ;
+if(fid == -1)
+  fprintf('ERROR: could not open %s\n',fname);
+  return;
+end
+
+fgets(fid) ;
+if(fid == -1)
+  fprintf('ERROR: could not open %s\n',fname);
+  return;
+end
+
+line = fgets(fid) ;
+nv = sscanf(line, '%d') ;
+l = fscanf(fid, '%d %f %f %f %f\n') ;
+l = reshape(l, 5, nv) ;
+l = l' ;
+
+fclose(fid) ;
+
+pialROI=l(:,1);
+pialROI=pialROI+1;

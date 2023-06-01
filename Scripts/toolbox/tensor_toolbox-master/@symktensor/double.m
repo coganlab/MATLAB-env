@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:48d6700d76b4f14e3dc45cea9da33358e9e230b9e2c364255f9e86cc5952851b
-size 776
+function A = double(X)
+%DOUBLE Convert a symktensor to a double array.
+%
+%   A = double(X) converts X to a standard multidimensional array.
+%
+%   See also SYMKTENSOR.
+%
+%MATLAB Tensor Toolbox.
+%Copyright 2015, Sandia Corporation.
+
+% This is the MATLAB Tensor Toolbox by T. Kolda, B. Bader, and others.
+% http://www.sandia.gov/~tgkolda/TensorToolbox.
+% Copyright (2015) Sandia Corporation. Under the terms of Contract
+% DE-AC04-94AL85000, there is a non-exclusive license for use of this
+% work by or on behalf of the U.S. Government. Export of this data may
+% require a license from the United States Government.
+% The full license terms can be found in the file LICENSE.txt
+
+
+if isempty(X.lambda) % check for empty tensor
+    A = [];
+    return;
+end
+
+A = double(ktensor(X));

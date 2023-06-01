@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:785858620112097394052153748b0ad9a2b232b578b75b59e54a34fe227a0824
-size 148
+function Task = sessMocapTask(Session);
+
+if iscell(Session{1})
+nSess = length(Session)
+for iSess = 1:nSess
+Task{iSess} = Session{iSess}{3};
+end
+end

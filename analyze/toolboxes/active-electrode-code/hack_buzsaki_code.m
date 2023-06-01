@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2f170a80f780e4b449dc6f994bcc61278d8f374cac2959138042ff42927d6f3e
-size 153
+trigger = (decimate(double(ConvertedData.Data.MeasuredData(1,3).Data > 2),625) > 0.05);
+
+trigger = double(trigger)';
+
+
+data4 = [data ; trigger];
+
