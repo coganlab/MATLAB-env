@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:46e27edab57912ebe149f7bec462bb52f0ad87f307fa00ca8cffa1e8248f44ff
-size 297
+function compressDir(ProjectDir,DirType);
+%
+%  compressCDir(ProjectDir);
+%
+
+days = dir([ProjectDir '/1*']);
+
+for iDay = 1:length(days)
+  disp([ProjectDir '/' days(iDay).name]);
+  cd([ProjectDir '/' days(iDay).name]);
+  unix(['tar -zcf ' DirType '.tgz ' DirType]);
+  unix(['rm -rf ' DirType]);
+end

@@ -1,3 +1,95 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:22ad2ec7ee08546023627e4a58afa3f10e4fefb36aca06df1ae33661e760416e
-size 2066
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/nview
+END
+Main.m
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/nview/Main.m
+END
+hw_defn_nyusom.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/hw_defn_nyusom.m
+END
+nview.m
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/nview.m
+END
+nview_notchfilter.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/nview_notchfilter.m
+END
+Main.fig
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/Main.fig
+END
+nview_configure_channels_256.m
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/nview_configure_channels_256.m
+END
+analyze.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/analyze.m
+END
+nview_configure_channels_nyucns.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/nview_configure_channels_nyucns.m
+END
+exp_defn_jonathan_test.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/exp_defn_jonathan_test.m
+END
+hw_defn_nyucns.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/hw_defn_nyucns.m
+END
+exp_defn_adam.m
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/exp_defn_adam.m
+END
+init_exp_defn.m
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/s_bijan/nsuite/!svn/ver/78/branch/dual-dac-fixes/nview/init_exp_defn.m
+END
+launch-nview.sh
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/launch-nview.sh
+END
+launch-timecode.sh
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/launch-timecode.sh
+END
+exp_defn_template.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/exp_defn_template.m
+END

@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d27ab07ce151caf88f9aedddec06149f643417b8580d6af4be05d576bf96af1a
-size 376
+#!/bin/csh -f
+
+set start = $PWD
+set base = "$SUBJECTS_DIR/$SUBJ/surf/"
+cd $base
+
+foreach hemi (lh rh)
+  mris_make_surfaces -white NOWRITE -noaparc -noaseg -mgz -T1 T1_masked $SUBJ $hemi
+  mris_calc -o $hemi.area.mid $hemi.area add $hemi.area.pial
+  mris_calc -o $hemi.area.mid $hemi.area.mid div 2
+  mris_calc -o $hemi.volume $hemi.area.mid mul $hemi.thickness
+end
+
+cd $start

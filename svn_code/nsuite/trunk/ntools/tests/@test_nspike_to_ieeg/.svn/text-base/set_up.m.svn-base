@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:998751e0522bbb18d15e082fc990339396dcf45b7a9375e8966fb8b7aee65620
-size 385
+function self = set_up(self)
+    global experiment
+    load('test-sin-waves-experiment');
+    
+    self.NUM_CHANNELS = 256;
+    self.recording_filename_root = '256-sin-waves-30kHz-int16.nspike.dat';
+
+    self.fid_nspike = fopen(self.recording_filename_root, 'r');
+    %self.fid_ieeg = fopen('256-sin-waves-30kHz-int16.ieeg.dat', 'r');
+    self.orig_data = load('int16-sin-waves');
+end

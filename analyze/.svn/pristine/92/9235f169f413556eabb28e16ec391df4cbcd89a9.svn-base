@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ed266e7a011534795fef73f4c81198092cc65cfe7bf9ea5f07307dd2dcf342bd
-size 180
+#!/bin/csh -f
+
+set start = $PWD
+set base = "$SUBJECTS_DIR/$SUBJ/mri/"
+cd $base
+
+# SPHINX CORRECTION
+mri_convert -i conformed_rawavg.mgz -o conformed_rawavg.mgz --sphinx
+
+cd $start

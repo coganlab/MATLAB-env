@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ab5181be972a87f77beab22622cc4ea0fde071d9d17cc52b3280677212eca97
-size 314
+function result = nonzeroCoef(beta,bystep)
+
+if nargin < 2
+    bystep = false;
+end
+
+result = abs(beta)>0;    
+if ~bystep
+    result = any(result,2);
+end
+
+%-------------------------------------------------------------
+% End private function nonzeroCoef
+%-------------------------------------------------------------

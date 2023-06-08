@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:45f66919de563407c0184b1987c54194275e660db74c878a443dbb0c85a4aa79
-size 386
+/*********************************************
+This file is part of the MuJoCo software.
+Copyright 2013 Roboti LLC. All rights reserved.
+**********************************************/
+
+
+// print model to text file
+void mj_printModel(const mjModel* m, const char* filename); 
+
+// print data to text file
+void mj_printData(const mjModel* m, mjData* d, const char* filename); 

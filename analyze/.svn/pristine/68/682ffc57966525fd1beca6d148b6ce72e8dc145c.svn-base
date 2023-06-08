@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b5d64081054f397e1f632fae44c0b8be0dfda604a6b07f15c2182224052d92a1
-size 408
+function [mu,Sigma,pibar,Scaling] = mixmodel(data,N_components,flag)
+
+% flag = 1; % Normalization of the covariance matrix and scaling of the data
+
+[centers clustered_data Sigmabar scaling_vals] = findkmeans(data,N_components,25,flag); % 25 iterations
+pibar_init = (1/N_components)*ones(1,N_components);
+[mu, Sigma, pibar,Scaling] = EM_MixModel(data,centers,Sigmabar,pibar_init,scaling_vals,flag);
+
+return
+
+

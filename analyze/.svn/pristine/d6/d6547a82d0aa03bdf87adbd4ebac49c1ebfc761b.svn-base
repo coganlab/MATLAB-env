@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:52b2213ea30e380db18bad65a1792dbb38137113745506f0f0e77b267b0216fa
-size 524
+function Session = MtoM(InputSession,Chamber)
+%
+%   Session = MtoM(InputSession,Chamber)
+%
+
+if nargin < 2; Chamber = []; end
+
+ProjectDir = sessProjectDir(InputSession);
+
+Session = cell(0,0);
+InputNum = InputSession{6};
+MM_Sessions = MtoMM(InputSession,Chamber);
+if ~isempty(MM_Sessions)
+    SN = getSessionNumbers(MM_Sessions);
+    OutputNum = unique(setdiff(SN(:),InputNum));
+    Session = loadMultiunit_Database(ProjectDir);
+    Session = Session(OutputNum);
+    disp([num2str(length(Session)) ' Multiunit Sessions']);
+end

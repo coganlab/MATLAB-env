@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:323ffcbf21f87808e198aaefa9280d3065d90beeb08a75f169d6343c956c7111
-size 139
+function skf = gpb2_set_initial(skf, X_0)
+skf.X_0 = X_0;
+skf.X(:,1) = skf.X_0;
+for i=1:skf.nmodels
+    skf.model{i}.X(:,1) = skf.X_0;
+end
+

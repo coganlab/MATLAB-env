@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e044fd685fd9691a7f6c2a9c5f161f148462563deb903952cf2f64726f25869c
-size 396
+function TaskController = sessTaskController(Session)
+%
+%  TaskController = sessTaskController(Session)
+%
+
+MonkeyDir = sessMonkeyDir(Session);
+Recs = sessRec(Session);
+Day = sessDay(Session);
+
+Rec = loadRec(Day, Recs{1}, MonkeyDir);
+if ~isempty(Rec)
+    TaskController = Rec.Task;
+else
+    experiment = loadExperiment(Day, Recs{1}, MonkeyDir);
+    %  Get Task Controller info from experiment.
+end

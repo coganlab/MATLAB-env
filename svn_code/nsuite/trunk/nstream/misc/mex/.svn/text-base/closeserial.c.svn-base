@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8c42924a943f0c427b7530965f366532fcddea45a77c0f2f829d54a029780bb2
-size 589
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <termios.h>
+#include <stdio.h>
+#include "mex.h"
+
+/* 
+ * closeserial.c - a mex function to close an open serial port.
+ *
+ *
+% closeserial(serial_fid);
+%
+% closes the open serial port referenced by serial_fid
+%
+ */
+
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+{
+  int serial_fd = 0;
+
+  /*----- Check for proper number of arguments. -----*/ 
+  if(nrhs!=1) { mexErrMsgTxt("file descriptor number required"); } 
+  
+  serial_fd = mxGetScalar(prhs[0]);           
+  
+  close(serial_fd);
+}
+

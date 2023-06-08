@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:28538614e3327b4f38ec5a22e398a73cb95540b1d25b5aa026dfdcaaa29df45b
-size 365
+%SAVE_TRIAL Save model results from a recording session
+
+out_dir = fullfile(save_path,rec.day);
+mkdir(out_dir);
+
+base_file = fullfile(out_dir,['rec' rec.rec 'ch' num2str(rec.ch)]);
+
+out_file = [base_file '.mat'];
+save(out_file,'HMM','GMM','AParams','rec','obs','test','HMM_CS','HMM_CJ','GMM_CS','GMM_CJ','GMM_P','HMM_P','HIP','state_seq','joy_seq','Test','Train');

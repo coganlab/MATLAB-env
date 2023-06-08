@@ -1,3 +1,60 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3388c2b756c144e236f3fa32760d4733556c8caefc2bcb31de0c907491d4ceff
-size 1969
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="384"
+   name=""
+   committed-date="2010-10-16T20:32:36.381396Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR/defn"
+   last-author="bijan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   committed-rev="384"
+   name="accllrDefn_SimpleSaccStartNoHist_MemoryNull.m"
+   text-time="2010-10-18T21:44:33.000000Z"
+   committed-date="2010-10-16T20:32:36.381396Z"
+   checksum="d12bc114b1fdadbd1e997291928720e6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:33.000000Z"/>
+<entry
+   committed-rev="381"
+   name="accllrDefn_SimpleVisualSpectral_MemoryReachSaccade.m"
+   text-time="2010-10-12T18:55:13.000000Z"
+   committed-date="2010-10-12T18:56:05.154555Z"
+   checksum="6b22510cf1d1af968dfafa61ce26accc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="381"
+   name="accllrDefn_DecisionChoiceNoHist_Delay.m"
+   text-time="2010-10-12T18:51:22.000000Z"
+   committed-date="2010-10-12T18:56:05.154555Z"
+   checksum="fe1928ce36546ae88eeea40714fb91df"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="381"
+   name="accllrDefn_SimpleVisualNoHist_MemoryReachSaccade.m"
+   text-time="2010-10-12T18:54:57.000000Z"
+   committed-date="2010-10-12T18:56:05.154555Z"
+   checksum="29af1d696d8cda1d6a437ea651e7b859"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="386"
+   name="accllrDefn_DecisionChoiceSpectral_Delay.m"
+   text-time="2010-10-18T21:47:02.000000Z"
+   committed-date="2010-10-18T21:48:15.194321Z"
+   checksum="48d359aa5044fa742ba8836137026837"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"
+   revision="386"/>
+</wc-entries>

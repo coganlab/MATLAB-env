@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6ffcba955b326f20b26a000e7aa4c52dc7d89646fee2e4c4432474591e3fef10
-size 175
+function E = calcEyeTargetLocation(Trials);
+%
+%  E = calcEyeTargetLocation(Trials)
+%
+%	Returns x,y position of eye target for each trial
+%
+
+E = getEyeTargetLocation(Trials);
+

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:790fa22571073936d6b6fd730f1535c1f84bf47a7e6d4fbb91c097a41a309802
-size 345
+function Dirs = sessCalcChoiceDirections(Sess)
+%
+%   Dirs = sessCalcChoiceDirections(Sess)
+%
+
+trials = sessTrials(Sess);
+movement_directions  = [[trials.ReachChoice],[trials.SaccadeChoice]];
+movement_directions = movement_directions(find(movement_directions ~= 0));
+
+[dum, Dirs] = sort(hist(movement_directions,1:8),'descend');
+Dirs = Dirs(1:2);

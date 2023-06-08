@@ -1,3 +1,189 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:958df753c4cacf915bf5bb3e37525b470c01c93ff36a5ce67153189bacc67335
-size 6193
+function Trials = Params2Trials(Session,Params)
+%
+%   Trials = Params2Trials(Session,Params)
+%
+%   Session:    EITHER:  Session cell array (the usual.  Loads Trials using
+%   sessTrial);
+%               OR:     Session cell array with the first cell being the
+%               Trials data structure. (doesn't load the Trials data
+%               structure)
+%
+%   CondParams.Task    =   String/Cell.  Tasks to pool and compare.
+%	    			To pool Task = {{'Task1','Task2'}};
+%   CondParams.Field   =   String.  Alignment field
+%   CondParams.bn      =   Alignment time.
+%   CondParams.conds    =   Eye,Hand,Target conds {[],[],[]}
+%   CondParams.condstype = 'Movement'  - looks at eye/hand movement
+%   CondParams.Choice = scalar 0/1. 1 = subset choice trials.
+%   CondParams.Center = scalar 0/1 - subset Sacc2Center Trials
+%
+%   CondParams.sort = 1,N cell.  N sort criteria
+%                               For each sort criterion sort is a 1,2 cell
+%                                   sort{i}{1} = String. Sort criterion name.
+%                                       Names are fields in Trials or
+%                                       calcNAME functions.
+%                                   sort{i}{2} = [1,1] or [1,2] Scalar.  Sort
+%                                                   criterion values
+% CondParams.shuffle  0/1 Shuffle trial ordering
+%
+%  Accepts as input Session or Trials
+%
+
+
+if isfield(Params,'Task')
+    Task = Params.Task;
+else
+    Task = {''};
+end
+if isfield(Params,'conds')
+    conds = Params.conds;
+else
+    conds = [];
+end
+if isfield(Params,'condstype')
+    condstype = Params.condstype;
+else
+    condstype = 'Target';
+end
+if ~isfield(Params,'shuffle')
+    Params.shuffle = 1;
+end
+
+if ischar(Task) && ~isempty(Task)
+    NewTask{1} = {Task}; Task = NewTask;
+elseif iscell(Task)
+    for iTaskComp = 1:length(Task)
+        if ~iscell(Task{iTaskComp})
+            NewTask(iTaskComp) = {Task(iTaskComp)};
+        else
+            NewTask(iTaskComp) = Task(iTaskComp);
+        end
+    end
+    Task = NewTask;
+end
+
+
+Trials = cell(1,length(Task));
+if ~isempty(Task)
+    for iTaskComp = 1:length(Task)
+        for iTaskPool = 1:length(Task{iTaskComp})
+            disp(['Now working on ' Task{iTaskComp}{iTaskPool}])
+            %whos Trials
+            if iscell(Session)
+                Trials{iTaskComp} = [Trials{iTaskComp},sessTrials(Session,Task{iTaskComp}{iTaskPool})];
+            elseif isstruct(Session)
+                Trials{iTaskComp} = [Trials{iTaskComp},TaskTrials(Session,Task{iTaskComp}{iTaskPool})];
+            end
+        end
+        if ~isempty(conds) && ~isempty(Trials{iTaskComp})
+            Trials{iTaskComp} = TrialConds(Trials{iTaskComp},conds, condstype); 
+        end
+        NTrials(iTaskComp) = length(Trials{iTaskComp}); 
+    end
+    
+    if(Params.shuffle)
+        NCoh = min(NTrials);
+        for iTaskComp = 1:length(Trials)
+            ind = randperm(NTrials(iTaskComp));
+            Trials{iTaskComp} = Trials{iTaskComp}(ind(1:NCoh));
+        end
+    else
+        if(isfield(Params,'merge'))
+            if Params.merge
+                if length(Trials) > 1
+                    tmpTrials = [];
+                    for iTask = 1:length(Trials)
+                        tmpTrials = [tmpTrials Trials{iTask}];
+                    end
+                    clear Trials
+                    Trials{1} = tmpTrials;
+                end
+            end
+        else
+            %Trials = reorderTrials(Trials); %Why was this here? It crashes.
+        end
+    end
+else
+    disp('Here')
+    if iscell(Session)
+        Trials{1} = sessTrials(Session);
+    elseif isstruct(Session)
+        Trials{1} = Session;
+    end
+end
+
+
+if iscell(Trials) && length(Trials)==1
+    Trials = Trials{1};
+end
+
+if(isfield(Params,'Choice'))
+  choiceVal = 0;
+  if Params.Choice == 1
+    choiceVal = 2;
+  elseif Params.Choice == 0
+    choiceVal = 1; 
+  end
+  if iscell(Trials)
+    for iTaskComp = 1:numel(Trials)
+      Trials{iTaskComp} = Trials{iTaskComp}([Trials{iTaskComp}.Choice]==choiceVal);
+    end 
+  elseif(size(Trials))
+    Trials = Trials([Trials.Choice]==choiceVal);
+  end
+end
+
+if(isfield(Params,'Center'))
+    if(size(Trials))
+        if(Params.Center == 1)
+            center_task = [Trials.Sacc2Center];
+            trial_indexes = center_task == 1;
+            Trials = Trials(trial_indexes == 1);
+        end
+    end
+end
+
+if(isfield(Params,'sort')) && ~isempty(Trials)
+    sorts = Params.sort;
+    for j = 1:length(sorts)
+        if ~isempty(Trials) 
+        disp([' ... Sorting by ' sorts{j}{1}]);
+        matching_trials = zeros(1,length(Trials));
+        FieldValues = sorts{j}{2};
+        if ~iscell(FieldValues) %  Or-ing different ranges
+            FieldValues = {FieldValues};
+        end
+        for iOr = 1:length(FieldValues)
+            %iOr
+            current_matching_trials = zeros(1,length(Trials));
+            CurrentFieldValues = FieldValues{iOr};
+            if length(CurrentFieldValues)==1
+                CurrentFieldValues = CurrentFieldValues(ones(1,2));
+            end
+            CurrentFieldValues = sort(CurrentFieldValues,'ascend');
+            if(exist(['/mnt/raid/analyze/calc/calc' sorts{j}{1} '.m'],'file'))
+                % Sort criteria is in calc fn and needs to be
+                % calculated
+                eval(['values = calc' sorts{j}{1} '(Trials);']);
+                %whos values
+                current_matching_trials = (values >= CurrentFieldValues(1) & values <= CurrentFieldValues(2) );
+            elseif isfield(Trials,sorts{j}{1})
+                current_matching_trials = ([Trials.(sorts{j}{1})] >= CurrentFieldValues(1) & [Trials.(sorts{j}{1})] <= CurrentFieldValues(2) );
+            else
+                disp(['No matching sort field: ' sorts{j}{1}]);
+                pause;
+                current_matching_trials = ones(1,length(Trials));
+            end
+            %disp(['/mnt/raid/analyze/calc/calc' sorts{j}{1} '.m'])
+            %         criteria_match = criteria_match & matching_trials;  % AND no OR
+            matching_trials = matching_trials + current_matching_trials;
+        end
+        Trials = Trials(matching_trials > 0);
+        end
+    end
+
+end
+
+
+
+%disp('Leaving Param2Trials')

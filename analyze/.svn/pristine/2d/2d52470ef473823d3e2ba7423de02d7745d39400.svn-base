@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0b4f921e5007930e7128ff5fc32bc1d25b8a6ab8dfc6bc4d7f412e2ca592d1a
-size 414
+function recs=dayrecs(day, MonkeyDir)
+%
+%   recs=dayrecs(day, MonkeyDir)
+%
+global MONKEYDIR
+
+if nargin < 2 || isempty(MonkeyDir)
+    MonkeyDir = MONKEYDIR;
+end
+
+if iscell(day), day = day{1}; end
+tmp = dir([MonkeyDir '/' day '/0*']);
+for i = 1:9
+ tmp = [tmp;dir([MonkeyDir '/' day '/' num2str(i) '*'])];
+end
+
+if ~isempty(tmp)
+    [recs{1:length(tmp)}] = deal(tmp.name);
+else
+    recs = {};
+end

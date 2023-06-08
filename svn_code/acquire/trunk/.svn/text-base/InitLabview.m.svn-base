@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e8bc428ceafd4f220b2d626a128c0861f6b8bb7734a1b05f1ea80869a6e565d3
-size 392
+
+function InitLabview(handles)
+global MONKEYDIR
+
+%  Initialize Labview task controllers
+TaskControllers = dir([MONKEYDIR '/Labview']);
+TaskControllers = TaskControllers(3:end);
+
+nTask = length(TaskControllers);
+TaskControllerCell = cell(1,nTask);
+for iTask = 1:nTask
+    TaskControllerCell{iTask} = TaskControllers(iTask).name;
+end
+set(handles.popTaskController,'String',TaskControllerCell);

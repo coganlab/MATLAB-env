@@ -1,3 +1,113 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:75c82b55a33304df04ee1528c5f6f43467b4400168498172fe7e234a7fd66bdb
-size 2824
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03
+END
+mkinstalldirs
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/mkinstalldirs
+END
+configure
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/configure
+END
+config.log
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/config.log
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/AUTHORS
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/depcomp
+END
+config.status
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/config.status
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/ChangeLog
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/README
+END
+AdditionalInfo.txt
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/AdditionalInfo.txt
+END
+configure.ac
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/configure.ac
+END
+acinclude.m4
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/acinclude.m4
+END
+INSTALL
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/INSTALL
+END
+COPYING
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/COPYING
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/missing
+END
+NEWS
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/NEWS
+END
+aclocal.m4
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/aclocal.m4
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/CMakeLists.txt
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/install-sh
+END

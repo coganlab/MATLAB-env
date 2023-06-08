@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2897d91b82f263cbe9cdf56e0a82c1f79eaf525cde5a42ff02759f53f2964b3e
-size 250
+function Recs = sessRec(Sessions)
+% Return the Rec fields from an array of Sessions
+%
+%   Recs = sessRec(Sessions)
+%
+
+if ~iscell(Sessions{1})
+  Recs = Sessions{2};
+else
+  for iSess = 1:length(Sessions)
+    Recs(iSess) = Sessions{iSess}(2);
+  end
+end

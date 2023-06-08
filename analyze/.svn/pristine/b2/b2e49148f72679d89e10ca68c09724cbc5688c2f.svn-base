@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f2231dfa7fc253adb5bda1a679373b5753008cbf186ec2915423d59db9db030b
-size 333
+function updateSpikeSpike_NumTrialsConds(SessNum)
+%
+%   updateSpikeSpike_NumTrialsConds(SessNum)
+%
+%   Adds NumTrialsConds data structure to the SpikeSpike_NumTrialsConds file
+%
+%   Modified to accept sessnum list
+
+if nargin == 0
+  updateType_NumTrialsConds('SpikeSpike');
+else
+  updateType_NumTrialsConds('SpikeSpike',SessNum);
+end

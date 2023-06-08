@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b34084974377b250e7a4f917b752815e2092d7ea492089bc329d433878ea107a
-size 730
+function y = fill_inf( x )
+% Interpolate all NaN or Inf values
+
+y = x;
+
+for i = 1:size(y,1)
+    idx = find( isnan( y(i,:) ) | isinf( y(i,:) ) );
+    if numel( idx ) > 0
+        a = idx(1);
+        b = 0;
+        for j = 2:length( idx )
+            if idx(j) ~= idx(j-1) + 1
+                b = idx(j-1);
+                if a == 1
+                    y(i,1:b) = y(i,b+1);
+                else
+                    y(i,a-1:b+1) = linspace(y(i,a-1),y(i,b+1),b-a+3);
+                end
+                a = idx(j);
+            end
+        end
+        if idx(end) == length(y)
+            y(i,a:end) = y(i,a-1);
+        else
+            b = idx(end);
+            y(i,a-1:b+1) = linspace(y(i,a-1),y(i,b+1),b-a+3);
+        end
+    end
+end

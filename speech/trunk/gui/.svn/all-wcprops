@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1814d5a020e05aae99b3e5ad82eb10d3c0fd541cae846cb0f56c68b380ca9506
-size 303
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/s_bijan/speech/!svn/ver/1/trunk/gui
+END
+AudioAlignment.fig
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/s_bijan/speech/!svn/ver/1/trunk/gui/AudioAlignment.fig
+END
+AudioAlignment.m
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/s_bijan/speech/!svn/ver/1/trunk/gui/AudioAlignment.m
+END

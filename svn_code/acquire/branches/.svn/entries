@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8dc6c5af442406d645d97fc241029f4496be178885fbf8558474c7c8a6d51567
-size 401
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2008-10-20T03:39:30.615063Z"
+   url="https://secure2.svnrepository.com/s_bijan/acquire/branches"
+   last-author="bijan"
+   kind="dir"
+   uuid="52ba062a-74ac-4f55-b969-1e96ccd37ff1"
+   repos="https://secure2.svnrepository.com/s_bijan/acquire"
+   revision="19"/>
+</wc-entries>

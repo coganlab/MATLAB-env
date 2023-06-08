@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f4a8bb6ccf2b9b393c78baa5022022910d03e81fe4ef5037cebeeea4b464eb54
-size 560
+function experiment = loadExperiment(day,rec, MonkeyDir)
+%
+%   experiment = loadExperiment(day,rec, MonkeyDir)
+%
+%   INPUTS: DAY = String.  Recording day
+%           REC = String.  Recording number.
+%               Defaults to first recording of the day.
+%
+%   OUTPUTS: EXPERIMENT = Data structure. Experiment definition.
+
+global MONKEYDIR
+if nargin < 3 || isempty(MonkeyDir)
+    MonkeyDir = MONKEYDIR;
+end
+if nargin < 2 || isempty(rec)
+    rec = dayrecs(day, MonkeyDir); 
+    rec = rec{1}; 
+end
+
+load([MonkeyDir '/' day '/' rec '/rec' rec '.experiment.mat']);

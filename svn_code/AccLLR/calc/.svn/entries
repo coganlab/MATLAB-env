@@ -1,3 +1,98 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:076e0100b3a306cb39d56f21ed371612e571c28280210e75585e4a81018e4a23
-size 3020
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="383"
+   name=""
+   committed-date="2010-10-16T19:39:13.657734Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR/calc"
+   last-author="bijan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   committed-rev="374"
+   name="calcSimpleOnsetTrials.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-10-08T16:48:07.588761Z"
+   checksum="099ca408aabd069676a8fccaf75415a5"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="236"
+   name="calcDecisionOnsetTrials.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-20T21:41:15.969084Z"
+   checksum="a5fec055b6b7c644afe9315b38f7b4bb"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="263"
+   name="calcSelectionROC.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-02-17T21:43:04.797181Z"
+   checksum="307702b2162148b45054bb570c1fa4b5"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="224"
+   name="calcControlledSelectionTime.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T03:57:35.555877Z"
+   checksum="0cd04a7bab3b70b5411171b8a4285282"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="224"
+   name="calcOptimalSelectionTime.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T03:57:35.555877Z"
+   checksum="523befebc502d2e73927bebcd63c0eae"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="313"
+   name="calcReachOnsetTrials.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-05-27T01:57:59.057838Z"
+   checksum="29787ce94e083b590e61fd5c6984a94e"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   name="loo"
+   kind="dir"/>
+<entry
+   committed-rev="383"
+   name="calcAccLLROnsetS.m"
+   text-time="2010-10-18T21:44:33.000000Z"
+   committed-date="2010-10-16T19:39:13.657734Z"
+   checksum="9110c3c9b8424c9a0df357d80cd409c7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:33.000000Z"/>
+<entry
+   committed-rev="266"
+   name="calcSelectionTrialAveragePerformance.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-02-28T21:12:45.702645Z"
+   checksum="e1e37564e003d3497150560401e3943b"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="381"
+   name="calcAccLLROnsetF.m"
+   text-time="2010-10-12T18:50:44.000000Z"
+   committed-date="2010-10-12T18:56:05.154555Z"
+   checksum="7e9845acfb94b708b5e8653c79a02940"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+</wc-entries>

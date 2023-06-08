@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2109dbb0ac0a05ba47aa13a1a4acc2e21dece7e6f1d1d310cdddd945ebbc281e
-size 460
+function updateMultiunit_Database(SessNum)
+%
+%   updateMultiunit_Database(SessNum)
+%
+%   
+%
+
+
+if nargin == 1
+    replaceMultiunitSessInfo(SessNum);
+    updateMultiunit_NumTrials(SessNum);
+%     updateMultiunit_NumTrialsConds(SessNum);
+%     updateMultiunit_ControlTuning(SessNum);
+%     %updateMultiunit_Figs(SessNum);
+else
+    updateMultiunit_NumTrials;
+%     updateMultiunit_NumTrialsConds;
+%     updateMultiunit_ControlTuning;
+    %updateMultiunit_Figs;
+end

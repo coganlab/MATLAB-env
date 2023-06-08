@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0a9bd2336c503e6475ef07fcd32beb40cbc300666e3f7510095148ba3cb138a3
-size 594
+function flag = isFieldDay(day, tower, ch, FieldSession)
+%
+%  flag = isFieldDay(day, tower, ch, FieldSession)
+%
+
+if nargin < 4 FieldSession = loadField_Database; end
+
+FieldDays = sessDay(FieldSession);
+FieldChannels = sessChannel(FieldSession);
+FieldTowers = sessTower(FieldSession);
+
+flag = 0;
+if ~isempty(find(strcmp(FieldDays, day))) 
+  DayInd = find(strcmp(FieldDays,day));
+  if ~isempty(find(strcmp(FieldTowers(DayInd), tower)))
+    TowerInd = find(strcmp(FieldTowers(DayInd), tower));
+    if ~isempty(find(intersect(FieldChannels(DayInd(TowerInd)),ch)))
+      flag = 1;
+    end
+  end
+end

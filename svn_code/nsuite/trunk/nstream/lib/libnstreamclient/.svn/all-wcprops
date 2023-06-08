@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e5e020fea62b9be0bd5fae820492e49146e6e0f29f9621072a77ba247089ae48
-size 507
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/s_bijan/nsuite/!svn/ver/101/trunk/nstream/lib/libnstreamclient
+END
+nstreamclient.c
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/s_bijan/nsuite/!svn/ver/81/trunk/nstream/lib/libnstreamclient/nstreamclient.c
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/s_bijan/nsuite/!svn/ver/1/trunk/nstream/lib/libnstreamclient/CMakeLists.txt
+END
+nstreamclient.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/s_bijan/nsuite/!svn/ver/101/trunk/nstream/lib/libnstreamclient/nstreamclient.h
+END

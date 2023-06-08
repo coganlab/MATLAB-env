@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:acbeacc3d300f9388fdb503686cfedf3902d5e065d59164d827f68e54876a877
-size 1209
+function ieeg = trialIEEG(Trials, ch, field, bn)
+%
+%  ieeg = trialIEEG(Trials, ch, field, bn)
+%
+%   bn is in ms
+
+global experiment NYUMCDIR
+
+IEEG_FS = experiment.processing.ieeg.sample_rate;
+ieeg = zeros(length(Trials),length(ch),diff(bn)*IEEG_FS./1e3,'single');
+for iTrial = 1:length(Trials)
+  Subject = Trials(iTrial).Subject; Day = Trials(iTrial).Day; 
+  Rec = Trials(iTrial).Rec; FilenamePrefix = Trials(iTrial).FilenamePrefix;
+  file_name = [NYUMCDIR '/' Subject '/' Day '/' Rec '/' FilenamePrefix];
+  
+  % LINES TAKEN OUT 1/28/11 GBC NOT WORKING FOR SOME REASON.....
+%   if isfile([file_name '.cleanieeg.dat'])
+%     file_type = 'cleanieeg';              
+%   elseif isfile([file_name '.ieeg.dat'])
+%     file_type = 'ieeg';
+%   end
+  %
+  file_type='cleanieeg';
+  
+  file_name = [file_name '.' file_type '.dat']; %#ok<AGROW>
+  starttime_in_ms = Trials(iTrial).(field)./30 + bn(1);
+  stoptime_in_ms = Trials(iTrial).(field)./30 + bn(2);
+  startsamp = floor(starttime_in_ms./1e3.*IEEG_FS) + 1;
+  stopsamp = floor(stoptime_in_ms./1e3.*IEEG_FS);
+  tmp = ntools_load_int(file_type,file_name,startsamp,stopsamp);
+  ieeg(iTrial,:,1:min(size(tmp,2),end)) = tmp(ch,1:min(end,size(ieeg,3)));
+end
+
+ieeg = sq(ieeg);

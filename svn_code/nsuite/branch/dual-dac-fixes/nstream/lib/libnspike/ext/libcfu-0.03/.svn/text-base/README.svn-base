@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b48eb514ef973d058920f18996be0817f793fcbd51e53ba0e169c764ae9d33bc
-size 149
+Libcfu is a library of thread-safe functions and data structures that
+I have found useful.  See the texinfo documentation for detailed
+information.
+

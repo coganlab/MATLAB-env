@@ -1,3 +1,112 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a124293aaf10f1e025e32e964a41bdaac36185bd3d99f28d98bfc9ff75a45844
-size 3465
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="18"
+   name=""
+   committed-date="2008-12-22T21:25:36.218016Z"
+   url="https://secure2.svnrepository.com/s_bijan/acquire/trunk/init"
+   last-author="yan"
+   kind="dir"
+   uuid="52ba062a-74ac-4f55-b969-1e96ccd37ff1"
+   repos="https://secure2.svnrepository.com/s_bijan/acquire"
+   revision="19"/>
+<entry
+   committed-rev="18"
+   name="acquire_gui_definition_file.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:25:36.218016Z"
+   checksum="645d56c59669c7f732a5cde07a40d097"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="17"
+   name="hardware_definition_file.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="89f71371017865f833660ba42c85a0e0"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="17"
+   name="init_software_modules.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="a368def43023bdee11e2264d8a497da2"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="6"
+   name="init_software_defn.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-01T22:21:11.156618Z"
+   checksum="5c7a05724d9f0d109180856c91c1f131"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="2"
+   name="init_hardware_nspike.m"
+   text-time="2008-11-10T18:33:58.000000Z"
+   committed-date="2008-11-10T19:24:54.617096Z"
+   checksum="ace89e13ece72e18a1a2a807a8e1b014"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="12"
+   name="init_recording_defn.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-07T17:24:29.135140Z"
+   checksum="58d04421dda35a9cd6ef48ad6aed488b"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="6"
+   name="init_hardware_defn.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-01T22:21:11.156618Z"
+   checksum="4d8c73d9fdcbbf1bc2d3733ceaff34d3"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="7"
+   name="init_acquire_gui_defn.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-01T23:04:26.044737Z"
+   checksum="3d2fd5844d5c728ef330e10cad56b29e"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="17"
+   name="software_definition_file.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="9e28a3373bf72eefc5beafeb6740ad87"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="17"
+   name="init_software_engine.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="89bbe4a2736422bfca385d0ae12a7369"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="14"
+   name="recording_definition_file.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-08T01:35:18.610899Z"
+   checksum="6bef61d0a8c776e7f62ce5fc10350114"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+</wc-entries>

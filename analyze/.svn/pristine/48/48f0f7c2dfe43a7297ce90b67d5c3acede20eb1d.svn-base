@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d9873348e94edb1598f1207523ede09f8105443253323da9411fbf807dc41162
-size 1163
+function procDayEvents(day,rec)
+%
+% procDayEvents(day,rec)
+%
+
+global MONKEYDIR
+olddir = pwd;
+recs = dayrecs(day);
+nRecs = length(recs);
+
+if nargin < 2
+    num = [1,nRecs];
+elseif ischar(rec)
+    num = [find(strcmp(recs,rec)),find(strcmp(recs,rec))];
+elseif length(rec)==1
+    num = [rec,rec];
+elseif length(rec)==2
+    num = rec;
+end
+
+for iRec = num(1):num(2)
+    if isfile([MONKEYDIR '/' day '/' recs{iRec} '/rec' recs{iRec} '.ev.txt']) % ...
+        if(~exist([MONKEYDIR '/' day '/' recs{iRec} '/rec' recs{iRec} '.display.dat'],'file'))
+           p = [MONKEYDIR '/' day '/DisplaySensorNotPresent.mat'];
+            save(p,'iRec');
+        end
+        load([MONKEYDIR '/' day '/' recs{iRec} '/rec' recs{iRec} '.Rec.mat']);
+        %load([MONKEYDIR '/' day '/' recs{iRec} '/rec' recs{iRec} '.experiment.mat']);
+        warning off;
+        rmpath(genpath('/mnt/raid/analyze/proc/LabView/'));
+        addpath(['/mnt/raid/analyze/proc/LabView/' Rec.Task]);
+        warning on;
+        which procEvents
+        procEvents(day,iRec);
+        warning off;
+        rmpath(['/mnt/raid/analyze/proc/LabView/' Rec.Task]);
+        warning on;
+    end
+end
+
+saveTrials(day);

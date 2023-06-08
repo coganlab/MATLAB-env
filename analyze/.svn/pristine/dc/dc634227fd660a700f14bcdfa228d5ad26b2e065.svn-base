@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d4288f63e8cd45088a010fb890d0284aa77fa7e2d21e828c92e573a3c1ba6f0
-size 581
+function printSelectionTimeTrialAverageCurve(Onset, ModelType, DetectType)
+%
+%  printSelectionTimeTrialAverageCurve(Onset, DetectType)
+%
+%   Inputs: Onset      = Data structure
+%           DetectType = String. 'Hit', 'Reject' or 'Correct'
+%                           Defaults to 'Hit'
+%
+
+if nargin < 2 || isempty(ModelType)
+    ModelType = 'NoHist';
+end
+if nargin < 3 || isempty(DetectType)
+    DetectType = 'Hit';
+end
+
+FigureHandle = plotSelectionTimeTrialAverageCurve(Onset, ModelType,  DetectType);
+
+printSelectionHelper(FigureHandle, 'SelectionTimeTrialAverageCurve', Onset);
+

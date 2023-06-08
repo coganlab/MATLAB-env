@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e1e7fe1eb8afd803c7e424b8bf8155e7b899b04c69b8003f28aa21cfd8b53f14
-size 755
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/s_bijan/nsuite/!svn/ver/134/trunk/ntools/gen
+END
+ntools_gen_add_coords.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/s_bijan/nsuite/!svn/ver/122/trunk/ntools/gen/ntools_gen_add_coords.m
+END
+ntools_gen_ft_data.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/s_bijan/nsuite/!svn/ver/134/trunk/ntools/gen/ntools_gen_ft_data.m
+END
+ntools_gen_recording_data.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/s_bijan/nsuite/!svn/ver/93/trunk/ntools/gen/ntools_gen_recording_data.m
+END
+ntools_gen_epoch_data.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/s_bijan/nsuite/!svn/ver/133/trunk/ntools/gen/ntools_gen_epoch_data.m
+END
+ntools_gen_cont_data.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/s_bijan/nsuite/!svn/ver/121/trunk/ntools/gen/ntools_gen_cont_data.m
+END

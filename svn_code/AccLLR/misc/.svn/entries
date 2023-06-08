@@ -1,3 +1,104 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2aa27c111d0719e1c86ab61b8dfe0229e15f769c9bf79d9bf0fc405a7a9f58a7
-size 3177
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="383"
+   name=""
+   committed-date="2010-10-16T19:39:13.657734Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR/misc"
+   last-author="bijan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   committed-rev="383"
+   name="accLR.m"
+   text-time="2010-10-18T21:44:34.000000Z"
+   committed-date="2010-10-16T19:39:13.657734Z"
+   checksum="a46e5c9ed89f4f3edd7015e1312f90fc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:34.000000Z"/>
+<entry
+   committed-rev="260"
+   name="LR_InhPoisson.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-02-05T21:02:49.373134Z"
+   checksum="7109be6db8a9bbf9c9c430e4c0a45143"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="313"
+   name="controlled_performance.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-05-27T01:57:59.057838Z"
+   checksum="343c2b19fac505c9c8eb04e6de4aa23a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="263"
+   name="mypsth2.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-02-17T21:43:04.797181Z"
+   checksum="e7695fbd1ba5dcb0ea04d0a69bd922fa"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="267"
+   name="optimal_performance.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-03-04T15:29:35.984093Z"
+   checksum="fd9a267a6ad10f1b70a47427f33be735"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="372"
+   name="averageLR.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-10-05T21:38:11.625272Z"
+   checksum="40d75c3e758e3a2eb2fb11b777f1afa9"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="225"
+   name="DetectAccLLR.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T04:09:28.732562Z"
+   checksum="89ce5d6df5cb65d2f7804524b6390bd2"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="228"
+   name="DetectProb.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-11T15:50:02.143428Z"
+   checksum="ba4a4f3cd6a54bab786f8df200a5160d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="225"
+   name="characterize_level.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T04:09:28.732562Z"
+   checksum="ffc4405692e5f72774c97098a051a6ba"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="355"
+   name="performance_levels.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-08-16T22:30:31.002575Z"
+   checksum="923469bbbdf2371f5886ba390e2cf94a"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+</wc-entries>

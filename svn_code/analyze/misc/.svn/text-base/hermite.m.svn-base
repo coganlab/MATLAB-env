@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9e65e0c83e3ce18cefb1ca1569195539c2e6fea5358f0db7c3695b89f5b026f8
-size 149
+function h = hermite(N,k);
+%  HERMITE calculates the kth order Hermite function
+
+A = pi.^(-0.25).*(2.^k.*factorial(k)).^(-0.5);
+
+t = linspace(0,1,N)

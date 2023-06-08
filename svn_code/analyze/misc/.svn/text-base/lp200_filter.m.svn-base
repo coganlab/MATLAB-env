@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:553ab4ec0e3f3533302caa5984ef9f10ccf1f13a9f6755fee69df5c61a9795bf
-size 554
+function lp200_filter(ds)
+%Here is the code that low pass filters the data.
+
+%au_in=['/cdrom/',ds,'/',ds,'.raw.au'];
+au_in=[ds,'.raw.au'];
+au_snout=[ds,'.lp200.sn.au'];
+au_fout=[ds,'.lp200.ft.au'];
+au_dout=[ds,'.lp200.ds.au'];
+h=auhead(au_in);
+sampling=h.rate;
+filter=mtfilt([2./200.,2,3],0.,sampling);
+b=filter;
+a=[1,zeros(1,length(b)-1)];
+aufilter(b,a,au_in,au_fout,'filter=mtfilt([2./200.,2.,3])');
+ausnip(au_fout,au_snout,[length(b)./2,-length(b)./2,0]);
+unix(['rm ',au_fout]);
+audownsample(au_snout,au_dout,sampling./1000);
+unix(['rm ',au_snout]);
+

@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0c9206ff1bd9408edbba9245a9614ef48332777b9210349196e4de1a60a83469
-size 766
+function TaskString = plotSelectionTaskStringHelper(Params)
+%
+%  TaskString = plotSelectionTaskStringHelper(Params)
+%
+
+switch Params.Type
+    case 'Effector'
+        if iscell(Params.Event.Task)
+            TaskString = [Params.Event.Task{1} ' ' Params.Null.Task{1}];
+        else
+            TaskString = [Params.Event.Task ' ' Params.Null.Task];
+        end
+    otherwise
+        TaskString = [];
+        try Params.Task
+        catch
+            Params.Task = Params.Event.Task;
+        end
+        if iscell(Params.Task)
+            for iTask = 1:length(Params.Task)
+                TaskString = [TaskString ' ' Params.Task{iTask}];
+            end
+            TaskString = TaskString(2:end);
+        else
+            TaskString = Params.Task;
+        end 
+end
+

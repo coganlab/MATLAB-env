@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a696404561734a95bcb3b0db5c33d5516b26e86b59bca7fde362370be3924299
-size 192
+addpath /home/adam/dev/rtbci/pkg/matlab
+addpath /home/adam/dev/rtbci/src/scripts
+
+z = write_joints(qposmatrix, '/home/adam/dev/mujoco/test.txt');
+play_movie('/home/adam/dev/mujoco/test.txt');

@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cde444509a844f15d23cd10382e16043646a6db533a451c7c7686b38be9bd1f3
-size 1810
+function markernames = whichMarkerNames(Markerset_name)
+%  WHICHMARKERNAMES returns the names of the measured markers for
+%  given Body markerset.  
+%
+% MARKERNAMES = WHICHMARKERNAMES(MARKERSET_NAME)
+%
+% INPUTS: MARKERSET_NAME = String. {'CriticalMarkers',
+%                           'CriticalMarkers_M1'
+%                           'CriticalMarkers_M1_Elbow'}
+%           MARKERSET_NAME should match the experiment.software.markerset
+%           for the Body.
+%
+% OUTPUTS: MARKERNAMES = Cell array of strings.
+%
+
+switch Markerset_name
+    case {'CriticalMarkers','CriticalMarkers_Elbow'}
+        markernames = {'L.Shoulder','Sternum','R.Shoulder',...
+            'R.Elbow','R.Radius','R.Wrist','R.Ulna',...
+            'R.Hand','R.Thumb.M3','R.Finger3.M3','R.Finger5.M3'};
+    case{'CriticalMarkers_M1','CriticalMarkers_M1_Elbow'}
+        markernames = {'L.Shoulder','Sternum','R.Shoulder',...
+            'R.Elbow','R.Radius','R.Wrist','R.Ulna',...
+            'R.Hand','R.Thumb.M1','R.Finger3.M1','R.Finger5.M1',...
+            'R.Thumb.M3','R.Finger3.M3','R.Finger5.M3'};
+    case{'Full_Markerset'}
+        markernames = {'L.Shoulder','Sternum','R.Shoulder',...
+            'R.Elbow','R.Radius','R.Wrist','R.Ulna',...
+            'R.Hand','R.Thumb.M1','R.Thumb.M2','R.Thumb.M3','R.Finger2.M1',...
+            'R.Finger2.M2','R.Finger2.M3','R.Finger3.M1',...
+            'R.Finger3.M2','R.Finger3.M3','R.Finger4.M1',...
+            'R.Finger4.M2','R.Finger4.M3','R.Finger5.M1',...
+            'R.Finger5.M2','R.Finger5.M3'};
+    case {'Wand'}
+        markernames = {'prox_wand','mid_wand','dist_wand'};
+    otherwise
+        markernames = {'L.Shoulder','Sternum','R.Shoulder',...
+            'R.Elbow','R.Radius','R.Wrist','R.Ulna',...
+            'R.Hand','R.Thumb.M3','R.Finger3.M3','R.Finger5.M3'};
+end

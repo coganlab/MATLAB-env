@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5cee44e4ad4cc079c1c93499c770a0538ab0b6af5a6b7c2919341fcdd0cdb433
-size 294
+function ProjectDir = sessProjectDir(Sessions)
+% Return the ProjectDir field from an array of Sessions
+%
+%   ProjectDir = sessProjectDir(Sessions)
+%
+
+if ~iscell(Sessions{1})
+  ProjectDir = Sessions{7};
+else
+  for iSess = 1:length(Sessions)
+    ProjectDir{iSess} = Sessions{iSess}{7};
+  end
+end

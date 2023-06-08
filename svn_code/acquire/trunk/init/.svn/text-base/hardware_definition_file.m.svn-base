@@ -1,3 +1,169 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4728032c6b84d9d2d75ba46fcbedf4b712ab926cc78c0297b966c832d54c4f86
-size 8271
+%
+% The hardware definition file defines support for all the experimental
+% hardware relevant to the acquire data acquisition GUI
+%
+% This definition file is for the Double MT system.
+
+
+global experiment
+
+%
+% 
+% Definitions to configure the microdrives
+%
+%
+
+experiment.hardware.type = 'DoubleMT001';
+experiment.hardware.microdrive(1).electrodes(1).motorid = 1;
+experiment.hardware.microdrive(1).electrodes(1).acquisitionid = 1;
+experiment.hardware.microdrive(1).electrodes(1).channelid = 7;
+experiment.hardware.microdrive(1).electrodes(1).type = 'AO001';
+experiment.hardware.microdrive(1).electrodes(1).label = 'PRR 1:1';
+experiment.hardware.microdrive(1).electrodes(1).gain = 1000;
+experiment.hardware.microdrive(1).electrodes(1).motorgroupid = 1;
+experiment.hardware.microdrive(1).electrodes(2).motorid = 2;
+experiment.hardware.microdrive(1).electrodes(2).acquisitionid = 1;
+experiment.hardware.microdrive(1).electrodes(2).channelid = 8;
+experiment.hardware.microdrive(1).electrodes(2).type = 'AO001';
+experiment.hardware.microdrive(1).electrodes(2).label = 'PRR 1:2';
+experiment.hardware.microdrive(1).electrodes(2).motorgroupid = 1;
+experiment.hardware.microdrive(1).electrodes(2).gain = 1000;
+experiment.hardware.microdrive(1).electrodes(3).motorid = 3;
+experiment.hardware.microdrive(1).electrodes(3).acquisitionid = 1;
+experiment.hardware.microdrive(1).electrodes(3).channelid = 9;
+experiment.hardware.microdrive(1).electrodes(3).type = 'NBS001';
+experiment.hardware.microdrive(1).electrodes(3).label = 'PRR 1:3';
+experiment.hardware.microdrive(1).electrodes(3).motorgroupid = 1;
+experiment.hardware.microdrive(1).electrodes(3).gain = 1000;
+experiment.hardware.microdrive(1).electrodes(4).motorid = 4;
+experiment.hardware.microdrive(1).electrodes(4).acquisitionid = 1;
+experiment.hardware.microdrive(1).electrodes(4).channelid = 10;
+experiment.hardware.microdrive(1).electrodes(4).type = 'NBS001';
+experiment.hardware.microdrive(1).electrodes(4).label = 'PRR 1:4';
+experiment.hardware.microdrive(1).electrodes(4).motorgroupid = 1;
+experiment.hardware.microdrive(1).electrodes(4).gain = 1000;
+
+experiment.hardware.microdrive(2).electrodes(1).motorid = 5;
+experiment.hardware.microdrive(2).electrodes(1).acquisitionid = 1;
+experiment.hardware.microdrive(2).electrodes(1).channelid = 11;
+experiment.hardware.microdrive(2).electrodes(1).type = 'AO001';
+experiment.hardware.microdrive(2).electrodes(1).label = 'PRR 2:1';
+experiment.hardware.microdrive(2).electrodes(1).motorgroupid = 1;
+experiment.hardware.microdrive(2).electrodes(1).gain = 1000;
+experiment.hardware.microdrive(2).electrodes(2).motorid = 6;
+experiment.hardware.microdrive(2).electrodes(2).acquisitionid = 1;
+experiment.hardware.microdrive(2).electrodes(2).channelid = 12;
+experiment.hardware.microdrive(2).electrodes(2).type = 'AO001';
+experiment.hardware.microdrive(2).electrodes(2).label = 'PRR 2:2';
+experiment.hardware.microdrive(2).electrodes(2).motorgroupid = 1;
+experiment.hardware.microdrive(2).electrodes(2).gain = 1000;
+experiment.hardware.microdrive(2).electrodes(3).motorid = 7;
+experiment.hardware.microdrive(2).electrodes(3).acquisitionid = 1;
+experiment.hardware.microdrive(2).electrodes(3).channelid = 13;
+experiment.hardware.microdrive(2).electrodes(3).type = 'NBS001';
+experiment.hardware.microdrive(2).electrodes(3).label = 'PRR 2:3';
+experiment.hardware.microdrive(2).electrodes(3).motorgroupid = 1;
+experiment.hardware.microdrive(2).electrodes(3).gain = 1000;
+experiment.hardware.microdrive(2).electrodes(4).motorid = 8;
+experiment.hardware.microdrive(2).electrodes(4).acquisitionid = 1;
+experiment.hardware.microdrive(2).electrodes(4).channelid = 14;
+experiment.hardware.microdrive(2).electrodes(4).type = 'NBS001';
+experiment.hardware.microdrive(2).electrodes(4).label = 'PRR 2:4'; 
+experiment.hardware.microdrive(2).electrodes(4).motorgroupid = 1;
+experiment.hardware.microdrive(2).electrodes(4).gain = 1000;
+experiment.hardware.microdrive(1).name = 'Tower 1';
+experiment.hardware.microdrive(1).type = 'DMT002';
+experiment.hardware.microdrive(1).coordinate.x = 55;
+experiment.hardware.microdrive(1).coordinate.y = 5;
+experiment.hardware.microdrive(1).coordinate.pitch = 55;
+experiment.hardware.microdrive(1).coordinate.yaw = 55;
+experiment.hardware.microdrive(2).name = 'Tower 2';
+experiment.hardware.microdrive(2).type= 'DMT001';
+experiment.hardware.microdrive(2).coordinate.x = 60;
+experiment.hardware.microdrive(2).coordinate.y = 65;
+experiment.hardware.microdrive(2).coordinate.pitch = 5;
+experiment.hardware.microdrive(2).coordinate.yaw = 95;
+
+
+
+%
+%
+% Definitions to configure the behaviour data acquired from the A/D
+%
+%
+
+experiment.hardware.behavior(1).acquisitionid = 1;
+experiment.hardware.behavior(1).channelid = 1;
+experiment.hardware.behavior(1).label = 'State';
+experiment.hardware.behavior(1).type = 'LabviewAnalogOut';
+
+experiment.hardware.behavior(1).acquisitionid = 1;
+experiment.hardware.behavior(1).channelid = 2;
+experiment.hardware.behavior(1).label = 'EyeX';
+experiment.hardware.behavior(1).type = 'LabviewAnalogOut';
+
+experiment.hardware.behavior(1).acquisitionid = 1;
+experiment.hardware.behavior(1).channelid = 3;
+experiment.hardware.behavior(1).label = 'EyeY';
+experiment.hardware.behavior(1).type = 'LabviewAnalogOut';
+
+experiment.hardware.behavior(1).acquisitionid = 1;
+experiment.hardware.behavior(1).channelid = 4;
+experiment.hardware.behavior(1).label = 'HandX';
+experiment.hardware.behavior(1).type = 'LabviewAnalogOut';
+
+experiment.hardware.behavior(1).acquisitionid = 1;
+experiment.hardware.behavior(1).channelid = 5;
+experiment.hardware.behavior(1).label = 'HandY';
+experiment.hardware.behavior(1).type = 'LabviewAnalogOut';
+
+experiment.hardware.behavior(1).acquisitionid = 1;
+experiment.hardware.behavior(1).channelid = 6;
+experiment.hardware.behavior(1).label = 'Stim';
+experiment.hardware.behavior(1).type = 'LabviewAnalogOut';
+
+
+%
+%
+% Definition file to configure the acquisiton hardware
+%
+%
+
+experiment.hardware.acquisition(1).samplingrate = 20000;
+experiment.hardware.acquisition(1).data_type = 'Analog';
+experiment.hardware.acquisition(1).num_channels = 8;
+experiment.hardware.acquisition(1).data_format = 'Short'; 
+experiment.hardware.acquisition(1).type = 'Broker'; 
+experiment.hardware.acquisition(1).voltage_range = [-5,5];
+experiment.hardware.acquisition(1).AD_range = [0,4095];
+experiment.hardware.acquisition(1).channel(1).label = 'State';
+experiment.hardware.acquisition(1).channel(1).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(2).label = 'EyeX';
+experiment.hardware.acquisition(1).channel(2).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(3).label = 'EyeY';
+experiment.hardware.acquisition(1).channel(3).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(4).label = 'HandX';
+experiment.hardware.acquisition(1).channel(4).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(5).label = 'HandY';
+experiment.hardware.acquisition(1).channel(5).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(6).label = 'Stim';
+experiment.hardware.acquisition(1).channel(6).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(7).label = 'Raw1';
+experiment.hardware.acquisition(1).channel(7).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(8).label = 'Raw2';
+experiment.hardware.acquisition(1).channel(8).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(9).label = 'Raw3';
+experiment.hardware.acquisition(1).channel(9).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(10).label = 'Raw4';
+experiment.hardware.acquisition(1).channel(10).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(11).label = 'Raw5';
+experiment.hardware.acquisition(1).channel(11).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(12).label = 'Raw6';
+experiment.hardware.acquisition(1).channel(12).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(13).label = 'Raw7';
+experiment.hardware.acquisition(1).channel(13).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(14).label = 'Raw8';
+experiment.hardware.acquisition(1).channel(14).filters = [0,10000];
+experiment.hardware.acquisition(1).channel(15).label = 'Mu1';
+experiment.hardware.acquisition(1).channel(15).filters = [300,3000];
+

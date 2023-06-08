@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bc1e23fa3b36e95540c8d7e86e9e1fddac95dffb0d81c1f357cf22213c743108
-size 452
+function sp = spts2sp(spts, bn)
+%  SPTS2SP Converts spike time series to spike times.
+%
+%  SP = SPTS2SP(SPTS, BN) returns spike times with sampling
+%  rate, RATE, with boundaries, BN, when given a vector of spike time
+%  series, SPTS.  If omitted, BN defaults to [0,length(SPTS),1].
+%
+
+%  Author:  Bijan Pesaran
+
+if (nargin < 2) bn=[0,size(spts,2),1]; end
+
+ntrials = size(spts,1);
+
+for i = 1:ntrials
+  sp{i} = bn(1) + find(spts(i,:) > 0)./bn(3);
+end
+
+

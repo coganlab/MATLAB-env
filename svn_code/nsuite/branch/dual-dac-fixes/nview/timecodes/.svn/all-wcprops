@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d78a9030f46e03ab95f74f5f46ed67600706de39fc08b1fa6f9de391a05be26d
-size 538
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/timecodes
+END
+demodulate_timecode.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/timecodes/demodulate_timecode.m
+END
+gen_timecode.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/timecodes/gen_timecode.m
+END
+modulate_timecode.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nview/timecodes/modulate_timecode.m
+END

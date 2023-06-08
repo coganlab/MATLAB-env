@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb8edb89b5cc44596f614544786a3df06685af829d44dcfc646e4f4af9619fd7
-size 874
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc
+END
+file_size.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc/file_size.m
+END
+isfile.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc/isfile.m
+END
+lpfilter.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc/lpfilter.m
+END
+parse_8_bits.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc/parse_8_bits.m
+END
+ntools_subtract_reference.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc/ntools_subtract_reference.m
+END
+sq.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/misc/sq.m
+END

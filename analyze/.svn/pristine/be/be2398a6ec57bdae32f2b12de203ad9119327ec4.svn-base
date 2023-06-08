@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d899c89a19bdf192440040466efd35817e55febc33c9502bc4101b785fcaa485
-size 545
+function saveErrorTrials(day)
+%
+%   saveErrorTrials(day)
+%
+
+global MONKEYDIR
+
+olddir = pwd;
+
+if isfile([MONKEYDIR '/' day '/mat'])
+    if isfile([MONKEYDIR '/' day '/mat/ErrorTrials.mat'])
+        delete([MONKEYDIR '/' day '/mat/ErrorTrials.mat']);
+    end
+else
+    cmd = ['mkdir ' Directory '/mat'];
+    unix(cmd);
+    disp([Directory ' made']);
+end
+
+ErrorTrials = dbErrorDatabase(day);
+
+cd([MONKEYDIR '/' day '/mat']);
+disp(['Saving ErrorTrials matrix: ' num2str(length(ErrorTrials)) ' trials']);
+save ErrorTrials.mat ErrorTrials
+
+cd(olddir);

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5d9965e4196c5fee220ac7dd09d0ef0c1326d256a2989349459f5a8a116f1278
-size 294
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/s_bijan/speech/!svn/ver/1/trunk/proc
+END
+procAudioDetect.m
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/s_bijan/speech/!svn/ver/1/trunk/proc/procAudioDetect.m
+END
+procCodes.m
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/s_bijan/speech/!svn/ver/1/trunk/proc/procCodes.m
+END

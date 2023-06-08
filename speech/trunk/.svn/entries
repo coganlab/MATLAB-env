@@ -1,3 +1,58 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:377b2553e4e5b9ab42835ad75816e756534cc0a36dd4ce060d3f768d32970f22
-size 315
+10
+
+dir
+1
+https://secure2.svnrepository.com/s_bijan/speech/trunk
+https://secure2.svnrepository.com/s_bijan/speech
+
+
+
+2011-01-29T20:06:54.396828Z
+1
+bijan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0348e92e-65d7-4ac5-8ac7-1651fc953c82
+
+get
+dir
+
+load
+dir
+
+accllr
+dir
+
+calc
+dir
+
+proc
+dir
+
+subj
+dir
+
+gui
+dir
+
+db
+dir
+
+misc
+dir
+
+trial
+dir
+

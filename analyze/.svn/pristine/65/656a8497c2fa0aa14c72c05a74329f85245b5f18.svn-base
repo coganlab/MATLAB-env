@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5233defc7a8080581cc73290556d5ad41ceb5cae36b0be5a2163b2404f31bc6c
-size 322
+function RewardDifference = calcRewardDifference(Trials)
+%
+%  RewardDifference = calcRewardDifference(Trials)
+%
+%  RewardDifference is Trials.RewardDist(1) - Trials.RewardDist(2);
+
+nReward = size(Trials(1).RewardDist,2);
+RD = reshape([Trials.RewardDist],[nReward,length(Trials)]);
+RewardDifference = -diff(RD(1:2,:),1,1);

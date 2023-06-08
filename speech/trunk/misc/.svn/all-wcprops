@@ -1,3 +1,59 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:68241231e2fd8e733d028e12c047499e3bb42e76eac0989c397c66f675dc782e
-size 990
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/s_bijan/speech/!svn/ver/1/trunk/misc
+END
+Params2Trials.m
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/s_bijan/speech/!svn/ver/1/trunk/misc/Params2Trials.m
+END
+assign.m
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/s_bijan/speech/!svn/ver/1/trunk/misc/assign.m
+END
+formants.m
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/s_bijan/speech/!svn/ver/1/trunk/misc/formants.m
+END
+myroc.m
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/s_bijan/speech/!svn/ver/1/trunk/misc/myroc.m
+END
+SelectChannels.m
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/s_bijan/speech/!svn/ver/1/trunk/misc/SelectChannels.m
+END
+tvimage.m
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/s_bijan/speech/!svn/ver/1/trunk/misc/tvimage.m
+END
+myfpeaks.m
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/s_bijan/speech/!svn/ver/1/trunk/misc/myfpeaks.m
+END
+fmntest1.m
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/s_bijan/speech/!svn/ver/1/trunk/misc/fmntest1.m
+END
+setup_roc.m
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/s_bijan/speech/!svn/ver/1/trunk/misc/setup_roc.m
+END

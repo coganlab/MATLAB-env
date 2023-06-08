@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:550887ce5ddca53fbf5695bf33b7526a4e1b52cfedca93ef139b8403f8248faf
-size 184
+jug_sc96_analysis
+
+
+data = randn(96,1);
+
+opt=[];
+opt.underlay = 'SC96';
+opt.electrodemarkers='numbers';
+opt.threshold = 1;
+figure, plotArray(data,opt);
+print('openglcrash.png','-dpng')

@@ -1,3 +1,77 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb59a794a83e313ddef1a915b659cf143b3f686355ce07d3f2f89fa0be0b0706
-size 1882
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests
+END
+check_masterdsp.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_masterdsp.c
+END
+check_auxdsp.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_auxdsp.c
+END
+suites.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/suites.h
+END
+check_channel.c
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_channel.c
+END
+fakehw.c
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/fakehw.c
+END
+check_nspike.c
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_nspike.c
+END
+check_ringbuffer.c
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_ringbuffer.c
+END
+check_daqengine.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_daqengine.c
+END
+testmacros.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/testmacros.h
+END
+fakehw.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/fakehw.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/CMakeLists.txt
+END
+check_libnspike.c
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/tests/check_libnspike.c
+END

@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f40d749564a5d31b6eb29f23b3fdea2af6759661afbc2c6ca83787929e4fa6d2
-size 776
+%  Multiunit Spectrogram DST Tasks panel
+clear CondParams AnalParams;
+
+SessType = sessType(Sess);
+
+CondParams(1,1).Name = ['DST' SessType 'RTRate']; 
+
+CondParams(1,1).Task = {{'DelSaccadeTouch'}};
+CondParams(1,1).conds = {[Dirs(1)]};
+CondParams(1,1).IntervalName = 'SaccadeRT';
+CondParams(1,1).IntervalDuration = [0,.5];
+CondDiff.Task = CondParams(1,1).Task;
+CondDiff.Cond = CondParams(1,1).conds;
+CondDiff.IntervalName = 'SaccadeRT';
+CondDiff.IntervalDuration = [0.5,1];
+
+CondParams(1,1).Diff = CondDiff;
+
+CondParams(2,1) = CondParams(1,1)
+CondParams(2,1).conds = {[Dirs(2)]};
+
+AnalParams(1,1).Type = 'SpikeRate';
+AnalParams(1,1).Field = 'SaccadeGo';
+AnalParams(1,1).bn = [-1e3,500];
+AnalDiff.Field = 'SaccadeGo';
+AnalDiff.bn = [-1e3,500];
+AnalParams(1,1).Diff = AnalDiff;
+
+

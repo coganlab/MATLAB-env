@@ -1,3 +1,71 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b46f9edd1ea9851762270add02de0c2fcb357be4b2d838c667251bf641f77784
-size 1881
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include
+END
+cfulist.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfulist.h
+END
+cfuthread_queue.h
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfuthread_queue.h
+END
+cfutime.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfutime.h
+END
+cfu.h
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfu.h
+END
+cfuopt.h
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfuopt.h
+END
+cfuhash.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfuhash.h
+END
+cfu.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfu.h.in
+END
+cfutypes.h
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfutypes.h
+END
+cfuconf.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfuconf.h
+END
+cfustring.h
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfustring.h
+END
+cfutypes.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/include/cfutypes.h.in
+END

@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5a72ce92ee678d04d774eb739826ba9279ef3ba8f4d44504c82d936bf9dc92ef
-size 374
+function [car_lfp, car] = calcCARLfp(Lfp)
+%
+%  [CAR_LFP, CAR] = calcCARLFP(Lfp)
+%
+%  Inputs:  LFP = Multichannel lfp data.  [Trial, Channel, Time]
+%
+%  Outputs: CAR_LFP = Common average referenc removed LFP
+%           CAR = Common average reference.
+
+nCh = size(Lfp,2);
+
+CAR = sum(Lfp,2)./nCh;
+
+for iCh = 1:nCh
+    car_lfp(:,iCh,:) = Lfp(:,iCh,:) - CAR;
+end
+
+car = sq(CAR);

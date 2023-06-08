@@ -1,3 +1,121 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ad328ffce45ea1ae3272c007942ff5f89f91af6e0ad21b7a9a7c1f11509957d3
-size 3647
+function procDay(day,startOn,rec)
+%
+%  procDay(day, startOn)
+%
+%   Inputs:  DAY = String.  Recording day.  For example '080926';
+%
+% StartOn specifies which step of procDay to begin with (can be used to
+% complete a procDay that was interrupted by an error.)  See
+% procErrorLog.txt in the day folder for error description.  Steps are :
+% 
+       
+global MONKEYDIR
+
+olddir = pwd;
+
+load([MONKEYDIR '/mat/prototype.experiment.mat']);
+
+if isfield(experiment.recording,'machine')
+  RECMACHINE = experiment.recording.machine;
+else
+  RECMACHINE = '';
+end
+
+base_dir = experiment.recording.base_path;
+if length(RECMACHINE)
+%if(~isdir([MONKEYDIR '/' day])) % Always try to copy data, otherwise may miss files.
+    try
+        disp('Copying day folder to raid drive.  This might take a while.');
+        unix(['rsync --progress -rxvtzl ' RECMACHINE ':' base_dir '/' day ' ' MONKEYDIR '/'],'-echo');
+        unix(['chown bijanadmin:bijanadmin ' MONKEYDIR '/' day]);
+        disp([MONKEYDIR '/' day ' ownership set'])
+    catch
+        disp('failed to copy recording folder:')
+        disp(lasterror.message);
+        return;
+    end
+end
+%else
+%    disp('Directory already copied to raid drive')
+%end
+
+if nargin < 2 || startOn > 14 || startOn < 1
+    startOn = 1;
+end
+
+recs = dayrecs(day);
+
+load([MONKEYDIR '/' day '/' recs{1} '/rec' recs{1} '.experiment.mat'])
+
+stuffToDo = experiment.software.analyze;
+disp('The following processing steps will be run:')
+disp(char(stuffToDo));
+%pause(10);
+for i=startOn:length(stuffToDo)
+    if nargin < 3
+        try
+            feval(stuffToDo{i},day);
+        catch
+            log = 'ERROR!\nSucceeded on the following steps:';
+            if(i>1)
+                for j=1:i-1;
+                    log = [log  '\n' stuffToDo{j}];
+                end
+            end
+            err = lasterror;
+            log = [log '\nFailed on step ' stuffToDo{i} ' for reason:\n' err.message];
+
+            s = err.stack;
+            for j=1:length(s);
+                log = [log '\n ...in ' s(j).name];
+                log = [log '\n' s(j).file];
+                log = [log '\n...at line ' num2str(s(j).line)];
+            end
+
+            fid = fopen([MONKEYDIR '/' day '/procErrorLog.txt'],'w');
+            msg = sprintf(log);
+            fwrite(fid,msg);
+            fclose(fid);
+            disp(msg);
+            disp('Log saved.  Aborting.');
+            cd(olddir);
+            return;
+        end
+    else
+        try
+            feval(stuffToDo{i},day,rec);
+        catch
+            log = 'ERROR!\nSucceeded on the following steps:';
+            if(i>1)
+                for j=1:i-1;
+                    log = [log  '\n' stuffToDo{j}];
+                end
+            end
+            err = lasterror;
+            log = [log '\nFailed on step ' stuffToDo{i} ' for reason:\n' err.message];
+
+            s = err.stack;
+            for j=1:length(s);
+                log = [log '\n ...in ' s(j).name];
+                log = [log '\n' s(j).file];
+                log = [log '\n...at line ' num2str(s(j).line)];
+            end
+
+            fid = fopen([MONKEYDIR '/' day '/procErrorLog.txt'],'w');
+            msg = sprintf(log);
+            fwrite(fid,msg);
+            fclose(fid);
+            disp(msg);
+            disp('Log saved.  Aborting.');
+            cd(olddir);
+            return;
+        end
+    end
+    cd(olddir);
+end
+
+
+
+% delFiles(day);  In the past, when I automatically deleted files I deleted entire recording days
+%                   by accident.  I think delFiles should be done manually unless there is
+%                   a procedure for automatically determining that the preprocessing was successful.

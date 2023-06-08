@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c15ed6811fa52d37a19ab7eb0d3608a4f9e8c606034d6d914e335ec1babf611b
-size 1226
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests
+END
+256-sin-waves-30kHz-int16.ieeg.dat
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/256-sin-waves-30kHz-int16.ieeg.dat
+END
+256-sin-waves-30kHz-int16.nspike.dat
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/256-sin-waves-30kHz-int16.nspike.dat
+END
+test-sin-waves-recording.mat
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/test-sin-waves-recording.mat
+END
+test-sin-waves-experiment.mat
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/test-sin-waves-experiment.mat
+END
+run_all_tests.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/run_all_tests.m
+END
+256-sin-waves-30kHz-int16.dio.txt
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/256-sin-waves-30kHz-int16.dio.txt
+END
+int16-sin-waves.mat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/int16-sin-waves.mat
+END

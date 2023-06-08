@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e003e70c0893876a786859599a13f415e82857f1c8d034dc1d4ea8409a56b56
-size 287
+function lowReward = getLowReward(trials)
+%
+%  lowReward =getLowReward(trials)
+%
+% For a 2T reward magnitude task, gets the low reward value
+%
+
+reward_dist = [trials.RewardDist];
+reward_dist = reshape(reward_dist, 4, length(trials));
+lowReward = min(reward_dist(1,:), reward_dist(2,:))';

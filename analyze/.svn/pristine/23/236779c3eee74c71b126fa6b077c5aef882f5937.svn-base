@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:44c6dfdfb1b552fa33f702eff9cc90e625432627081269985387dc9673754d2f
-size 200
+function E = getEyeTargetLocation(Trials);
+%
+%  E = getEyeTargetLocation(Trials)
+%
+%	Returns x,y position of eye target for each trial
+%
+
+E = reshape([Trials.EyeTargetLocation],[2,length(Trials)])';
+

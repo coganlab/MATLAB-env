@@ -1,3 +1,65 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:85d2b5b22b78944a0180c5d64acd9b369d01ea0a10f3d4d6d85a91deb7a9b753
-size 1588
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc
+END
+NTools_Process.fig
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/NTools_Process.fig
+END
+ntools_procComediVideoSync.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procComediVideoSync.m
+END
+ntools_procDecimateIEEG.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procDecimateIEEG.m
+END
+ntools_procCleanDecIEEG.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procCleanDecIEEG.m
+END
+ntools_procIEEG.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procIEEG.m
+END
+NTools_Process.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/NTools_Process.m
+END
+ntools_procCleanIEEG.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procCleanIEEG.m
+END
+ntools_procDay.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procDay.m
+END
+ntools_procExtractComediAudio.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procExtractComediAudio.m
+END
+ntools_procWavVideoSync.m
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/ntools/proc/ntools_procWavVideoSync.m
+END

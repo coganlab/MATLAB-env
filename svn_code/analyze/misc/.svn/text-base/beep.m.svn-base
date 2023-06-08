@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1735ac3a43ff9e704893dd31c251cc7097e11116b8a8982dec50efc7da01a874
-size 161
+%BEEP  Ring the system bell
+%
+%usage: beep
+%tested on version 5.2.0
+%see also: DISP, CHAR
+
+%Paul Godfrey
+%pgodfrey@intersil.com
+%8-24-00
+
+disp(char(7));
+
+return

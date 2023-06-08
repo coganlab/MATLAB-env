@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:40eb7a14b417d56ecb0efa3ecd43bc329713794a0c7f7dcd1051de3311c7f995
-size 406
+function SFSession = bsFtoSF(FSession, SpikeAreaLabel)
+%
+%  bsFtoSF(FSession, SpikeAreaLabel)
+%
+
+
+SpikeSession = loadSpike_Database;
+
+SF = FtoSF(FSession);
+SFArea1 = cell(1,length(SF));
+
+for iSF = 1:length(SF)
+   tmp = sessBSArea(SpikeSession{SF{iSF}{6}(1)});
+   SFArea1{iSF} = tmp{1}{1};
+end
+
+ind = find(strcmp(SFArea1,SpikeAreaLabel));
+
+if ~isempty(ind)
+  SFSession = SF(ind);
+else
+  SFSession = {};
+end

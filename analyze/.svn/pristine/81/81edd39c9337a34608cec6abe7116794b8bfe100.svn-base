@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:39d81a47ba68d4fc346bcc7b8b5d01ae27108e9e08fe356a6ddf51f9d76c9cf5
-size 733
+function Value = calcCoh31(Session,CondParams,AnalParams)
+%
+%  Value = calcCoh23(Session,CondParams,AnalParams)
+
+
+% We want only those trials that were in full threepart session included,
+% so we get this value from partial coh file, not coh file.
+% If saved partial coh file exists, load it up
+% Else calculate and save file
+
+iPanel = CondParams(1).iPanel;
+isubPanel = CondParams(1).isubPanel;
+timeind = CondParams.timeind;
+freqind = CondParams.freqind;
+
+Panels = loadPanels(Session, CondParams, AnalParams);
+if isempty(Panels)
+    savePanels(Session, CondParams, AnalParams)
+    Panels = loadPanels(Session, CondParams, AnalParams);
+end
+Value = Panels.Data(iPanel,1).SubPanel(1,isubPanel).Data.SuppData.Coh31(timeind,freqind);
+
+
+
+

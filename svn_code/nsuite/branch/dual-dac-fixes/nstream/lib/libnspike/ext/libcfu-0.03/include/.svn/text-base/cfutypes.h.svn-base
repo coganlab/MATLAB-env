@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1fa47f88273d44c10cad48b048ff9a7fc806746dd1af6175e92b1cf4a3758f72
-size 174
+/* Creation date: 2005-07-30 16:44:11
+ * Authors: Don
+ * Change log:
+ */
+
+#ifndef _CFU_TYPES_H_
+#define _CFU_TYPES_H_
+
+#include <sys/types.h>
+
+/* u_int is defined */
+
+#endif

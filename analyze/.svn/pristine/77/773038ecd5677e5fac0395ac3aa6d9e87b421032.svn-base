@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2773fc1a3ed3b17a7104b235eaa67b0a2a7a70902f846b2df8c5326b530c4a9f
-size 605
+function Value = calcSigDiffCoh21v31(Session,CondParams,AnalParams)
+%
+%  Value = calcSigDiffCoh21v31(Session,CondParams,AnalParams)
+
+
+iPanel = CondParams(1).iPanel;
+isubPanel = CondParams(1).isubPanel;
+timeind = CondParams.timeind;
+freqind = CondParams.freqind;
+
+Panels = loadPanels(Session, CondParams, AnalParams);
+if isempty(Panels)
+    savePanels(Session, CondParams, AnalParams)
+    %saveReorderedSigDiff(Session, CondParams, AnalParams)
+    Panels = loadPanels(Session, CondParams, AnalParams);
+end
+Value = Panels.Data(iPanel,1).SubPanel(1,isubPanel).Data.Data(timeind,freqind) < 0.05;
+
+close all
+
+

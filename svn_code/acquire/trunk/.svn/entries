@@ -1,3 +1,257 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1ef8e9f6986c37468575549f8cac4c2899e5fa9c51c4f75df2306fbb89fad710
-size 7653
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="19"
+   name=""
+   committed-date="2008-12-22T22:08:19.859961Z"
+   url="https://secure2.svnrepository.com/s_bijan/acquire/trunk"
+   last-author="yan"
+   kind="dir"
+   uuid="52ba062a-74ac-4f55-b969-1e96ccd37ff1"
+   repos="https://secure2.svnrepository.com/s_bijan/acquire"
+   revision="19"/>
+<entry
+   committed-rev="17"
+   name="Main.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="54439bca79b1f7f7ebbd3db1b0e24168"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:26.000000Z"/>
+<entry
+   committed-rev="10"
+   name="HistogramPanel.fig"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-04T17:54:40.898287Z"
+   checksum="d86342ccc911be912c56e0ba772c704b"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="16"
+   name="ElectrodePanel.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-10T23:01:20.148252Z"
+   checksum="888df7026b74f20fa14cf2fd21cd8534"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:26.000000Z"/>
+<entry
+   committed-rev="9"
+   name="InitTrialData.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-04T13:35:26.256264Z"
+   checksum="8a54a33cc2cbc57c6a8cc4aaf6e97b00"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="15"
+   name="myWaitTime.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-08T20:38:01.749516Z"
+   checksum="fd39d2789c382674dd403f9ac1bf9012"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="7"
+   name="acquire.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-01T23:04:26.044737Z"
+   checksum="9d058153e70fbe285d58d34b1c6f2a49"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="19"
+   name="Select_Electrode_Dialog_Box.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="180797e8524bb26a1fe7e8b320e625ec"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="2"
+   name="editall.sh"
+   text-time="2008-11-10T16:06:38.000000Z"
+   committed-date="2008-11-10T19:24:54.617096Z"
+   checksum="ccd2d642cc20a2f283728ed9e5a209b1"
+   last-author="bijan"
+   kind="file"
+   prop-time="2008-11-10T19:30:24.000000Z"/>
+<entry
+   committed-rev="17"
+   name="Main.fig"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="b8a590a4ae6ff5c469bc07496a1bcc3a"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="19"
+   name="InitRec.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="7aaa8c095713d8b0e1ad24d9f82dd5ac"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="10"
+   name="InitBuffer.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-04T17:54:40.898287Z"
+   checksum="5ff14c7068df55cad7e1b3caa21dbb3f"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="19"
+   name="getStateCodes.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="72f9dea436e65c9d0abf7144722f1df9"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="16"
+   name="ElectrodePanel.fig"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-10T23:01:20.148252Z"
+   checksum="8c99a11a28473ca2a67da6c822647c8c"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   name="hardware"
+   kind="dir"/>
+<entry
+   committed-rev="19"
+   name="broker.pid"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="b0adea7a406d2aa5df447666750dc7ba"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="19"
+   name="Select_Electrode_Dialog_Box.fig"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="88be9c5c8445ee970e20a923499ffbf1"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   name="wrappers"
+   kind="dir"/>
+<entry
+   name="init"
+   kind="dir"/>
+<entry
+   committed-rev="17"
+   name="InitMain.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="8375f83f9b0e13ea6cca9267ddf942ac"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="19"
+   name="assignCurrentTask.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="33e31c3466b069662698e6d22da0f342"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="10"
+   name="microdrive_definition_file.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-04T17:54:40.898287Z"
+   checksum="7e430d4fadb6120abd5cc9bcba5a2a82"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="10"
+   name="FieldPanel.fig"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-04T17:54:40.898287Z"
+   checksum="ad6348392fbc6a05554a28655455862d"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="13"
+   name="myPrenum.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-07T19:12:58.570981Z"
+   checksum="91d88c74ecb9fddc6a49a807980d0fd9"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="13"
+   name="UpdateStateBuffer.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-07T19:12:58.570981Z"
+   checksum="2203767a73c9896bfda62cf53450494d"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="6"
+   name="InitLabview.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-01T22:21:11.156618Z"
+   checksum="fd49aeadcbcdf1688f1b0776604ea195"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="17"
+   name="electrode_definition_file.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T21:00:57.030179Z"
+   checksum="d028f3444676a5a8f0586a73413e8f9c"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="6"
+   name="launch-acquire.sh"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-01T22:21:11.156618Z"
+   checksum="4263d152d88fc57fd78bd1d5932fca80"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="10"
+   name="Main_trunk.fig"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-04T17:54:40.898287Z"
+   checksum="44bd3ff3dfc0044bdf8f44119d8d0beb"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+<entry
+   committed-rev="19"
+   name="getTaskCodes.m"
+   text-time="2009-01-02T05:33:27.000000Z"
+   committed-date="2008-12-22T22:08:19.859961Z"
+   checksum="e649f9a15aa7db7835d9b53ec3b567f7"
+   last-author="yan"
+   kind="file"
+   prop-time="2009-01-02T05:33:27.000000Z"/>
+</wc-entries>

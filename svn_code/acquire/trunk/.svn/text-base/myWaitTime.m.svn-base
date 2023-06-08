@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:745b28d089d49fb8d4683c036ccbee97aaa4c0073f0987548744a453ab575511
-size 352
+function myWaitTime(type, Time)
+global experiment
+%
+disp(['Waiting for ' num2str(Time)]);
+y = acquire_get_time_stamp(type);
+if y>Time
+    disp([num2str(acquire_get_time_stamp(type)) ' is larger than ' num2str(Time)]);
+end
+while acquire_get_time_stamp(type) < Time
+    disp(['Current Time is ' num2str(acquire_get_time_stamp(type))]);
+    pause(0.1)
+end

@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:29a35ce77fe288921158cbd1c1fd8a0debdbbd226750eae79037e41cbdaef9d3
-size 243
+function [Axes, DataHandle] = drawPanelPartialCoherogram(Axes,Data)
+%
+%  Axes = drawPanelPartialCoherogram(Axes,Data)
+%
+
+DataHandle = imagesc(flipud(abs(Data.Data)'),'Parent',Axes);
+set(Axes,'XTickLabel','','YTickLabel','','TickDir','out');
+
+

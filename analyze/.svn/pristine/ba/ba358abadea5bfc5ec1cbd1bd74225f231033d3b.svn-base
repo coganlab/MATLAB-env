@@ -1,3 +1,2 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5596b8bb66b57c0a954f40c10c3cbfb902fd416ed2df1537fc1adfe711a82e85
-size 201
+const char *model_to_matlab_structure(mxArray *plhs[], int num_of_feature, struct svm_model *model);
+struct svm_model *matlab_matrix_to_model(const mxArray *matlab_struct, const char **error_message);

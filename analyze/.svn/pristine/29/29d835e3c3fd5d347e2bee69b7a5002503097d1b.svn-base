@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:177804686a37cb80ffc48ea993193b7f966b9e7536010745e230c9b48cac78f5
-size 215
+ function X=joyvel(Joy)
+if ndims(Joy) == 2
+    Q(1,:,:) = Joy;  
+    Joy = Q;
+end
+ FO = diff(Joy,1,3);
+ Q = zeros(size(Joy));
+ Q(:,:,2:size(Joy,3)) = FO;
+ X = squeeze(sqrt(Q(:,1,:).^2 + Q(:,2,:).^2));
+ X(1) = X(2);

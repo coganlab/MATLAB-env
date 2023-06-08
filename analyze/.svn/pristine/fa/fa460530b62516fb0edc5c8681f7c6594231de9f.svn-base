@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b94e3ddd5243b0b46eb6c376422886eaf03b00cdf6a47d6372886dc13e1e227a
-size 733
+function Value = calcSpectrumS3(Session,CondParams,AnalParams)
+%
+%  Value = calcSpectrum(Session,CondParams,AnalParams)
+% 
+
+
+global MONKEYDIR
+
+SSess = splitSession(Session);
+Sess = SSess{3};
+
+Type = getSessionType(Sess);
+
+dirPath = [MONKEYDIR '/mat/' Type '/Spec'];
+fNameRoot = ['Spec.Sess' num2str(Sess{6}) ];
+
+[p,pMax] = getParamFileIndex([dirPath '/' fNameRoot],CondParams,AnalParams);
+
+if p > 0 
+    Spectrum = loadSessSpec(Sess,CondParams,AnalParams); 
+    if isempty(Spectrum)
+        Spectrum = saveSessSpec(Sess,CondParams,AnalParams,1); %like saveSessPSTH
+    end
+else
+    Spectrum = saveSessSpec(Sess,CondParams,AnalParams); %like saveSessPSTH
+    close all
+end
+
+%load up saved tuning information
+Value = Spectrum.Spec;
+
+
+

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:94780de2560fb0e5eccb89b4e22738cd5c9948386f617d86d06db577716efbe0
-size 301
+function SpikeSession = extractSpike1Session(Session)
+%
+%  SpikeSession = extractSpike1Session(Session)
+%
+
+if length(Session{5}) == 2
+        if Session{5}{1}(1) < 100
+           SpikeSessionNum = Session{6}(1);
+	   Session = loadSpike_Database;
+	   SpikeSession = Session{SpikeSessionNum};
+	end
+end
+

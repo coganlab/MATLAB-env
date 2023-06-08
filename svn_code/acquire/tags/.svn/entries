@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4e93c505260a781881e9ecb0a85a6e42ae818fae9af7ec28768de1fcbf90e8f0
-size 397
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2008-10-20T03:39:30.615063Z"
+   url="https://secure2.svnrepository.com/s_bijan/acquire/tags"
+   last-author="bijan"
+   kind="dir"
+   uuid="52ba062a-74ac-4f55-b969-1e96ccd37ff1"
+   repos="https://secure2.svnrepository.com/s_bijan/acquire"
+   revision="19"/>
+</wc-entries>

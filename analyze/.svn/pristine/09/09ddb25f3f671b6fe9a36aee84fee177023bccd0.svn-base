@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:134e3492ea7aa874ed89a91c76a01c4b0f2d94fe88720de008c4420405c27c3b
-size 713
+function Session = loadSpike_Database(MonkeyDir)
+%
+%  Session = loadSpike_Database(MonkeyDir)
+%
+%	If MonkeyDir input is not defined, defaults to global MONKEYDIR
+
+global MONKEYDIR 
+
+if nargin == 1 ProjDir = MonkeyDir; else ProjDir = MONKEYDIR; end
+
+if exist([ProjDir '/mat/Spike_Session.mat'])
+    disp('Spike_Session.mat exists')
+    load([ProjDir '/mat/Spike_Session.mat']);
+else
+    Session = Spike_Database;
+end
+
+%  Checks for legacy Sessions without MONKEYDIR or SESSIONTYPE
+for iSess = 1:length(Session)
+    if length(Session{iSess})==6
+        Session{iSess}{7} = ProjDir;
+        Session{iSess}{8} = {'Spike'};
+    elseif ~ismember(Session{iSess}{7},'/')
+        Session{iSess}{7} = ProjDir;
+    end
+end
+

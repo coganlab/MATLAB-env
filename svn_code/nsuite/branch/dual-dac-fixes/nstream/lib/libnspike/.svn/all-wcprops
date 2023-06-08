@@ -1,3 +1,131 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8d13d925e87138a4b73b24ffaf29ad407f8ac795ee2ea0fd094c0576275d73be
-size 2954
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/s_bijan/nsuite/!svn/ver/78/branch/dual-dac-fixes/nstream/lib/libnspike
+END
+ringbuffer.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ringbuffer.h
+END
+nspike.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/nspike.h
+END
+daqengine.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/daqengine.cc
+END
+daqengine.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/daqengine.h
+END
+udpsocket.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/udpsocket.cc
+END
+masterdsp.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/masterdsp.cc
+END
+udpsocket.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/udpsocket.h
+END
+auxdsp.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/auxdsp.cc
+END
+masterdsp.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/masterdsp.h
+END
+auxdsp.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/auxdsp.h
+END
+channel.cc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/channel.cc
+END
+channel.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/channel.h
+END
+netkeepalive.cc
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/netkeepalive.cc
+END
+hw_defines.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/hw_defines.h
+END
+netkeepalive.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/netkeepalive.h
+END
+libnspike.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/libnspike.h
+END
+dsp.cc
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/dsp.cc
+END
+dsp.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/dsp.h
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/CMakeLists.txt
+END
+nspike.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/s_bijan/nsuite/!svn/ver/78/branch/dual-dac-fixes/nstream/lib/libnspike/nspike.cc
+END
+ringbuffer.cc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ringbuffer.cc
+END

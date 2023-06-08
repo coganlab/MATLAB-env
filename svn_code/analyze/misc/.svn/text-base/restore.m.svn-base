@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f98d3525f600d4f0742f0a8dff1c26d955818f3a152810db3f442c419487d46a
-size 194
+function [X]=restore(Y,dims);
+%RESTORE Take a reduced matrix and restore it
+%
+%  [X] = RESTORE(Y,DIMS) 
+
+%  Author: Bijan Pesaran, 15/10/98
+
+sY=size(Y);
+
+
+X=reshape(Y,[dims,sY(2:length(sY))]);
+

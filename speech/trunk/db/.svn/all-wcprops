@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dcce490a944e73436ad139cd6dccd2590ef015773db24ffb33e70cbb44d5635c
-size 280
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/s_bijan/speech/!svn/ver/1/trunk/db
+END
+dbTrials.m
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/s_bijan/speech/!svn/ver/1/trunk/db/dbTrials.m
+END
+dbSaveTrials.m
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/s_bijan/speech/!svn/ver/1/trunk/db/dbSaveTrials.m
+END

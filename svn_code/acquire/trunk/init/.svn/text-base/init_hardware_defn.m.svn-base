@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:26fcb4483de06316414c9ac7984556b3f446ae1f7203fe80c4a2e2172dc3594d
-size 324
+function init_hardware_defn
+%
+%
+%
+%
+
+global experiment
+
+
+
+
+for i = 1:length(experiment.hardware.acquisition)
+  switch experiment.hardware.acquisition(i).type
+    case('nstream')
+      init_hardware_nspike(experiment.acquisition(i));
+    case('nstream comedi')
+      % do nothing
+    case('TDT')
+      % do nothing
+  end
+end

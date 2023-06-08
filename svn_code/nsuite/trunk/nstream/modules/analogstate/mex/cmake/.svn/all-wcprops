@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:74373de9750e8940053c8976316548cbe883a99a2d32f66e277d5858bbf4e68b
-size 256
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/s_bijan/nsuite/!svn/ver/1/trunk/nstream/modules/analogstate/mex/cmake
+END
+FindMatlab.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/s_bijan/nsuite/!svn/ver/1/trunk/nstream/modules/analogstate/mex/cmake/FindMatlab.cmake
+END

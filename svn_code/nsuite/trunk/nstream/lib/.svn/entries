@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fe13a28fdde216f56a22c000f382757971be93994dec97505329b03470a71fea
-size 409
+10
+
+dir
+142
+https://secure2.svnrepository.com/s_bijan/nsuite/trunk/nstream/lib
+https://secure2.svnrepository.com/s_bijan/nsuite
+
+
+
+2009-03-15T21:44:28.429428Z
+101
+matthew.davidson
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ff6fb3bc-ba1e-4aaa-8930-cabd43940b18
+
+libnstreamclient
+dir
+
+libnspike
+dir
+
+libutil
+dir
+
+CMakeLists.txt
+file
+
+
+
+
+2008-11-03T01:51:23.000000Z
+e98a3670451b4a6ba9b6c73ab51176c9
+2008-10-23T02:51:53.695855Z
+1
+bijan
+

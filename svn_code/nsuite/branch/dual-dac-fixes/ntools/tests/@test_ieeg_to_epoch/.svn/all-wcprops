@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e1042b0e237b89f0c9b6e503eec376f77c36610fb232faf119b47e886897ef50
-size 906
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/@test_ieeg_to_epoch
+END
+test_data_corr_w_original.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/@test_ieeg_to_epoch/test_data_corr_w_original.m
+END
+test_ieeg_to_epoch.m
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/@test_ieeg_to_epoch/test_ieeg_to_epoch.m
+END
+test_epoch.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/@test_ieeg_to_epoch/test_epoch.m
+END
+set_up.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/@test_ieeg_to_epoch/set_up.m
+END
+tear_down.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/tests/@test_ieeg_to_epoch/tear_down.m
+END

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d09a14511d23dd33a9784b43daa670ea1ba18e42bb0e75c06c54fdf715b25d9
-size 211
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/s_bijan/nsuite/!svn/ver/119/trunk/ntools/conv
+END
+ntools_epoch2edf.m
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/s_bijan/nsuite/!svn/ver/75/trunk/ntools/conv/ntools_epoch2edf.m
+END

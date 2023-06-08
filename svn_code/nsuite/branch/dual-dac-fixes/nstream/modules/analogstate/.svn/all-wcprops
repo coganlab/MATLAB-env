@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6f2053de36c8e33832cb9414fbad17f18a82cb6b9e0199e5ad0d16f86beb0fc4
-size 426
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/modules/analogstate
+END
+module_analogstate.c
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/modules/analogstate/module_analogstate.c
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/modules/analogstate/CMakeLists.txt
+END

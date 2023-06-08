@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b00fae8b5775b561bac3c7caede06f51acd0e3ea5f4819e6f478652512d5d899
-size 299
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/s_bijan/speech/!svn/ver/1/trunk/trial
+END
+trialIEEG.m
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/s_bijan/speech/!svn/ver/1/trunk/trial/trialIEEG.m
+END
+trialComediAudio.m
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/s_bijan/speech/!svn/ver/1/trunk/trial/trialComediAudio.m
+END

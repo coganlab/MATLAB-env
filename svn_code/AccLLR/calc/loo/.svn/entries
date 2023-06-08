@@ -1,3 +1,132 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cfb21f3ecd22c4f541e96203314f1202c0a02fb7082d7ebb922134ba9fdc0b15
-size 4091
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="383"
+   name=""
+   committed-date="2010-10-16T19:39:13.657734Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR/calc/loo"
+   last-author="bijan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   committed-rev="374"
+   name="loocalcDecisionOnsetS.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-10-08T16:48:07.588761Z"
+   checksum="90a3393f90ad515c55df7a7bde18d928"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="374"
+   name="loocalcOnsetS.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-10-08T16:48:07.588761Z"
+   checksum="3ca99b6bab3793c0106b4e5251951cdd"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="383"
+   name="loocalcSpike.m"
+   text-time="2010-10-18T21:44:33.000000Z"
+   committed-date="2010-10-16T19:39:13.657734Z"
+   checksum="32ae1bc9d1daf5b515b0d4f7c7f84723"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:33.000000Z"/>
+<entry
+   committed-rev="374"
+   name="loocalcDecisionOnsetF.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-10-08T16:48:07.588761Z"
+   checksum="b644b81e9e67895105aed84967ffd871"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="225"
+   name="loocalcDecisionOnsetSS.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T04:09:28.732562Z"
+   checksum="309837e8cba52f9383ddc8d63c418813"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="235"
+   name="loocalcOnsetF.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-19T03:50:35.388781Z"
+   checksum="669fb4d18d160ae907c2c3105a24c990"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="313"
+   name="loocalcReachOnsetS.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-05-27T01:57:59.057838Z"
+   checksum="ff8427108a3204518ff4f607f4c79166"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="225"
+   name="loocalcDecisionOnsetSF.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T04:09:28.732562Z"
+   checksum="510e264841cfc3825e7c891b4ed5a904"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="235"
+   name="loocalcOnsetSF.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-19T03:50:35.388781Z"
+   checksum="a172ff7a6d9d89d9352ff99878899c53"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="225"
+   name="loocalcDecisionOnsetFF.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-06T04:09:28.732562Z"
+   checksum="bfec5960e7b76e9ec838f15bb90d0ace"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="368"
+   name="loocalcDecisionOnsetM.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-09-11T19:02:00.005229Z"
+   checksum="4ec1b3de591ff25121f26a92558ead82"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="385"
+   name="loocalcField.m"
+   text-time="2010-10-12T20:41:59.000000Z"
+   committed-date="2010-10-18T21:45:28.994674Z"
+   checksum="bff8e89410295f46b07d47c102d7098b"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"
+   revision="385"/>
+<entry
+   committed-rev="235"
+   name="loocalcOnsetFF.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-19T03:50:35.388781Z"
+   checksum="e493daf4ad7f2f676a134a53fcb00ada"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+</wc-entries>

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:834faac6dd521f86b665bbfcfb48bb088ef20700937693c7284ba63601b4f276
-size 379
+function Video = loadSessVideo(Sess)
+%
+%  Video = loadSessVideo(Sess)
+%
+
+
+Task = sessBehaviorTask(Sess);
+
+switch Task
+    case {'Powerwand_VR_Front'}
+        VideoFile = 'Front.avi';
+    case{'Powerwand_VR_Lateral'}
+        VideoFile = 'Lateral.avi';
+    case{'Powerwand_VR_Subjective'}
+        VideoFile = 'POV.avi';
+end
+
+VideoObj = mmreader(VideoFile);
+Video = read(VideoObj);

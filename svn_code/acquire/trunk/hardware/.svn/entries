@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:64715d2d09e68355c614b0ab5f173683dbc5362714b3beb199b4c8344966a1bd
-size 400
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2"
+   name=""
+   committed-date="2008-11-10T19:24:54.617096Z"
+   url="https://secure2.svnrepository.com/s_bijan/acquire/trunk/hardware"
+   last-author="bijan"
+   kind="dir"
+   repos="https://secure2.svnrepository.com/s_bijan/acquire"
+   revision="19"/>
+<entry
+   name="nspike"
+   kind="dir"/>
+</wc-entries>

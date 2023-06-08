@@ -1,3 +1,65 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a9b1881fe3ff8f8a8e0cd29fd6efdac62e7b1b268797bde8beb8e8c2a1a5422
-size 1406
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/s_bijan/nsuite/!svn/ver/80/branch/dual-dac-fixes/nstream/src
+END
+nstream.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/nstream.h
+END
+dataglovedaq.cc
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/dataglovedaq.cc
+END
+start_nstream.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/start_nstream.m
+END
+dataglovedaq.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/dataglovedaq.h
+END
+dataout_test8.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/dataout_test8.m
+END
+fglove.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/fglove.h
+END
+dataout_test.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/dataout_test.m
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/CMakeLists.txt
+END
+nstream.cc
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/nstream/src/nstream.cc
+END
+start_nstream_y4.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/src/start_nstream_y4.m
+END

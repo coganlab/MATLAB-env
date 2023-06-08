@@ -1,3 +1,196 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:55e91e06f7c520d959f8df5f3cbc3ea56fcb7f618e40c0e3686a2fda5e9dc82d
-size 7564
+function Events = procEvents(day, rec, saveflag)
+%  PROCEVENTS for psychtoolbox, converts .nev file to Events data structure
+%     for human psychtoolbox tasks
+%
+%  EVENTS = PROCEVENTS(DAY, REC, SAVEFLAG)
+%
+%  Inputs:  DAY    = String '030603'
+%           REC    = String '001', or num [1,2]
+%           SAVEFLAG    =   0: No save
+%                           1: Save
+%               Defaults to 1.
+%
+%  Outputs: EVENTS  = Event data structure
+%
+
+
+global MONKEYDIR
+
+if nargin < 3 || isempty(saveflag) saveflag  = 1; end
+
+olddir = pwd;
+recs = dayrecs(day);
+nRecs = length(recs);
+
+if nargin < 2
+    num = [1,nRecs];
+elseif isstr(rec)
+    num = [find(strcmp(recs,rec)),find(strcmp(recs,rec))];
+elseif length(rec)==1
+    num = [rec,rec];
+else
+    num = rec;
+end
+if nargin < 3  saveflag = 1; end
+
+% trigger codes
+c_taskcode = 1:10;
+c_stimon = 31:200;
+c_stimoff = 201;
+c_responseleft = 211;
+c_responseright = 212;
+c_reward = 221;
+c_noreward = 222;
+c_success = 11;
+c_error = 13;
+
+trialreccount=0;
+badtrialcount=0;
+for iRec = num(1):num(2)
+    cd([MONKEYDIR '/' day '/' recs{iRec}]);
+    disp([MONKEYDIR '/' day '/' recs{iRec}]);
+    
+    events = openNEV(['./rec' recs{iRec} '.nev'],'nosave');
+    
+    % Time stamps
+    ts = double([events.Data.SerialDigitalIO.TimeStamp(:)]);
+    ts = round((ts./double(events.MetaTags.SampleRes)).*1000); % convert to milliseconds from start
+    
+    % Trigger id
+    tg = double([events.Data.SerialDigitalIO.UnparsedData(:)]);
+        
+    % find events
+    t_starton = find(ismember(tg,c_taskcode));
+    t_stimon = find(ismember(tg,c_stimon));
+    t_stimoff = find(ismember(tg,c_stimoff));
+    t_response = find(ismember(tg,[c_responseleft c_responseright]));
+    t_reward = find(ismember(tg,[c_reward c_noreward]));
+    t_end = find(ismember(tg,[c_success c_error]));
+    
+    clear Events
+    if ~isempty(t_starton)
+        
+        % preallocate
+        ntr = numel(t_starton);
+        Events.Trial        = zeros(ntr,1); % Trial number
+        Events.TaskCode     = zeros(ntr,1); % Task type
+        Events.StartOn      = zeros(ntr,1); % Time Trial On
+        Events.StimOn       = zeros(ntr,1); % Time Stim On
+        Events.StimID       = zeros(ntr,1); % Time Stim ID
+        Events.StimOff      = zeros(ntr,1); % Time Stim off
+        Events.Stim2On      = zeros(ntr,1); % Time Stim 2 on
+        Events.Stim2ID      = zeros(ntr,1); % Time Stim ID
+        Events.Stim2Off     = zeros(ntr,1); % Time Stim 2 off
+        Events.Response     = nan(ntr,1); % Time of Response
+        Events.ResponseID   = nan(ntr,1); % Left, Right
+        Events.Response2    = nan(ntr,1); % Time of Response 2
+        Events.Response2ID  = nan(ntr,1); % Left, Right
+        Events.Reward       = nan(ntr,1); % Time of Reward
+        Events.RewardID     = nan(ntr,1); % Reward, No reward
+        Events.Success      = zeros(ntr,1); % Success variable
+        Events.AbortState   = zeros(ntr,1); % Success variable
+        Events.End          = zeros(ntr,1); % Time of trial end
+
+        trial = 0;
+        badtrials = [];
+        for tr = 1:ntr 
+            trialreccount=trialreccount+1;
+            
+            % make sure trial shows internal consistency
+            currenttrial = t_starton(tr);
+            closestend = min(t_end(t_end>currenttrial));
+            nexttrial = min(t_starton(t_starton>currenttrial)); if isempty(nexttrial); nexttrial=inf; end
+            if ~isempty(closestend) & closestend<nexttrial
+                goodtrialflag = 1;
+            else
+                goodtrialflag = 0;
+                badtrialcount=badtrialcount+1;
+                badtrials = [badtrials; tr];
+                fprintf('WARNING: Incosistent Trigger Sequence\nTrial: %d, TaskCode: %d',trialreccount,tg(currenttrial))
+            end
+            
+            if goodtrialflag
+                trial = trial+1;
+                % Trial start/end information
+                Events.Trial(trial) = trialreccount;
+                Events.StartOn(trial) = ts(currenttrial);
+                Events.TaskCode(trial) = tg(currenttrial);
+                Events.Success(trial) = double(tg(closestend)==c_success);
+                Events.AbortState(trial) = double(tg(closestend)==c_error);
+                Events.End(trial) = ts(closestend);
+                
+                % Stimuli
+                s_on = t_stimon(t_stimon>currenttrial & t_stimon<closestend);
+                s_off = t_stimoff(t_stimoff>currenttrial & t_stimoff<closestend);
+                Events.StimOn(trial) = ts(s_on(1));
+                Events.StimID(trial) = tg(s_on(1));
+                Events.StimOff(trial) = ts(s_off(1));
+                if numel(s_on)>1
+                    Events.Stim2On(trial) = ts(s_on(2));
+                    Events.Stim2ID(trial) = tg(s_on(2));
+                    Events.Stim2Off(trial) = ts(s_off(2));
+                end
+
+                % Responses
+                if Events.Success(trial)
+                    s_response = t_response(t_response>currenttrial & t_response<closestend);
+                    Events.Response(trial) = ts(s_response(1));
+                    Events.ResponseID(trial) = tg(s_response(1));
+                    if numel(s_response)>1
+                        Events.Response2(trial) = ts(s_response(2));
+                        Events.ResponseID(trial) = tg(s_response(1));
+                    end
+                end
+                
+                % Reward
+                if Events.TaskCode(trial) == 2;
+                    s_reward = t_reward(t_reward>currenttrial & t_reward<closestend);
+                   if ~isempty(s_reward)
+                       Events.Reward(trial) = ts(s_reward(1));
+                       Events.RewardID(trial) = double(tg(s_reward(1))==c_reward);
+                   else
+                       fprintf('WARNING: Missing Reward For 2-Stage Decision Task\nTrial: %d, TaskCode: %d',trialreccount,tg(currenttrial))
+                   end
+
+                end
+                
+                % Legacy Fields
+                Events.Target(trial) = nan;
+                Events.EyeTargetLocation(trial) = nan;
+                Events.HandTargetLocation(trial) = nan;
+                
+            end
+        end
+        
+        % remove bad trials
+        Events.Trial(badtrials)        = []; % Trial number
+        Events.TaskCode(badtrials)     = []; % Task type
+        Events.StartOn(badtrials)      = []; % Time Trial On
+        Events.StimOn(badtrials)       = []; % Time Stim On
+        Events.StimID(badtrials)       = []; % Time Stim ID
+        Events.StimOff(badtrials)      = []; % Time Stim off
+        Events.Stim2On(badtrials)      = []; % Time Stim 2 on
+        Events.Stim2ID(badtrials)      = []; % Time Stim ID
+        Events.Stim2Off(badtrials)     = []; % Time Stim 2 off
+        Events.Response(badtrials)     = []; % Time of Response
+        Events.ResponseID(badtrials)   = []; % Left, Right
+        Events.Response2(badtrials)    = []; % Time of Response 2
+        Events.Response2ID(badtrials)  = []; % Left, Right
+        Events.Reward(badtrials)       = []; % Reward, No reward
+        Events.RewardID(badtrials)     = []; % Reward, No reward
+        Events.Success(badtrials)      = []; % Success variable
+        Events.AbortState(badtrials)   = []; % Success variable
+        Events.End(badtrials)          = []; % Time of trial end
+        
+        
+        if saveflag
+            disp('Saving Events file');
+            save(['rec' recs{iRec} '.Events.mat'],'Events');
+        end
+    end
+end
+fprintf('%d trial(s) has(ve) been omitted\n',badtrialcount)
+cd(olddir)
+
+
+

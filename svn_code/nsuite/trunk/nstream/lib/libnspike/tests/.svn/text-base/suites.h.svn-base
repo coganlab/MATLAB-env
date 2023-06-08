@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e28312822abe7e3d594869602972ac6027923b82452513995c71449b54e986d2
-size 283
+
+Suite *nspike_suite(void);
+Suite *masterdsp_suite(void);
+Suite *auxdsp_suite(void);
+Suite *channel_suite(void);
+Suite *daqengine_suite(void);
+Suite *ringbuffer_suite(void);
+
+#define FAIL_UNLESS_STRING_EQUAL(x,y) fail_unless(strcmp(x,y) == 0, "Assertion failed: '%s' != '%s'",x,y);
+

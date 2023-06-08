@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0f29a2b0ff8046f4d3f4ed83dd31d6bb49ab8af08e6134b4a3ce9a00e6c7d8c7
-size 585
+function Value = calcFiringRateS2(Session,CondParams,AnalParams)
+%
+%  Value = calcFiringRate(Session,CondParams,AnalParams)
+
+
+global MONKEYDIR
+
+SSess = splitSession(Session);
+Sess = SSess{2};
+
+Type = getSessionType(Sess);
+
+
+dirPath = [MONKEYDIR '/mat/' Type '/FiringRate'];
+fNameRoot = ['FiringRate.Sess' num2str(Sess{6}) ];
+
+[p,pMax] = getParamFileIndex([dirPath '/' fNameRoot],CondParams,[]);
+
+if p > 0 
+    FiringRate = loadSessFiringRate(Sess,CondParams);
+else
+    FiringRate = saveSessFiringRate(Sess,CondParams);
+end
+
+%load up saved tuning information
+Value = FiringRate.Rate;
+
+

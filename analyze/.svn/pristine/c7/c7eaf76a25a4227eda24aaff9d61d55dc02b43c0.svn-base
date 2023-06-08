@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d6c5b023027b362c1ccaf7ac71c7e5386e63b6390e2346d51733ac19af876664
-size 1093
+%  Memory and Delay Field Normalized Spectrogram Tasks panel
+clear CondParams AnalParams;
+SessType = 'Field';
+
+fk = 100; tapers = [.5,3]; 
+clim = [0.5,2]; 
+Norm.Task = ''; Norm.Cond = {[]};
+Norm.bn = [-tapers(1)*1e3,0]; Norm.Field = 'TargsOn';
+
+CondParams(1,1).Name = 'MemoryDelayFieldNormalizedSpectrogram';
+
+CondParams(1,1).Task = {{'MemoryReachSaccade','DelReachSaccade'}};
+CondParams(1,1).conds = {[Dirs(1)]};
+CondParams(1,2).Task = CondParams(1,1).Task;
+CondParams(1,2).conds = {[Dirs(2)]};
+
+CondParams(2,1).Task = {{'MemorySaccadeTouch','DelSaccadeTouch'}};
+CondParams(2,1).conds = {[Dirs(1)]};
+CondParams(2,2).Task = CondParams(2,1).Task;
+CondParams(2,2).conds = {[Dirs(2)]};
+
+AnalParams(1,1).Field = 'TargsOn';
+AnalParams(1,1).bn = [-500,1e3];
+AnalParams(1,1).fk = fk;
+AnalParams(1,1).tapers = tapers;
+AnalParams(1,1).Type = [SessType 'NormalizedSpectrogram'];
+AnalParams(1,1).CLim = clim;
+
+AnalParams(1,2) = AnalParams(1,1);
+AnalParams(1,2).Field = 'SaccStart';
+AnalParams(1,2).bn = [-1e3,1e3];
+AnalParams(1,2).Type = [SessType 'NormalizedSpectrogram'];
+AnalParams(1,2).CLim = clim;
+

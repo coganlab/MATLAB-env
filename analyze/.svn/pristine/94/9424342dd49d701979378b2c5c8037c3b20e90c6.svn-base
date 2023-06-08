@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6a52b0daaa9518df9d5535da15eb2cea80970a2ae5fc7e1ab57b45c2201a3da4
-size 271
+function Value = calcRRTS2(Session,CondParams,AnalParams)
+%
+%  Value = calcRRT(Session,CondParams,AnalParams)
+
+SSess = splitSession(Session);
+Sess = SSess{2};
+
+All_Trials = sessTrials(Sess);
+Trials = Params2Trials(All_Trials,CondParams);
+
+Value = calcReachRT(Trials);
+
+
+

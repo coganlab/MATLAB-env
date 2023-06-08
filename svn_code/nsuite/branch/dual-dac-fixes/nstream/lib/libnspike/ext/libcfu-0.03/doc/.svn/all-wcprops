@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f3d736f899e33393313ff37ffc701b0e5a9845e9ae3b325c66ccc18197f51236
-size 760
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/doc
+END
+mdate-sh
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/doc/mdate-sh
+END
+texinfo.tex
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/doc/texinfo.tex
+END
+libcfu.texi
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/doc/libcfu.texi
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/lib/libnspike/ext/libcfu-0.03/doc/CMakeLists.txt
+END

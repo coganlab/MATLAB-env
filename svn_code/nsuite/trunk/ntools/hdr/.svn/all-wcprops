@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:80bf94bfc3dccdc5da0d77b2c7b9500de13fcb609da81eb084ef5f40826e2b46
-size 343
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/s_bijan/nsuite/!svn/ver/139/trunk/ntools/hdr
+END
+ntools_hdrxml_write.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/s_bijan/nsuite/!svn/ver/139/trunk/ntools/hdr/ntools_hdrxml_write.m
+END
+ntools_hdrxml_read.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/s_bijan/nsuite/!svn/ver/90/trunk/ntools/hdr/ntools_hdrxml_read.m
+END

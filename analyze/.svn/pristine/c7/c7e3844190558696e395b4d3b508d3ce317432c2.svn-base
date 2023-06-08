@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c767c81a89388885ef8275a8306b795ac96f34886db2d68fd7da02a30618064d
-size 351
+
+
+function generatePSTH(start_trial,end_trial)
+global MONKEYDIR
+session = Spike_Database;
+
+for i = start_trial:end_trial
+    
+    filename = [MONKEYDIR '/fig/PSTHs/' session{i}{1} '_' num2str(i) '.pdf']
+    try sessPrintPDFPSTH(session{i},{'DelReachFix','DelSaccadeTouch'},'TargsOn',[-1000,2000],40,[],filename)
+        close all
+    catch
+    end
+end

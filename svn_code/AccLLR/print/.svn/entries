@@ -1,3 +1,68 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:34be6c705d75e0088c27970bbb8683327424e63cdc5625c9adfddb87695002dd
-size 2157
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="236"
+   name=""
+   committed-date="2010-01-20T21:41:15.969084Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR/print"
+   last-author="yan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   committed-rev="236"
+   name="printSelectionResponses.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-01-20T21:41:15.969084Z"
+   checksum="665f1c4bd68873292c5b3f582b4468c5"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="215"
+   name="printSelectionROC.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-21T00:31:19.542968Z"
+   checksum="a9f533aec6a32385ba7389652613bf92"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="210"
+   name="printSelectionTimeCurve.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-16T14:13:59.503696Z"
+   checksum="e736b5fa63eb554b0ec0e764f83f4a20"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="210"
+   name="printSelectionTimeTrialAverageCurve.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-16T14:13:59.503696Z"
+   checksum="a9da91394760edc95b2dc554e0ad2a61"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="215"
+   name="printSelectionTrialAverageOptimalPerformance.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-21T00:31:19.542968Z"
+   checksum="8746271603c161688d16098aeb2fd420"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="215"
+   name="printSelectionHelper.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-21T00:31:19.542968Z"
+   checksum="18d984f0940ddecece9ba50da22c51db"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+</wc-entries>

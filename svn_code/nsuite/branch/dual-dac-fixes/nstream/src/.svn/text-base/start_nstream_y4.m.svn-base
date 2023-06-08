@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:37935761ecd4a7d221a8be20a1f0c8815c153fa8fa2013bfe07273074a7956cc
-size 840
+nstream_add_auxdsp('10.1.2.11');
+nstream_add_auxdsp('10.1.2.12');
+nstream_add_auxdsp('10.1.2.13');
+nstream_add_auxdsp('10.1.2.14');
+nstream_add_auxdsp('10.1.2.15');
+nstream_add_auxdsp('10.1.2.16');
+nstream_add_auxdsp('10.1.2.17');
+nstream_add_auxdsp('10.1.2.18');
+nstream_add_auxdsp('10.1.2.19');
+nstream_add_auxdsp('10.1.2.20');
+nstream_add_auxdsp('10.1.2.21');
+nstream_add_auxdsp('10.1.2.22');
+nstream_add_auxdsp('10.1.2.23');
+nstream_add_auxdsp('10.1.2.24');
+nstream_add_auxdsp('10.1.2.25');
+nstream_add_auxdsp('10.1.2.26');
+
+i=1;
+
+for twice = 0:1
+    for group = 0:3
+        for division = 0:7
+            for channel = 0:3
+                hw_num = (division * 16) + (group * 4) + channel;
+                nstream_set_channel(i, hw_num);
+                i=i+1;
+            end
+        end
+    end
+end            
+nstream_start_acquire
+

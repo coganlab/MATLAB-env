@@ -1,3 +1,53 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4728889de6a4021df4f99b4a8301badbeda7d7e60d3c448fb87ceaaa77776c2b
-size 1183
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex
+END
+closeserial.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/closeserial.m
+END
+openserial.c
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/openserial.c
+END
+closeserial.c
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/closeserial.c
+END
+setparallel.c
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/setparallel.c
+END
+writeserial.c
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/writeserial.c
+END
+openserial.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/openserial.m
+END
+readserial.c
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/readserial.c
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/mex/CMakeLists.txt
+END

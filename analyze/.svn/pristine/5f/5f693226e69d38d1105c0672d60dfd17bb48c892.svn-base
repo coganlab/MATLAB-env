@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1af4b8fbfcb6a4a2f14a7d526df99c105d96da7b3d5f5f35ff22770c57be4568
-size 222
+#!/bin/csh -f
+
+
+set start = $PWD
+set base = "$SUBJECTS_DIR/$SUBJ/surf/"
+cd $base
+
+foreach hemi (lh rh)
+  mris_sphere $hemi.inflated $hemi.sphere
+  mris_jacobian $hemi.white $hemi.sphere $hemi.jacobian_white
+end
+
+cd $start

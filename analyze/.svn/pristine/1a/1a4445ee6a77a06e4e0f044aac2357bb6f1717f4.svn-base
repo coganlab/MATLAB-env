@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1c09b2863f5a6e0d03eb8458305dc280b33afbe151927a18f87d7ff22033c8d9
-size 304
+function Rank = calcSaccStarttoReachStartRank(Trials)
+%
+%  Rank = Fastest ReachStart - SaccStart = 0
+%         Slowest ReachStart - SaccStart = 1
+
+Time = [Trials.ReachStart] - [Trials.SaccStart];
+[dum,ind] = sort(Time);
+Ntrials = length(Time);
+Rank = zeros(1,Ntrials);
+Rank(ind) = linspace(0,1,Ntrials);

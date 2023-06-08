@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9851ad7847456bcd7150a1b9d810d6d91334b893487a7c114aa4ca5b80abcb91
-size 432
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2009-01-21T23:20:18.316996Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/proc"
+   last-author="bijan"
+   kind="dir"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="1"/>
+<entry
+   name="Behavior"
+   kind="dir"/>
+<entry
+   name="Labview"
+   kind="dir"/>
+</wc-entries>

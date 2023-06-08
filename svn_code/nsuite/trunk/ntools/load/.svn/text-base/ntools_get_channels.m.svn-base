@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:93b8e379c50914060ef69d7bc440d0ae926f2b95f1bca5dda8948600fb2db1a9
-size 501
+% [channels] = ntools_get_channels(data_type)
+%
+% For a given file's data type, computes the file's number of channelS
+
+function [channels] = ntools_get_channels(data_type)
+    warning('Deprecated! Will probably be removed soon!');
+
+    switch(data_type)
+        case {'nspike','decieeg','ieeg', 'cleanieeg','cleandecieeg'},
+            channels = 256;
+        case {'audio','videosync'}
+            channels = 1;
+        otherwise
+            error('Unknown data_type: "%s"', data_type);
+    end
+end

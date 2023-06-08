@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6d8aef7992acf3aed09a5842af5852f785ad3c8ac05cc0d1291460aac6143ef5
-size 303
+Entry-point instructions:
+
+1) Type 'set_path'.
+
+2) 'mj' is the mex interface to the MuJoCo physics engine. 
+	Type 'mj' for quick help.
+
+3) Load a model with mj('load','filename'). For example try
+   mj('load', which('cartpole.xml'))
+
+4) Plot the model by typing 'mjplot'.
+
+5) Hit 'spacebar' to simulate.

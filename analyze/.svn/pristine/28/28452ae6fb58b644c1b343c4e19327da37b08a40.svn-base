@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a8d266418f795f6260c5c787cdc594e49d24c9ba41050d7ad89e82ae19c8ee4
-size 759
+function SpikeWaveformSNR = loadSessSpikeWaveformSNR(Session,CondParams,AnalParams)
+%
+%  SpikeWaveformSNR = loadSessSpikeWaveformSNR(Session,CondParams,AnalParams)
+%
+%  Loads saved file from saveSessSpikeWaveformSNR
+
+ProjectDir = sessMonkeyDir(Session);
+
+Params = [];
+Params.CondParams = CondParams;
+Params.AnalParams = AnalParams;
+
+SN = getSessionNumbers(Session);
+Type = getSessionType(Session);
+dirPath = [ProjectDir '/mat/' Type '/SpikeWaveformSNR'];
+fNameRoot = ['SpikeWaveformSNR.Sess' num2str(SN) ];
+filename = [dirPath '/' fNameRoot];
+
+[p,pMax] = getParamFileIndex(filename,Params.CondParams,Params.AnalParams);
+if p>0
+    disp(['loading ' filename ]);
+    eval(['load ' filename '.d' num2str(p) '.mat']);
+else
+    disp('Data file not saved.');
+end
+
+

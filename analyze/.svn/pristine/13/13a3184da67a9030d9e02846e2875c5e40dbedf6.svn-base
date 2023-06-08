@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8aecf7223fc35f9c39c1f65fcfd01d780a09d9eb86218e6781d5aea5a4ff6803
-size 157
+function flags = em_flags_init()
+flags = {};
+flags.eval_traj = 1;
+flags.eval_lhood=1;
+flags.eval_state=1;
+flags.use_state=0;
+flags.da =0;
+flags.wishart=0;
+
+

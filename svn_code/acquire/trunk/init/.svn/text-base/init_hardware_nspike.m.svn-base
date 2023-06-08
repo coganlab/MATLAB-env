@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1f4aa1b30fc30c12875b903bea9101d2662cdea1b3c89ec9faed9d4051b6262e
-size 709
+function init_hardware_nspike(acquisition);
+%
+%
+%
+%
+
+  
+
+  nspike_defn_nyucns;
+  NUM_NSPIKE_DSPS = length(nstream.hardware.nspike.auxdsps);
+  for i=1:NUM_NSPIKE_DSPS
+        nstream_add_auxdsp(nstream.hardware.nspike.auxdsps(i).ip);
+  end
+  
+  channels = nspike_configure_channels_nyucns;
+  NUM_NSPIKE_CHANNELS = length(channels);
+  for i=1:NUM_NSPIKE_CHANNELS
+        nstream_set_channel(i, channels(i).hardware_number);
+        nstream_set_filters(i, channels(i).filters(1), channels(i).filters(2));
+  end
+
+  nstream_start_acquire;
+        
+  %  Initialize DAC channel and gain
+  nstream_set_dac_channel(0,1); 
+  nstream_set_dac_channel(1,1); 
+  nstream_set_dac_gain(0,50); 
+  nstream_set_dac_gain(0,50); 
+

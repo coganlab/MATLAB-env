@@ -1,3 +1,163 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:dbf8575228dbbbdd970ff5f5533323c535e9d385122960ea5c5b5d879f4d1ac5
-size 7190
+<h2>Using MuJoCo Studio</h2>
+
+<p>
+This help summarizes the use of MuJoCo studio, which is a front end to the MuJoCo physics engine. It assumes that the user is already familiar with the engine itself.
+</p>
+
+<h3>Object selection</h3>
+
+<p>
+Bodies, as well as world geoms when 'editworld' is enabled from the Mode dialog, can be selected with the mouse, and can then be pertrurbed with the Space Navigator. Up to 4 objects can be selected. Each selection is assigned to a different Space Navigator. In 'fixpose' mode selected objects that are not perturbed are locked in place, thus it can be useful to select more objects than available Space Navigators. An action (click) over the background or over an unselectable object clears the corresponding selection. All selections can be cleared with <strong>Ctrl+X</strong>.
+
+<table border="0" cellpadding="3" cellspacing="10" valign="top">
+<th align="left">Action</th>
+<th align="left">Effect</th>
+<tr>
+<td>Left Double Click</td>
+<td>Set selection 1</td>
+</tr>
+<tr>
+<td>Right Double Click</td>
+<td>Set selection 2</td>
+</tr>
+<tr>
+<td>Shift + Left Double Click</td>
+<td>Set selection 3</td>
+</tr>
+<tr>
+<td>Shift + Right Double Click</td>
+<td>Set selection 4</td>
+</tr>
+<tr>
+<td>Space Navigaor Left Button</td>
+<td>Set the corresponding selection to the previous selectable object of the same type (world geom or body)</td>
+</tr>
+<tr>
+<td>Space Navigaor Right Button</td>
+<td>Set the corresponding selection to the next selectable object</td>
+</tr>
+</table>
+</p>
+
+<h3>Applying perturbations</h3>
+
+<p>
+Multiple Space Navigator devices can be used to apply perturbations. The USB ports can be rescanned for Space Navigators with <strong>Ctrl+N</strong>. The resulting 3D translation and rotation are interpreted from the camera viewpoint of the <em>main model window</em>, regardless of which window has input focus. The translation and rotation components can be enabled/disabled from the Mode dialog, and their sensitivity can be ajusted. The perturbations have different effect depending on the current mode.
+
+<table border="0" cellpadding="3" cellspacing="10" valign="top">
+<th align="left">Mode</th>
+<th align="left">Perturbation effect</th>
+<tr>
+<td>Simulate</td>
+<td>The perturbations are forces and torques acting on the selected body. If a world geom is selected, the perturbations are velocities that move the object. The scaling from froce/torque to velocity can be adjusted from the Mode dialog.</td>
+</tr>
+<tr>
+<td>Pose</td>
+<td>The perturbations are forces/torques when 'fixpose' is disabled (in which case a dynamic simulation with high viscosity is used for posing), and velocities when 'fixpose' is enabled. In that case an optimization problem is solved at each time step, aiming to adjust the pose so that the change in joint angles (weighted by the inertia matrix norm) is minimal, while all selected bodies move to the locations specified via the perturbations, and all kinematic constraints are satisfied. Note that the optimization can get stuck in local minima when many contacts are active; if this happens disable 'fixpose'.</td>
+</tr>
+<tr>
+<td>User</td>
+<td>The 3D translation and rotation input from each Space Navigator are copied to mjData. In this mode the user is repsonsible for advancing the simulation programmatically.</td>
+</tr>
+</table>
+</p>
+
+<h3>3D camera control</h3>
+
+Each 3D window can be redered using the free camera or one of the predefined cameras in mjModel. Predefined cameras are attached to sites and point along the -Z axis of the site frame. They are enabled from the window view panel, or by pressing <strong>Ctrl+0,1,...</strong>. To return to the user camera press <strong>Esc</strong>. The user camera can be either fixed in space, or can move dynamically so that it remains centered at a specified body. The user camera is controlled with the mouse.
+
+<table border="0" cellpadding="3" cellspacing="10" valign="top">
+<th align="left">Action</th>
+<th align="left">Effect</th>
+<tr>
+<td>Left Drag</td>
+<td>Rotate the camera around the LookAt point. Note that the LookAt point can be visualized from the view panel. The up direction for the user camera is always the +Z world axis. The mouse controls the azimuth and elevation.</td>
+</tr>
+<tr>
+<td>Right Drag</td>
+<td>Move the view up and down. This is done by moving the LookAt point.</td>
+</tr>
+<tr>
+<td>Left + Right Drag</td>
+<td>Move the view in the horizontal (XY) plane.</td>
+</tr>
+<tr>
+<td>Scroll Wheel</td>
+<td>Zoom in and out. This is done by varying the camera distance to the LookAt point.</td>
+</tr>
+<tr>
+<td>Middle Click</td>
+<td>Center the view on the clicked 3D point.</td>
+</tr>
+<tr>
+<td>Ctrl + Middle Click</td>
+<td>Center the view on the clicked body, and then move the camera dynamically to track the body. Press <strong>Esc</strong> to stop tracking.</td>
+</tr>
+</table>
+</p>
+
+<h3>Keyboard shortcuts</h3>
+
+The application-wide shortcuts are shown in the menus. Window-specific shortcuts corresponding to the options in each window's view panel can be underlined by pressing <strong>Alt</strong> in the view panel. In addition, the following window-specific shortcuts are available.
+
+<table border="0" cellpadding="3" cellspacing="10" valign="top">
+<th align="left">Key</th>
+<th align="left">Effect</th>
+<tr>
+<td>F2</td>
+<td>Open/close the view panel for this window.</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Print information about the window in the text console. This can be used for debugging, and also for programmatic setting of window position and size.</td>
+</tr>
+<tr>
+<td>[ ]</td>
+<td>In Feature windows, these keys switch to the previous/next feature set. The same can be accomplished from the selection box in the window's view panel.</td>
+</tr>
+</table>
+</p>
+
+<h3>2D plots</h3>
+
+In 2D plots, each line can be enabled/disabled by double-click on the legend.
+
+<table border="0" cellpadding="3" cellspacing="10" valign="top">
+<th align="left">Key</th>
+<th align="left">Effect</th>
+<tr>
+<td>Left Double Click</td>
+<td>Enable/disable the clicked line.</td>
+</tr>
+<tr>
+<td>Right Double Click</td>
+<td>Enable/disable the clicked line, and set all other lines to the same state.</td>
+</tr>
+</table>
+</p>
+
+<h3>Explorer dialog</h3>
+
+The explorer dialog show a tree of model elements, and a list of joints with sliders. The sliders can be used in Pose mode to modify the joints, while at the same time the kinematic constraints are being imposed (so the sliders can end up fightting the constraints). The tree dialog supports the following actions.
+
+<table border="0" cellpadding="3" cellspacing="10" valign="top">
+<th align="left">Action</th>
+<th align="left">Effect</th>
+<tr>
+<td>Left Click on +/-</td>
+<td>Expand/collapse one level.</td>
+</tr>
+<tr>
+<td>Enter or Left Double Click</td>
+<td>Expand/collapse all levels recursively.</td>
+</tr>
+<tr>
+<td>Space or Left Click on check</td>
+<td>Show/hide the corresponding model element, and all its child elements recursively.</td>
+</tr>
+<tr>
+<td>Left Click on title</td>
+<td>Show/hide all model elements.</td>
+</tr>
+</table>
+</p>

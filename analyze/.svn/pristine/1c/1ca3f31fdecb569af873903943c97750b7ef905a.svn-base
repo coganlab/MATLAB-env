@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:458dd5df88f570f7236cdd811b9129d70e4cb977d672aa6b661b1de160dcb54c
-size 553
+function [Dirs, N, Nall] = sessCalcDirections(Sess, Task)
+%
+%   [Dirs, N, Nall] = sessCalcDirections(Sess, Task)
+%
+
+if nargin == 1
+    Trials = sessTrials(Sess);
+else
+    Trials = sessTrials(Sess, Task);
+end
+if ~isempty(Trials)
+    goodind = find([Trials.Target] < 9);
+    Trials = Trials(goodind);
+    tmp = hist([Trials.Target],1:8);
+    for i = 1:4 N(i) = sum(tmp([i,i+4])); end
+    [dum,Dirs] = sort(N,'descend');
+    Dirs = [Dirs(1),Dirs(1)+4];
+    N = tmp(Dirs);
+    Nall = tmp;
+else
+    Dirs = [nan,nan];
+    N = [0,0];
+    Nall = zeros(1,8);
+end

@@ -49,7 +49,15 @@ TalTransform=freesurfer_read_talxfm(fullfile(subDir,'mri','transforms','talairac
 
 
 %% Import Electrode Coordinates in Patient Space and Electrode Names
-ptntCoordFile=fullfile(subDir,'elec_recon',[subj '.CT']);
+ptntCoordFile=fullfile(subDir,'elec_recon',[subj '.POSTIMPLANT']);
+if ~exist(ptntCoordFile,'file')
+    % try original filename convention
+    ptntCoordFile=fullfile(subDir,'elec_recon',[subj '.CT']);
+    if ~exist(ptntCoordFile,'file')
+        ptntCoordFile=fullfile(subDir,'elec_recon',[subj '.POSTIMPLANT']);
+        error('The following file is missing: %s\n',ptntCoordFile);
+    end
+end
 tempCsv=csv2Cell(ptntCoordFile,' ',2);
 nElec=size(tempCsv,1);
 ptntCoords=zeros(nElec,3);
@@ -58,7 +66,6 @@ for a=1:nElec,
     ptntCoords(a,b)=str2double(tempCsv{a,b});
    end
 end
-
 elecNamesFile=fullfile(subDir,'elec_recon',[subj '.electrodeNames']);
 tempCsv=csv2Cell(elecNamesFile,' ',2);
 elecNames=tempCsv(:,1);

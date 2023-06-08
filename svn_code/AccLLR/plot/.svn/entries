@@ -1,3 +1,126 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ca085596534e3f479f5d9790ee07fcb4c097d5351a24d4f990e92ba58172af9d
-size 3971
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="383"
+   name=""
+   committed-date="2010-10-16T19:39:13.657734Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR/plot"
+   last-author="bijan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   committed-rev="383"
+   name="plotSelectionAccLLR.m"
+   text-time="2010-10-18T21:44:34.000000Z"
+   committed-date="2010-10-16T19:39:13.657734Z"
+   checksum="5e9b8f199e22e0b5c3ba582605e393a6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:34.000000Z"/>
+<entry
+   committed-rev="383"
+   name="plotSelectionResponses.m"
+   text-time="2010-10-18T21:44:34.000000Z"
+   committed-date="2010-10-16T19:39:13.657734Z"
+   checksum="80ac7ef075d4b58ed218a1a8e8e3504b"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:34.000000Z"/>
+<entry
+   committed-rev="385"
+   name="plotSelectionROC.m"
+   text-time="2010-10-13T21:53:41.000000Z"
+   committed-date="2010-10-18T21:45:28.994674Z"
+   checksum="7c579ba3dc8e02ceb61db131dcd039d3"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"
+   revision="385"/>
+<entry
+   committed-rev="383"
+   name="plotSelectionRasters.m"
+   text-time="2010-10-18T21:44:34.000000Z"
+   committed-date="2010-10-16T19:39:13.657734Z"
+   checksum="ec76296408f2e407b4017b6be80d45c2"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-18T21:44:34.000000Z"/>
+<entry
+   committed-rev="385"
+   name="plotSelectionTimeCurve.m"
+   text-time="2010-10-13T04:57:19.000000Z"
+   committed-date="2010-10-18T21:45:28.994674Z"
+   checksum="c8911dee06fe3b394cfbbb909bcf53fd"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"
+   revision="385"/>
+<entry
+   committed-rev="313"
+   name="plotSelectionTrialAveragePerformance.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-05-27T01:57:59.057838Z"
+   checksum="bd42f9eae53894ffe8bd63a2e03ac366"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="215"
+   name="plotSelectionTypeStringHelper.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-21T00:31:19.542968Z"
+   checksum="c84f32fbd202209220fd98212e97a3f1"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="385"
+   name="plotSelectionTaskStringHelper.m"
+   text-time="2010-10-13T05:07:53.000000Z"
+   committed-date="2010-10-18T21:45:28.994674Z"
+   checksum="c69007dfffef6c107dcfa37567bda238"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"
+   revision="385"/>
+<entry
+   committed-rev="355"
+   name="plotSelectionSessionStringHelper.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2010-08-16T22:30:31.002575Z"
+   checksum="a28dc1650b86e34ea236c360746886ca"
+   last-author="yan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="385"
+   name="plotSelectionTimeTrialAverageCurve.m"
+   text-time="2010-10-13T04:59:20.000000Z"
+   committed-date="2010-10-18T21:45:28.994674Z"
+   checksum="dfe93e5ea8a00e60b9023a25a40e4571"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"
+   revision="385"/>
+<entry
+   committed-rev="206"
+   name="plotSelectionPSTH.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-14T17:31:32.390040Z"
+   checksum="f19aa45e4abe665999e62c52e4add29d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+<entry
+   committed-rev="215"
+   name="plotSelectionTrialAverageOptimalPerformance.m"
+   text-time="2010-10-11T14:29:06.000000Z"
+   committed-date="2009-12-21T00:31:19.542968Z"
+   checksum="52bdc9246d6848beac9973d3886228a6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2010-10-11T14:29:06.000000Z"/>
+</wc-entries>

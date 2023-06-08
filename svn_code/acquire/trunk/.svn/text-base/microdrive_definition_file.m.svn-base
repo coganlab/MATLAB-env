@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e7976acbdd4d1b68b8542570a60539aa0a2501ebb3dccad5fa35f36a533c04e6
-size 136
+global microdrive_type
+
+microdrive_type{1} = 'DMT001';% Double MT type 1
+microdrive_type{2} = 'DMT002';%
+
+microdrive_type{3} = 'NAN001';

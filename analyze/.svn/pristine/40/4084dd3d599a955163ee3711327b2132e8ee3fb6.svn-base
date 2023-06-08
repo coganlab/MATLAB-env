@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:74971dc60b7c9415beac71774c3672722771cf7927213bfcf7405b4ee8ba6625
-size 309
+function P = gauss_pdf(X,M,S)
+%GAUSS_PDF Probability of X given mean (M) and covariance (S)
+    
+    if all(M(:) == 0)
+	DX = X;
+    else
+	DX = X - M;
+    end
+
+    d = length(DX);
+
+    c = (2*pi)^(d/2);
+    c = c * det(S)^(1/2);
+
+    E = (-1/2)*DX'*pinv(S)*DX;
+    P = exp(E);
+    P = P./c;
+

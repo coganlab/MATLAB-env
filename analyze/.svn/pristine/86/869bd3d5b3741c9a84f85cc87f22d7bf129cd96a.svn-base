@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a8f0f4d6241c5bcfb69b160bab5a01a522bbbf2280b09cb821521c2a4e1cdb34
-size 265
+function [logLR, Prob1, Prob2] = likLR_Spectral(Spec, Spec1, Spec2)
+%
+% [logLR, Prob1, Prob2] = likLR_Spectral(Spec, Spec1, Spec2) 
+%
+
+% 
+% 
+% logLR = (sum(log(Prob1),1) - sum(log(Prob2),1));
+
+logLR = sum(- ((Spec) - (Spec1)).^2 + ((Spec) - (Spec2)).^2,2);

@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:47fb9d64846fb38cbd126eeb4925ea99ed715ad8312d5aaff3db21d9a0a30a9b
-size 1387
+
+%
+% The software definition file defines support for all the experimental
+% software relevant to the data acquisition GUI.
+%
+%
+
+%
+% This definition files defines 
+%
+
+global experiment
+
+experiment.acquire.microdrive(1).pitch.available = 1;
+experiment.acquire.microdrive(1).yaw.available = 1;
+experiment.acquire.microdrive(1).x.available = 1;
+experiment.acquire.microdrive(1).y.available = 1;
+experiment.acquire.microdrive(2).pitch.available = 1;
+experiment.acquire.microdrive(2).yaw.available = 1;
+experiment.acquire.microdrive(2).x.available = 0;
+experiment.acquire.microdrive(2).y.available = 0;
+experiment.acquire.recording.task.type_names = {'Fixate','Saccade','Touch','Reach','Reach'};
+experiment.acquire.recording.task.types = struct('DelReachFix',{[1,4]},'DelSaccadeTouch',{[1,3]},'DelReachSaccade',{[2,4]},...
+    'Reach',{4},'DelReach',{4});
+experiment.acquire.microdrive(1).electrodes(1).gain.available = 0;
+experiment.acquire.microdrive(1).electrodes(2).gain.available = 1;
+experiment.acquire.microdrive(1).electrodes(3).gain.available = 0;
+experiment.acquire.microdrive(1).electrodes(4).gain.available = 1;
+experiment.acquire.microdrive(2).electrodes(1).gain.available = 0;
+experiment.acquire.microdrive(2).electrodes(2).gain.available = 1;
+experiment.acquire.microdrive(2).electrodes(3).gain.available = 0;
+experiment.acquire.microdrive(2).electrodes(4).gain.available = 1;

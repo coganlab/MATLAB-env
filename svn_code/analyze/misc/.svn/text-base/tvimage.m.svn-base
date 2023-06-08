@@ -1,3 +1,77 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:36156d015b2c54ef35956ef6052dac9a66d69adf5c0129a2342afd7dac2d2941
-size 1704
+function tvimage(image, varargin)
+%  TVIMAGE displays images in a better way than imagesc
+%
+%  TVIMAGE(IMAGE) displays the IMAGE in the proper orientation
+%  and allows you to edit the labels and ranges with a series
+%  of optional arguments:
+%
+%  'XLabel' - String giving the text to label the X-axis
+%
+%  'YLabel' - String giving the text to label the Y-Axis
+% 
+%  'XNTicks' - Integer giving the number of X tickmarks
+%
+%  'YNTicks' - Integer giving the number of Y tickmarks
+% 
+%  'XRange' - Two element vector giving the minmax for the X-axis
+% 
+%  'YRange' - Two element vector giving the minmax for the Y-axis
+%
+%  'CLim' - Two element vector giving the minmax for the color scale
+%
+
+%  Written by:   Bijan Pesaran Bell Labs 05/29/98
+
+%default values
+XLabel='X axis';
+YLabel='Y axis';
+XNTicks=5;
+YNTicks=5;
+
+image=squeeze(image);
+
+sIm=size(image);
+XRange=[0,sIm(1)];
+YRange=[0,sIm(2)];
+CLim=[];
+
+assign(varargin{:});
+
+xticklabel=sprintf('%2.1f',XRange(1));
+for x=1:XNTicks
+xticklabel=[xticklabel,sprintf('|%2.1f',...
+		x*(XRange(2)-XRange(1))./XNTicks+XRange(1))];
+end
+
+yticklabel=sprintf('%2.1f',YRange(2));
+for y=YNTicks-1:-1:0
+yticklabel=[yticklabel,sprintf('|%2.1f',...
+		y*(YRange(2)-YRange(1))./YNTicks+YRange(1))];
+end
+
+xtickpos=1;
+if XNTicks > 0
+for x=1:XNTicks
+xtickpos=[xtickpos,x*sIm(1)./XNTicks];
+end
+end
+
+if YNTicks > 0
+ytickpos=1;
+for y=1:YNTicks
+ytickpos=[ytickpos,y*sIm(2)./YNTicks];
+end
+end
+if length(CLim) > 0
+imagesc(flipud(image'),CLim);
+else
+imagesc(flipud(image'))
+end
+set(gca,'XTick',xtickpos);
+set(gca,'YTick',ytickpos);     
+set(get(gca,'Ylabel'),'String',YLabel);
+set(get(gca,'Xlabel'),'String',XLabel);
+set(gca,'YTickLabel',yticklabel)
+set(gca,'XTickLabel',xticklabel)
+
+

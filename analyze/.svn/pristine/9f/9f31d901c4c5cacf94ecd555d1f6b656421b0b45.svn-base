@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5b097d6cc1831921da24895edd3c368f3c283b241629666d41637e14772aaa02
-size 301
+function updateMultiunit_NumTrials(SessNum)
+%
+%   updateMultiunit_NumTrials(SessNum)
+%
+%   Adds NumTrials data structure to Multiunit_Database Session file
+%
+%   Modified to accept sessnum list
+
+if nargin == 0
+  updateType_NumTrials('Multiunit');
+else
+  updateType_NumTrials('Multiunit',SessNum);
+end

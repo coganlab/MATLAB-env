@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7695247e16d42da029c7e2130dc3f74d794d28f82ebdfaf9e7fff0e1d9e43959
-size 398
+function [peakloc,peakmag] = myfpeaks(input)
+%
+%  [peakloc,peakmag] = myfpeaks(input)
+%  
+
+dspec = diff(input);
+ind = find(dspec(1:end-1) > 0 & dspec(2:end)< 0);
+
+peakloc = ind;
+peakmag = input(ind);
+
+[speakmag,sind] = sort(peakmag,'descend');
+sspeakmag = speakmag(1:min(4,end));
+sspeakloc = peakloc(sind(1:min(4,end)));
+
+[peakloc,lastind] = sort(sspeakloc,'ascend');
+peakmag = sspeakmag(lastind);

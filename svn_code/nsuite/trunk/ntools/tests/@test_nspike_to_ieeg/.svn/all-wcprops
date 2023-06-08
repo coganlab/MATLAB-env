@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:feafd17346d70514ba15ed4dfbafbed2ef42b65f3896a00c584b61a4a370ba79
-size 656
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/s_bijan/nsuite/!svn/ver/76/trunk/ntools/tests/@test_nspike_to_ieeg
+END
+set_up.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/s_bijan/nsuite/!svn/ver/76/trunk/ntools/tests/@test_nspike_to_ieeg/set_up.m
+END
+test_convert.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/s_bijan/nsuite/!svn/ver/76/trunk/ntools/tests/@test_nspike_to_ieeg/test_convert.m
+END
+tear_down.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/s_bijan/nsuite/!svn/ver/76/trunk/ntools/tests/@test_nspike_to_ieeg/tear_down.m
+END
+test_nspike_to_ieeg.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/s_bijan/nsuite/!svn/ver/76/trunk/ntools/tests/@test_nspike_to_ieeg/test_nspike_to_ieeg.m
+END

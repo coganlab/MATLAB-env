@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:67d9e7e438b083f4ca72d380eac6fb69281cb75121afa6b80ccff69158ecb8e5
-size 242
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/conv
+END
+ntools_epoch2edf.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/s_bijan/nsuite/!svn/ver/79/branch/dual-dac-fixes/ntools/conv/ntools_epoch2edf.m
+END

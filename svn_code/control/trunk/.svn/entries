@@ -1,3 +1,1393 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f65e2f0d0130d6a515c1db93787a90f48aa943aeee00c79a6e6a1b0221d325bf
-size 43420
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2"
+   name=""
+   committed-date="2009-01-22T21:31:51.432970Z"
+   url="https://secure2.svnrepository.com/s_bijan/control/trunk"
+   last-author="bijan"
+   kind="dir"
+   uuid="ae9876a9-a7a7-4447-88a6-c2eb2a9f6197"
+   repos="https://secure2.svnrepository.com/s_bijan/control"
+   revision="2"/>
+<entry
+   committed-rev="1"
+   name="Send Stimulus Status.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4f5520f44c68d4195b4f9a1ea09b429b"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Digital Port2vi.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="2b3e1c3771e6b69f7e473423bce57014"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="My Plot XY.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="306b58de75a4889f318d17cb94b64b86"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="In Two Rec Windows.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c0c5601e0ee402e040a6dd815e3b4021"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Task Control.aliases"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4cb9f6a33a7dd8aee023185000d8a104"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="Position.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="6d94b07eaf78610da67e8909b01e470c"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Position Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c6af589bdec435e6e07254ad84e4b317"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send LED Stat.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="0a73959c88f74612f91279553928f1f9"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Analog Out2.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="b608b489638a3c30689d1ce0a0724eab"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Clear Instructional Stimuli.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="5aca2f742b9cc834ad3851ec180f440f"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Target Position.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="43ab97d65bafad1509e68bf717e0dc50"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send 2 LED Stats.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="3e40494bd4e05bd81e517325b4e7cbb3"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="2Trew Print.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="1c1180ad501132a90fbe3f0691977001"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Trial Condition Selector.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="81253fb7946ce35b83d3d56104e12962"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Stimulus Presentation.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="0e8c5d497075f198f52093a8d0aab97b"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Check Display Sensor.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8de5f9636af92edab61525a97828a6ed"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="5.02 Notes.txt"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="98b9427d8d4b53938d594d957648c238"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="Target Hold State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="452cdb2ca505c5f11f8487eb97e4cbcc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Hand Task Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c8fb819920454296aba0ae513a2bf743"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Display Client.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="97b56d5f52ab876e1f39a50976d9650d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="variables - network - RT_Eye Position.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c127ac3882b4ca978f7d95cb520a284b"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Rew Print.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="eb96c4d23732bf7f16902444d2111e07"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Sequential Microstim Pulse.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="9db862d010c281fe2c56f66c99c4e886"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Point Display.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4122bc4e213f3e9d1b28361f6f5ac7f7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Analog Input.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4471acb75dcda2a5ed43512509da14fd"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Digital Port.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="027aedb60f62a15db9b4e854b8f48625"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="2. TargetEx.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="49a8dac2f3ccf53bde6715c36d26b062"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send End Session.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c320eb42f42c20a0899fa03bcb90fc86"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="State Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="266a13091d970d7765ac0f5100bf0733"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Period Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="be649d959fb3e8ff1a2acc504207dfa7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Auditory Out.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c6eafc7229ad9b3673c1e5c23bb09603"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="In Window and Hold.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="7b4c5fd3c941d62ec6c1cf6292aa4bc4"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Reach Type Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="b9e40dbe4903286dde850af6590bd257"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Stimulus properties control2.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="b379d0952d4e1416d145c8cf096fa93a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="AcquireTime_Init File.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="aebad4b555cad5fbb7c2d378dca754c2"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Effector Instruction On.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="22021cb9c353aab7ea87853ab5f96fd7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Window Display.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="f08f6c05eb8dd7fa0b4d5586ff1ebcb5"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="In One Window.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4ee9b9c81b8cfde1c9e92c16402a2caf"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Choice Type Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="01a030652d4d12e5eefad01fbac34a43"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Target Hold Invisible State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="0bd3b7a5ebc1f909a31e445333c12ef2"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Stimulator.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="62c0a3c84898c80b59340dbba22d9d17"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="0. Task Control.aliases"
+   text-time="2009-01-22T21:32:11.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="68efbba7338f4bd697df3d9129924c48"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="Send 2 LED Stat NEW.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="ab0dc38fae219b82cd0cec162983a5c0"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send 3 LED Stat NEW.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e6abacd2d79c046fcaffc7917d689380"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Cue Off State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="b9710beb3247408a3c0633dfed151f76"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send 4 LED Stat NEW.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="cf9ddbbedbaf31cdf139963a96746852"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send 5 LED Stat NEW.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="21f6112bfa54ea156ad1faf748f2e856"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Adaptation Parameters Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="7006dc6067f5f6cf58d0c469032f1479"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Init File Path.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8ff0833b0d1045b1de4baf5145947aaa"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="4Trew Print.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="12689988c1562f62fa7776b87c23a01a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Joystick Appearance.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="934d278934f8b243a925fb75e8688cdb"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Globals.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="44df6e9c7860c593bf7895e835130667"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="0. Task Control.lvlps"
+   text-time="2009-01-22T21:32:11.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="fe93402e4713dfa48aeb062c16239056"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="Send Microstim Pulse Train.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4e1ca420f05c6305f434288e241f932c"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Room Lights.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="68f1a568a4079236615550673e571d7d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Microstim Pulse.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="42f70ec03116779a39223b12de828e08"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Reward Type Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8240238b630adb909efca8349b719cdc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Microstimulation Parameters control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="788e0df6766cd9726f5863fd782a79c5"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Serial Port.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="36a2216284c1e01e9d6e4bc8fb92bad6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Delay State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="898993f99848dbe6fa229f8d0c98811c"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="0. Task Control.lvproj"
+   text-time="2009-01-22T21:32:11.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="6eb207885538448138fb8deed84a7429"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="Test Display Sensor.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="069362425df20ef79875ed4c5a7a7593"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Get Data Index.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="5f05e036f0d990b9f276c246d0b3a0fe"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="variables - network - RT_Hand Position.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="709532ccb9265c30aed748c074b21f6d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Behavioral Task Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e766270fae8e2c85c8172ba78802f9b6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Switching Headstage.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="0eef3a1e05d17305097bfbacf9f2e230"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Copy of 1. Target.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8566c5eb12ed3cd95a5731d5233c0c01"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="In Two Windows.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="201de13a02f0c794934cfddca0546ac0"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="variables - network - RT.lvlib"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="d7ed3187c40d12e2bffa4969de9c14f2"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="host.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c6faba046013c9f5f0d4789df701a0dc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Play Sound.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="f850ab283da509d097971ca9b692dc55"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="1Trew Print.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="0bd4738937080901a837dc1002213d75"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Baseline State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c9de4bdc4066ccf2aba49e8e6e1d5afd"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Display Position Data.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="7ad96b26614f8c1d47f9036ae02e4211"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Target.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="44411310d06df0b71ddad4d2920465a7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Picture Drawing.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="ca94cbfa5eb57d451050ee02f35f1d80"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Start On State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="69e6c65fe57bf27aecbaee028be9b1cf"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Generate Probability.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="428cd8cb151cc267a0ddb3aceff752bb"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Cue 2 On State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="1fedeac7cf497b6d90762a4f6ff6f3e8"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Variables to String.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="ce672e6fcf754d182ea4a18256212b80"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Analog Gain Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="74dd5fff9766afb8b0f7544384c18571"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Stimulus properties control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8b507b6c243a068735fbc330cb09e379"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Add Random Target Angle.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="aee44534163cd08d859486639f6dfa24"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Init Text File.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="68f0221ce7443db51623eda0cc4249df"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="drift.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="74c7b5a97ce8b977f41e9d37f9bbf254"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Start Acquire State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="db2829f9bb1d8fcf39b654d0299a692d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Eye Position.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c16d45eb54a51a7c3b0fc12cdc381761"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Sensor Type control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="99c714ea6abcd4eba322771f0f0ed04e"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Separate Target Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="90e00a2afab292232488256766e3e175"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Draw Position.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="4424c7f8700a90e0f657bc22bccd704e"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Cue Hold State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="ca35572b998458df5f079f50522ed34a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Stimulus Position.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="60c88f88dae3b32da481dee49a4c6a98"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Display Scale.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="6a3cb722e27744b15c57316537f929b0"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="timestr.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="167a2fd3697e0bee82d4c50c2faee0bc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Untitled Library 1.lvlib"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="439f98c51728fe0a7ce04b01acac5aa9"
+   last-author="bijan"
+   kind="file"/>
+<entry
+   committed-rev="1"
+   name="Intervening State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="7fa3281c43cd91e533c6b2b857c6c2bc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Check Hands.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="326e980ed3620f1f1a660db4a4f47764"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Target Location Print.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="2084ef1202ef7d63d80322149b2df39f"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="support - acquire data.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="f38cc4395ab675cc096068e56ee6bb49"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Clear Screen.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="11ed25e74b84ea4e83a2bd99a581d9cc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Stimulus with Trans.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="52216583ffd1fb039f3a62ee69047609"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Host Display.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="263c638ef783a3a18fe0855fcd59db7a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Update Cumulative Display.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="32f7bdb250d7ad43eeb1da864aa37064"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Condition to Separate Targets.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="47440033730cad79a90fbf6963408e12"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Stimulus Appearance Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="b5ab0cb8d0cec10ce8b3106705a94aa7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send 3 LED Stats.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="42356e9b8bd38101365788c00bc14275"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Abort Status Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="7534ffb0032f747512f8ec448bc56908"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Clear LED Stimuli.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="a6af737d523eaed7184b415204009ddd"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Instruction State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8ff82951b9b0546510f98934a144db62"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Background Color.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="474a58d92ef2f15dcf5e9f36228c3b2e"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Intertrial Interval State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="36e081ca90e68bc133a8f82e05cca3cd"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="State Machine Global.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="a655ec1ce044128ce6f1b4c639d99646"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="2"
+   name="5.02 Task Codes.txt"
+   text-time="2009-01-22T21:50:43.000000Z"
+   committed-date="2009-01-22T21:31:51.432970Z"
+   checksum="52beae3bb58c7818f4d624d5d87fa2a6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:50:43.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Check Hands.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="9a1f9862176889afb1b0e4fd4b9ca661"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Display Sensor with Analog Input.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="249708aca00b3cdc51db93c97efd245f"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Change Stimulus Status.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="1e21070e76417e7f2587f241f22b45c0"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Update LED Array.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="d9900b866e76e836f8ac1f1973921f3c"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Read Analog Channels.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="9784fa478a29ac8620331b6d8a702770"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Analog State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="f962a1a80d37f7dbb568cab174ebbabf"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Display Calibration.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e6957b5cbf32a6c43ac3ed9987ee1da2"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Instruction On State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="177aa8c039346e6d0389753f791b27bf"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Stimulus Appearance.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="9f37e5b4bc4cf9a77e318f0d59a0e3d0"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Display Sensor - Bijan.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="0d0fbe01fab1c1d70b3050feb5433e90"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Auditory properties.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="44d1ec7ad5321a84323d1766fd288c78"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="In Rec Window and Hold.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="412e7f0b645ce3c6fa1f1c7124b318ef"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Condition to Targets.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="d4404437475fcb0c7ee98e6599fe170a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Add Random Target Position.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e1d5bdc1d8d65c9817b7480af9999a4b"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="1. Target.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e3c6db84eaf344a8ce536029976fa169"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="New Point Display.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="6e89409a35770a66dd494c413b058d8c"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Analog Out.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="7f343b2287829c016bddd92362998943"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="4Trew Init File.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c0c46e7ea1a61e8642f9c4807d74c2dc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Begin Trial.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="440395df9a7635157fa4f47808d3df6d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Effector Instruction State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="abf59965912deb2c782efd1bf0dcc9c6"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Generate Target Probability.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="6b463854e939f964376ba079facdbae1"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Test Digital IO.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="63f932028ba78565fe49c3e85b741792"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Analog Channels Task Name Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="8b6f801ca82cf08d1912d24a12e278c5"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Go State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="707f50797281b78e3f7626fb74bf4c15"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="2T_Init File.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="5c912d928efaa416d25a7d84e4984994"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Reach Go State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="bbe316389d1dc6c30a5d7525d7703b6e"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Untitled 1.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="3e784896e1ceacfacd3ba5f5ca707717"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Cue On State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e2f3ee398f6c80d0dc76318e53047826"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Saccade Go State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="71fbcd0085aaa447e4334c27b4b0d272"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="1. Host.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="c695c0a3e64001b87f62e5c86746afbb"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Analog Offset Control.ctl"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="545f97e30b1365c92abfedd1f7fd2d1d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Target On State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="59ea925c7fd1988178f1330d68c30f66"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Background Color.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="a87edbfdad6741bd465fbe439351f7dc"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="In One Rectangular Window.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="d17d1302f4c36ba8bfcd71fc49fc5dd7"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Stimulus Transparency.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="501b65b06ea5e6ff0e92a8ef9f4c3ae9"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Generate Sinewave.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="96a2d500055a303660b4b4a4f2f50552"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Reach Acquire State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="6ab6c9f485565e4c13a76a66a9512b9a"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="AqTime Print.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="89ba248a1145ef0e41383b1b9b1ff9f9"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Send Stimulus.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="e2acd2c2e48669892833684bf4a05c7d"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="Blink State.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="01d7e33e59df08b918e0274eacdbf707"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+<entry
+   committed-rev="1"
+   name="target - multi rate - variables.vi"
+   text-time="2009-01-22T21:32:12.000000Z"
+   committed-date="2009-01-22T21:21:57.844809Z"
+   checksum="2f698fba33fecb1e45fdb8818db6de25"
+   last-author="bijan"
+   kind="file"
+   prop-time="2009-01-22T21:32:20.000000Z"/>
+</wc-entries>

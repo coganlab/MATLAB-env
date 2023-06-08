@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8c48d1b75caaa1e7597c16e3115a68eab264cbaa79f77e1066679290f389cef2
-size 368
+function [u,s,v]=svdfix(x)
+%SVDFIX Fixes the output of the matlab svd function.
+%  [U,S,V] = SVDFIX[X] takes the output of the matlab
+%     svd function on X which gives arrays and replaces it with
+%     more sensible arrays.
+
+%  Author: Bijan Pesaran, version date 3/12/98.
+
+[u,S,v]=svd(x,0);
+
+%N=size(S,1);
+%s=zeros(1,N);
+
+s = diag(S);
+
+%for i=1:N, s(i)=S(i,i); end

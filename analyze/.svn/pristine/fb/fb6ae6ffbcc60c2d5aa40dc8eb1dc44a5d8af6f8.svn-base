@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:58410f6435f2125bfd7997b056abb5b4c6b37d9659f494ead55eddbc05b6e28b
-size 534
+function [flag,ind] = isInSpikeMultiunit(SpikeSess,MultiunitSess,Session)
+%
+%  [flag,ind] = isInSpikeMultiunit(SpikeSess,MultiunitSess,Session)
+%
+
+SN1 = sessNumber(SpikeSess);
+SN2 = sessNumber(MultiunitSess);
+
+if ~isempty(Session)
+    SessionNumbers = getSessionNumbers(Session);
+
+    ind = find((SessionNumbers(:,1)==SN1 & SessionNumbers(:,2)==SN2) | ...
+        (SessionNumbers(:,2)==SN1 & SessionNumbers(:,1)==SN2));
+    if ~isempty(ind)
+        flag = 1;
+    else
+        flag = 0;
+    end
+else
+    ind = [];
+    flag = 0;
+end
+
+
+

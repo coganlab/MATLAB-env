@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:df41217696ef91095bf862a0d7d4fcfa3b38d34e8612431cb348e88f2507c91d
-size 331
+function lfp = lpfilter(data,lowpass_freq,orig_sampling_rate,new_sampling_rate);
+%   
+%   lfp = lpfilter(data,lowpass_freq,orig_sampling_rate,new_sampling_rate);
+%
+
+lfp = (mtfilter(data,[0.005,lowpass_freq],orig_sampling_rate,0));
+decimate_factor = round(orig_sampling_rate./new_sampling_rate);
+lfp = lfp(:,1:decimate_factor:end);

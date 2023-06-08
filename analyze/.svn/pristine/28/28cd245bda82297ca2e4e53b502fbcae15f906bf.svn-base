@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a21b6b62ba189a3aacaf8d844a5b4f2c91aa3f0ef8e6ca5496dd145ae9cab287
-size 279
+function alpha = circ_ang2rad(alpha)
+
+% alpha = circ_ang2rad(alpha)
+%   converts values in degree to radians
+%
+% Circular Statistics Toolbox for Matlab
+
+% By Philipp Berens, 2009
+% berens@tuebingen.mpg.de - www.kyb.mpg.de/~berens/circStat.html
+
+alpha = alpha * pi /180;

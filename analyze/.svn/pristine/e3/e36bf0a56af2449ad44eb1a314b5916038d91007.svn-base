@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3b268e773f6c1b48ed63af8519085e91f0d54bb908fa48a2b0e2bc52895dbfb2
-size 331
+function rewardSwitch = calcBeforeRewardSwitch(trials,comparator)
+%
+%  rewardSwitch = rewardSwitch(trials,comparator)
+%
+
+if  nargin < 2
+    comparator = -1;
+end
+
+tmp = [trials.RewardSwitchPoint];
+tmp = reshape(tmp,2,length(trials));
+rewardSwitch = tmp(2,:);
+
+if(comparator > -1)
+    rewardSwitch = (rewardSwitch == comparator);
+end

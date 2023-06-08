@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6249131ac5659088b2e6e18b5819260094640813362e2bfabfeed05ba75e806b
-size 616
+function [AccLLR, LLR] = accLR(LLR, Go, RT)
+%
+%  [AccLLR, LLR] = accLR(LLR, Go, RT)
+%
+
+if nargin < 2; Go = 1; end
+dt = 1;
+
+if nargin<3;
+    AccEnd = size(LLR,2);
+    AccLLR = nan(size(LLR));
+    for tr = 1:size(LLR,1)
+        i = 0;
+        for t = Go+1:dt:AccEnd;
+            i = i+1;
+            AccLLR(tr,i) = sum(LLR(tr,Go:dt:t));
+        end
+    end
+else
+    AccLLR = nan(size(LLR,1),max(RT));
+    for tr = 1:size(LLR,1)
+        i = 0;
+        for t = Go+1:dt:Go+RT(tr)
+            i = i+1;
+            AccLLR(tr,i) = sum(LLR(tr,Go:dt:t));
+        end
+    end
+end
+%sum(isnan(AccLLR))

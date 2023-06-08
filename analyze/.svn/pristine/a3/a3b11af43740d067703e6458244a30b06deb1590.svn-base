@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f4e158b97834792be0a9802f65de77e53e7a322adbf3cd95c6de17bd0c3f3edf
-size 548
+function Value = calcSpikeWaveformS2(Session,CondParams,AnalParams)
+%
+%  Value = calcSpikeWaveform(Session,CondParams,AnalParams)
+
+
+global MONKEYDIR
+
+SSess = splitSession(Session);
+Sess = SSess{2};
+
+Type = getSessionType(Sess);
+
+dirPath = [MONKEYDIR '/mat/' Type '/SpikeWaveform'];
+fNameRoot = ['SpikeWaveform.' num2str(Sess{6}) '.mat'];
+
+if exist([dirPath '/' fNameRoot],'file');
+    SpikeWaveform = loadSessSpikeWaveform(Sess);
+else
+    SpikeWaveform = saveSessSpikeWaveform(Sess);
+end
+
+%load up saved tuning information
+Value = SpikeWaveform;
+
+

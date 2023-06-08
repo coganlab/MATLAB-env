@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:68fbea9bd93f720785e9006a15a11b259f2e1f3f0489bf67df632c94ec216792
-size 614
+function [rocdata,rocgroup] = setup_roc(data,group,c1,c2,flag)
+%
+%   [rocdata,rocgroup] = setup_roc(data,group,c1,c2,flag);
+%
+
+if nargin<5; flag = 0; end
+
+ind1 = find(group==c1)';
+ind2 = find(group==c2)';
+
+rocdata = data([ind1,ind2],:);
+
+if flag
+    rocgroup(1:length(ind1)) = 1;
+    rocgroup(length(ind1)+1:length(ind1)+length(ind2)) = -1;
+else
+    if mean(data(ind1))>mean(data(ind2))
+        rocgroup(1:length(ind1)) = 1;
+        rocgroup(length(ind1)+1:length(ind1)+length(ind2)) = -1;
+    else
+        rocgroup(1:length(ind1)) = -1;
+        rocgroup(length(ind1)+1:length(ind1)+length(ind2)) = 1;
+    end
+end

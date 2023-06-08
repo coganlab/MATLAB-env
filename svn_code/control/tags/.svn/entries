@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b02b4b06a41ba2b81df73df8411e9ec652d8aaad4f4c6fdff958a79f7047fee9
-size 401
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2009-01-22T21:21:57.844809Z"
+   url="https://secure2.svnrepository.com/s_bijan/control/tags"
+   last-author="bijan"
+   kind="dir"
+   repos="https://secure2.svnrepository.com/s_bijan/control"
+   revision="2"/>
+<entry
+   name="Task Control v5.02"
+   kind="dir"/>
+</wc-entries>

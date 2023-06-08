@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4f976304129445f7c133648b8482dab0bfed0df21bb88f5af067baa62d616b69
-size 510
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="19"
+   name=""
+   committed-date="2008-12-22T22:08:19.859961Z"
+   url="https://secure2.svnrepository.com/s_bijan/acquire"
+   last-author="yan"
+   kind="dir"
+   uuid="52ba062a-74ac-4f55-b969-1e96ccd37ff1"
+   repos="https://secure2.svnrepository.com/s_bijan/acquire"
+   revision="19"/>
+<entry
+   name="trunk"
+   kind="dir"/>
+<entry
+   name="branches"
+   kind="dir"/>
+<entry
+   name="tags"
+   kind="dir"/>
+</wc-entries>

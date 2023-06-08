@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d1148de64a4a25ce42271f926d4160c47259f0bd4d0cdcbefc06b8818b6513af
-size 634
+function Area = getBSArea_Spike(Session)
+%
+%  Area = getBSArea_Spike(Session)
+%
+
+%Tower = Session{3}{1};
+Tower = sessTower(Session);
+if iscell(Tower); Tower = Tower{1}; end
+if iscell(Tower); Tower = Tower{1}; end
+%SpikeCh = Session{4};
+SpikeCh = sessChannel(Session);
+if iscell(SpikeCh); SpikeCh = SpikeCh{1}(1); end
+if iscell(SpikeCh); SpikeCh = SpikeCh{1}; end
+
+FSessions = StoF(Session, Tower);
+Ch = zeros(1,length(FSessions));
+for iSess = 1:length(FSessions)
+  Ch(iSess) = FSessions{iSess}{4};
+end
+
+FSession = FSessions(Ch == SpikeCh);
+
+if ~isempty(FSession)
+  Area = getBSArea_Field(FSession{1});
+else
+  Area = 'Unlabelled';
+end

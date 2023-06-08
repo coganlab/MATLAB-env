@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a7f790128abb6185d1ae6eddd1bf63a99889485c8830630abc9a74c479311f6
-size 379
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/s_bijan/nsuite/!svn/ver/101/trunk/nstream/modules/analogstate
+END
+module_analogstate.c
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/s_bijan/nsuite/!svn/ver/101/trunk/nstream/modules/analogstate/module_analogstate.c
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/s_bijan/nsuite/!svn/ver/1/trunk/nstream/modules/analogstate/CMakeLists.txt
+END

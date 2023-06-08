@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ba0dcdd77f6bf83127c24f1ad24c6158017c288cfaa98a9d90387778ec879df4
-size 713
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="384"
+   name=""
+   committed-date="2010-10-16T20:32:36.381396Z"
+   url="https://secure2.svnrepository.com/s_bijan/analyze/models/AccLLR"
+   last-author="bijan"
+   kind="dir"
+   uuid="af9325db-a6c9-4365-8be6-21b204eb35f1"
+   repos="https://secure2.svnrepository.com/s_bijan/analyze"
+   revision="384"/>
+<entry
+   name="lik"
+   kind="dir"/>
+<entry
+   name="load"
+   kind="dir"/>
+<entry
+   name="calc"
+   kind="dir"/>
+<entry
+   name="misc"
+   kind="dir"/>
+<entry
+   name="defn"
+   kind="dir"/>
+<entry
+   name="print"
+   kind="dir"/>
+<entry
+   name="plot"
+   kind="dir"/>
+<entry
+   name="save"
+   kind="dir"/>
+</wc-entries>

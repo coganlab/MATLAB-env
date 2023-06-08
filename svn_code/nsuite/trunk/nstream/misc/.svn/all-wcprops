@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9877db58fdd053d72bd06aaaa972c917f54f3b3e5c94c2ff938a8716ea895841
-size 203
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/s_bijan/nsuite/!svn/ver/23/trunk/nstream/misc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/s_bijan/nsuite/!svn/ver/1/trunk/nstream/misc/CMakeLists.txt
+END

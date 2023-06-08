@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bd95ace47403a259d974dd471be42b67d07684df0a69388c412576052483937a
-size 590
+function Trials = procCodes(Task,Codes)
+%
+%   Trials = procCodes(Task,Codes)
+%
+%  Task = 'Speech_CovertOvert'
+%
+
+
+Trials = struct([]);
+switch Task
+  case 'Speech_CovertOvert'
+    GoInd = 3:3:size(Codes,1);
+    for iTrial = 1:length(GoInd)
+      Trials(iTrial).Start = Codes(GoInd(iTrial)-2,1);
+      Trials(iTrial).Auditory = Codes(GoInd(iTrial)-1,1);
+      Trials(iTrial).Go = Codes(GoInd(iTrial),1);
+      Trials(iTrial).StartCode = Codes(GoInd(iTrial)-2,2);
+      Trials(iTrial).AuditoryCode = Codes(GoInd(iTrial)-1,2);
+      Trials(iTrial).GoCode = Codes(GoInd(iTrial),2);
+    end
+end
+

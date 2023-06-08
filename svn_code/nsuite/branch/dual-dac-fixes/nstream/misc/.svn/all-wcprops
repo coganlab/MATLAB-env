@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:25910d28731cca011d6365b70482c7816a234820852ab2554d958f38643693f6
-size 236
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc
+END
+CMakeLists.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/s_bijan/nsuite/!svn/ver/68/branch/dual-dac-fixes/nstream/misc/CMakeLists.txt
+END

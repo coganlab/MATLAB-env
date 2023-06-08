@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e472f256c483a143991165294e6d0ca7d606b8f43fb90a966ddea601e9669405
-size 264
+function [Axes, DataHandle] = drawPanelField2zScoreSpectrogram(Axes,Data)
+%
+%  Axes = drawPanelField2zScoreSpectrogram(Axes,Data)
+%
+size(Data.Data);
+DataHandle = imagesc(flipud(Data.Data'),'Parent',Axes);
+set(Axes,'XTickLabel','','YTickLabel','','TickDir','out');

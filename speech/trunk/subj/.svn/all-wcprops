@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9110313976484a4a72cf1aee5438891a2657e2127ee54752acadaf541e52e9b9
-size 610
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/s_bijan/speech/!svn/ver/1/trunk/subj
+END
+subjSpectrum.m
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/s_bijan/speech/!svn/ver/1/trunk/subj/subjSpectrum.m
+END
+subjTestSpecDiff.m
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/s_bijan/speech/!svn/ver/1/trunk/subj/subjTestSpecDiff.m
+END
+subjERP.m
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/s_bijan/speech/!svn/ver/1/trunk/subj/subjERP.m
+END
+subjIEEG.m
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/s_bijan/speech/!svn/ver/1/trunk/subj/subjIEEG.m
+END
+subjCoherency.m
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/s_bijan/speech/!svn/ver/1/trunk/subj/subjCoherency.m
+END

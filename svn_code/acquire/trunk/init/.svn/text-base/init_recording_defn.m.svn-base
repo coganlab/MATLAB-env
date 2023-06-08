@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2d0708218d0835b61453c13d018b03efb53db56bd16ca750553b8062499023f7
-size 1282
+function init_recording_defn
+%
+%
+%  init_recording_defn
+%   Initialise the recording directories.
+
+global experiment
+
+
+experiment.recording.day_path = fullfile(experiment.recording.base_path,experiment.recording.day)
+
+if ~isdir(experiment.recording.day_path) %  New recording directory
+    disp(['Creating directory for recording day ' experiment.recording.day_path]);
+    mkdir(experiment.recording.day_path);
+
+    copy_software_directories;
+
+else
+    existing_recording_directories = dir(fullfile(experiment.recording.day_path,'0*'));
+    experiment.recording.number = length(existing_recording_directories);
+end
+
+
+
+
+
+
+function copy_software_directories
+%
+%
+%
+
+global experiment
+
+for iPackage = 1:length(experiment.software.packages)
+    package_name = experiment.software.packages{iPackage};
+    package = experiment.software.(package_name);
+    if isdir([experiment.software.base_path package.path])
+        disp(['Creating directory for ' package_name ' ' experiment.recording.day_path package.path]);
+        mkdir([experiment.recording.day_path package.path]);
+        copyfile([experiment.software.base_path package.path],[experiment.recording.day_path package.path]);
+    else
+        warning([experiment.software.base_path package.path ' does not exist'])
+    end
+
+
+
+end
+

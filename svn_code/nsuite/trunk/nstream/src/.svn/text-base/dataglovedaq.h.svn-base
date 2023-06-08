@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f3a2f48c6ae95366401e9ec5f630f5de90588244856cf08092dfc94b5e8827a3
-size 441
+#ifndef __DATAGLOVEDAQ_H__
+#define __DATAGLOVEDAQ_H__
+#include <stdbool.h>
+#include "nstream.h"
+#include "fglove.h"
+
+class DataGloveDAQ
+{
+    public:
+    DataGloveDAQ();
+    ~DataGloveDAQ();
+    bool Initialize(char *szPort);
+    bool ReadData(long int timestamp, dataglove_event *dest_buffer);
+    void SetDelay(int delay);
+    private:
+    fdGlove *glove_ptr_;
+    long int last_timestamp_;
+    int delay_;
+};
+
+#endif

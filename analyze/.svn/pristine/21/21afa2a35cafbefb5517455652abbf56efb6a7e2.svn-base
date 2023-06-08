@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:906a672c9822dd362fc25a4d8e35781ca7b0387c3cfac1e2b77b8cd191729a4f
-size 544
+function newTable = uniqueElementTable(Table,Name)
+
+%    newTable = uniqueElementTable(Table,Name,LimitStr)
+%    Name - string - name of the column of interest, ie 'preGoFR'
+%    Example: goodTable = uniqueElementTable(Table,{'SessNum1','SessNum2'});
+
+newTable = Table;
+
+if ~iscell(Name)
+    Name = {Name};
+end
+
+for iCol = 1:length(Name)
+    Values(:,iCol) = getColumnData(newTable,Name{iCol});
+end
+
+[~,ind,~] = unique(Values,'rows');
+
+newTable.Data.Values = newTable.Data.Values(ind,:);
+newTable.Data.Sessions = newTable.Data.Sessions(ind);
+
+

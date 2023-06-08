@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d85b7546c828c5762d9de5e26c72f5efceccaec282d8a9dd32dd684fc412d6d8
-size 369
+function y = mymedfilt1(data,N)
+%
+%  y = mymedfilt1(data,N)
+%
+y = zeros(1,length(data));
+start = [1:1e5:length(data)];
+
+if length(start)>1
+  for iStart = 1:length(start)-1;
+    y(start(iStart):start(iStart+1)-1) = ...
+	medfilt1(data(start(iStart):start(iStart+1)-1),N);
+  end
+  y(start(end-1):end) = medfilt1(data(start(end-1):end),N);
+else
+  y = medfilt1(data,N);
+end
