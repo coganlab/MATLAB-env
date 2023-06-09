@@ -105,11 +105,18 @@ for iF=1:length(fileDir)
     end
     
     Subject(iF).ChannelNums=1:length(experiment.channels);
-    if exist([TASK_DIR filesep Subject(iF).Name filesep 'badChannels.mat'])
-        load([TASK_DIR filesep Subject(iF).Name filesep 'badChannels.mat']);
-        Subject(iF).badChannels=badChannels;
+    badChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'badChannels.mat');
+    muscleChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'muscleChannelsWavelet.mat');
+    
+    if exist(badChannelsPath, 'file')
+        Subject(iF).badChannels = load(badChannelsPath);
     else
-        Subject(iF).badChannels=[];
+        Subject(iF).badChannels = [];
+    end
+    
+    if exist(muscleChannelsPath, 'file')
+        muscleChannels = load(muscleChannelsPath);
+        Subject(iF).badChannels = [Subject(iF).badChannels muscleChannels.muscleChannel];
     end
     Subject(iF).goodChannels=setdiff(Subject(iF).ChannelNums,Subject(iF).badChannels);
 end
