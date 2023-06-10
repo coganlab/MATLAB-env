@@ -23,12 +23,12 @@ function default_cfg = plot_defaults(cfg)
 load colors.mat;
 default_cfg.hemisphere       =  'b';        % r, l, or b (right, left, both hemisphere)
 default_cfg.use_brainshifted =  false;      % boolean, to use brainshifted electrodes, affects grid-only
-default_cfg.show_labels      =  true;       % boolean, to show elec labels
+default_cfg.show_labels      =  false;       % boolean, to show elec labels
 default_cfg.show_annot       =  false;      % boolean, to show cortex color annotations
 default_cfg.surf_color       =  [.7 .7 .7]; % color of surface patch
 default_cfg.alpha            =  .3;         % alpha of surface patch
 default_cfg.background_color =  [1 1 1];    % background of plot
-default_cfg.elec_size        =  200; 
+default_cfg.elec_size        =  50; 
 default_cfg.elec_colors      =  colors;     % Nx3 color matrix, one for each depth/grid in elec_filename. Or, 1x3 for single color.
 default_cfg.font_size        =  8;
 default_cfg.font_color       =  [0 0 0];
