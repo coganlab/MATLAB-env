@@ -1,4 +1,4 @@
-function [ieegGammaNorm,ieegGamma,p_masked] = ExtractHighGammaWrap(ieegSplit,fsIn,fsOut,tw,etw,prtw,pstw,normType)
+function [ieegGammaNorm,ieegGamma,p_masked,normFactor] = ExtractHighGammaWrap(ieegSplit,fsIn,fsOut,tw,etw,prtw,pstw,normType)
 % The function extracts Normalized high-gamma using Nima Mesgarani's
 % algorithm
 % Input
@@ -32,19 +32,19 @@ pChan = [];
 for iChan = 1:size(ieegSplit,1)
     pChan(iChan) = permtest_sk(ieegGammaPower(iChan,:),ieegGammaBase(iChan,:),10000);
 end
-[p_fdr, p_masked] = fdr( pChan, 0.01);
+[p_fdr, p_masked] = fdr( pChan, 0.05);
 disp(['Number of significant channels : ' num2str(sum(p_masked))]);
 % Extracting normalizing factors for each channel
-normFactorIntTrial = [];
+normFactor = [];
 for iChan = 1:size(ieegSplit,1)
-    normFactorIntTrial(iChan,:) = [mean2(squeeze(ieegGamma(iChan,:,timeGamma>=prtw(1)&timeGamma<=prtw(2)))) std2(squeeze(ieegGamma(iChan,:,timeGamma>=prtw(1)&timeGamma<=prtw(2))))];
+    normFactor(iChan,:) = [mean2(squeeze(ieegGamma(iChan,:,timeGamma>=prtw(1)&timeGamma<=prtw(2)))) std2(squeeze(ieegGamma(iChan,:,timeGamma>=prtw(1)&timeGamma<=prtw(2))))];
 end
 % Normalized high gamma extraction
 disp('Extracting Normalized High Gamma');
 ieegGammaNorm = [];
 for iTrial = 1:size(ieegSplit,2)
       iTrial
-    [~,ieegTmp] = EcogExtractHighGammaTrial(double(squeeze(ieegSplit(:,iTrial,:))),fsIn,fsOut,fGamma,tw,etw,normFactorIntTrial,normType);
+    [~,ieegTmp] = EcogExtractHighGammaTrial(double(squeeze(ieegSplit(:,iTrial,:))),fsIn,fsOut,fGamma,tw,etw,normFactor,normType);
     ieegGammaNorm(:,iTrial,:) = ieegTmp;   
 end
 end
