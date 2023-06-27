@@ -106,18 +106,22 @@ for iF=1:length(fileDir)
     
     Subject(iF).ChannelNums=1:length(experiment.channels);
     badChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'badChannels.mat');
-    muscleChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'muscleChannelsWavelet.mat');
+    muscleChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'muscleChannelWavelet.mat');
     
     if exist(badChannelsPath, 'file')
-        Subject(iF).badChannels = load(badChannelsPath);
+        badChannels = load(badChannelsPath);
+        Subject(iF).badChannels = badChannels.badChannels;
     else
         Subject(iF).badChannels = [];
     end
     
     if exist(muscleChannelsPath, 'file')
+        
         muscleChannels = load(muscleChannelsPath);
-        Subject(iF).badChannels = [Subject(iF).badChannels muscleChannels.muscleChannel];
+        muscleChannels.muscleChannel
+        Subject(iF).badChannels = unique([Subject(iF).badChannels find(muscleChannels.muscleIds)']);
     end
+    
     Subject(iF).goodChannels=setdiff(Subject(iF).ChannelNums,Subject(iF).badChannels);
 end
 % load the list of grid subjects
