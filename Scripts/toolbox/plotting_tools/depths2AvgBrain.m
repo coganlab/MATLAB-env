@@ -28,7 +28,7 @@ function [avgCoords, elecNames, isLeft]=depths2AvgBrain(subj)
 %
 
 %% FreeSurfer Subject Directory
-fsDir=getFsurfSubDir();
+fsDir=get_recondir(1);
 subDir=fullfile(fsDir,subj);
 
 if ~exist(subDir,'dir')
@@ -66,6 +66,7 @@ for a=1:nElec,
     ptntCoords(a,b)=str2double(tempCsv{a,b});
    end
 end
+
 elecNamesFile=fullfile(subDir,'elec_recon',[subj '.electrodeNames']);
 tempCsv=csv2Cell(elecNamesFile,' ',2);
 elecNames=tempCsv(:,1);

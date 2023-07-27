@@ -19,7 +19,7 @@ function p = userpath(inArg)
 %   USERPATH('clear') removes the userpath.  It updates the current MATLAB path,
 %   and this new userpath will persist across MATLAB sessions.  
 %
-%   Note that Additional folders can be added to the top of the search path upon
+%   Note that additional folders can be added to the top of the search path upon
 %   startup by specifying the path for the folders via the MATLABPATH environment
 %   variable.
 %
@@ -30,10 +30,14 @@ function p = userpath(inArg)
 %
 %   See also PATHDEF.
 
-%   Copyright 1984-2016 The MathWorks, Inc.
+%   Copyright 1984-2017 The MathWorks, Inc.
 
-% Validate number of arguments
 narginchk(0, 1);
+
+ if nargin > 0 
+    validateattributes(inArg, {'string', 'char'}, {'scalartext'});
+    inArg = convertStringsToChars(inArg);
+ end
 
 % If found, process argument and return.  
 if nargin == 1 
@@ -61,7 +65,7 @@ function resetUserPath
   rmpathWithoutWarning(oldUserPath);
   defaultUserPath = system_dependent('getuserworkfolder', 'default');
   addpath(defaultUserPath);
-  s = settings;
+  s = matlab.settings.internal.settings;
   matlabNode = s.matlab;
   if matlabNode.UserPath.hasPersonalValue()
     matlabNode.UserPath.clearPersonalValue();
@@ -75,7 +79,7 @@ function setUserPath(newPath)
       oldUserPath = system_dependent('getuserworkfolder');
       rmpathWithoutWarning(oldUserPath);
       addpath(newPath);
-      s = settings;
+      s = matlab.settings.internal.settings;
       s.matlab.UserPath.PersonalValue = newPath;
     else
       error(message('MATLAB:userpath:invalidInput'));
@@ -88,7 +92,7 @@ end
 function clearUserPath
   oldUserPath = system_dependent('getuserworkfolder');
   rmpathWithoutWarning(oldUserPath);
-  s = settings;
+  s = matlab.settings.internal.settings;
   s.matlab.UserPath.PersonalValue = '';
 end
 

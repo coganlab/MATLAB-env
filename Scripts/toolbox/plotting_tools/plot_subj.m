@@ -1,5 +1,6 @@
 function handles = plot_subj(subj, cfg)
 recondir = get_recondir();
+
 if nargin < 2
     cfg = [];
 end
@@ -16,9 +17,9 @@ handles.labels = h.labels;
 %% Plot annotation (cortex ROIs)
 if cfg.show_annot
     if cfg.hemisphere == 'b'
-        plot_annotation([], fullfile(recondir, subj, 'label', sprintf('%sh.aparc.annot.mat', cfg.hemisphere)));
+        plot_annotation([], fullfile(recondir, subj, 'label', sprintf('%s%s.mat', cfg.hemisphere, cfg.annot_label_fn)), cfg);
     else
-        plot_annotation([], fullfile(recondir, subj, 'label', sprintf('%sh.aparc.annot', cfg.hemisphere)));
+        plot_annotation([], fullfile(recondir, subj, 'label', sprintf('%s%s', cfg.hemisphere, cfg.annot_label_fn)), cfg);
     end
 end
 end

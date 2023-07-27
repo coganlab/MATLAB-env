@@ -1,4 +1,9 @@
-function plot_annotation(handle_surf, annot_filename)
+function plot_annotation(handle_surf, annot_filename, cfg)
+
+if nargin < 3
+    cfg = [];
+end
+cfg = plot_defaults(cfg);
 
 recondir = get_recondir(1);
 
@@ -27,6 +32,7 @@ if nargin < 2 || isempty(annot_filename)
 else
     annot_fn = annot_filename;
 end
+
 fprintf('Loading: %s\n', annot_fn);
 if contains(annot_fn, '.mat')
     load(annot_fn);
@@ -37,11 +43,22 @@ else
 end
 actbl.table(43,1:3)=255*[1 1 1]*.7; %make medial wall the same shade of grey as functional plots
 
+
 [~,locTable]=ismember(albl,actbl.table(:,5));
+
 locTable(locTable==0)=1; % for the case where the label for the vertex says 0
 fvcdat=actbl.table(locTable,1:3)./255; %scale RGB values to 0-1
 
-handle_surf.FaceVertexCData = fvcdat;
+if ~isempty(cfg.annot_index)
+    idx = ismember(locTable, cfg.annot_index);
+    handle_surf.FaceVertexCData(idx,:) = fvcdat(idx,:);
+else
+    handle_surf.FaceVertexCData = fvcdat;
+end
+
+for a = 1:numel(actbl.struct_names)
+    actbl.struct_names{a} = sprintf('%d %s', a, actbl.struct_names{a});
+end
 
 legendf(actbl.struct_names, actbl.table(1:numel(actbl.struct_names),1:3)./255);
 

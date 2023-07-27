@@ -1,4 +1,5 @@
-function demo_plot_functions()
+
+
 %% Using this demo
 % Each section is a different demo. Just copy and paste the code into your
 % Matlab command window.
@@ -60,6 +61,7 @@ plot_subjs_on_average({'D14', 'D15'}, 'fsaverage', cfg);
 % Example, if you want to group electrodes for active / inactive during
 % auditory perception epoch.
 
+
 cfg = [];
 subj_labels = list_electrodes({'D14', 'D15'});
 % Note, you don't have to use this ordering, you can provide your own cell
@@ -98,18 +100,37 @@ plot_subjs_on_average_grouping(subj_labels, grouping_idx, 'fsaverage', cfg);
 %% Plot single subject on own brain, with grouping (see above)
 
 cfg = [];
-subj_labels = list_electrodes('D14');
+subj_labels = list_electrodes('D15');
 
 grouping_idx = randi([1 4], numel(subj_labels), 1);
 
 plot_subj_grouping(subj_labels, grouping_idx, cfg);
 
+%% Plot electrode density maps
+cfg = [];
+plot_elec_density({'D24', 'D28'}, 15, 'fsaverage', cfg);
+% if you want to fix color limits across different figures
+%    >> figure(1); ca = caxis; figure(2); caxis(ca);
+% if this causes 0 value to no longer be grey use
+%    >> set_caxis_color(0, [.5 .5 .5]);
+
+%% Plot subset of annotation labels
+cfg = [];
+cfg.show_annot = 1;
+cfg.annot_index = [25 31]; % label indices
+% Get label indices by first producing a plot with all labels
+% (cfg.annot_index = []). The legend shows index values for each label.
+cfg.alpha = 1;
+plot_subj('D14', cfg);
+
+cfg.annot_label_fn = 'h.aparc.a2009s.annot'; % cfg.hemisphere is automatically prepended. In case of cfg.hemisphere = 'b', '.mat' is appended.
+plot_subj('D14', cfg);
 
 %% Tips
 % Each function also outputs the handles to the surface (patch), the
-% electrodes (scatter3), and the labels(text).
-% Therefore, if you want to further customize the plots, you can do so
-% directly by accessing the property attributes in the handle.
+% electrodes (scatter3), and the labels(text). Therefore, if you want to
+% further customize the plots, you can do so directly by accessing the
+% property attributes in the handle.
 handles = plot_subj('D14');
 handles.surf
 handles.elec
@@ -135,18 +156,26 @@ handles = plot_subj('D16', cfg);
 pull_elec_toward_camera(handles.elec, 14); % pull 12 mm toward camera
 pull_labels_toward_camera(handles.labels, 28);
 
-
 %% Some helpful tools to aid in plotting
 % to select custom RGB colors in matlab
 set_colors
 
+% make a gradient of colors in N number of steps
+colors = make_color_gradient([0 0 0; 0 1 0], 40);
+showcolormap(colors);
+
 % to list subject's labels, in subj-label format
-list_electrodes('D14');
+list_electrodes('D18');
 
 % to get labels from experiment.mat, use the following
-list_electrodes_from_experiment({'D14', 'D15'});
+list_electrodes_from_experiment({'D18', 'D19'});
 
 % to list subjects in recon folder
 list_recon_subjs
 
-end
+% to list subjects and electrode type
+list_recon_subjs_by_elec_type
+
+% to set colorbar value to be a certain color
+set_caxis_color
+
