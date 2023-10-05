@@ -9,8 +9,8 @@ function plot_elec_density(subj_list, thresh, avgsubj, cfg)
 
 recondir = get_recondir();
 
+%ptype = 'pial';
 ptype = 'pial';
-%ptype = 'inflated';
 %% Load Defaults like electrode size, font color, etc.
 if nargin < 2 || isempty(thresh)
     thresh = 5;
@@ -101,7 +101,7 @@ distV{3} = distV{1};
 distV{4} = distV{1};
 groupSubjs = cellfun(@(a) str2double(a(2:end)), groupSubjs);
 tic
-if 0
+if 1
     for v = 1:size(cort.vert, 1)
         V = cort.vert(v,:);
         dist_to_each_elec = sqrt(sum((groupAvgCoords - V).^2, 2));
@@ -114,7 +114,7 @@ if 0
     end
 end
 
-if 1
+if 0
     % first find vertices that are within thresh distance of any electrode
     % this reduces calculation time in next for loop
     maskV = zeros(size(cort.vert, 1), size(groupAvgCoords, 1));
@@ -148,7 +148,7 @@ for i = 1:4
     set(f, 'color', cfg.background_color);
     
     axis tight; axis equal;
-    shading flat;
+     shading flat;
     lighting gouraud; material dull;
     
     % alpha(cfg.alpha);

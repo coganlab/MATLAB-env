@@ -1,4 +1,4 @@
-function [map, limits, cmap]=vals2Colormap(vals,type,cmap,minmax)
+function [map, limits, cmap]=vals2Colormap(vals,type,cmap,minmax,transPoint)
 %function [map, limits, cmap]=vals2Colormap(vals,type,cmap,minmax)
 % creates colormap (i.e., colorscale)
 %
@@ -35,17 +35,16 @@ function [map, limits, cmap]=vals2Colormap(vals,type,cmap,minmax)
 % 2015-4: Made compatible with Matlab 2014's parula cmap: DG
 % 2015-4: Can handle saturated colormaps: Kathrin Müsch
 
-if nargin<3,
-    if verLessThan('matlab','8.0.1')
-        cmap='jet';
-    else
-        cmap='parula';
-    end
+arguments
+    vals
+    type
+    cmap = 'parula';
+    minmax = [];
+    transPoint = [];
 end
 
-if nargin<4
-    minmax=[];
-end
+
+
 
 if isnumeric(type)
    minmax=type;
@@ -64,11 +63,13 @@ if isnumeric(type)
     if length(type)~=2,
         error('Numeric value of "type" must be two dimensional.');
     end
-    rgb_vals=cmap2rgb_vals(cmap);
-    n_colors=size(rgb_vals,1);
+   
     
     cbar_max=max(type);
     cbar_min=min(type);
+    rgb_vals=cmap2rgb_vals(cmap,transPoint,[cbar_min cbar_max]);
+    %     rgb_vals=colormap(cmap);
+    n_colors=size(rgb_vals,1);
     temp_vals=vals-cbar_min;
     temp_vals=temp_vals/(cbar_max-cbar_min); %should range from 0 to 1
     temp_vals=temp_vals*(n_colors-1)+1; %should range from 1 to n_colors
@@ -77,8 +78,7 @@ if isnumeric(type)
 
 elseif strcmpi(type,'absmax')
     %absmax color scaling
-    rgb_vals=cmap2rgb_vals(cmap);
-    n_colors=size(rgb_vals,1);
+    
     
     if isempty(minmax)
         cbar_max=max(abs(vals));
@@ -87,14 +87,15 @@ elseif strcmpi(type,'absmax')
         cbar_max=max(abs(minmax));
         cbar_min=-cbar_max;
     end
+    rgb_vals=cmap2rgb_vals(cmap,transPoint,[cbar_min cbar_max]);
+    %     rgb_vals=colormap(cmap);
+    n_colors=size(rgb_vals,1);
     temp_vals=((vals/cbar_max)+1)/2; %should range from 0 to 1
     temp_vals=round(temp_vals*(n_colors-1)+1); %should range from 1 to n_colors
     map=rgb_vals(temp_vals,:);
 elseif strcmpi(type,'minmax')
     %minmax color scaling
-    rgb_vals=cmap2rgb_vals(cmap);
-    %     rgb_vals=colormap(cmap);
-    n_colors=size(rgb_vals,1);
+    
     
     if isempty(minmax)
         cbar_max=max(vals);
@@ -103,6 +104,10 @@ elseif strcmpi(type,'minmax')
         cbar_max=max(minmax);
         cbar_min=min(minmax);
     end
+
+    rgb_vals=cmap2rgb_vals(cmap,transPoint,[cbar_min cbar_max]);
+    %     rgb_vals=colormap(cmap);
+    n_colors=size(rgb_vals,1);
     
     cval = linspace(cbar_min,cbar_max,n_colors)';
     nVals=length(vals);
@@ -156,16 +161,35 @@ end
 limits=[cbar_min cbar_max];
 
 
-function  rgb_vals=cmap2rgb_vals(cmap)
-switch cmap
-    case {'parula','jet','winter','cool','spring','summer','autumn','hsv','hot','gray','bone','copper','pink'}
-        rgb_vals=colormap(cmap);
-        %     case {'jet'}
-        %         rgb_vals=colormap('jet');
-        %         %load jet_cmap
-    case {'rb'}
-        rgb_vals=[linspace(0,1,32)' linspace(0,1,32)' ones(32,1); ...
-            ones(32,1) linspace(1,0,32)' linspace(1,0,32)']; 
-    otherwise
-        error('I do not recognize cmap of type: %s',cmap);
+function  rgb_vals=cmap2rgb_vals(cmap,transPoint,clim)
+if(isnumeric(cmap))
+    if(size(cmap,1)>2)
+        if(isempty(transPoint))
+            rgb_vals = make_color_gradient_diff_steps(cmap,[300 700]);
+        else
+            n_steps = 1000;
+            c_white = transPoint;
+            c_array = linspace(clim(1),clim(2),n_steps);
+            c_step_white = round(find(c_array>=c_white,1)/2);
+            diff_step = n_steps-(size(cmap,1)-2).*c_step_white;
+            [repmat(c_step_white,1,(size(cmap,1)-1)) diff_step]
+            rgb_vals = make_color_gradient_diff_steps(cmap, [repmat(c_step_white,1,(size(cmap,1)-2)) diff_step]);
+         
+        end
+    else
+        rgb_vals = make_color_gradient(cmap,1000);
+    end
+else
+    switch cmap
+        case {'parula','jet','winter','cool','spring','summer','autumn','hsv','hot','gray','bone','copper','pink','sky'}
+            rgb_vals=colormap(cmap);
+            %     case {'jet'}
+            %         rgb_vals=colormap('jet');
+            %         %load jet_cmap
+        case {'rb'}
+            rgb_vals=[linspace(0,1,32)' linspace(0,1,32)' ones(32,1); ...
+                ones(32,1) linspace(1,0,32)' linspace(1,0,32)']; 
+        otherwise
+            error('I do not recognize cmap of type: %s',cmap);
+    end
 end

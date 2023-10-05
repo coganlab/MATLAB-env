@@ -1,4 +1,4 @@
-function hCbar = cbarDGplus(pos,limits,cmapName,nTick,units,unitLocation,fontSize)
+function hCbar = cbarDGplus(pos,limits,cmap,nTick,units,unitLocation,fontSize,transPoint,clim)
 %function hCbar = cbarDGplus(pos,limits,cmapName,nTick,units,unitLocation,fontSize)
 %
 % Adds a colorbar to a figure
@@ -20,7 +20,7 @@ function hCbar = cbarDGplus(pos,limits,cmapName,nTick,units,unitLocation,fontSiz
 % March 2016
 
 if nargin<3,
-    cmapName=[];
+    cmap=[];
 end
 
 if nargin<4,
@@ -38,20 +38,50 @@ elseif ~strcmpi(unitLocation,'top') && ~strcmpi(unitLocation,'right')
 end
 
 if nargin<7,
-   fontSize=12; 
+   fontSize=20; 
 end
+
+if nargin<8,
+   transPoint=[];
+   
+end
+
+if nargin<9,
+   clim=[];
+   
+end
+
+cbar_min = clim(1);
+cbar_max = clim(2);
 
 % Colorbar for electrodes
 hCbar=axes('position',pos);
-if isempty(cmapName)
+if isempty(cmap)
     colormap('parula');
+elseif isnumeric(cmap)
+    if(size(cmap,1)>2)
+        if(isempty(transPoint))
+            rgb_vals = make_color_gradient_diff_steps(cmap,[300 700]);
+        else
+            n_steps = 1000;
+            c_white = transPoint;
+            c_array = linspace(cbar_min,cbar_max,n_steps);
+            c_step_white = round(find(c_array>=c_white,1)/2);
+            diff_step = n_steps-(size(cmap,1)-2).*c_step_white;
+            rgb_vals = make_color_gradient_diff_steps(cmap, [repmat(c_step_white,1,(size(cmap,1)-2)) diff_step]);
+         
+        end
+    else
+        rgb_vals = make_color_gradient(cmap,1000);
+    end
+    colormap(rgb_vals);
 else
-    colormap(cmapName);
+    colormap(cmap);
 end
 map=colormap;
 n_colors=size(map,1);
 
-cbarDG(hCbar,1:n_colors,limits,nTick,cmapName);
+cbarDG(hCbar,1:n_colors,limits,nTick,cmap);
 if strcmpi(unitLocation,'top')
     if ~isempty(units)
         ht=title(units);

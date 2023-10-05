@@ -1,4 +1,4 @@
-function handles = plot_subjs_on_average_grouping(subj_labels, grouping_idx, avgsubj, cfg)
+function plot_subjs_on_average_grouping(subj_labels, grouping_idx, avgsubj, cfg)
 % PLOT_ELEC_ON_AVERAGE_GROUPING    Plots electrodes on average brain.
 % Electrodes with the same grouping_idx will have the same color.
 %
@@ -17,5 +17,5 @@ usubjs = unique(subjs);
 cfg.subj_labels = subj_labels;
 cfg.grouping_idx = grouping_idx;
 
-handles = plot_subjs_on_average(usubjs, avgsubj, cfg);
+plot_subjs_on_average(usubjs, avgsubj, cfg);
 end

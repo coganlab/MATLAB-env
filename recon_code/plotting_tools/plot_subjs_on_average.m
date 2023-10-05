@@ -84,6 +84,5 @@ if cfg.show_labels
     handles.labels = plot_elec_labels(groupAvgCoords, groupLabels, cfg.font_size, cfg.font_color, cfg.label_every_n);
 end
 
-
-% legendf(labels_legend, color_legend);
+%legendf(labels_legend, color_legend);
 end

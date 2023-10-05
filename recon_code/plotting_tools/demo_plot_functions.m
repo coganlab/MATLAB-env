@@ -107,8 +107,10 @@ grouping_idx = randi([1 4], numel(subj_labels), 1);
 plot_subj_grouping(subj_labels, grouping_idx, cfg);
 
 %% Plot electrode density maps
-cfg = [];
-plot_elec_density({'D24', 'D28'}, 15, 'fsaverage', cfg);
+
+cfg = plot_defaults([]);
+cfg.hemisphere = 'l';
+plot_elec_density({'D70', 'D71'}, 10, 'fsaverage', cfg);
 % if you want to fix color limits across different figures
 %    >> figure(1); ca = caxis; figure(2); caxis(ca);
 % if this causes 0 value to no longer be grey use
@@ -161,14 +163,14 @@ pull_labels_toward_camera(handles.labels, 28);
 set_colors
 
 % make a gradient of colors in N number of steps
-colors = make_color_gradient([1 0 0; 0 1 0; 0 0 1], 40);
+colors = make_color_gradient([0.5 0.5 0.5; 1 1 0; 1 0 0], 100);
 showcolormap(colors);
 
 % to list subject's labels, in subj-label format
-list_electrodes('D14');
+list_electrodes('D18');
 
 % to get labels from experiment.mat, use the following
-list_electrodes_from_experiment({'D14', 'D15'});
+list_electrodes_from_experiment({'D18', 'D19'});
 
 % to list subjects in recon folder
 list_recon_subjs
@@ -179,4 +181,3 @@ list_recon_subjs_by_elec_type
 % to set colorbar value to be a certain color
 set_caxis_color
 
-end

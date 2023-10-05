@@ -128,6 +128,9 @@ if nargin<5 || isempty(cmapName),
     else
         map = colormap('parula');
     end
+elseif isnumeric(cmapName)
+    rgb_vals = make_color_gradient(cmapName,1000);
+    map = colormap(rgb_vals);
 else
    map=colormap(cmapName); 
 end

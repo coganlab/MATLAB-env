@@ -12,8 +12,8 @@ cfg.elec_colors = parula(length(activation_values));
 
 %Normalizing activation values to discrete integer ids
 %
-% activation_norm = round(minmaxscaler(activation_values).*length(activation_values));
-activation_norm = round(iqrnorm(activation_values').*length(activation_values));
+ activation_norm = round(minmaxscaler(activation_values).*length(activation_values));
+%activation_norm = round(iqrnorm(activation_values').*length(activation_values));
 activation_norm(activation_norm<1) = 1;
 activation_norm(activation_norm>length(activation_values)) = length(activation_values);
 plot_subjs_on_average_grouping(subj_labels, activation_norm', avgsubj, cfg);
