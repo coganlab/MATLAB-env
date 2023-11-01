@@ -1,4 +1,4 @@
-function [zValsRawAct pValsRaw actClust]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
+function [zValsRawAct, pValsRaw, actClust]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
 
 % function [zValsRaw pValsRaw permval2]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
 % 
@@ -84,19 +84,21 @@ idx2=size(aSig,1)+1:size(combval,1);
           permval(iPerm,iTime)=mean(combval(sIdx(idx1),iTime))-mean(combval(sIdx(idx2),iTime));
       end
            permval2(iPerm,:,:)=combval(sIdx,:); %nperm x combined trials x time
-     
+  end
       %    if numTails==1
-      for iTime=1:size(aSig,2)
-%           pValsRawOne(iTime)=length(find(permval(:,iTime)>actdiff(iTime)))./nPerm; 
-%           pValsRawTwo(iTime)=length(find(abs(permval(:,iTime))>abs(actdiff(iTime))))./nPerm;
-          pValsRawOne(iTime)=sum(permval(:,iTime)>actdiff(iTime))./nPerm; 
-          pValsRawTwo(iTime)=sum(abs(permval(:,iTime))>abs(actdiff(iTime)))./nPerm;           
-          
-      end
+       pValsRawOne=sum(permval>actdiff)./nPerm; 
+       pValsRawTwo=sum(abs(permval)>abs(actdiff))./nPerm;      
+%       for iTime=1:size(aSig,2)
+% %           pValsRawOne(iTime)=length(find(permval(:,iTime)>actdiff(iTime)))./nPerm; 
+% %           pValsRawTwo(iTime)=length(find(abs(permval(:,iTime))>abs(actdiff(iTime))))./nPerm;
+%           pValsRawOne(iTime)=sum(permval(:,iTime)>actdiff(iTime))./nPerm; 
+%           pValsRawTwo(iTime)=sum(abs(permval(:,iTime))>abs(actdiff(iTime)))./nPerm;           
+%           
+%       end
       %    elseif numTails==2
       %   pValsRaw(iTime)=length(find(abs(permval)>abs(actdiff(iTime))))./nPerm;
       %    end
-  end
+  
  % toc
 ii=find(pValsRawOne==1);
 pValsRawOne(ii)=1-1/nPerm;%.9999;
@@ -121,13 +123,16 @@ zValsRawActTwo=norminv(1-pValsRawTwo);
      idx1=setdiff(1:size(permval2,1),iPerm);
      actDiffT=permval3(iPerm,:); % 1 x time points
      permvalsT=permval3(idx1,:); % all except current trial x time points
+
+      pValsRawPermTOne(iPerm,:)=sum(permvalsT>actDiffT)./(nPerm-1);
+      pValsRawPermTTwo(iPerm,:)=sum(abs(permvalsT)>abs(actDiffT))./(nPerm-1);    
      
-     for iTime=1:size(aSig,2)
-%          pValsRawPermTOne(iPerm,iTime)=length(find(permvalsT(:,iTime)>actDiffT(iTime)))./(nPerm-1);
-%          pValsRawPermTTwo(iPerm,iTime)=length(find(abs(permvalsT(:,iTime))>abs(actDiffT(iTime))))./(nPerm-1); 
-         pValsRawPermTOne(iPerm,iTime)=sum(permvalsT(:,iTime)>actDiffT(iTime))./(nPerm-1);
-         pValsRawPermTTwo(iPerm,iTime)=sum(abs(permvalsT(:,iTime))>abs(actDiffT(iTime)))./(nPerm-1);           
-     end
+%      for iTime=1:size(aSig,2)
+% %          pValsRawPermTOne(iPerm,iTime)=length(find(permvalsT(:,iTime)>actDiffT(iTime)))./(nPerm-1);
+% %          pValsRawPermTTwo(iPerm,iTime)=length(find(abs(permvalsT(:,iTime))>abs(actDiffT(iTime))))./(nPerm-1); 
+%          pValsRawPermTOne(iPerm,iTime)=sum(permvalsT(:,iTime)>actDiffT(iTime))./(nPerm-1);
+%          pValsRawPermTTwo(iPerm,iTime)=sum(abs(permvalsT(:,iTime))>abs(actDiffT(iTime)))./(nPerm-1);           
+%      end
    
  end
 
