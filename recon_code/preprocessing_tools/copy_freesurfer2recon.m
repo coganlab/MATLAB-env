@@ -37,6 +37,8 @@ to_copy = {
     'surf/rh.sphere.reg'
     'surf/lh.inflated'
     'surf/rh.inflated'
+%     'surf/lh.sulc'
+%     'surf/rh.sulc'
     'label/lh.BA_exvivo.annot'
     'label/lh.BA_exvivo.thresh.annot'
     'label/lh.aparc.DKTatlas.annot'
