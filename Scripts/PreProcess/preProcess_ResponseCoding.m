@@ -4,19 +4,20 @@ global TASK_DIR
 global experiment
 global DUKEDIR
 global RESPONSE_DIR
-%BOX_DIR='C:\Users\gcoga\Box';
-BOX_DIR='H:\Box Sync';
+% BOX_DIR='C:\Users\gbc8\Box\';
+%BOX_DIR='C:\Users\ae166\Box';
 RECONDIR=[BOX_DIR '\ECoG_Recon'];
-RESPONSE_DIR=[BOX_DIR '\CoganLab\ECoG_Task_Data\response_coding\response_coding_results_PaleeEdits'];
 
-addpath(genpath([BOX_DIR '\CoganLab\Scripts\']));
-addpath(genpath([RECONDIR]));
+%addpath(genpath([BOX_DIR '\CoganLab\Scripts\']));
+%addpath(genpath([RECONDIR]));
 Task=[];
 Task.Name='Phoneme_Sequencing';
 %Task.Name='LexicalDecRepDelay';
 %Task.Name='LexicalDecRepNoDelay';
-%%Task.Name='SentenceRep';
+%Task.Name='SentenceRep';
 %Task.Name='Uniqueness_Point';
+RESPONSE_DIR=[BOX_DIR '\CoganLab\ECoG_Task_Data\response_coding\response_coding_results'];
+
 TASK_DIR=([BOX_DIR '/CoganLab/D_Data/' Task.Name]);
 DUKEDIR=TASK_DIR;
 Task.Directory=DUKEDIR;
@@ -34,7 +35,7 @@ Subject = popTaskSubjectData(Task);
 % elseif strcmp(Task.Name','Uniqueness_Point')
 %     Task.Number=5;
 % end
-
+%%
 % figure out which of them have response coding behaviorally coded 
 counter=0;
 for iSN=1:length(Subject);
@@ -60,15 +61,20 @@ if isfield(Trials,'ResponseStart')
 end
 end
 SNListNotDone=setdiff(SNList,SNListDone);
+
+
 for iSN=1:length(SNListNotDone);
+    
     SN=SNListNotDone(iSN);
+    Subject(SN).Name
     errors=[];
     cue_events=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name  '\cue_events.txt']);
     condition_events=readtable([RESPONSE_DIR '\'  Task.Name '\' Subject(SN).Name '\condition_events.txt']);
     
     response_coding=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\response_coding.txt']);
-    if exist([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\errors.txt']);
-        errors = readtable([RESPONSE_DIR '\' Subject(SN).Name '_task00' num2str(Task.Number) '\errors.txt']);
+    if exist([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\errors.txt'])
+        %errors = readtable([RESPONSE_DIR '\' Subject(SN).Name '_task00' num2str(Task.Number) '\errors.txt']);
+        errors=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\errors.txt'])
     else
         errors=[];
     end
@@ -77,11 +83,11 @@ for iSN=1:length(SNListNotDone);
 % does size of T equal size of Trials
 
 if size(cue_events,1)~=length(Subject(SN).Trials)
-    display('cue events length mismatch!')
+    disp('cue events length mismatch!');
 end
 
 if size(response_coding,1)+size(errors,1)~=length(Subject(SN).Trials)
-    display('response/errors coding length mismatch!')
+    disp('response/errors coding length mismatch!');
 end
 
 % get cue onset times
@@ -197,10 +203,10 @@ end
 
 Trials=Subject(SN).Trials;
 trialNum=[];
-for iTrials=1:length(Trials);
+for iTrials=1:length(Trials)
     trialNum(iTrials)=Trials(iTrials).Trial;
 end
-for iTrials=1:length(Trials);    
+for iTrials=1:length(Trials)   
     if response_vals(iTrials,1)>0
         Trials(iTrials).ResponseStart=30000*(response_vals(trialNum(iTrials),1)-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
         Trials(iTrials).ResponseEnd=30000*(response_vals(trialNum(iTrials),2)-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
