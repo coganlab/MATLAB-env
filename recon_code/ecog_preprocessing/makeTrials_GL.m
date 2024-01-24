@@ -12,17 +12,15 @@ arguments
     date
 end
 
-global BOX_DIR
-subj_dir = fullfile(BOX_DIR, 'CoganLab', 'D_Data', 'GlobalLocal', subject);
-
-disp(int2str(sub));
+global RECONDIR
+subj_dir = fullfile(RECONDIR, '..', 'CoganLab', 'D_Data', 'GlobalLocal', subject);
 
 %edf file
 edf_filename = [subj_dir filesep subject ' ' date ' COGAN_GLOBALLOCAL.EDF'];
 h = edfread_fast(edf_filename);
 
 %behavioral file
-t = readtable([sub_dir filesep 'Trials.csv']);
+t = readtable([subj_dir filesep 'Trials.csv']);
 
 % remove any break trials
 t = t(strcmp(t.logType,'task'),:);
