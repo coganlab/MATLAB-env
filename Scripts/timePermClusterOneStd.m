@@ -1,4 +1,4 @@
-function [zValsRawAct, pValsRaw, actClust]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
+function [zValsRawAct, pValsRaw, actClust]=timePermClusterOneStd(aSig,bSig,nPerm,numTails,zThresh)
 
 % function [zValsRaw pValsRaw permval2]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
 % 
@@ -63,7 +63,9 @@ end
 
 
 % compute actual difference, shuffle, and compute pvalues
-    actdiff=mean(aSig)-mean(bSig);
+    actdiffMean=median(aSig-bSig);
+    %actdiffMean=median(aSig);
+    
     combval=cat(1,aSig,bSig);
     permval2=zeros(nPerm,size(combval,1),size(combval,2));
 pValsRawOne=zeros(size(aSig,2),1);
@@ -74,20 +76,25 @@ idx2=size(aSig,1)+1:size(combval,1);
 %tic
   %  actdiff=mean(aSig(:,iTime))-mean(bSig(:,iTime));
   %  combval=cat(1,aSig(:,iTime),bSig(:,iTime));
-  permval=zeros(nPerm,size(aSig,2));
+  permvalMean=zeros(nPerm,size(aSig,2));
+  permvalStd=zeros(nPerm,size(aSig,2));
   
   for iPerm=1:nPerm
       
       %    sIdx=shuffle(1:size(combval,1));
       sIdx=randperm(size(combval,1));
       for iTime=1:size(aSig,2)
-          permval(iPerm,iTime)=mean(combval(sIdx(idx1),iTime))-mean(combval(sIdx(idx2),iTime));
+          permvalMean(iPerm,iTime)=median(combval(sIdx(idx1),iTime)-combval(sIdx(idx2),iTime));
+          permvalStd(iPerm,iTime)=std(combval(sIdx(idx1),iTime)-combval(sIdx(idx1),iTime),0,1);
+%           permvalMean(iPerm,iTime)=median(combval(sIdx(idx1),iTime));
+%           permvalStd(iPerm,iTime)=std(combval(sIdx(idx1),iTime),0,1);
+     
       end
            permval2(iPerm,:,:)=combval(sIdx,:); %nperm x combined trials x time
   end
       %    if numTails==1
-       pValsRawOne=sum(permval>actdiff)./nPerm; 
-       pValsRawTwo=sum(abs(permval)>abs(actdiff))./nPerm;      
+       pValsRawOne=sum((permvalMean+permvalStd)>actdiffMean)./nPerm; 
+       pValsRawTwo=sum(abs(permvalMean+permvalStd)>abs(actdiffMean))./nPerm;      
 %       for iTime=1:size(aSig,2)
 % %           pValsRawOne(iTime)=length(find(permval(:,iTime)>actdiff(iTime)))./nPerm; 
 % %           pValsRawTwo(iTime)=length(find(abs(permval(:,iTime))>abs(actdiff(iTime))))./nPerm;
@@ -114,18 +121,28 @@ zValsRawActTwo=norminv(1-pValsRawTwo);
 % tic
  idxA=1:size(aSig,1); % trial # of first cond
  idxB=size(aSig,1)+1:size(permval2,2); % trial # of first cond plus total comb trials
- permval3=sq(mean(permval2(:,idxA,:),2)-mean(permval2(:,idxB,:),2)); % 
+ permval3Mean=sq(median(permval2(:,idxA,:),2)-median(permval2(:,idxB,:),2)); % 
+ for iPerm = 1:size(permval2,1)
+    permval3Std(iPerm,:)=std(squeeze(permval2(iPerm,idxA,:))-squeeze(permval2(iPerm,idxB,:)),0,1); %
+ end
+%  permval3Mean=squeeze(median(permval2(:,idxA,:),2)); % 
+%  for iPerm = 1:size(permval2,1)
+%     permval3Std(iPerm,:)=std(squeeze(permval2(iPerm,idxA,:)),0,1); %
+%  end
  pValsRawPermTOne=zeros(nPerm,size(permval2,3)); 
  pValsRawPermTTwo=zeros(nPerm,size(permval2,3));
 
  
  for iPerm=1:size(permval2,1)
      idx1=setdiff(1:size(permval2,1),iPerm);
-     actDiffT=permval3(iPerm,:); % 1 x time points
-     permvalsT=permval3(idx1,:); % all except current trial x time points
+     actDiffTMean=permval3Mean(iPerm,:); % 1 x time points
+     permvalsTMean=permval3Mean(idx1,:); % all except current trial x time points
 
-      pValsRawPermTOne(iPerm,:)=sum(permvalsT>actDiffT)./(nPerm-1);
-      pValsRawPermTTwo(iPerm,:)=sum(abs(permvalsT)>abs(actDiffT))./(nPerm-1);    
+     actDiffTStd=permval3Std(iPerm,:); % 1 x time points
+     permvalsTStd=permval3Std(idx1,:); % all except current trial x time points
+
+      pValsRawPermTOne(iPerm,:)=sum((permvalsTMean+permvalsTStd)>actDiffTMean)./(nPerm-1);
+      pValsRawPermTTwo(iPerm,:)=sum(abs(permvalsTMean+permvalsTStd)>abs(actDiffTMean))./(nPerm-1);    
      
 %      for iTime=1:size(aSig,2)
 % %          pValsRawPermTOne(iPerm,iTime)=length(find(permvalsT(:,iTime)>actDiffT(iTime)))./(nPerm-1);

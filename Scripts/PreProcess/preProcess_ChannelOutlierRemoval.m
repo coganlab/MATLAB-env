@@ -1,6 +1,9 @@
-function preProcess_ChannelOutlierRemoval(Task)
+function preProcess_ChannelOutlierRemoval(Task,options)
 % Task is a structure with .Name = Task Name
-
+arguments
+    Task
+    options.subjNum = []
+end
 global BOX_DIR
 global RECONDIR
 global TASK_DIR
@@ -19,17 +22,23 @@ DUKEDIR=TASK_DIR;
 % Populate Subject file
 Subject = popTaskSubjectData(Task);
 
+if(isempty(options.subjNum))
+    subjIds = 1:length(Subject);
+else
+    subjIds = options.subjNum;
+end
 
-
-for iSN=1:length(Subject)
+for iSN=subjIds
     load([TASK_DIR '/' Subject(iSN).Name '/mat/experiment.mat']);
     load([TASK_DIR '/' Subject(iSN).Name '/' Subject(iSN).Date '/mat/Trials.mat'])
    
     % find bad channels based on 
-    if ~exist([TASK_DIR '/' Subject(iSN).Name '/badChannels.mat'])
-        badChannels = channelOutlierRemoval(Subject(iSN),Task,Trials,Task.Outlier.Field);
-        save([TASK_DIR '/' Subject(iSN).Name '/badChannels.mat'],'badChannels');
-        Subject(iSN).badChannels=badChannels;
-    end    
+    if (~isempty(Subject(iSN).Rec))
+        if ~exist([TASK_DIR '/' Subject(iSN).Name '/badChannels.mat'])
+            badChannels = channelOutlierRemoval(Subject(iSN),Task,Trials,Task.Outlier.Field);
+            save([TASK_DIR '/' Subject(iSN).Name '/badChannels.mat'],'badChannels');
+            Subject(iSN).badChannels=badChannels;
+        end    
+    end
 end
 

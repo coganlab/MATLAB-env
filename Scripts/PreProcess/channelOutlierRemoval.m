@@ -3,7 +3,9 @@ global BOX_DIR
 global TASK_DIR
 global experiment
 outlierSD=3;
+Subj.Name
 ieeg=trialIEEG(Trials,Subj.ChannelNums,Field,[-2000 5000]);
+
 %ieegR=zeros(size(ieeg,2),size(ieeg,1)*size(ieeg,3));
 % for iChan=1:size(ieeg,2);
 %     disp([iChan '/' size(ieeg,2)]);

@@ -1,4 +1,4 @@
-function [zValsRawAct, pValsRaw, actClust]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
+function [zValsRawAct, pValsRaw, actClust]=timePermClusterActualComp(aSig,bSig,nPerm,numTails,zThresh)
 
 % function [zValsRaw pValsRaw permval2]=timePermCluster(aSig,bSig,nPerm,numTails,zThresh)
 % 
@@ -63,7 +63,9 @@ end
 
 
 % compute actual difference, shuffle, and compute pvalues
-    actdiff=mean(aSig)-mean(bSig);
+   % actdiff=mean(aSig)-mean(bSig);
+   actdiff = calculateTStatistic(aSig,bSig);
+    %actdiff = mean(aSig);
     combval=cat(1,aSig,bSig);
     permval2=zeros(nPerm,size(combval,1),size(combval,2));
 pValsRawOne=zeros(size(aSig,2),1);
@@ -80,9 +82,10 @@ idx2=size(aSig,1)+1:size(combval,1);
       
       %    sIdx=shuffle(1:size(combval,1));
       sIdx=randperm(size(combval,1));
-      for iTime=1:size(aSig,2)
-          permval(iPerm,iTime)=mean(combval(sIdx(idx1),iTime))-mean(combval(sIdx(idx2),iTime));
-      end
+      permval(iPerm,:) = calculateTStatistic(combval(sIdx(idx1),:),combval(sIdx(idx2),:));
+%       for iTime=1:size(aSig,2)
+%           permval(iPerm,iTime)=mean(combval(sIdx(idx1),iTime))-mean(combval(sIdx(idx2),iTime));
+%       end
            permval2(iPerm,:,:)=combval(sIdx,:); %nperm x combined trials x time
   end
       %    if numTails==1
@@ -114,13 +117,17 @@ zValsRawActTwo=norminv(1-pValsRawTwo);
 % tic
  idxA=1:size(aSig,1); % trial # of first cond
  idxB=size(aSig,1)+1:size(permval2,2); % trial # of first cond plus total comb trials
- permval3=sq(mean(permval2(:,idxA,:),2)-mean(permval2(:,idxB,:),2)); % 
+ %permval3=squeeze(mean(permval2(:,idxA,:),2)); % 
+%  permval3=sq(mean(permval2(:,idxA,:),2)-mean(permval2(:,idxB,:),2)); % 
+%  permval3 = calculateTStatistic()
  pValsRawPermTOne=zeros(nPerm,size(permval2,3)); 
  pValsRawPermTTwo=zeros(nPerm,size(permval2,3));
-
- 
+ for iPerm = 1:size(permval2,1)
+    permval3(iPerm,:) = calculateTStatistic(squeeze(permval2(iPerm,idxA,:)),squeeze(permval2(iPerm,idxB,:)));
+ end
  for iPerm=1:size(permval2,1)
      idx1=setdiff(1:size(permval2,1),iPerm);
+     
      actDiffT=permval3(iPerm,:); % 1 x time points
      permvalsT=permval3(idx1,:); % all except current trial x time points
 
@@ -228,4 +235,32 @@ elseif numTails==2
    zValsRawAct=zValsRawActTwo;
    pValsRaw=pValsRawTwo;
 end
- 
+end
+ function t_statistic = calculateTStatistic(aSig, bSig)
+    % This function calculates the t-statistic for two time series
+    % Inputs:
+    %   aSig - a matrix of dimensions trials x time for the first time series
+    %   bSig - a matrix of dimensions trials x time for the second time series
+    % Output:
+    %   t_statistic - a vector of t-statistics for each time point
+
+    % Ensure that aSig and bSig are matrices of the same size
+    if size(aSig, 2) ~= size(bSig, 2)
+        error('aSig and bSig must have the same number of time points');
+    end
+
+    % Calculate the means of each time series
+    mean_aSig = mean(aSig, 1); % Mean across trials
+    mean_bSig = mean(bSig, 1); % Mean across trials
+
+    % Calculate the standard deviations
+    std_aSig = std(aSig, 0, 1); % Standard deviation across trials
+    std_bSig = std(bSig, 0, 1); % Standard deviation across trials
+
+    % Determine the number of trials
+    n_aSig = size(aSig, 1);
+    n_bSig = size(bSig, 1);
+
+    % Calculate the t-statistic for each time point
+    t_statistic = (mean_aSig - mean_bSig) ./ sqrt((std_aSig.^2 / n_aSig) + (std_bSig.^2 / n_bSig));
+end

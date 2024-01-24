@@ -51,15 +51,27 @@ eTime = timeDown>=etw(1)&timeDown<=etw(2);
 % Normalization
 if(~isempty(normFactor))
 %dh2 = mapstd(dh2(:,eTime));
-    if(normType==1)
-    dh2Norm = (dh2(:,eTime)-normFactor(:,1))./normFactor(:,2); 
+    if(normType==1) % z-score
+    dh2Norm = (dh2(:,eTime).^2-normFactor(:,1))./normFactor(:,2); 
     end
-    if(normType==2)
-        dh2Norm = (dh2(:,eTime)-normFactor(:,1));
+    if(normType==2) % mean-normalization
+        dh2Norm = (dh2(:,eTime).^2-normFactor(:,1));
+    end
+    if(normType==3) % percentage absolute relative baseline
+        dh2Norm = (dh2(:,eTime).^2-normFactor(:,1))./normFactor(:,1);
+    end
+    if(normType==4) % percentage relative baseline
+        dh2Norm = (dh2(:,eTime).^2./normFactor(:,1));
+    end
+    if(normType==5) % Log-transform baseline
+        dh2Norm = 10.*log10(dh2(:,eTime).^2./normFactor(:,1));
+    end
+    if(normType==6) % Normed baseline
+        dh2Norm = (dh2(:,eTime).^2-normFactor(:,1))./(dh2(:,eTime).^2+normFactor(:,1));
     end
 else
-    dh2Norm = dh2(:,eTime);
-    dh2 = dh2(:,eTime);
+    dh2Norm = dh2(:,eTime).^2;
+    dh2 = dh2(:,eTime).^2;
 end
 
 

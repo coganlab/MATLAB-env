@@ -1,6 +1,6 @@
 % labDrive='E:\Box Sync\CoganLab\';
 % filename=[labDrive 'acoustic_phoneme\TimingInfo.xlsx'];
-filename = 'C:\Users\sd355\Downloads\TimingInfo.xlsx';
+filename = 'C:\Users\sd355\Box\CoganLab\acoustic_phoneme\TimingInfo.xlsx';
 [wordPhonemeTimes,wordPhonemeCat,wordPhonemeRaw]=xlsread(filename,1,'A3:M86');
 [nonwordPhonemeTimes,nonwordPhonemeCat,nonwordPhonemeRaw]=xlsread(filename,2,'A3:M86');
 [tmp,phonemeNames,tmp2]=xlsread(filename,3,'A3:A41');
