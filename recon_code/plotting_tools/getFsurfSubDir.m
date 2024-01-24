@@ -4,8 +4,11 @@ function fsurfSubDir = getFsurfSubDir()
 %   Matlab variable globalFsDir or the shell variable SUBJECTS_DIR
 
 global RECONDIR;
+global globalFsDir
 
-if ~isempty(RECONDIR)
+if ~isempty(globalFsDir)
+    fsurfSubDir=globalFsDir;
+elseif ~isempty(RECONDIR)
     fsurfSubDir=RECONDIR;
 else
     if ispc,
