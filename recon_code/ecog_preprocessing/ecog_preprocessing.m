@@ -2977,6 +2977,9 @@ end
 save('Trials.mat', 'Trials');
 %save('Trials1.mat','Trials');
 %if there are multiple files, also save as Trials1, Trials2, etc.
+%% create a generic Trials.mat (for Global Local)
+
+makeTrials_GL(subj, taskdate)
 
 %% create a generic Trials.mat (for NON-Sternberg tasks)
 % copy to [taskdate]/mat
