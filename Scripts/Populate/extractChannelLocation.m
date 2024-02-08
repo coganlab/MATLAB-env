@@ -4,7 +4,7 @@ function channelInfoAll = extractChannelLocation(Subject, channelNames)
     %   channelNames: Cell array of channel names
     
     subjectNames = {Subject.Name};  % Extract subject names using indexing
-    channelInfoAll = struct('Name', cell(1, numel(channelNames)), 'Location', []);
+    channelInfoAll = struct('Name', cell(1, numel(channelNames)), 'Location', [], 'xyz', []);
     
     % Iterate over each channel name
     for iChan = 1:numel(channelNames)
@@ -22,6 +22,7 @@ function channelInfoAll = extractChannelLocation(Subject, channelNames)
                 % Store channel information in channelInfoAll
                 channelInfoAll(iChan).Name = channelNames{iChan};
                 channelInfoAll(iChan).Location = chanInfoSubject(chanId).Location;
+                channelInfoAll(iChan).xyz = chanInfoSubject(chanId).xyz;
             end
         end
     end
