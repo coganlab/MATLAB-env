@@ -5,13 +5,16 @@ function subjInfo = extractRoiInformation(Subject, options)
 %   Subject (struct array): Array of subject information.
 %   options (struct, optional): Options for the extraction process.
 %       - voxRad (double): Radius for electrode location analysis (default: 3).
+%       - parcfn (string): Atlas parcellation function to retrieve ROI
+%       information
 %
 % Returns:
 %   subjInfo (struct array): Extracted ROI information for each subject.
 
 arguments
     Subject
-    options.voxRad = 3;    
+    options.voxRad = 3;  
+    options.parcfn = 'aparc.BN_atlas+aseg'
 end
 
 global RECONDIR
@@ -33,11 +36,11 @@ for iSubject = 1:length(Subject)
     
     % Load electrode locations based on type (SEEG or ECoG)
     if strcmp(Subject(iSubject).Type, 'SEEG')
-        filename = [rfiledir Subject(iSubject).Name '_elec_location_radius_' num2str(options.voxRad) 'mm_aparc+aseg.mgz.csv'];
+        filename = [rfiledir Subject(iSubject).Name '_elec_location_radius_' num2str(options.voxRad) 'mm_' options.parcfn '.mgz.csv'];
         elecInfo = parse_RAS_file([rfiledir Subject(iSubject).Name '_elec_locations_RAS.txt']);
        
     elseif strcmp(Subject(iSubject).Type, 'ECoG')
-        filename = [rfiledir Subject(iSubject).Name '_elec_location_radius_' num2str(options.voxRad) 'mm_aparc+aseg.mgz_brainshifted.csv'];
+        filename = [rfiledir Subject(iSubject).Name '_elec_location_radius_' num2str(options.voxRad) 'mm_' options.parcfn '.mgz_brainshifted.csv'];
         
         % Load brain-shifted electrode locations
         elecInfo = parse_RAS_file([rfiledir Subject(iSubject).Name '_elec_locations_RAS_brainshifted.txt']);

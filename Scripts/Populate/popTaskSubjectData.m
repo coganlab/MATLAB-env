@@ -190,7 +190,7 @@ for iSN = 1:length(SNList)
             chanInfoSubjAligned(iChan).Name=chanInfoSubjChan.Name;
             chanInfoSubjAligned(iChan).xyz=chanInfoSubjChan.xyz;
             chanInfoSubjAligned(iChan).Location=chanInfoSubjChan.Location;
-            if(contains(chanInfoSubjAligned(iChan).Location,["White","hypointensities"]))
+            if(contains(chanInfoSubjAligned(iChan).Location,["White","hypointensities","known"]))
                 wmId = [wmId iChan];
             end
         else
