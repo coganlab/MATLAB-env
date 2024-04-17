@@ -60,12 +60,12 @@ if isfield(Trials,'ResponseStart')
     counter=counter+1;
 end
 end
-SNListNotDone=setdiff(SNList,SNListDone);
+SNListNotDone=setdiff(SNList,SNListDone)
 
-
-for iSN=1:length(SNListNotDone);
+%%
+for iSN=1:length(SNList);
     
-    SN=SNListNotDone(iSN);
+    SN=SNList(iSN);
     Subject(SN).Name
     errors=[];
     cue_events=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name  '\cue_events.txt']);
@@ -92,10 +92,11 @@ end
 
 % get cue onset times
 cue_onsets=[];
+cue_offsets = [];
 for iTrials=1:size(cue_events,1);
     cue_onsets(iTrials)=table2array(cue_events(iTrials,1));
+    cue_offsets(iTrials)=table2array(cue_events(iTrials,2));
 end
-
 
 %LEX DEC REP ONLY get condition values (1 = decision, 2 = repeat)
 if strcmp(Task.Name,'LexicalDecRepDelay')
@@ -199,14 +200,29 @@ if ~strcmp(Task.Name,'SentenceRep')
         end
     end
 end
-
-
 Trials=Subject(SN).Trials;
+ audioStart = [];
+for itrial = 1:length(Trials)
+   audioStart(itrial) = [Trials(itrial).Auditory./30000];   
+end
+cueOnsetCorrected = [];
+for iBlock = 1:4
+    audioStartBlock = audioStart((iBlock-1)*52+1:iBlock*52);
+    cueOnsetBlock = cue_onsets((iBlock-1)*52+1:iBlock*52);
+    audioStartDiff = diff(audioStartBlock);
+    cueOnsetDiff = diff(cueOnsetBlock);
+    cueOnsetBlockCorrected = [cueOnsetBlock(1) cueOnsetBlock(1)+cumsum(audioStartDiff)];
+    cueOnsetCorrected = [cueOnsetCorrected cueOnsetBlockCorrected];
+end
+   
+
+
 trialNum=[];
 for iTrials=1:length(Trials)
     trialNum(iTrials)=Trials(iTrials).Trial;
 end
 for iTrials=1:length(Trials)   
+    Trials(iTrials).AuditoryEnd = 30000*(cue_offsets(trialNum(iTrials))-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
     if response_vals(iTrials,1)>0
         Trials(iTrials).ResponseStart=30000*(response_vals(trialNum(iTrials),1)-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
         Trials(iTrials).ResponseEnd=30000*(response_vals(trialNum(iTrials),2)-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
