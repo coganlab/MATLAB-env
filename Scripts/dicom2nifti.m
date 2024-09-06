@@ -1,4 +1,4 @@
-function dicom2nifti(D63,C:\Users\pa112\Desktop\MRI\D63\CT,'CT')
+function dicom2nifti(subj,subjDir,type)
 
 % 
 %
