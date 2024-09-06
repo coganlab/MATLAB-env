@@ -19,19 +19,27 @@ DUKEDIR=TASK_DIR;
 % Populate Subject file
 Subject = popTaskSubjectData(Task);
 
+nSubj = length(Subject);
 
+for iSN = 1:nSubj
+    currentSubject = Subject(iSN);
 
-for iSN=1:length(Subject)
-    load([TASK_DIR '/' Subject(iSN).Name '/mat/experiment.mat']);
-    load([TASK_DIR '/' Subject(iSN).Name '/' Subject(iSN).Date '/mat/Trials.mat'])
-    
-    % linefilter if not already done
-    for iR=1:length(Subject(iSN).Rec)
-        if Subject(iSN).Rec(iR).lineNoiseFiltered==0
-            ntools_procCleanIEEG([TASK_DIR '/' Subject(iSN).Name '/' ...
-                Subject(iSN).Date '/00' num2str(iR) ...
-                '/' Subject(iSN).Rec(iR).fileNamePrefix]);
+    if ((~isempty(currentSubject.Rec)  && currentSubject.Rec(1).lineNoiseFiltered == 0))
+        iSN
+        experiment = load([TASK_DIR '/' currentSubject.Name '/mat/experiment.mat']);
+        experiment = experiment.experiment;
+        trials = load([TASK_DIR '/' currentSubject.Name '/' currentSubject.Date '/mat/Trials.mat']);
+        Trials = trials.Trials;
+
+        % linefilter if not already done
+        for iR = 1:length(currentSubject.Rec)
+            if currentSubject.Rec(iR).lineNoiseFiltered == 0
+                ntools_procCleanIEEG([TASK_DIR '/' currentSubject.Name '/' ...
+                    currentSubject.Date '/00' num2str(iR) ...
+                    '/' currentSubject.Rec(iR).fileNamePrefix]);
+            end
         end
     end
 end
+
 

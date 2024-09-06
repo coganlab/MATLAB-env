@@ -19,7 +19,7 @@ chanInfo = [];
 
 for iSubj = 1:length(subjRoiInfo)
     TrestSubj = subjRoiInfo(iSubj).Trest;
-    whiteIds = contains({TrestSubj{:, 1}}, ["White", "hypointensities", "nknown"]);
+    whiteIds = contains({TrestSubj{:, 1}}, ["White", "hypointensities", "unknown"]);
     
     for iChan = 1:size(TrestSubj, 1)
         % Iterating through each channel

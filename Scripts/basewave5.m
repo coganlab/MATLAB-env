@@ -94,9 +94,9 @@ scale1=scale;
 fscale=size(period,2);
 
 %....construct empty WAVE array
-wave = zeros(fscale,n);     % define the wavelet array
-wave = zeros(size(f,1),fscale,n);     % define the wavelet array
-wave = wave + i*wave;       % make it complex
+%wave = zeros(fscale,n);     % define the wavelet array
+wave = complex(zeros(size(f,1),fscale,n));     % define the wavelet array
+%wave = wave + i*wave;       % make it complex
 
 %....loop through all scales and compute transform
 for a1 = 1:fscale

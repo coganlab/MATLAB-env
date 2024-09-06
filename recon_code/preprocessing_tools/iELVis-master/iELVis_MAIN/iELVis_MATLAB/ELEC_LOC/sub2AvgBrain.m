@@ -72,6 +72,7 @@ if  ~isfield(cfg,'isLeft'),        isLeft = [];   else    isLeft = cfg.isLeft;  
 if  ~isfield(cfg,'isSubdural'),     isSubdural = [];   else    isSubdural = cfg.isSubdural;      end
 if  ~isfield(cfg,'rmDepths'),       rmDepths = 0;   else    rmDepths = cfg.rmDepths;      end
 if  ~isfield(cfg,'outputTextfile'), outputTextfile = 1;   else    outputTextfile = cfg.outputTextfile;      end
+if  ~isfield(cfg,'brainSpace'), brainSpace = 'pial';   else    brainSpace = cfg.brainSpace;      end
 % checkCfg(cfg,'sub2AvgBrain.m');
 
 if universalYes(outputTextfile) && universalYes(rmDepths)
@@ -214,7 +215,7 @@ for hemLoop=1:2,
             end
         end
         
-        avgPialFname=fullfile(avgDir,'surf',[ hem 'h.pial']);
+        avgPialFname=fullfile(avgDir,'surf',[ hem 'h.' brainSpace]);
         avgPial=readSurfHelper(avgPialFname);
         for a=1:nHemElec,
             if isSubdural(hemElecIds(a)),

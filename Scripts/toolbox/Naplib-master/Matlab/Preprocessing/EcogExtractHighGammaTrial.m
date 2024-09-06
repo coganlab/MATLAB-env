@@ -37,7 +37,7 @@ eTime = time>=etw(1)&time<=etw(2);
 % end
 
 % calculate hilbert envelope:
-[dh,cfs,sigma_fs] = CUprocessingHilbertTransform_filterbankGUI(d, fs, freqRange);
+[dh,cfs,sigma_fs] = CUprocessingHilbertTransform_filterbankGUI_optim(d, fs, freqRange);
 % dh3 = mean(log10(dh.^2),3);
 % dh3 = mapstd(dh3(:,eTime));
 %

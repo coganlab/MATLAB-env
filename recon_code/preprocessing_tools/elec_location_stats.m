@@ -30,8 +30,14 @@ xyz(:,3)=size(parc.vol, 3)-elecMatrix(:,3);
 elec = xyz;
 
 % Load segmentation color table
+
 pathstr = fileparts(which('mgrid2matlab'));
-inFile=fullfile(pathstr,'FreeSurferColorLUTnoFormat.txt');
+if(contains(parc_fn,'BN'))
+    disp('loading Brainnetome atlas')
+    inFile=fullfile(pathstr,'BN_Atlas_246_LUT.txt');
+else
+    inFile=fullfile(pathstr,'FreeSurferColorLUTnoFormat.txt');
+end
 fid=fopen(inFile,'r');
 tbl=textscan(fid,'%d%s%d%d%d%d');
 fclose(fid);
@@ -68,7 +74,7 @@ for r = 1:size(elec,1)
             end
         end
     end
-    uparc = unique(parcvals);
+    uparc = unique(parcvals)
     counts = [];
     for u = 1:numel(uparc)
         counts(u) = sum(parcvals == uparc(u));
