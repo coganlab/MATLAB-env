@@ -33,22 +33,41 @@ switch roiName
         roiLabels = {'A21c','A21r', 'A37dl', 'aSTS'};
     case 'superiortemporal'
         roiLabels = {'A38m','A41/42','TE1.0','TE1.2','A22c','A38l','A22r','rpSTS','cpSTS'};
+    case 'astg'
+        roiLabels = {'A38m','TE1.0','TE1.2','A38l','A22r'};
+    case 'pstg'
+        roiLabels = {'A22c'};
+    case 'heschl'
+        roiLabels = {'A41/42'};
+    case 'sts'
+        roiLabels = {'rpSTS','cpSTS'};
     case 'inferiortemporal'
         roiLabels = {'A20iv','A37elv','A20r','A37elv','A20r','A20il','A37vl','A20cl', 'A20cv','A20rv','A37mv','A37lv'};
     case 'ipc'
         roiLabels = {'A39c','A39rd','A40rd','A40c','A39rv','A40rv'};
     case 'ifg'
-        roiLabels = {'A44d','IFS','A45c','A45r', 'A44op', 'A44v'};
+        roiLabels = {'A44d','A45c','A45r', 'A44op', 'A44v'};
+    case 'opercular'
+        roiLabels = {'A44op','A44d','A44v'};
+    case 'triangular'
+        roiLabels = {'A45c','A45r'};
+     case 'ifs'
+        roiLabels = {'IFS'};
     case 'rmfg'
-        roiLabels = {'A46','A10l'};
+        roiLabels = {'A46','A10l','A9/46v','A9/46d'}; % rostral middle frontal
     case 'cmfg'
-        roiLabels = {'IFJ','A8vl','A6vl','A9/46d','A9/46v'};
+        roiLabels = {'IFJ','A8vl','A6vl'}; % caudal middle frontal
     case 'smc'
-        roiLabels = {'A4hf','A6cdl','A4ul','A4t','A4tl','A6cvl','A1/2/3ll','A4ll', 'A1/2/3ulhf','A1/2/3/tonla','A2','A1/2/3tru'};
+        roiLabels = {'A4hf','A6cdl','A4ul','A4t','A4tl','A5cvl','A1/2/3ll','A4ll', 'A1/2/3ulhf','A1/2/3/tonla','A2','A1/2/3tru'};
     case 'insula'
         roiLabels = {'G','vIa','dIa','vId/vIg','dIg','dId'}; %insula
     case 'sma'
         roiLabels = {'A6m','A6dl'}; %sma
+    case 'precentral'
+        roiLabels = {'A4hf','A6cdl','A4ul','A4t','A4tl','A5cvl'}; %precentral gyrus
+    case 'postcentral'
+        roiLabels = {'A1/2/3ulhf','A1/2/3/tonla','A2','A1/2/3tru'}; %postcentral gyrus
+
 end
 % Switch statement to select the appropriate hemisphere based on the hemisphere input
 switch hemisphere
@@ -57,7 +76,7 @@ switch hemisphere
     case 'rh'
         roiLabels = strcat(roiLabels,'_R');
     case 'bh'
-        roiLabels = {strcat(roiLabels,'_R'), strcat(roiLabels,'_L')};
+        roiLabels = [strcat(roiLabels,'_R'), strcat(roiLabels,'_L')];
 end
 end
 

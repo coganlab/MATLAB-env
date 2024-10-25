@@ -38,7 +38,8 @@ arguments
     options.avgSubj = 'fsaverage';
     options.stype = 'inflated'; % smoothing space
     options.ptype = 'pial'; % display brain
-    options.thresh = 15;    
+    options.gaussFwhm = 15;
+    options.diskThresh = 20;
     options.cLim = [0 1];
     options.colbarTitle string = 'z-score' % colbarTitle: Color axis label (e.g. 'z-score')
     options.colorSteps = 1000;
@@ -47,8 +48,10 @@ arguments
     options.tw = [-1 1.5];
     options.frameRate double =  20 % frameRate: Frame rate of the movie (e.g. 120)
     options.movTitle char = 'patient_space_time_activation' % movTitle: Filename to be saved (e.g. 'S23_highGamma')
-    options.elecDensityThresh = 1;
+    options.elecDensityThresh = 1e-3;
     options.showMesial = 0;
+    options.smoothTime = 10;
+    options.decayFactor = 25;
 end
 
 recondir = get_recondir();
@@ -57,9 +60,10 @@ recondir = get_recondir();
 stype = options.stype;
 ptype = options.ptype;
 avgsubj = options.avgSubj;
-thresh = options.thresh;
+fwhm = options.gaussFwhm;
 cLim = options.cLim;
 cfg = options.cfg;
+diskThresh = options.diskThresh;
 
 
 timeEpoch = linspace(options.tw(1),options.tw(2),size(activation_values,2));
@@ -81,6 +85,7 @@ s2avg.rmDepths = 0;
 s2avg.avgsubj = avgsubj; %fsaverage
 s2avg.plotEm = 0;
 s2avg.use_brainshifted = cfg.use_brainshifted;
+s2avg.brainSpace = stype;
 
 groupAvgCoords = [];
 groupLabels = [];
@@ -122,14 +127,14 @@ end
 %% Filter out labels and coordinates based on cfg.labels and cfg.hemisphere
 mask_to_show = ones(size(groupAvgCoords, 1), 1);
 mask_to_show = mask_to_show == 1;
-esize = cfg.elec_size(1);
+esize = cfg.elec_size(1); %#ok<NASGU> 
 
 if ~isempty(cfg.subj_labels)
-    [mask_to_show, color, esize] = parse_cfg_labels_idx(groupLabels, cfg);
+    [mask_to_show, ~, ~] = parse_cfg_labels_idx(groupLabels, cfg);
     color_legend = cfg.elec_colors;
-    labels_legend = arrayfun(@(a) sprintf('%d', a), 1:size(color_legend, 1), 'un', 0);
+   % labels_legend = arrayfun(@(a) sprintf('%d', a), 1:size(color_legend, 1), 'un', 0);
 else
-    labels_legend = subj_list;
+   % labels_legend = subj_list;
 end
 
 
@@ -151,6 +156,10 @@ activation_values_rh = activation_values(mask_to_show_rh,:);
 
 %% Plot the surface, curvature, and activation of left hemisphere
 cort_lh = load_pial_data(fullfile(recondir, avgsubj, 'surf', smooth_fn_lh));
+% for iElec = 1:size(groupAvgCoords_lh,1)
+%     vId = map_electrode_to_vertex(groupAvgCoords_lh(iElec,:), cort_lh);
+%     groupAvgCoords_lh(iElec,:) = cort_lh.vert(vId,:);
+% end
 activationV_lh = zeros(size(cort_lh.vert,1), size(activation_values_lh,2));
 curv = read_curv(fullfile(recondir, avgsubj, 'surf','lh.curv'));
 
@@ -166,34 +175,67 @@ end
 
 tic
 if 1
-    for iElec = 1:size(groupAvgCoords_lh,1)
+    parfor iElec = 1:size(groupAvgCoords_lh,1)
         
         elecCoord = groupAvgCoords_lh(iElec,:);
-        dist_to_each_vert = sqrt(sum((elecCoord -  cort_lh.vert).^2, 2));
-        sigma = thresh/2.355;
-        gauss_temp =  exp(-dist_to_each_vert.^2./(2*sigma^2));
-        gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
-        gauss_temp = gauss_temp+gauss_temp_dia;        
-        gauss_temp(gauss_temp>1) = 1;
-        gauss_kernel(:,iElec) = gauss_temp;        
+        euc_dist_to_each_vert = sqrt(sum((elecCoord -  cort_lh.vert).^2, 2)); % compute euclidean distance
+        elec_sphere = euc_dist_to_each_vert.^2<=pi/4.*diskThresh^2; % select the 10 mm sphere
+        gauss_temp = zeros(size(euc_dist_to_each_vert));
+        
+        sigma = fwhm/2.355;
+        gauss_temp(elec_sphere) =  exp(-euc_dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+%         euc_dist_to_each_vert = sqrt(sum((elecCoord -  cort_lh.vert).^2, 2)); % compute euclidean distance
+%         elec_sphere = find(euc_dist_to_each_vert<=20); % select the 20 mm sphere
+% 
+%         coordId = dsearchn(cort_lh.vert,elecCoord);% find electrode coordinate id
+%         % set searching constraints
+%         gd_opt = [];
+%         L = zeros(size(cort_lh.vert'))-Inf; L(:,elec_sphere) = +Inf;
+%         gd_opt.constraint_map = L';
+%         [geo_dist_to_each_vert,S,Q] = perform_fast_marching_mesh(cort_lh.vert', cort_lh.tri', coordId,gd_opt);
+% 
+% 
+%         gauss_temp = zeros(size(euc_dist_to_each_vert));
+%         sigma = fwhm/2.355;
+%         gauss_temp(elec_sphere) =  exp(-geo_dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+%         gauss_temp(geo_dist_to_each_vert>diskThresh) = 0;
+%         gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
+%         gauss_temp = gauss_temp+gauss_temp_dia;        
+%         gauss_temp(gauss_temp>1) = 1;
+        %gauss_temp(dist_to_each_vert<=1.1) = 1;
+        gauss_kernel(:,iElec) = gauss_temp;       
     end
     
 end
 gauss_kernel_sum = sum(gauss_kernel,2);
-kernValid = gauss_kernel_sum>=options.elecDensityThresh;
+kernValid = gauss_kernel_sum>options.elecDensityThresh;
 activationV_lh(kernValid,:) = gauss_kernel(kernValid,:)*activation_values_lh./gauss_kernel_sum(kernValid);
+if(options.smoothTime>0)
+    activationV_lh = smoothdata(activationV_lh,2,'gaussian',options.smoothTime);
+end
 
-toc
 overlayData_time_lh = [];
 parfor iTime = 1:size(activationV_lh,2)
     olayDataVec=activationV_lh(:,iTime);
-    [overlayData_lh, oLayLimits, olayCmapName]=vals2Colormap(olayDataVec,cLim ,options.colorscale);
-    maskIds=find(abs(olayDataVec)<=options.transparentPoint);
-    overlayData_lh(maskIds,:)=overlayDataTemp(maskIds,:);
-    overlayData_time_lh(iTime,:,:) = overlayData_lh;
+    [overlayData_lh, ~, ~]=vals2Colormap(olayDataVec,cLim ,options.colorscale,cLim,options.transparentPoint);
+    alphaValues = exp(-abs(olayDataVec - options.transparentPoint) * options.decayFactor);
+    alphaValues(olayDataVec > options.transparentPoint) = 1; % Full color above transparency point
+    alphaValues(alphaValues < 0) = 0; % Ensuring alpha values are not negative
+     
+    
+    % Apply gradient transparency
+    for i = 1:size(overlayData_lh, 1)
+        overlayData_lh(i, :) = overlayData_lh(i, :) .* alphaValues(i) + overlayDataTemp(i, :) .* (1 - alphaValues(i));
+    end
+        overlayData_time_lh(iTime,:,:) = overlayData_lh;
 end
+toc
 %% Plot the surface and elec density of right hemisphere
 cort_rh = load_pial_data(fullfile(recondir, avgsubj, 'surf', smooth_fn_rh));
+% for iElec = 1:size(groupAvgCoords_rh,1)
+%     vId = map_electrode_to_vertex(groupAvgCoords_rh(iElec,:), cort_rh);
+%     groupAvgCoords_rh(iElec,:) = cort_rh.vert(vId,:);
+% end
 activationV_rh = zeros(size(cort_rh.vert,1), size(activation_values_rh,2));
 curv = read_curv(fullfile(recondir, avgsubj, 'surf','rh.curv'));
 
@@ -210,33 +252,59 @@ end
 tic
 if 1
     gauss_kernel = [];
-    for iElec = 1:size(groupAvgCoords_rh,1)
+    parfor iElec = 1:size(groupAvgCoords_rh,1)
         
         elecCoord = groupAvgCoords_rh(iElec,:);
-        dist_to_each_vert = sqrt(sum((elecCoord -  cort_rh.vert).^2, 2));
-        sigma = thresh/2.355;
-        gauss_temp =  exp(-dist_to_each_vert.^2./(2*sigma^2));
-        gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
-        gauss_temp = gauss_temp+gauss_temp_dia;        
-        gauss_temp(gauss_temp>1) = 1;
+        euc_dist_to_each_vert = sqrt(sum((elecCoord -  cort_rh.vert).^2, 2)); % compute euclidean distance
+        elec_sphere = euc_dist_to_each_vert.^2<=pi/4.*diskThresh^2; % select the 10 mm sphere
+        gauss_temp = zeros(size(euc_dist_to_each_vert));
+        
+        sigma = fwhm/2.355;
+        gauss_temp(elec_sphere) =  exp(-euc_dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+%         % set searching constraints
+%           coordId = dsearchn(cort_rh.vert,elecCoord);% find electrode coordinate id
+%         gd_opt = [];
+%         L = zeros(size(cort_rh.vert'))-Inf; L(:,elec_sphere) = +Inf;
+%         gd_opt.constraint_map = L';
+%         [geo_dist_to_each_vert] = perform_fast_marching_mesh(cort_rh.vert', cort_rh.tri', coordId,gd_opt);
+% 
+% 
+%         
+%         
+%         gauss_temp(elec_sphere) =  exp(-geo_dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+% %         gauss_temp(geo_dist_to_each_vert>diskThresh) = 0;
+% %         gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
+% %         gauss_temp = gauss_temp+gauss_temp_dia;        
+% %         gauss_temp(gauss_temp>1) = 1;
+%         %gauss_temp(dist_to_each_vert<=1.1) = 1;
         gauss_kernel(:,iElec) = gauss_temp;        
     end
 end
 gauss_kernel_sum = sum(gauss_kernel,2);
-kernValid = gauss_kernel_sum>=options.elecDensityThresh;
+kernValid = gauss_kernel_sum>options.elecDensityThresh;
 activationV_rh(kernValid,:) = gauss_kernel(kernValid,:)*activation_values_rh./gauss_kernel_sum(kernValid);
+if(options.smoothTime>0)
+    activationV_rh = smoothdata(activationV_rh,2,'gaussian',options.smoothTime);
+end
 
-toc
 overlayData_time_rh = [];
 parfor iTime = 1:size(activationV_rh,2)
     olayDataVec=activationV_rh(:,iTime);
-    [overlayData_rh, oLayLimits, olayCmapName]=vals2Colormap(olayDataVec,cLim ,options.colorscale);
-    maskIds=find(abs(olayDataVec)<options.transparentPoint);
-    overlayData_rh(maskIds,:)=overlayDataTemp(maskIds,:);
+    [overlayData_rh, ~, ~]=vals2Colormap(olayDataVec,cLim ,options.colorscale,cLim,options.transparentPoint);
+    alphaValues = exp(-abs(olayDataVec - options.transparentPoint) * options.decayFactor);
+    alphaValues(olayDataVec > options.transparentPoint) = 1; % Full color above transparency point
+    alphaValues(alphaValues < 0) = 0; % Ensuring alpha values are not negative
+    
+    
+    % Apply gradient transparency
+    for i = 1:size(overlayData_rh, 1)
+        overlayData_rh(i, :) = overlayData_rh(i, :) .* alphaValues(i) + overlayDataTemp(i, :) .* (1 - alphaValues(i));
+    end
+
     overlayData_time_rh(iTime,:,:) = overlayData_rh;
 end
 [~, oLayLimits, olayCmapName]=vals2Colormap(activationV_rh(:,1),cLim ,options.colorscale);
-    
+ toc   
 %% Plot the brain maps
     
     scrsize = get(0, 'Screensize');
@@ -255,7 +323,7 @@ end
         if (options.showMesial)   
                 clf('reset')
                 h1 = subplot(2,2,1); % left hemisphere lateral
-                tripatchDG(cort_lh,h1,overlayData_lh(iTime,:,:));        
+                tripatchDG(cort_lh,h1,squeeze(overlayData_time_lh(iTime,:,:)));        
                 view(270,0)
                 set(h1, 'color', cfg.background_color);
                 alpha 1            
@@ -267,7 +335,7 @@ end
                 camlight_follow(gca);
         
                 h2 = subplot(2,2,3);% left hemisphere medial
-                tripatchDG(cort_lh,h2,overlayData_lh(iTime,:,:));
+                tripatchDG(cort_lh,h2,squeeze(overlayData_time_lh(iTime,:,:)));
                 alpha 1
                 set(h2, 'color', cfg.background_color);
                 axis tight; axis equal;
@@ -280,7 +348,7 @@ end
         
         
                 h3 = subplot(2,2,2); % right hemisphere lateral
-                tripatchDG(cort_rh,h3,overlayData_rh(iTime,:,:));
+                tripatchDG(cort_rh,h3,squeeze(overlayData_time_rh(iTime,:,:)));
                 view(90,0)        
                 alpha 1
                 set(h3, 'color', cfg.background_color);
@@ -292,7 +360,7 @@ end
                 camlight_follow(gca);
         
                 h4 = subplot(2,2,4);% right hemisphere medial
-                tripatchDG(cort_rh,h4,overlayData_rh(iTime,:,:));        
+                tripatchDG(cort_rh,h4,squeeze(overlayData_time_rh(iTime,:,:)));        
                 alpha 1            
                 axis tight; axis equal;
                 view(270,0)                
@@ -303,12 +371,12 @@ end
                 hide_axis(gca);        
                 camlight_follow(gca);
                 pos=[0.1 0.08 0.8150 0.0310];
-                hcbar = cbarDGplus(pos,[oLayLimits(1) oLayLimits(2)],olayCmapName,5,[],'top',15);
+                hcbar = cbarDGplus(pos,[oLayLimits(1) oLayLimits(2)],olayCmapName,5,[],'top',20,options.transparentPoint,cLim);
                 xlabel(hcbar,options.colbarTitle)
         else
                 clf('reset')
                 h1 = subplot(1,2,1); % left hemisphere lateral
-                tripatchDG(cort_lh,h1,overlayData_lh(iTime,:,:));        
+                tripatchDG(cort_lh,h1,squeeze(overlayData_time_lh(iTime,:,:)));        
                 view(270,0)
                 set(h1, 'color', cfg.background_color);
                 alpha 1            
@@ -320,7 +388,7 @@ end
                 camlight_follow(gca);
         
                 h3 = subplot(1,2,2); % right hemisphere lateral
-                tripatchDG(cort_rh,h3,overlayData_rh(iTime,:,:));
+                tripatchDG(cort_rh,h3,squeeze(overlayData_time_rh(iTime,:,:)));
                 view(90,0)        
                 alpha 1
                 set(h3, 'color', cfg.background_color);
@@ -332,7 +400,7 @@ end
                 camlight_follow(gca);
         
                 pos=[0.1 0.06 0.8150 0.0310];
-                hcbar = cbarDGplus(pos,[oLayLimits(1) oLayLimits(2)],olayCmapName,5,[],'top',20);
+                hcbar = cbarDGplus(pos,[oLayLimits(1) oLayLimits(2)],olayCmapName,5,[],'top',20,options.transparentPoint,cLim);
                 xlabel(hcbar,options.colbarTitle)
         end
         sgtitle([num2str(round(timeEpoch(iTime),2)) ' s'])

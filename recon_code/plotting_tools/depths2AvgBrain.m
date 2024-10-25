@@ -67,7 +67,7 @@ for a=1:nElec,
    end
 end
 
-elecNamesFile=fullfile(subDir,'elec_recon',[subj '.electrodeNames']);
+elecNamesFile=fullfile(subDir,'elec_recon',[subj '.electrodeNames'])
 tempCsv=csv2Cell(elecNamesFile,' ',2);
 elecNames=tempCsv(:,1);
 isLeft=zeros(nElec,1);

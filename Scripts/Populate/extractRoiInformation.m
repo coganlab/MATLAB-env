@@ -14,7 +14,7 @@ function subjInfo = extractRoiInformation(Subject, options)
 arguments
     Subject
     options.voxRad = 3;  
-    options.parcfn = 'aparc.BN_atlas+aseg'
+    options.parcfn = 'aparc+aseg' % {'aparc.BN_atlas+aseg.mgz','aparc.a2009s+aseg.mgz','aparc+aseg.mgz'};
 end
 
 global RECONDIR
@@ -32,7 +32,7 @@ for iSubject = 1:length(Subject)
         continue
     end
     
-    elecs = list_electrodes(Subject(iSubject).Name);
+    %elecs = list_electrodes(Subject(iSubject).Name);
     
     % Load electrode locations based on type (SEEG or ECoG)
     if strcmp(Subject(iSubject).Type, 'SEEG')
@@ -48,7 +48,7 @@ for iSubject = 1:length(Subject)
     end
     % Check if the file exists, otherwise run location statistics
     if ~exist(filename)            
-        run_elec_location_stats(Subject(iSubject).Name, mm = options.voxRad)
+        run_elec_location_stats(Subject(iSubject).Name, mm = options.voxRad, parcs= {[options.parcfn '.mgz']});
     end
     % Read data from the xls file
     T = readtable(filename);

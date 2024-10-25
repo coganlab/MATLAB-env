@@ -21,7 +21,7 @@ ieegGamma = [];
 disp('Extracting High Gamma');
 for iTrial = 1:size(ieegSplit,2)
      iTrial
-    [~,ieegTmp] = EcogExtractHighGammaTrial(double(squeeze(ieegSplit(:,iTrial,:))),fsIn,fsOut,fGamma,tw,tw,[],[]);
+    [~,ieegTmp] = EcogExtractHighGammaTrial(double(squeeze(ieegSplit(:,iTrial,:))),fsIn,fsOut,fGamma,tw,tw,[],[],1);
     ieegGamma(:,iTrial,:) = ieegTmp;   
 end
 timeGamma = linspace(tw(1),tw(2),size(ieegGamma,3));
@@ -44,7 +44,7 @@ disp('Extracting Normalized High Gamma');
 ieegGammaNorm = [];
 for iTrial = 1:size(ieegSplit,2)
       iTrial
-    [~,ieegTmp] = EcogExtractHighGammaTrial(double(squeeze(ieegSplit(:,iTrial,:))),fsIn,fsOut,fGamma,tw,etw,normFactor,normType);
+    [~,ieegTmp] = EcogExtractHighGammaTrial(double(squeeze(ieegSplit(:,iTrial,:))),fsIn,fsOut,fGamma,tw,etw,normFactor,normType,1);
     ieegGammaNorm(:,iTrial,:) = ieegTmp;   
 end
 end

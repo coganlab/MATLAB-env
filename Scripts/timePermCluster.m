@@ -63,7 +63,7 @@ end
 
 
 % compute actual difference, shuffle, and compute pvalues
-    actdiff=mean(aSig)-mean(bSig);
+    actdiff=mean(aSig,1)-mean(bSig,1);
     combval=cat(1,aSig,bSig);
     permval2=zeros(nPerm,size(combval,1),size(combval,2));
 pValsRawOne=zeros(size(aSig,2),1);

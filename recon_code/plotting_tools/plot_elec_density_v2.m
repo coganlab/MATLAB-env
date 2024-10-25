@@ -32,18 +32,19 @@ function plot_elec_density_v2(subj_labels, options)
 
 
 arguments
-    subj_labels
-    
+    subj_labels    
     options.cfg = plot_defaults([]);
     options.avgSubj = 'fsaverage';
     options.stype = 'inflated'; % smoothing space
     options.ptype = 'pial'; % display brain
-    options.thresh = 15;    
+    options.gaussFwhm = 15;  
+    options.diskThresh = 10;
     options.cLim = [0 1];
     options.colbarTitle string = 'Electrode Density' % colbarTitle: Color axis label (e.g. 'z-score')
     options.colorSteps = 1000;
     options.transparentPoint = 0.025;
     options.colorscale = [ 1 1 1; 0 0 0.3];
+    options.gradientRange = 0.25;
 end
 
 recondir = get_recondir();
@@ -52,7 +53,8 @@ recondir = get_recondir();
 stype = options.stype;
 ptype = options.ptype;
 avgsubj = options.avgSubj;
-thresh = options.thresh;
+fwhm = options.gaussFwhm;
+diskThresh = options.diskThresh;
 cLim = options.cLim;
 cfg = options.cfg;
 
@@ -76,6 +78,7 @@ s2avg.rmDepths = 0;
 s2avg.avgsubj = avgsubj; %fsaverage
 s2avg.plotEm = 0;
 s2avg.use_brainshifted = cfg.use_brainshifted;
+s2avg.brainSpace = stype;
 
 groupAvgCoords = [];
 groupLabels = [];
@@ -146,6 +149,10 @@ groupAvgCoords_rh = groupAvgCoords(mask_to_show_rh,:);
 
 %% Plot the surface, curvature, and activation of left hemisphere
 cort_lh = load_pial_data(fullfile(recondir, avgsubj, 'surf', smooth_fn_lh));
+% for iElec = 1:size(groupAvgCoords_lh,1)
+%     vId = map_electrode_to_vertex(groupAvgCoords_lh(iElec,:), cort_lh);
+%     groupAvgCoords_lh(iElec,:) = cort_lh.vert(vId,:);
+% end
 
 curv = read_curv(fullfile(recondir, avgsubj, 'surf','lh.curv'));
 
@@ -176,8 +183,11 @@ if 1
         
         elecCoord = groupAvgCoords_lh(iElec,:);
         dist_to_each_vert = sqrt(sum((elecCoord -  cort_lh.vert).^2, 2));
-        sigma = thresh/2.355;
-        gauss_kernel(:,iElec) = exp(-dist_to_each_vert.^2./(2*sigma^2));        
+        elec_sphere = find(dist_to_each_vert.^2<=pi.*(diskThresh.^2)/4);
+        sigma = fwhm/2.355;
+        gauss_temp = zeros(size(dist_to_each_vert));
+        gauss_temp(elec_sphere) =  exp(-dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+        gauss_kernel(:,iElec) = gauss_temp;        
     end
 end
 toc
@@ -190,6 +200,10 @@ maskIds=find(abs(olayDataVec)<=options.transparentPoint);
 overlayData_lh(maskIds,:)=overlayDataTemp(maskIds,:);
 %% Plot the surface and elec density of right hemisphere
 cort_rh = load_pial_data(fullfile(recondir, avgsubj, 'surf', smooth_fn_rh));
+for iElec = 1:size(groupAvgCoords_rh,1)
+    vId = map_electrode_to_vertex(groupAvgCoords_rh(iElec,:), cort_rh);
+    groupAvgCoords_rh(iElec,:) = cort_rh.vert(vId,:);
+end
 
 curv = read_curv(fullfile(recondir, avgsubj, 'surf','rh.curv'));
 
@@ -221,18 +235,20 @@ if 1
         
         elecCoord = groupAvgCoords_rh(iElec,:);
         dist_to_each_vert = sqrt(sum((elecCoord -  cort_rh.vert).^2, 2));
-        sigma = thresh/2.355;
-        gauss_kernel(:,iElec) = exp(-dist_to_each_vert.^2./(2*sigma^2));        
+        elec_sphere = find(dist_to_each_vert.^2<=pi.*(diskThresh.^2)/4);
+        sigma = fwhm/2.355;
+        gauss_temp = zeros(size(dist_to_each_vert));
+        gauss_temp(elec_sphere) =  exp(-dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+        gauss_kernel(:,iElec) =  gauss_temp;       
     end
 end
 toc
 
 activationV_rh = sum(gauss_kernel,2);
-max(activationV_rh)
-min(activationV_rh)
+
 olayDataVec=activationV_rh;
 [overlayData_rh, oLayLimits, olayCmapName]=vals2Colormap(olayDataVec,cLim ,options.colorscale);
-maskIds=find(abs(olayDataVec)<options.transparentPoint);
+maskIds=find(abs(olayDataVec)<=options.transparentPoint);
 overlayData_rh(maskIds,:)=overlayDataTemp(maskIds,:);
 %% Plot the brain maps
     

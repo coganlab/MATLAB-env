@@ -2,7 +2,7 @@
 path=`pwd`
 SUBJECTS_DIR=~/boxlink/CoganLab/ECoG_Recon_Full
 #subject_list=$(find "$SUBJECTS_DIR" -maxdepth 1 -type d -regextype posix-extended -regex ".*/D[0-9]*$" -exec basename {} \;)
-subject_list=("D106"  "D107B")
+subject_list=( "D108" "D109" "D110" "D111" "D112" "D113A")
 for Subject in $subject_list; do
 
     ### mapping BN_atlas cortex to subjects - left hemisphere

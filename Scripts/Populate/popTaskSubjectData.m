@@ -13,6 +13,7 @@ arguments
     Task
     options.gmThresh = 0.05;
     options.voxRadius = 10;
+    options.parcfn = 'aparc.BN_atlas+aseg' % {'aparc.BN_atlas+aseg.mgz','aparc.a2009s+aseg.mgz','aparc+aseg.mgz'};
 end
 
 % make the box path global and make sure its set
@@ -44,6 +45,12 @@ for iF=1:length(fileDir);
         if ~isfolder([RECONDIR '/' fileDir(iF).name '/elec_recon/'])
             warning(['Skipping ' fileDir(iF).name ' due to nonexisten' ...
                 't recon directory at ' RECONDIR])
+            continue
+        end
+
+        if ~isfile([RECONDIR '/' fileDir(iF).name '/mri/' options.parcfn '.mgz'])
+            warning(['Skipping ' fileDir(iF).name ' due to nonexisten' ...
+                't atlas parcellation at ' RECONDIR])
             continue
         end
         fIdx(counter+1)=iF;
@@ -109,7 +116,14 @@ for iF=1:length(fileDir)
     
     for SN=1:length(Subject);
         % load trials file
-        load(fullfile(TASK_DIR, Subject(SN).Name, Subject(SN).Date, 'mat','Trials.mat'))
+        trialsMfaFile = fullfile(TASK_DIR, Subject(SN).Name, Subject(SN).Date, 'mat','Trials_kumar.mat');
+        trialsManFile = fullfile(TASK_DIR, Subject(SN).Name, Subject(SN).Date, 'mat','Trials.mat');
+         if exist(trialsMfaFile, 'file')
+             load(fullfile(TASK_DIR, Subject(SN).Name, Subject(SN).Date, 'mat','Trials_kumar.mat'))
+         elseif exist(trialsManFile, 'file')
+             load(fullfile(TASK_DIR, Subject(SN).Name, Subject(SN).Date, 'mat','Trials.mat'))
+         end
+        
         % save([TASK_DIR '/' Subject(SN).Name '/' Subject(SN).Date '/mat/Trials.mat'],'Trials')
         
         Subject(SN).Trials=Trials;
@@ -119,7 +133,8 @@ for iF=1:length(fileDir)
     
     Subject(iF).ChannelNums=1:length(experiment.channels);
     badChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'badChannels.mat');
-    muscleChannelsPath = fullfile(TASK_DIR, Subject(iF).Name, 'muscleChannelWavelet.mat');
+    muscleDir = 'C:\Users\sd355\Box\CoganLab\D_Data\Phoneme_Sequencing';
+    muscleChannelsPath = fullfile(muscleDir, Subject(iF).Name, 'muscleChannelWavelet.mat');
     
     if exist(badChannelsPath, 'file')
         badChannels = load(badChannelsPath);
@@ -132,7 +147,12 @@ for iF=1:length(fileDir)
         
         muscleChannels = load(muscleChannelsPath);
         muscleChannels.muscleChannel;
-        Subject(iF).badChannels = unique([Subject(iF).badChannels find(muscleChannels.muscleIds)']);
+        muscleIds = find(muscleChannels.muscleIds);
+        if(size(muscleIds,1) == 1)
+            Subject(iF).badChannels = unique([Subject(iF).badChannels muscleIds]);
+        else
+            Subject(iF).badChannels = unique([Subject(iF).badChannels muscleIds']);
+        end
     end
     
     Subject(iF).goodChannels=setdiff(Subject(iF).ChannelNums,Subject(iF).badChannels);
@@ -165,7 +185,7 @@ end
 
 SNList=find(missRecIdx==1);
 
-subjRoiInfo = extractRoiInformation(Subject(SNList),voxRad=options.voxRadius);
+subjRoiInfo = extractRoiInformation(Subject(SNList),voxRad=options.voxRadius,parcfn=options.parcfn);
 
 chanInfo = assignRoiInformation(subjRoiInfo, gmThresh=options.gmThresh);
 
@@ -184,12 +204,13 @@ for iSN = 1:length(SNList)
     for iChan = 1:length(chanNameActual)
         
         idTrue = ismember(chanNameRoi,chanNameActual(iChan));
-        sum(idTrue)
+        
         if(sum(idTrue))
             chanInfoSubjChan = chanInfoSubj(idTrue);
             chanInfoSubjAligned(iChan).Name=chanInfoSubjChan.Name;
             chanInfoSubjAligned(iChan).xyz=chanInfoSubjChan.xyz;
             chanInfoSubjAligned(iChan).Location=chanInfoSubjChan.Location;
+            chanInfoSubjAligned(iChan).GMPercentage=chanInfoSubjChan.GMPercentage;
             if(contains(chanInfoSubjAligned(iChan).Location,["White","hypointensities","known"]))
                 wmId = [wmId iChan];
             end

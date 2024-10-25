@@ -23,6 +23,7 @@ function channelInfoAll = extractChannelLocation(Subject, channelNames)
                 channelInfoAll(iChan).Name = channelNames{iChan};
                 channelInfoAll(iChan).Location = chanInfoSubject(chanId).Location;
                 channelInfoAll(iChan).xyz = chanInfoSubject(chanId).xyz;
+                channelInfoAll(iChan).GMPercentage = chanInfoSubject(chanId).GMPercentage;
             end
         end
     end

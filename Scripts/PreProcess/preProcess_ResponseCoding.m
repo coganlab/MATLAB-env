@@ -11,8 +11,8 @@ RECONDIR=[BOX_DIR '\ECoG_Recon'];
 %addpath(genpath([BOX_DIR '\CoganLab\Scripts\']));
 %addpath(genpath([RECONDIR]));
 Task=[];
+%Task.Name='Phoneme_Sequencing';
 Task.Name='Phoneme_Sequencing';
-%Task.Name='LexicalDecRepDelay';
 %Task.Name='LexicalDecRepNoDelay';
 %Task.Name='SentenceRep';
 %Task.Name='Uniqueness_Point';
@@ -63,22 +63,25 @@ end
 SNListNotDone=setdiff(SNList,SNListDone)
 
 %%
+subjNames = extractfield(Subject,'Name');
+
+SNList = find(ismember(subjNames,subjNames2process));
 for iSN=1:length(SNList);
     
     SN=SNList(iSN);
     Subject(SN).Name
     errors=[];
-    cue_events=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name  '\cue_events.txt']);
+    cue_events=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name  '\cue_events_kumar.txt']);
     condition_events=readtable([RESPONSE_DIR '\'  Task.Name '\' Subject(SN).Name '\condition_events.txt']);
     
-    response_coding=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\response_coding.txt']);
+    %response_coding=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\response_coding.txt']);
     if exist([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\errors.txt'])
         %errors = readtable([RESPONSE_DIR '\' Subject(SN).Name '_task00' num2str(Task.Number) '\errors.txt']);
         errors=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\errors.txt'])
     else
         errors=[];
     end
-    response_coding=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\response_coding.txt']);
+    response_coding=readtable([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name '\response_coding_kumar.txt']);
 
 % does size of T equal size of Trials
 
@@ -154,17 +157,17 @@ for iTrials=1:size(response_coding,1)
     if tmp1-cue_onsets(I(end))<7 && ~strcmp(Task.Name,'SentenceRep') || tmp1-cue_onsets(I(end))<12 && strcmp(Task.Name,'SentenceRep')% make sure they are within the same trial
         response_vals(I(end),1)=tmp1;
         response_vals(I(end),2)=tmp2;
-        if strcmp(Task.Name,'LexicalDecRepDelay')
-            if contains(table2cell(response_coding(iTrials,3)),'yes')
-                response_vals(I(end),3)=2;
-            elseif contains(table2cell(response_coding(iTrials,3)),'no')
-                response_vals(I(end),3)=3;
-            else
-                response_vals(I(end),3)=1;
-            end
-        else
+%         if strcmp(Task.Name,'LexicalDecRepDelay')
+%             if contains(table2cell(response_coding(iTrials,3)),'yes')
+%                 response_vals(I(end),3)=2;
+%             elseif contains(table2cell(response_coding(iTrials,3)),'no')
+%                 response_vals(I(end),3)=3;
+%             else
+%                 response_vals(I(end),3)=1;
+%             end
+%         else
             response_vals(I(end),3)=1;
-        end
+%         end
         
     end
     if isstring(tmp3) && contains(tmp3,'noisy')
@@ -205,15 +208,15 @@ Trials=Subject(SN).Trials;
 for itrial = 1:length(Trials)
    audioStart(itrial) = [Trials(itrial).Auditory./30000];   
 end
-cueOnsetCorrected = [];
-for iBlock = 1:4
-    audioStartBlock = audioStart((iBlock-1)*52+1:iBlock*52);
-    cueOnsetBlock = cue_onsets((iBlock-1)*52+1:iBlock*52);
-    audioStartDiff = diff(audioStartBlock);
-    cueOnsetDiff = diff(cueOnsetBlock);
-    cueOnsetBlockCorrected = [cueOnsetBlock(1) cueOnsetBlock(1)+cumsum(audioStartDiff)];
-    cueOnsetCorrected = [cueOnsetCorrected cueOnsetBlockCorrected];
-end
+% cueOnsetCorrected = [];
+% for iBlock = 1:4
+%     audioStartBlock = audioStart((iBlock-1)*52+1:iBlock*52);
+%     cueOnsetBlock = cue_onsets((iBlock-1)*52+1:iBlock*52);
+%     audioStartDiff = diff(audioStartBlock);
+%     cueOnsetDiff = diff(cueOnsetBlock);
+%     cueOnsetBlockCorrected = [cueOnsetBlock(1) cueOnsetBlock(1)+cumsum(audioStartDiff)];
+%     cueOnsetCorrected = [cueOnsetCorrected cueOnsetBlockCorrected];
+% end
    
 
 
@@ -240,28 +243,36 @@ for iTrials=1:length(Trials)
     
 end
 
-save([TASK_DIR '/' Subject(SN).Name '/' Subject(SN).Date '/mat/Trials.mat'],'Trials')
+%movefile([TASK_DIR '/' Subject(SN).Name '/' Subject(SN).Date '/mat/Trials.mat'],[TASK_DIR '/' Subject(SN).Name '/' Subject(SN).Date '/mat/Trials_ug_old.mat'])
+save([TASK_DIR '/' Subject(SN).Name '/' Subject(SN).Date '/mat/Trials_kumar.mat'],'Trials')
 end
-%         
-% %save(
-% load([RESPONSE_DIR '\' Subject(SN).Name '_task00' num2str(Task.Number) '\trialInfo.mat']);
-% condIdx = lexSort(trialInfo);
-% allLatencies=zeros(length(condIdx),1);
-% for iTrials=1:length(Trials);if Trials(iTrials).NoResponse==0;allLatencies(trialNum(iTrials))=Trials(iTrials).ResponseOnset-Trials(iTrials).Go;end;end;
-% [m s]=normfit(allLatencies);
-% allLatenciesN=(allLatencies-m)./std(allLatencies);
-% %iiE=find(allLatencies<=.25*30000 | allLatencies>2*30000);
-% iiE=find(abs(allLatenciesN>2));
-% counter=0;
-% for iCond=1:8;
-%     condLat(iCond)=mean(allLatencies(setdiff(find(condIdx==iCond),iiE)))./30;
-%     condLatEach{iCond}=allLatencies(setdiff(find(condIdx==iCond),iiE))./30;
-%     condLatGroup(counter+1:counter+length(condLatEach{iCond}),1)=condLatEach{iCond};
-%     condLatGroup(counter+1:counter+length(condLatEach{iCond}),2)=iCond;
-%     counter=counter+length(condLatEach{iCond});
-% end
-% 
-% 
-% figure;plot(allLatencies./30);
-% figure;plot(allLatencies(setdiff(1:length(allLatencies),iiE))./30)
-% figure;plot(condLat);
+%%
+respTimeOld = []
+load('Trials.mat')
+for iTrial = 1:length(Trials)
+    if(~isempty(Trials(iTrial).ResponseStart))
+        respTimeOld(iTrial) = [Trials(iTrial).ResponseStart-Trials(iTrial).Go]./30000;
+    end
+end
+respTimeNew = [];
+load('Trials_kumar_fix.mat')
+for iTrial = 1:length(Trials)
+    if(~isempty(Trials(iTrial).ResponseStart))
+        respTimeNew(iTrial) = [Trials(iTrial).ResponseStart-Trials(iTrial).Go]./30000;
+    end
+
+end
+
+ 
+
+% figure; histogram(respTimeOld);
+% figure; histogram(respTimeNew);
+% hold on; histogram(respTimeNew);
+% figure; scatter(respTimeOld,respTimeNew,10,'filled');
+% xlabel('Response Time (old)')
+% ylabel('Response Time (new)')
+% hold on; plot([-1:0.05:2.5],[-1:0.05:2.5],'k')
+
+figure; plot(respTimeNew-respTimeOld)
+ylabel('Diff response time (s): New-Old')
+xlabel('Trials')

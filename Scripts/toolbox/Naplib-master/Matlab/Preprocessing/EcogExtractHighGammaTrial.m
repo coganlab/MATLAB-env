@@ -1,4 +1,4 @@
-function [dh,dh2Norm,dh2] = EcogExtractHighGammaTrial (d, infs,outfs, freqRange,tw,etw,normFactor,normType)
+function [dh,dh2Norm,dh2] = EcogExtractHighGammaTrial (d, infs,outfs, freqRange,tw,etw,normFactor,normType,isPower)
 % d: recorded data, channel x sample
 % infs: sampling rate of the data
 % outfs: sampling rate of output
@@ -37,7 +37,7 @@ eTime = time>=etw(1)&time<=etw(2);
 % end
 
 % calculate hilbert envelope:
-[dh,cfs,sigma_fs] = CUprocessingHilbertTransform_filterbankGUI_optim(d, fs, freqRange);
+[dh,cfs,sigma_fs] = CUprocessingHilbertTransform_filterbankGUI(d, fs, freqRange);
 % dh3 = mean(log10(dh.^2),3);
 % dh3 = mapstd(dh3(:,eTime));
 %
@@ -46,32 +46,35 @@ dh2 = mean(abs(dh),3);
 if(infs~=outfs)
 dh2 = resample(dh2',outfs,fs)';
 end
+if(isPower)
+    dh2 = dh2.^2;
+end
 timeDown = linspace(tw(1),tw(2),size(dh2,2));
 eTime = timeDown>=etw(1)&timeDown<=etw(2);
 % Normalization
 if(~isempty(normFactor))
 %dh2 = mapstd(dh2(:,eTime));
     if(normType==1) % z-score
-    dh2Norm = (dh2(:,eTime).^2-normFactor(:,1))./normFactor(:,2); 
+    dh2Norm = (dh2(:,eTime)-normFactor(:,1))./normFactor(:,2); 
     end
     if(normType==2) % mean-normalization
-        dh2Norm = (dh2(:,eTime).^2-normFactor(:,1));
+        dh2Norm = (dh2(:,eTime)-normFactor(:,1));
     end
     if(normType==3) % percentage absolute relative baseline
-        dh2Norm = (dh2(:,eTime).^2-normFactor(:,1))./normFactor(:,1);
+        dh2Norm = (dh2(:,eTime)-normFactor(:,1))./normFactor(:,1);
     end
     if(normType==4) % percentage relative baseline
-        dh2Norm = (dh2(:,eTime).^2./normFactor(:,1));
+        dh2Norm = (dh2(:,eTime)./normFactor(:,1));
     end
     if(normType==5) % Log-transform baseline
-        dh2Norm = 10.*log10(dh2(:,eTime).^2./normFactor(:,1));
+        dh2Norm = 10.*log10(dh2(:,eTime)./normFactor(:,1));
     end
     if(normType==6) % Normed baseline
-        dh2Norm = (dh2(:,eTime).^2-normFactor(:,1))./(dh2(:,eTime).^2+normFactor(:,1));
+        dh2Norm = (dh2(:,eTime)-normFactor(:,1))./(dh2(:,eTime)+normFactor(:,1));
     end
 else
-    dh2Norm = dh2(:,eTime).^2;
-    dh2 = dh2(:,eTime).^2;
+    dh2Norm = dh2(:,eTime);
+    dh2 = dh2(:,eTime);
 end
 
 

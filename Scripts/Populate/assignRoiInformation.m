@@ -19,16 +19,18 @@ chanInfo = [];
 
 for iSubj = 1:length(subjRoiInfo)
     TrestSubj = subjRoiInfo(iSubj).Trest;
-    whiteIds = contains({TrestSubj{:, 1}}, ["White", "hypointensities", "unknown"]);
+    whiteIds = contains({TrestSubj{:, 1}}, ["White", "hypointensities", "nknown"]);
     
     for iChan = 1:size(TrestSubj, 1)
         % Iterating through each channel
         chanInfo(iSubj).ChannelInfo(iChan).Name = subjRoiInfo(iSubj).Tname{iChan};
         chanInfo(iSubj).ChannelInfo(iChan).xyz = subjRoiInfo(iSubj).elecInfo.xyz(iChan,:);
+        
         if (~whiteIds(iChan))
             % If grey matter channel, assign the center electrode
             %disp('Assigning Grey matter channel with center')
             chanInfo(iSubj).ChannelInfo(iChan).Location = TrestSubj{iChan, 1};
+            chanInfo(iSubj).ChannelInfo(iChan).GMPercentage = 1;
         else
             %disp('Detected white matter channel')
             iCol = 3;
@@ -64,7 +66,8 @@ for iSubj = 1:length(subjRoiInfo)
                 end
             end
             
-            chanInfo(iSubj).ChannelInfo(iChan).Location = TrestSubj{iChan, iColAssign};            
+            chanInfo(iSubj).ChannelInfo(iChan).Location = TrestSubj{iChan, iColAssign}; 
+            chanInfo(iSubj).ChannelInfo(iChan).GMPercentage = TrestSubj{iChan, iColAssign+1}; 
         end   
     end
 end

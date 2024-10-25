@@ -4,7 +4,7 @@ function [zValsRawAct, pValsRaw, actClust] = timePermClusterAfterPerm(testSignal
 % Inputs:
 %   testSignal: Signal to test against for statistic (1 x time).
 %   permSignals: Permuted signals (permutations x time).
-%   numTails: Number of tails for the test (1 or 2), defaults to 2.
+%   numTails: Number of tails for the test (1 or 2), defaults to 1.
 %   zThresh: Cluster threshold (Z score).
 % 
 % Outputs:

@@ -63,11 +63,14 @@ end
 if strcmp(cfg.hemisphere, 'r')
     mask_to_show = mask_to_show & ~groupIsLeft;
     pial_fn = 'rh.pial.mat';
+    disp_fn = 'rh.pial.mat';
 elseif strcmp(cfg.hemisphere, 'l')
     mask_to_show = mask_to_show & groupIsLeft;
     pial_fn = 'lh.pial.mat';
+    disp_fn = 'lh.pial.mat';
 else
     pial_fn = 'bh.pial.mat';
+    disp_fn = 'bh.pial.mat';
 end
 
 groupLabels = groupLabels(mask_to_show);
@@ -78,7 +81,32 @@ if length(esize) > 1
 end
     
 %% Plot the surface, electrodes, and labels, and return all handles
-handles.surf = plot_surf(fullfile(recondir, avgsubj, 'surf', pial_fn), cfg);
+
+% cort = load_pial_data(fullfile(recondir, avgsubj, 'surf', pial_fn));
+
+if(~strcmp(pial_fn,disp_fn))
+    cort_pial = load_pial_data(fullfile(recondir, avgsubj, 'surf', pial_fn));
+    cort_disp = load_pial_data(fullfile(recondir, avgsubj, 'surf', disp_fn));
+    cort_disp_aligned = transformBrainSpace(cort_pial,cort_disp);
+    handles.surf = plot_surf(cort_disp_aligned, cfg);
+    groupAvgCoords = project_electrodes_to_surf(groupAvgCoords, cort_disp_aligned);
+else
+    handles.surf = plot_surf(fullfile(recondir, avgsubj, 'surf', disp_fn), cfg);
+end
+% distance = 20;
+% if strcmp(cfg.hemisphere, 'r') 
+%     rh_leftmost_point = min(cort.vert(:,1));
+%     cort.vert(:,1) = cort.vert(:,1) - rh_leftmost_point + distance/2;
+% end
+% if strcmp(cfg.hemisphere, 'l') 
+%     lh_leftmost_point = max(cort.vert(:,1));
+%     cort.vert(:,1) = cort.vert(:,1) - lh_leftmost_point - distance/2;
+% end
+% for iElec = 1:size(groupAvgCoords,1)
+%     vId = map_electrode_to_vertex(groupAvgCoords(iElec,:), cort);
+%     groupAvgCoords(iElec,:) = cort.vert(vId,:);
+% end
+% groupAvgCoords = project_electrodes_to_surf(groupAvgCoords, cort);
 handles.elec = plot_elec_data(groupAvgCoords, esize, color);
 if cfg.show_labels
     handles.labels = plot_elec_labels(groupAvgCoords, groupLabels, cfg.font_size, cfg.font_color, cfg.label_every_n);

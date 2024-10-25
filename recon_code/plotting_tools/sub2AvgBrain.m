@@ -72,6 +72,7 @@ if  ~isfield(cfg,'isLeft'),        isLeft = [];   else    isLeft = cfg.isLeft;  
 if  ~isfield(cfg,'isSubdural'),     isSubdural = [];   else    isSubdural = cfg.isSubdural;      end
 if  ~isfield(cfg,'rmDepths'),       rmDepths = 0;   else    rmDepths = cfg.rmDepths;      end
 if  ~isfield(cfg,'outputTextfile'), outputTextfile = 1;   else    outputTextfile = cfg.outputTextfile;      end
+if  ~isfield(cfg,'brainSpace'), brainSpace = 'inflated';   else    brainSpace = cfg.brainSpace;      end
 % checkCfg(cfg,'sub2AvgBrain.m');
 
 if universalYes(outputTextfile) && universalYes(rmDepths)
@@ -161,6 +162,7 @@ if universalYes(rmDepths),
     nElec=length(elecNames);
     isSubdural=isSubdural(keepIds);
 else
+    disp('Depth electrodes detected: running depths 2 average brain')
     [avgCoordsDepths, elecNamesDepths]=depths2AvgBrain(subj);
 end
 
@@ -183,7 +185,7 @@ for hemLoop=1:2,
     
     if ~isempty(hemElecIds)
         fprintf('Working on hemisphere: %s\n',hem);
-        pialFname=fullfile(subDir,'surf',[ hem 'h.pial']);
+        pialFname=fullfile(subDir,'surf',[ hem 'h.' brainSpace]);
         pial=readSurfHelper(pialFname);
         
         nHemElec=length(hemElecIds);
@@ -214,8 +216,9 @@ for hemLoop=1:2,
             end
         end
         
-        avgPialFname=fullfile(avgDir,'surf',[ hem 'h.pial']);
+        avgPialFname=fullfile(avgDir,'surf',[ hem 'h.' brainSpace]);
         avgPial=readSurfHelper(avgPialFname);
+        
         for a=1:nHemElec,
             if isSubdural(hemElecIds(a)),
                 avgCoords(hemElecIds(a),:)=avgPial.vert(avgVids(hemElecIds(a)),:);
@@ -223,6 +226,12 @@ for hemLoop=1:2,
                 % Get depth coordinates in MNI305 space
                 %[avgCoordsDepths, elecNamesDepths, isLeftDepths]=depths2AvgBrain(subj);
                 depthId=findStrInCell(elecNames{hemElecIds(a)},elecNamesDepths,1);
+                if(length(depthId)>1)
+                    elecNamesDepths
+                    elecNames{hemElecIds(a)}
+                     depthId
+                    elecNamesDepths(depthId)
+                end
                 avgCoords(hemElecIds(a),:)=avgCoordsDepths(depthId,:);
             end
         end

@@ -42,21 +42,21 @@ counter=counter+1;
 end
 
 % figure out which are done already?
-% counter=0;
-% SNListDone=[];
-% for iSN=1:length(SNList);
-%     load([DUKEDIR '\' Subject(SNList(iSN)).Name '\' Subject(SNList(iSN)).Date '\mat\Trials.mat']);
-% if isfield(Trials,'ResponseStart')
-%     SNListDone(counter+1)=SNList(iSN);
-%     counter=counter+1;
+counter=0;
+SNListDone=[];
+for iSN=1:length(SNList);
+    load([DUKEDIR '\' Subject(SNList(iSN)).Name '\' Subject(SNList(iSN)).Date '\mat\Trials.mat']);
+if isfield(Trials,'ResponseStart')
+    SNListDone(counter+1)=SNList(iSN);
+    counter=counter+1;
 %     save(fullfile(DUKEDIR,Subject(SNList(iSN)).Name,Subject(SNList(iSN)).Date,'mat',...
 %         'Trials_old.mat'),"Trials")
-% end
-% end
-% SNListNotDone=setdiff(SNList,SNListDone);
+end
+end
+SNListNotDone=setdiff(SNList,SNListDone);
 
 %%
-for SN=58:length(Subject);
+for SN=3:length(Subject)
     
 %     SN=SNList(iSN);
     if ~exist([RESPONSE_DIR '\' Task.Name '\' Subject(SN).Name],'dir')
@@ -93,8 +93,21 @@ for iTrials=1:size(cue_events,1);
     cue_onsets(iTrials)=table2array(cue_events(iTrials,1));
     cue_offsets(iTrials)=table2array(cue_events(iTrials,2));
 end
-
-
+Trials=Subject(SN).Trials;
+ audioStart = [];
+for itrial = 1:length(Trials)
+   audioStart(itrial) = [Trials(itrial).Auditory./30000];   
+end
+cueOnsetCorrected = [];
+for iBlock = 1:4
+    audioStartBlock = audioStart((iBlock-1)*52+1:iBlock*52);
+    cueOnsetBlock = cue_onsets((iBlock-1)*52+1:iBlock*52);
+    audioStartDiff = diff(audioStartBlock);
+    cueOnsetDiff = diff(cueOnsetBlock);
+    cueOnsetBlockCorrected = [cueOnsetBlock(1) cueOnsetBlock(1)+cumsum(audioStartDiff)];
+    cueOnsetCorrected = [cueOnsetCorrected cueOnsetBlockCorrected];
+end
+   
 %LEX DEC REP ONLY get condition values (1 = decision, 2 = repeat)
 if strcmp(Task.Name,'LexicalDecRepDelay')
     for iTrials=1:size(condition_events,1)
@@ -185,7 +198,6 @@ tmp1=table2array(errors(iTrials,1));
 end
 end
 
-% ??
 if ~strcmp(Task.Name,'SentenceRep')
     for iTrials=1:length(response_vals)
         if response_vals(iTrials,3)==2 && condition_vals(iTrials)==2
@@ -198,17 +210,17 @@ if ~strcmp(Task.Name,'SentenceRep')
     end
 end
 
+%%
 
-Trials=Subject(SN).Trials;
 trialNum=[];
 for iTrials=1:length(Trials)
     trialNum(iTrials)=Trials(iTrials).Trial;
 end
 for iTrials=1:length(Trials)
-    Trials(iTrials).AuditoryEnd = 30000*(cue_offsets(trialNum(iTrials))-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
+    Trials(iTrials).AuditoryEnd = 30000*(cue_offsets(trialNum(iTrials))-cueOnsetCorrected(trialNum(iTrials)))+Trials(iTrials).Auditory;
     if response_vals(iTrials,1)>0
-        Trials(iTrials).ResponseStart=30000*(response_vals(trialNum(iTrials),1)-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
-        Trials(iTrials).ResponseEnd=30000*(response_vals(trialNum(iTrials),2)-cue_onsets(trialNum(iTrials)))+Trials(iTrials).Auditory;
+        Trials(iTrials).ResponseStart=30000*(response_vals(trialNum(iTrials),1)-cueOnsetCorrected(trialNum(iTrials)))+Trials(iTrials).Auditory;
+        Trials(iTrials).ResponseEnd=30000*(response_vals(trialNum(iTrials),2)-cueOnsetCorrected(trialNum(iTrials)))+Trials(iTrials).Auditory;
     else
         Trials(iTrials).NoResponse=1;
         Trials(iTrials).ResponseStart=[];

@@ -23,8 +23,8 @@ function roiIds = extractRoiIds(Subject, channelNames, roiTerms)
 
     % Extract channel location information for the specified subject and channels
     channelInfoAll = extractChannelLocation(Subject, channelNames);
-    
+    chanLoc = {channelInfoAll.Location};
     % Determine which channels match any of the specified ROI terms
-    roiIds = contains({channelInfoAll.Location}, roiTerms);
-
+    roiIds = ismember(chanLoc, roiTerms);
+    %roiIds = cellfun(@(m)isequal(m,roiTerms),chanLoc);
 end

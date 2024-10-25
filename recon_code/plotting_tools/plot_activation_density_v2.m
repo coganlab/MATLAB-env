@@ -36,9 +36,10 @@ arguments
     activation_values double
     options.cfg = plot_defaults([]);
     options.avgSubj = 'fsaverage';
-    options.stype = 'inflated'; % smoothing space
-    options.ptype = 'pial'; % display brain
-    options.thresh = 15;    
+    options.stype = 'pial'; % smoothing space
+    options.dtype = 'inflated'; % display brain
+    options.gaussFwhm = 15;  
+    options.diskThresh = 20;
     options.cLim = [0 1];
     options.colbarTitle string = 'z-score' % colbarTitle: Color axis label (e.g. 'z-score')
     options.colorSteps = 1000;
@@ -46,15 +47,17 @@ arguments
     options.colorscale = [ 1 1 1; 0 0 0.3];
     options.elecDensityThresh = 1;
     options.showMesial = 0;
+    options.decayFactor = 10;
 end
 
 recondir = get_recondir();
 
 %ptype = 'pial';
 stype = options.stype;
-ptype = options.ptype;
+dtype = options.dtype;
 avgsubj = options.avgSubj;
-thresh = options.thresh;
+fwhm = options.gaussFwhm;
+diskThresh = options.diskThresh;
 cLim = options.cLim;
 cfg = options.cfg;
 
@@ -78,6 +81,7 @@ s2avg.rmDepths = 0;
 s2avg.avgsubj = avgsubj; %fsaverage
 s2avg.plotEm = 0;
 s2avg.use_brainshifted = cfg.use_brainshifted;
+s2avg.brainSpace = stype;
 
 groupAvgCoords = [];
 groupLabels = [];
@@ -132,11 +136,11 @@ end
 
 mask_to_show_rh = mask_to_show & ~groupIsLeft;
 smooth_fn_rh = sprintf('rh.%s.mat', stype);
-pial_fn_rh = sprintf('rh.%s.mat', ptype);
+pial_fn_rh = sprintf('rh.%s.mat', dtype);
 
 mask_to_show_lh = mask_to_show & groupIsLeft;
 smooth_fn_lh = sprintf('lh.%s.mat', stype);
-pial_fn_lh = sprintf('lh.%s.mat', ptype);
+pial_fn_lh = sprintf('lh.%s.mat', dtype);
 
 
 
@@ -146,12 +150,17 @@ activation_values_lh = activation_values(mask_to_show_lh,:);
 groupAvgCoords_rh = groupAvgCoords(mask_to_show_rh,:);
 activation_values_rh = activation_values(mask_to_show_rh,:);
 
+
 %% Plot the surface, curvature, and activation of left hemisphere
 cort_lh = load_pial_data(fullfile(recondir, avgsubj, 'surf', smooth_fn_lh));
+% for iElec = 1:size(groupAvgCoords_lh,1)
+%     vId = map_electrode_to_vertex(groupAvgCoords_lh(iElec,:), cort_lh);
+%     groupAvgCoords_lh(iElec,:) = cort_lh.vert(vId,:);
+% end
 activationV_lh = zeros(size(cort_lh.vert,1), size(activation_values_lh,2));
 curv = read_curv(fullfile(recondir, avgsubj, 'surf','lh.curv'));
 
-if strcmpi(ptype,'inflated')
+if strcmpi(dtype,'inflated')
     overlayDataTemp=zeros(length(curv),3);
     pcurvIds=find(curv>=0);
     overlayDataTemp(pcurvIds,:)=repmat([1 1 1]*.4,length(pcurvIds),1);
@@ -174,34 +183,57 @@ if 1
 %         %activationV_lh(v,:) = sum(gauss_kernel.*activation_values_lh)./sum(gauss_kernel);
 %         %activationV_lh(v,:) = sum(gauss_kernel.*activation_values_lh)./size(activation_values_lh,1);
 %     end
+    
     for iElec = 1:size(groupAvgCoords_lh,1)
-        
+            
         elecCoord = groupAvgCoords_lh(iElec,:);
+%         size((elecCoord -  cort_lh.vert).^2)
         dist_to_each_vert = sqrt(sum((elecCoord -  cort_lh.vert).^2, 2));
-        sigma = thresh/2.355;
-        gauss_temp =  exp(-dist_to_each_vert.^2./(2*sigma^2));
-        gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
-        gauss_temp = gauss_temp+gauss_temp_dia;        
-        gauss_temp(gauss_temp>1) = 1;
+        
+%         coordId = dsearchn(cort_lh.vert,elec_coord);
+%         [D,S,Q] = perform_fast_marching_mesh(cort_lh.vert', cort_lh.tri', coordId);
+
+        elec_sphere = find(dist_to_each_vert.^2<=pi.*(diskThresh.^2)/4);
+        sigma = fwhm/2.355;
+        gauss_temp = zeros(size(dist_to_each_vert));
+       gauss_temp(elec_sphere) =  exp(-dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+        
         %gauss_temp(dist_to_each_vert<=1.1) = 1;
-        gauss_kernel(:,iElec) = gauss_temp;        
+        gauss_kernel(:,iElec) = gauss_temp;     
     end
 end
 toc
 gauss_kernel_sum = sum(gauss_kernel,2);
-kernValid = gauss_kernel_sum>=options.elecDensityThresh;
+kernValid = gauss_kernel_sum>options.elecDensityThresh;
 activationV_lh(kernValid,:) = gauss_kernel(kernValid,:)*activation_values_lh./gauss_kernel_sum(kernValid);
 
 olayDataVec=activationV_lh;
 [overlayData_lh, oLayLimits, olayCmapName]=vals2Colormap(olayDataVec,cLim ,options.colorscale,cLim,options.transparentPoint);
-maskIds=find(abs(olayDataVec)<=options.transparentPoint);
-overlayData_lh(maskIds,:)=overlayDataTemp(maskIds,:);
+% maskIds=find(abs(olayDataVec)<=options.transparentPoint);
+% overlayData_lh(maskIds,:)=overlayDataTemp(maskIds,:);
+% Compute the exponential decay alpha values
+alphaValues = exp(-abs(olayDataVec - options.transparentPoint) * options.decayFactor);
+alphaValues(olayDataVec > options.transparentPoint) = 1; % Full color above transparency point
+alphaValues(alphaValues < 0) = 0; % Ensuring alpha values are not negative
+
+
+
+% Apply gradient transparency
+for i = 1:size(overlayData_lh, 1)
+    overlayData_lh(i, :) = overlayData_lh(i, :) .* alphaValues(i) + overlayDataTemp(i, :) .* (1 - alphaValues(i));
+end
+
+
 %% Plot the surface and elec density of right hemisphere
 cort_rh = load_pial_data(fullfile(recondir, avgsubj, 'surf', smooth_fn_rh));
+% for iElec = 1:size(groupAvgCoords_rh,1)
+%     vId = map_electrode_to_vertex(groupAvgCoords_rh(iElec,:), cort_rh);
+%     groupAvgCoords_rh(iElec,:) = cort_rh.vert(vId,:);
+% end
 activationV_rh = zeros(size(cort_rh.vert,1), size(activation_values_rh,2));
 curv = read_curv(fullfile(recondir, avgsubj, 'surf','rh.curv'));
 
-if strcmpi(ptype,'inflated')
+if strcmpi(dtype,'inflated')
     overlayDataTemp=zeros(length(curv),3);
     pcurvIds=find(curv>=0);
     overlayDataTemp(pcurvIds,:)=repmat([1 1 1]*.4,length(pcurvIds),1);
@@ -229,12 +261,15 @@ if 1
         
         elecCoord = groupAvgCoords_rh(iElec,:);
         dist_to_each_vert = sqrt(sum((elecCoord -  cort_rh.vert).^2, 2));
-        sigma = thresh/2.355;
-        gauss_temp =  exp(-dist_to_each_vert.^2./(2*sigma^2));
 
-        gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
-        gauss_temp = gauss_temp+gauss_temp_dia;        
-        gauss_temp(gauss_temp>1) = 1;
+        elec_sphere = find(dist_to_each_vert.^2<=pi.*(diskThresh.^2)/4);
+        sigma = fwhm/2.355;
+        gauss_temp = zeros(size(dist_to_each_vert));
+        gauss_temp(elec_sphere) =  exp(-dist_to_each_vert(elec_sphere).^2./(2*sigma^2));
+
+%         gauss_temp_dia = gauss_temp(find(dist_to_each_vert>=1.1,1));
+%         gauss_temp = gauss_temp+gauss_temp_dia;        
+%         gauss_temp(gauss_temp>1) = 1;
 %         gauss_temp(dist_to_each_vert<=1.1) = 1;
         gauss_kernel(:,iElec) = gauss_temp;       
     end
@@ -242,14 +277,27 @@ end
 toc
 
 gauss_kernel_sum = sum(gauss_kernel,2);
-kernValid = gauss_kernel_sum>=options.elecDensityThresh;
+kernValid = gauss_kernel_sum>options.elecDensityThresh;
 activationV_rh(kernValid,:) = gauss_kernel(kernValid,:)*activation_values_rh./gauss_kernel_sum(kernValid);
 
 
 olayDataVec=activationV_rh;
 [overlayData_rh, oLayLimits, olayCmapName]=vals2Colormap(olayDataVec,cLim ,options.colorscale,cLim,options.transparentPoint);
-maskIds=find(abs(olayDataVec)<options.transparentPoint);
-overlayData_rh(maskIds,:)=overlayDataTemp(maskIds,:);
+% maskIds=find(abs(olayDataVec)<options.transparentPoint);
+% overlayData_rh(maskIds,:)=overlayDataTemp(maskIds,:);
+% Compute the exponential decay alpha values
+alphaValues = exp(-abs(olayDataVec - options.transparentPoint) * options.decayFactor);
+alphaValues(olayDataVec > options.transparentPoint) = 1; % Full color above transparency point
+alphaValues(alphaValues < 0) = 0; % Ensuring alpha values are not negative
+
+
+% Apply gradient transparency
+for i = 1:size(overlayData_rh, 1)
+    overlayData_rh(i, :) = overlayData_rh(i, :) .* alphaValues(i) + overlayDataTemp(i, :) .* (1 - alphaValues(i));
+end
+
+
+
 %% Plot the brain maps
     
     scrsize = get(0, 'Screensize');

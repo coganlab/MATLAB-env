@@ -19,8 +19,11 @@ cfg = plot_defaults(cfg);
 
 
 %% Load .pial data
-
-cort = load_pial_data(surf_filename);
+if(~isstruct(surf_filename))
+    cort = load_pial_data(surf_filename);
+else
+    cort = surf_filename;
+end
 
 
 %% Plot the surface and adjust lighting

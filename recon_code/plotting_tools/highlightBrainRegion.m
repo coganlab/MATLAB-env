@@ -1,10 +1,17 @@
-function highlightBrainRegion(subject_id, hemisphere, region_name, color)
+function highlightBrainRegion(subject_id, hemisphere, region_name, options)
     % This function highlights a specific brain region from a FreeSurfer brain model.
     % Parameters:
     %   subject_id  : The FreeSurfer subject ID
     %   hemisphere  : 'lh' for left hemisphere or 'rh' for right hemisphere
     %   region_name : The name of the brain region to highlight
     %   color       : The color to use for highlighting
+    arguments
+        subject_id = 'fsaverage'
+        hemisphere = 'lh'
+        region_name = {'A6m_L','A6dl_L'}
+        options.color = [1 0 1];
+        options.parcfn = 'BN_Atlas'; 
+    end
 
     % Define the path to the subject's FreeSurfer directory
     freesurferDir = get_recondir(); % Set this environment variable to your FreeSurfer subjects directory
@@ -18,7 +25,7 @@ function highlightBrainRegion(subject_id, hemisphere, region_name, color)
     surf_path = fullfile(subjectDir, 'surf', [hemisphere '.pial']);
     [vertices, faces] = freesurfer_read_surf(surf_path);
 
-    annot_path = fullfile(subjectDir, 'label', [hemisphere '.aparc.annot']);
+    annot_path = fullfile(subjectDir, 'label', [hemisphere '.' options.parcfn '.annot']);
     [~, label, colortable] = read_annotation(annot_path);
     colortable.struct_names
     % Find the index of the brain region
@@ -43,7 +50,7 @@ function highlightBrainRegion(subject_id, hemisphere, region_name, color)
     % Display the brain surface
     figure;
     patch('vertices', vertices, 'faces', faces, 'FaceVertexCData', double(~region_vertices), ...
-          'FaceColor', 'interp', 'EdgeColor', 'none', 'FaceAlpha', 0.5);
+          'FaceColor', 'interp', 'EdgeColor', 'none', 'FaceAlpha', 1);
     hold on;
 
     % Highlight the selected region
@@ -52,11 +59,18 @@ function highlightBrainRegion(subject_id, hemisphere, region_name, color)
 
 
     % Adjust the view, lighting, and add colorbar if needed
-    view(3);
+   if strcmp(hemisphere, 'lh')
+    view(270,0)
+    elseif strcmp(hemisphere, 'rh')
+    view(90,0)
+    elseif strcmp(hemisphere, 'bh')
+    view(180,0)
+    end
     lighting gouraud;
     material dull;
-    colormap([color; 0.5 0.5 0.5]); % White for non-highlighted, specified color for the region
+    colormap([options.color; 0.5 0.5 0.5]); % White for non-highlighted, specified color for the region
     axis tight; axis equal;
     shading interp;
+    camlight_follow(gca);
     axis off;
 end

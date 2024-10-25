@@ -1,6 +1,6 @@
 function default_cfg = plot_defaults(cfg)
 % default_cfg.hemisphere       =  'b';                % r, l, or b (right, left, both hemisphere)
-% default_cfg.use_brainshifted =  false;              % boolean, to use brainshifted electrodes, affects grid-only
+% default_cfg.use_brainshifted =  true;              % boolean, to use brainshifted electrodes, affects grid-only
 % default_cfg.show_labels      =  true;               % boolean, to show elec labels
 % default_cfg.show_annot       =  false;              % boolean, to show cortex color annotations
 % default_cfg.annot_label_fn   = 'h.aparc.annot';     % filename of label in label/ directory. cfg.hemisphere will be prepended, in case of 'b', '.mat' will be appended
@@ -24,7 +24,7 @@ function default_cfg = plot_defaults(cfg)
 
 load colors.mat;
 default_cfg.hemisphere       =  'b';                % r, l, or b (right, left, both hemisphere)
-default_cfg.use_brainshifted =  false;              % boolean, to use brainshifted electrodes, affects grid-only
+default_cfg.use_brainshifted =  true;              % boolean, to use brainshifted electrodes, affects grid-only
 default_cfg.show_labels      =  true;               % boolean, to show elec labels
 default_cfg.show_annot       =  false;              % boolean, to show cortex color annotations
 default_cfg.annot_label_fn   = 'h.aparc.annot';     % filename of label in label/ directory. cfg.hemisphere will be prepended, in case of 'b', '.mat' will be appended

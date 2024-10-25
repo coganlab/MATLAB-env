@@ -81,7 +81,7 @@ if ~flag		% No pooling across trials
     spec = zeros(nch, diff(nfk));
   err = zeros(2, nch, diff(nfk));
   if nch == 1 mX = sum(X)./nt; else mX = sum(X,1)./nch; end
-  parfor ch=1:nch
+  for ch=1:nch
      tmp = (X(ch,:) - mX)';
      xk = fft(tapers(:,1:K).*tmp(:,ones(1,K)),nf)';
      xk = xk(:,nfk(1)+1:nfk(2));
@@ -117,7 +117,7 @@ if flag			% Pooling across trials
 
    Xk = zeros(nch*K, diff(nfk),'single');
    mX = sum(X,1)./nch;
-   parfor ch=1:nch
+   for ch=1:nch
      tmp = (X(ch,:) - mX)';
      xk = fft(tapers(:,1:K).*tmp(:,ones(1,K)),nf)';
      Xk((ch-1)*K+1:ch*K,:) = xk(:,nfk(1)+1:nfk(2));
