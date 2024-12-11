@@ -15,6 +15,10 @@ mic_chan_index = [];
 % 006	Neighborhood_Sternberg
 % 007	Environmental_Sternberg
 % 008	Timit
+% 009	Global_Local
+% 010	Picture_Naming
+% 011	EnvelopeTracking
+
 
 
 switch subj_task
@@ -45,6 +49,21 @@ switch subj_task
         mic_chan_index 
         neural_chan_index 
 
+
+     case 'D19_004' % Phoneme Sequencing Fix (Check)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Phoneme_Sequencing\D19'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D19';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Phoneme_Sequencing\EDFs\D19 180414 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180414'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 81; % DC1
+        mic_chan_index = 83; % DC1+1
+        neural_chan_index = [1:76];
+
       case 'D20_001'
         cd 'H:\Box Sync\CoganLab\D_Data\LexicalDecRepDelay\D20\'
         taskstim = 'lexical';
@@ -70,6 +89,35 @@ switch subj_task
         trigger_chan_index = 104;
         mic_chan_index = 106;
         neural_chan_index = [2:101];      
+
+     case 'D22_004' % Phoneme Sequencing Fix (Check)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Phoneme_Sequencing\D22'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D22';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Phoneme_Sequencing\EDFs\D22 180628 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180628'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 104; % DC1
+        mic_chan_index = 106; % DC1+1
+        neural_chan_index = [2:101];
+
+     case 'D23_004' % Phoneme Sequencing Fix (Check)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Phoneme_Sequencing\D23'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D23';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Phoneme_Sequencing\EDFs\D23 180714 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180714'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 125; % DC1
+        mic_chan_index = 127; % DC1+1
+        neural_chan_index = [2:122];
+
 
      case 'D23_001'
         cd 'H:\Box Sync\CoganLab\D_Data\LexicalDecRepDelay\D23\'
@@ -2684,6 +2732,7 @@ case 'D28_008'
         trigger_chan_index = 257;
         mic_chan_index = 258;
         neural_chan_index = [1:122, 129:152];
+
         
       case 'D68_001' % Lexical Delay
         cd 'E:\InUnit Preprocessing\D68\Lexical Delay\'
@@ -2769,7 +2818,8 @@ case 'D28_008'
         trigger_chan_index = 257;
         mic_chan_index = 258;
         neural_chan_index = [1:56, 65:120, 129:148];
-        
+
+
       case 'D69_003' %Sentence Rep
         cd 'E:\InUnit Preprocessing\D69\Sentence Rep'
         taskstim = 'sentence_rep';
@@ -2896,7 +2946,21 @@ case 'D28_008'
         trigger_chan_index = 257;
         mic_chan_index = 258;
         neural_chan_index = [1:116, 129:184, 193:222];
-        
+
+      case 'D70_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D70'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D70';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D70 220322 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'E:\InUnit Preprocessing\D70\Neighborhood\D70_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '220322';
+        ieeg_prefix = 'D70_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:116, 129:184, 193:222];
+
       case 'D70_008' %Timit
         cd 'E:\InUnit Preprocessing\D70\Timit'
         taskstim = 'timit';
@@ -2953,12 +3017,26 @@ case 'D28_008'
         trigger_chan_index = 257;
         mic_chan_index = 258;
         neural_chan_index = [1:60, 65:118, 129:176];
-        
-      case 'D71_006' %Neighborhood 
+
+     case 'D71_006' %Neighborhood
         cd 'E:\InUnit Preprocessing\D71\Neighborhood'
         taskstim = 'neighborhood_sternberg';
         subj = 'D71';
         edf_filename = 'E:\InUnit Preprocessing\D71\Neighborhood\D71 220424 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'E:\InUnit Preprocessing\D71\Neighborhood\D71_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '220424';
+        ieeg_prefix = 'D71_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:60, 65:118, 129:176];
+
+      case 'D71_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D71'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D71';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D71 220424 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
         ptb_trialInfo = 'E:\InUnit Preprocessing\D71\Neighborhood\D71_Block_1_TrialData.mat';%trialData to reference
         taskdate = '220424';
         ieeg_prefix = 'D71_Neighborhood_Sternberg_';
@@ -3094,6 +3172,21 @@ case 'D28_008'
         mic_chan_index = 258;
         neural_chan_index = [1:56, 65:92, 97:122 129:184 193:236];
 
+      case 'D72_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D72'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D72';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D72 220613 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'D:\InUnit Preprocessing\D72\Neighborhood\D72_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '220613';
+        ieeg_prefix = 'D72_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:56, 65:92, 97:122 129:184 193:236];
+
+
       case 'D72_008' %Timit_1
         cd 'D:\InUnit Preprocessing\D72\Timit'
         taskstim = 'timit';
@@ -3206,6 +3299,20 @@ case 'D28_008'
         mic_chan_index = 258;
         neural_chan_index = [1:56, 65:118 129:188 193:222];
 
+    case 'D73_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D73'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D73';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D73 220626 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'D:\InUnit Preprocessing\D73\Neighborhood\D73_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '220626';
+        ieeg_prefix = 'D73_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:56, 65:118 129:188 193:222];
+
       case 'D73_007' %Environmental
         cd 'D:\InUnit Preprocessing\D73\Environmental'
         taskstim = 'environmental_sternberg';
@@ -3305,6 +3412,20 @@ case 'D28_008'
         mic_chan_index = 258;
         neural_chan_index = [1:59, 65:120, 129:170];
 
+      case 'D77_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D77'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D77';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D77 221014 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'D:\InUnit Preprocessing\D77\Neighborhood\D77_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '221014';
+        ieeg_prefix = 'D77_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:59, 65:120, 129:170];
+
       case 'D77_007' %Environmental
         cd 'D:\InUnit Preprocessing\D77\Environmental'
         taskstim = 'environmental_sternberg';
@@ -3380,6 +3501,20 @@ case 'D28_008'
         taskstim = 'neighborhood_sternberg';
         subj = 'D79';
         edf_filename = 'D:\InUnit Preprocessing\D79\Neighborhood\D79 221121 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'D:\InUnit Preprocessing\D79\Neighborhood\D79_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '221121';
+        ieeg_prefix = 'D79_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:54, 65:126, 129:256];
+
+       case 'D79_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D79'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D79';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D79 221121 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
         ptb_trialInfo = 'D:\InUnit Preprocessing\D79\Neighborhood\D79_Block_1_TrialData.mat';%trialData to reference
         taskdate = '221121';
         ieeg_prefix = 'D79_Neighborhood_Sternberg_';
@@ -3540,6 +3675,21 @@ case 'D28_008'
         mic_chan_index = 258;
         neural_chan_index = [1:127, 129:248];
 
+    case 'D80_006' %Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D80'
+        taskstim = 'Neighborhood Sternberg';
+        subj = 'D80';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D80 230114 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'D:\InUnit PreProc\D80\Neighborhood\All Blocks\D80_Block_1_TrialData'; %trialData to reference
+        taskdate = '230114';
+        ieeg_prefix = 'D80_Neighborhood_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:127, 129:248];
+
+
     case 'D81_003' %SentenceRep
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D81\Sentence Rep'
         taskstim = 'sentence_rep';
@@ -3591,7 +3741,23 @@ case 'D28_008'
         trigger_chan_index = 257;
         mic_chan_index = 258;
         neural_chan_index = [1:124, 129:182, 193:236];
-    
+
+    case 'D81_006' % Neighborhood New Trials
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D81'
+        taskstim = 'neighborhood_sternberg';
+        subj = 'D81';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D81 230129 COGAN_NEIGHBORHOOD.EDF';
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D81\Neighborhood\All Blocks\D81_Block_1_TrialData';
+        taskdate = '230129';
+        ieeg_prefix = 'D81_Neighborhood_';
+        rec = '001';
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:124, 129:182, 193:236];        
+
+cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D#'
+edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D# 2XXX COGAN_NEIGHBORHOOD.EDF';
+
     case 'D81_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D81\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -3811,6 +3977,33 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:63, 65:117, 129:252];
 
+    case 'D82_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D82'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D82';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D82 230131 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D82\Neighborhood\All blocks\D82_Block_1_TrialData';
+        taskdate = '230131';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:63, 65:117, 129:252];
+
+    case 'D82_006' % Neighborhood New Trials
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D82'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D82';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D82 230131 COGAN_NEIGHBORHOOD.EDF';
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D82\Neighborhood\All Blocks\D82_Block_1_TrialData';
+        taskdate = '230131';
+        ieeg_prefix = 'D81_Neighborhood_';
+        rec = '001';
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:63, 65:117, 129:252];       
+
     case 'D82_005' % Uniqueness Point - NO TRIGGERS
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D82\Uniqueness Point'
         taskstim = 'Uniqueness_Point';
@@ -3979,6 +4172,20 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:58, 65:186, 193:242];
 
+    case 'D84_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D84'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D84';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D84 230319 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D84\Neighborhood\All blocks\D84_Block_1_TrialData';
+        taskdate = '230319';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:58, 65:186, 193:242];
+
     case 'D84_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D84\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -4049,6 +4256,21 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:127, 129:248];   
 
+     case 'D85_006' % Neighborhood NEW 
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D85'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D85';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D85 230407 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D85\Neighborhood\All blocks\D85_Block_1_TrialData';
+        taskdate = '230407';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:248]; 
+
+
     case 'D85_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D85\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -4118,6 +4340,21 @@ case 'D28_008'
         trigger_chan_index = 257; % DC1
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:62, 65:122, 129:192];
+
+     case 'D88_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D88'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D88';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D88 230503 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D88\Neighborhood\All blocks\D88_Block_1_TrialData';
+        taskdate = '230503';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:62, 65:122, 129:192];
+
 
     case 'D88_008' % Timit
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D88\Timit'
@@ -4231,6 +4468,21 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:119, 129:255];
 
+    case 'D86_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D86'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D86';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D86 230421 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D86\Neighborhood\All blocks\D86_Block_1_TrialData';
+        taskdate = '230421';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:119, 129:255];
+
+
     case 'D86_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D86\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -4292,6 +4544,20 @@ case 'D28_008'
         taskstim = 'Neighborhood_Sternberg';
         subj = 'D90';
         edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D90\Neighborhood\D90 230528 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D90\Neighborhood\All blocks\D90_Block_1_TrialData';
+        taskdate = '230528';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:116, 129:176];
+
+    case 'D90_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D90'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D90';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D90 230528 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
         ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D90\Neighborhood\All blocks\D90_Block_1_TrialData';
         taskdate = '230528';
         ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
@@ -4400,6 +4666,21 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:62, 65:123, 129:244];
 
+    case 'D91_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D91'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D91';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D91 230612 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D91\Neighborhood\All blocks\D91_Block_1_TrialData';
+        taskdate = '230612';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:62, 65:123, 129:244];
+
+
     case 'D91_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D91\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -4469,6 +4750,21 @@ case 'D28_008'
         trigger_chan_index = 257; % DC1
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:218]; 
+
+    case 'D92_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D92'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D92';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D92 230715 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D92\Neighborhood\All blocks\D92_Block_1_TrialData';
+        taskdate = '230715';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:218]; 
+
 
     case 'D92_005' % Uniqueness Point
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D92\Uniqueness Point'
@@ -4582,6 +4878,21 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:210];
 
+     case 'D93_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D93'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D93';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D93 230714 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D93\Neighborhood\All blocks\D93_Block_1_TrialData';
+        taskdate = '230714'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:210];
+
+
     case 'D93_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D93\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -4694,6 +5005,21 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:56, 65:120, 129:256];
 
+    case 'D94_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D94'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D94';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D94 230806 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D94\Neighborhood\All blocks\D94_Block_1_TrialData';
+        taskdate = '230806'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:56, 65:120, 129:256];
+
+
      case 'D94_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D94\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -4712,7 +5038,7 @@ case 'D28_008'
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D94\Global Local'
         taskstim = 'Global_Local';
         subj = 'D94';
-        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D94\Global Local\D94 230807 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\ECoG_Task_Data\TaskUploadDir\D94 230807 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
         % ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D94\Global Local\All blocks\Trials';
         taskdate = '230807'; 
         ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
@@ -4763,6 +5089,21 @@ case 'D28_008'
         trigger_chan_index = 257; % DC1
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:125, 129:237];
+
+    case 'D96_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D96'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D96';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D96 230817 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D96\Neighborhood\All blocks\D96_Block_1_TrialData';
+        taskdate = '230817'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:125, 129:237];
+
 
     case 'D96_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D96\Environmental'
@@ -4875,6 +5216,37 @@ case 'D28_008'
         trigger_chan_index = 257; % DC1
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:60, 65:116, 129:224];
+
+
+    case 'D97_006' % Neighborhood NEW !!! - Session 001 (B1 only)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D97\001'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D97';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D97 230909 COGAN_NEIGHBORHOOD_1.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D97\Neighborhood\Session 001\All blocks\D97_Block_1_TrialData';
+        taskdate = '230909'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:116, 129:224];
+
+     case 'D97_006' % Neighborhood NEW !!! - Session 002 (B2, B3, B4, B5)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D97\002'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D97';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D97 230909 COGAN_NEIGHBORHOOD_2.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D97\Neighborhood\Session 002\All blocks\D97_Block_2_TrialData';
+        taskdate = '230909'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:116, 129:224];
+
+
 
     case 'D97_011' % Simon - PREPROCESS LATER!
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D97\Simon'
@@ -5062,7 +5434,7 @@ case 'D28_008'
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D100\Global Local'
         taskstim = 'Global_Local';
         subj = 'D100';
-        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D100\Global Local\D100 231021 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\ECoG_Task_Data\TaskUploadDir\D100 231021 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
         % ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D94\Global Local\All blocks\Trials';
         taskdate = '231021'; 
         ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
@@ -5156,6 +5528,37 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:122, 129:238];
 
+
+    case 'D101_006' % Neighborhood NEW !!! - Session 001
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D101\001'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D101';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D101 231021 COGAN_NEIGHBORHOOD_1.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D101\Neighborhood\Session 001\All blocks\D101_Block_1_TrialData';
+        taskdate = '231021'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:238];      
+
+    case 'D101_006' % Neighborhood NEW !!! - Session 002
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D101\002'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D101';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D101 231021 COGAN_NEIGHBORHOOD_2.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D101\Neighborhood\Session 002\All blocks\D101_Block_1_TrialData';
+        taskdate = '231021'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:238];
+
+
+
     case 'D102_004' % Phoneme Sequencing
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D102\Phoneme Sequencing'
         taskstim = 'Phoneme_Sequencing';
@@ -5240,6 +5643,21 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:127, 129:191, 193:248];
 
+    case 'D102_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D102'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D102';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D102 240105 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D102\Neighborhood\All blocks\D102_Block_1_TrialData';
+        taskdate = '240105'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:191, 193:248];
+
+
     case 'D102_007' % Environmental
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D102\Environmental'
         taskstim = 'Environmental_Sternberg';
@@ -5258,7 +5676,7 @@ case 'D28_008'
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D102\Global Local'
         taskstim = 'Global_Local';
         subj = 'D102';
-        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D102\Global Local\D102 240109 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\ECoG_Task_Data\TaskUploadDir\D102 240109 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
         %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D102\Global Local\All blocks\D102_Block_1_TrialData';
         taskdate = '240109'; 
         ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
@@ -5366,6 +5784,38 @@ case 'D28_008'
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:120, 129:256];
 
+
+      case 'D103_006' % Neighborhood NEW !!! - Session 001
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D103\001'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D103';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D103 240105 COGAN_NEIGHBORHOOD_1.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D103\Neighborhood\Session 001\All blocks\D103_Block_1_TrialData';
+        taskdate = '240105'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:120, 129:256];
+
+    case 'D103_006' % Neighborhood NEW !!! - Session 002
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D103\002'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D103';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D103 240106 COGAN_NEIGHBORHOOD_2.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D103\Neighborhood\Session 002\All blocks\D103_Block_2_TrialData';
+        taskdate = '240106'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:120, 129:256];      
+
+
+
+
     case 'D103_010' % Picture Naming - Session 001
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D103\Picture Naming\Session 001'
         taskstim = 'Picture_Naming';
@@ -5398,7 +5848,7 @@ case 'D28_008'
         cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D103\Global Local'
         taskstim = 'Global_Local';
         subj = 'D103';
-        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D103\Global Local\D103 240110 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\ECoG_Task_Data\TaskUploadDir\D103 240110 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
         %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D103\Global Local\All blocks\D103_Block_1_TrialData';
         taskdate = '240110'; 
         ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
@@ -5407,6 +5857,913 @@ case 'D28_008'
         trigger_chan_index = 257; % DC1
         mic_chan_index = 258; % DC1+1
         neural_chan_index = [1:120, 129:256];
+
+    case 'D105_004' % Phoneme Sequencing
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D105';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Phoneme Sequencing\D105 240209 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Phoneme Sequencing\All blocks\D105_Block_4_TrialData';
+        taskdate = '240209'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:62, 65:120, 129:152];
+
+    case 'D105_010' % Picture Naming
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Picture Naming'
+        taskstim = 'Picture_Naming';
+        subj = 'D105';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Picture Naming\D105 240211 COGAN_PICNAMING.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Picture Naming\All blocks\D105';
+        taskdate = '240211'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:62, 65:120, 129:152];
+
+    case 'D105_006' % Neighborhood
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D105';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Neighborhood\D105 240212 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Neighborhood\All blocks\D105_Block_1_TrialData';
+        taskdate = '240212'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:62, 65:120, 129:152];
+
+    case 'D105_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D105'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D105';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D105 240212 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D105\Neighborhood\All blocks\D105_Block_1_TrialData';
+        taskdate = '240212'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:62, 65:120, 129:152];
+
+    case 'D106_004' % Phoneme Sequencing
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D106';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Phoneme Sequencing\D106 240215 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Phoneme Sequencing\All blocks\D106_Block_4_TrialData';
+        taskdate = '240215'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:184];
+
+    case 'D106_010' % Picture Naming
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Picture Naming'
+        taskstim = 'Picture_Naming';
+        subj = 'D106';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Picture Naming\D106 240216 COGAN_PICNAMING.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Picture Naming\All blocks\D106';
+        taskdate = '240216'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:184];
+
+    case 'D106_006' % Neighborhood
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D106';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Neighborhood\D106 240217 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Neighborhood\All blocks\D106_Block_1_TrialData';
+        taskdate = '240217'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:184];
+
+    case 'D106_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D106'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D106';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D106 240217 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Neighborhood\All blocks\D106_Block_1_TrialData';
+        taskdate = '240217'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:184];
+
+
+    case 'D106_007' % Environmental
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Environmental'
+        taskstim = 'Environmental_Sternberg';
+        subj = 'D106';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Environmental\D106 240219 COGAN_ENVIRONMENT.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D106\Environmental\All blocks\D106_Block_1_TrialData';
+        taskdate = '240219'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:184];
+
+    case 'D108_004' % Phoneme Sequencing
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D108';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Phoneme Sequencing\D108 240302 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Phoneme Sequencing\All blocks\D108_Block_4_TrialData';
+        taskdate = '240302'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:122, 129:184, 193:243];
+
+    case 'D108_010' % Picture Naming
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Picture Naming'
+        taskstim = 'Picture_Naming';
+        subj = 'D108';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Picture Naming\D108 240303 COGAN_PICNAMING.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Picture Naming\All blocks\D108';
+        taskdate = '240303'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:122, 129:184, 193:243];
+
+    case 'D108_006' % Neighborhood
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D108';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Neighborhood\D108 240304 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Neighborhood\All blocks\D108_Block_1_TrialData';
+        taskdate = '240304'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:122, 129:184, 193:243];
+
+    case 'D108_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D108'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D108';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D108 240304 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Neighborhood\All blocks\D108_Block_1_TrialData';
+        taskdate = '240304'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:122, 129:184, 193:243];
+        
+    case 'D108_007' % Environmental
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Environmental'
+        taskstim = 'Environmental_Sternberg';
+        subj = 'D108';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Environmental\D108 240305 COGAN_ENVIRONMENT.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D108\Environmental\All blocks\D108_Block_1_TrialData';
+        taskdate = '240305'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:122, 129:184, 193:243];
+
+    case 'D107_004' % Phoneme Sequencing (A)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Phoneme Sequencing\D107 240302 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Phoneme Sequencing\All blocks\D107_Block_4_TrialData';
+        taskdate = '240302'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+    case 'D107_001' % Lexical Delay (B!!!)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Lexical Delay'
+        taskstim = 'Lexical_Delay';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Lexical Delay\D107 240308 COGAN_LEXICALDELAY.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Lexical Delay\All blocks\D107_Block_1_TrialData';
+        taskdate = '240308'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:61, 65:118, 129:188, 193:249]; % for D107(B)! - different from all other D107 tasks!
+
+    case 'D107_010' % Picture Naming (A)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Picture Naming'
+        taskstim = 'Picture_Naming';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Picture Naming\D107 240304 COGAN_PICNAMING.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Picture Naming\All blocks\D107';
+        taskdate = '240304'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+    case 'D107_007' % Environmental
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Environmental'
+        taskstim = 'Environmental_Sternberg';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Environmental\D107 240305 COGAN_ENVIRONMENT.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Environmental\All blocks\D107_Block_1_TrialData';
+        taskdate = '240305'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+    case 'D107_009' % Global Local
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Global Local'
+        taskstim = 'Global_Local';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\GlobalLocal\D107\D107 240303 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Global Local\All blocks\D107_Block_1_TrialData';
+        taskdate = '240303'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+    case 'D107_006' % Neighborhood - Session 001 (B1 + B2 only)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\001'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\001\D107 240303 COGAN_NEIGHBORHOOD_1.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\001\All blocks\D107_Block_1_TrialData';
+        taskdate = '240303'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+    case 'D107_006' % Neighborhood - Session 002 (B3 - B5)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\002'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\002\D107 240304 COGAN_NEIGHBORHOOD_2.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\002\All blocks\D107_Block_3_TrialData';
+        taskdate = '240304'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+
+    case 'D107_006' % Neighborhood NEW !!! (1) - Session 001 (B1 + B2 only)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D107A\001'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D107A 240303 COGAN_NEIGHBORHOOD_1.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\001\All blocks\D107_Block_1_TrialData';
+        taskdate = '240303'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+
+    case 'D107_006' % Neighborhood NEW !!! (2) - Session 002 (B3 - B5)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D107A\002'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D107';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D107A 240304 COGAN_NEIGHBORHOOD_2.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D107\Neighborhood\002\All blocks\D107_Block_3_TrialData';
+        taskdate = '240304'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:121, 129:185]; % for D107(A)!
+
+
+
+    case 'D72_006' %Neighborhood 
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D72\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D72';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D72\Neighborhood\D72 220613 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D72\Neighborhood\D72_Block_1_TrialData.mat';%trialData to reference
+        taskdate = '220613';
+        ieeg_prefix = 'D72_Neighborhood_Sternberg_';
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 258;
+        neural_chan_index = [1:56, 65:92, 97:122 129:184 193:236];        
+
+
+    case 'D109_006' % Neighborhood
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D109';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Neighborhood\D109 240502 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Neighborhood\All blocks\D109_Block_1_TrialData';
+        taskdate = '240502'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:219];
+
+    case 'D109_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D109'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D109';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D109 240502 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Neighborhood\All blocks\D109_Block_1_TrialData';
+        taskdate = '240502'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:219];
+
+    case 'D109_007' % Environmental
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Environmental'
+        taskstim = 'Environmental_Sternberg';
+        subj = 'D109';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Environmental\D109 240503 COGAN_ENVIRONMENT.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Environmental\All blocks\D109_Block_1_TrialData';
+        taskdate = '240503'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:219];
+
+    case 'D109_004' % Phoneme Sequencing NO DELAY! (No Cue)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Phoneme Sequencing No Delay'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D109';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Phoneme Sequencing No Delay\D109 240429 COGAN_PHONEMESEQUENCE_NOCUE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Phoneme Sequencing No Delay\All blocks\D109_Block_4_TrialData';
+        taskdate = '240429'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:219];
+
+    case 'D109_008' % PASSIVE Timit (Listen Only) - Session 001 (B1 + B2) - NATUS reset between B2 & B3
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Passive Timit\Session 001'
+        taskstim = 'timit';
+        subj = 'D109';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Passive Timit\Session 001\D109 240501 COGAN_TIMIT_PASSIVE_1.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Passive Timit\Session 001\All blocks\D109_Block_2_TrialData';
+        taskdate = '240501';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:219];      
+
+    case 'D109_008' % PASSIVE Timit (Listen Only) - Session 002 (B3 + B4) - NATUS reset between B2 & B3
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Passive Timit\Session 002'
+        taskstim = 'timit';
+        subj = 'D109';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Passive Timit\Session 002\D109 240501 COGAN_TIMIT_PASSIVE_2.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D109\Passive Timit\Session 002\All blocks\D109_Block_4_TrialData';
+        taskdate = '240501';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:122, 129:219];
+
+    case 'D110_004' % Phoneme Sequencing
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D110';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Phoneme Sequencing\D110 240614 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Phoneme Sequencing\All blocks\D110_Block_4_TrialData';
+        taskdate = '240614'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:243];
+
+    case 'D110_003' % Sentence Rep
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Sentence Rep'
+        taskstim = 'Sentence_Rep';
+        subj = 'D110';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Sentence Rep\D110 240615 COGAN_SENTENCEREP.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Sentence Rep\All blocks\D110_Block_5_TrialData';
+        taskdate = '240615'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:243];
+
+    case 'D110_006' % Neighborhood
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D110';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Neighborhood\D110 240610 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Neighborhood\All blocks\D110_Block_1_TrialData';
+        taskdate = '240610'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:243];
+
+    case 'D110_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D110'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D110';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D110 240610 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Neighborhood\All blocks\D110_Block_1_TrialData';
+        taskdate = '240610'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:243];
+
+    case 'D110_008' % PASSIVE Timit (Listen Only)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Passive Timit'
+        taskstim = 'timit';
+        subj = 'D110';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Passive Timit\D110 240609 COGAN_TIMIT_PASSIVE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Passive Timit\All blocks\D110_Block_4_TrialData';
+        taskdate = '240609';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:243];
+
+    case 'D110_009' % Global Local
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Global Local'
+        taskstim = 'Global_Local';
+        subj = 'D110';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Global Local\D110 240616 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        % ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D110\Global Local\All blocks\D110_Block_1_TrialData';
+        taskdate = '240616'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:127, 129:243];
+
+    case 'D111_004' % Phoneme Sequencing
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D111';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Phoneme Sequencing\D111 240624 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Phoneme Sequencing\All blocks\D111_Block_4_TrialData';
+        taskdate = '240624'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:180, 193:242];
+
+    case 'D111_006' % Neighborhood
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D111';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\D111 240626 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '240626'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:180, 193:242];
+
+    case 'D111_006' % Neighborhood NEW
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D111'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D111';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D111 240626 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '240626'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:60, 65:124, 129:180, 193:242];
+
+
+    case 'D112_004' % Phoneme Sequencing
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D112\Phoneme Sequencing'
+        taskstim = 'Phoneme_Sequencing';
+        subj = 'D112';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D112\Phoneme Sequencing\D112 240701 COGAN_PHONEMESEQUENCE.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D112\Phoneme Sequencing\All blocks\D112_Block_4_TrialData';
+        taskdate = '240701'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:55, 65:120, 129:191, 193:198, 201:225, 228:247];                
+
+    case 'D113_009' % Global Local Pt. 1 (B1-B3) - D113A (original channels)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113A\Global Local'
+        taskstim = 'Global_Local';
+        subj = 'D113';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113A\Global Local\D113 240721 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        % ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113A\Global Local\All blocks\D113_Block_1_TrialData';
+        taskdate = '240721'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:118, 129:184, 193:234];
+
+    case 'D113_009' % Global Local Pt. 2 (B4 only, same day!) - D113A (original channels)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113A\Global Local'
+        taskstim = 'Global_Local';
+        subj = 'D113';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113A\Global Local\D113 240721 COGAN_GLOBALLOCAL.EDF'; %EDF to reference
+        % ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113A\Global Local\All blocks\D113_Block_1_TrialData';
+        taskdate = '240721'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '002'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:118, 129:184, 193:234];        
+
+    case 'D113_006' % Neighborhood - D113B (POST-additional channels)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113B\Neighborhood'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D113';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113B\Neighborhood\D113 240724 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113B\Neighborhood\All blocks\D113_Block_1_TrialData';
+        taskdate = '240724'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:61, 65:120, 129:191, 193:255];        
+
+    case 'D113_006' % Neighborhood NEW - D113B (POST-additional channels)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D113'
+        taskstim = 'Neighborhood_Sternberg';
+        subj = 'D113';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D113 240724 COGAN_NEIGHBORHOOD.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D113\D113B\Neighborhood\All blocks\D113_Block_1_TrialData';
+        taskdate = '240724'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:61, 65:120, 129:191, 193:255]; 
+
+
+    case 'D3_011_Old' % Envelope Tracking (Tobias) (GRID ELECTRODE!)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D3'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D3';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D3\SQ_EnvTracking_ECoG_P01.EDF'; %EDF to reference
+        %%ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '160913'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 56; % DC1
+        mic_chan_index = 58; % DC1+1
+        neural_chan_index = [2:53];
+
+    case 'D3_011' % Envelope Tracking NEW (Tobias) (GRID ELECTRODE!)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\Envelope Tracking\D3'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D3';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\Envelope Tracking\D3\SQ_EnvTracking_ECoG_P01.EDF'; %EDF to reference
+        %%ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '160913'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 56; % DC1 ## Try 56-57!
+        mic_chan_index = 58; % DC1+1
+        neural_chan_index = [2:53];      
+
+    case 'D5_011' % Envelope Tracking (Tobias) (GRID ELECTRODE!)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D5'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D5';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D5\SQ_EnvTracking_ECoG_P02.EDF'; %EDF to reference
+        %%ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '161101'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 38;
+        mic_chan_index = 40;
+        neural_chan_index = [1:8, 94:129];
+
+    case 'D6_011' % Envelope Tracking (Tobias) - NO TRIGGERS!
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D6'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D6';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D6\SQ_EnvTracking_ECoG_P2006.EDF'; %EDF to reference
+        %%ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '161122'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 2;
+        mic_chan_index = 4;
+        neural_chan_index = [34:129];
+
+    case 'D13_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D13'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D13';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D13\tobias_eng_kor_2013.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '171008'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [10:129];
+
+    case 'D14_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D14'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D14';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D14\tobias_eng_kor_2014.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '171114'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [10:129];
+
+    case 'D15_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D15'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D15';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D15\tobias_eng_kor_2015.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '171218'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [10:129];
+
+     case 'D16_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D16'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D16';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D16\tobias_eng_kor_2016.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180120'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [89:129];       
+
+     case 'D17_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D17'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D17';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D17\tobias_eng_kor_2017.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180311'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [16:129];
+
+     case 'D20_011_Old' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D20'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D20';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D20\tobias_eng_kor_2020.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180520'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [10:129];
+
+     case 'D20_011' % Envelope Tracking NEW (Tobias)
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\Envelope Tracking\D20'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D20';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\Envelope Tracking\D20\tobias_eng_kor_2020.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180520'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 1; % DC1
+        mic_chan_index = 3; % DC1+1
+        neural_chan_index = [10:129];
+
+     case 'D22_011' % Envelope Tracking (Tobias) - NO TRIGGERS!
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D22'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D22';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D22\tobias_kor_eng_D22.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180630'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 104; % DC1
+        mic_chan_index = 106; % DC1+1
+        neural_chan_index = [2:101];
+
+     case 'D23_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D23'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D23';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D23\tobias_kor_eng_D23.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '180714'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 125; % DC1
+        mic_chan_index = 127; % DC1+1
+        neural_chan_index = [2:122];
+
+     case 'D24_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D24'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D24';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D24\tobias_eng_kor_D24.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '181029'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 56; % DC1
+        mic_chan_index = 58; % DC1+1
+        neural_chan_index = [2:53];
+
+     case 'D39_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D39'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D39';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D39\D39 Overath SQ_EnvTracking 191014.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '191014'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 258;
+        mic_chan_index = 64;
+        neural_chan_index = [2:57,66:127,130:249];
+
+     case 'D42_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D42'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D42';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D42\D42 Overath SQ_EnvTracking 191216.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '191216'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 258;
+        mic_chan_index = 60;
+        neural_chan_index = [2:57,66:121,130:193];
+
+     case 'D45_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D45'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D45';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D45\D45 200127 OVERATH SQ_ENVTRACKING.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '200127'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 59;
+        neural_chan_index = [1:56,65:124,129:214];
+
+     case 'D46_011' % Envelope Tracking (Tobias)
+        cd 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D46'
+        taskstim = 'EnvelopeTracking';
+        subj = 'D46';
+        edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\EnvelopeTracking\D46\D46 200310 OVERATH SQ_ENVTRACKING.EDF'; %EDF to reference
+        %ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D111\Neighborhood\All blocks\D111_Block_1_TrialData';
+        taskdate = '200310'; 
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257;
+        mic_chan_index = 126;
+        neural_chan_index = [1:55,65:124,129:170];
+
+
+    case 'D115_001' % Lexical Delay
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D115\Lexical Delay'
+        taskstim = 'Lexical_Delay';
+        subj = 'D115';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D115\Lexical Delay\D115 241002 COGAN_LEXICALDELAY.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D115\Lexical Delay\All blocks\D115_Block_1_TrialData';
+        taskdate = '241002';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:56, 65:122, 129:184, 193:247];
+
+    case 'D115_010' % Picture Naming
+        cd 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D115\Picture Naming'
+        taskstim = 'Picture_Naming';
+        subj = 'D115';
+        edf_filename = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D115\Picture Naming\D115 240930 COGAN_PICNAMING.EDF'; %EDF to reference
+        ptb_trialInfo = 'C:\Users\ncl24\Desktop\CoganLabNL\InUnit Preprocessing\D115\Picture Naming\All blocks\D115';
+        taskdate = '240930';
+        ieeg_prefix = [subj, '_', taskstim, '_']; % (auto-fills)
+        rec = '001'; %session number
+        %%%%%%%%
+        trigger_chan_index = 257; % DC1
+        mic_chan_index = 258; % DC1+1
+        neural_chan_index = [1:56, 65:122, 129:184, 193:247];
+
+
 
 
 end
@@ -5419,16 +6776,19 @@ save('trialInfo', 'trialInfo');
 %if there are multiple files, also save as trialInfo1, trialInfo2, etc.
 %then run combine_trialInfo
 
+% NEIGHBORHOOD FIX: COPY + PASTE INTO COMMAND WINDOW WITH EACH SUBJECT # + EDF NAME
+% cd 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\D#'
+% edf_filename = 'C:\Users\ncl24\Box\CoganLab\D_Data\Neighborhood_Sternberg\EDFs\D# 2XXX COGAN_NEIGHBORHOOD.EDF';
 
 %% for first subject task, determine neural_chan_index, trigger_chan_index, and mic_chan_index
 % once these are determined for a subject, they are the same across tasks
 h = edfread_fast(edf_filename);
 labels = h.label;
 % examine labels variable and determine the indices of neural channels
-% (e.g. exclude ones that start with C, EKG, Event, TRIG, OSAT, PR, Pleth,
-% etc.
+% (Exclude ones that start with C, EKG, Event, TRIG, OSAT, PR, Pleth, etc.
+    % DO NOT INCLUDE EEG CHANNELS! - write EEG down in separate text file note copied to all task folders for same subject
 % fill in the above case information for neural_chan()
-% see case D29_002_1 for an example on how to skip channels
+    % see case D29_002_1 for an example on how to skip channels
 
 %% extract trigger channel and mic channel from edf and save as trigger.mat and mic.mat
 if strcmp(h.label(end),'EDFAnnotations')
@@ -5455,10 +6815,10 @@ if ~isempty(trigger_chan_index)
 end
 
 %% make *.ieeg.dat file
-%filename=[ieeg_prefix taskdate '.ieeg.dat'];
-%fid=fopen(filename,'w');
-%fwrite(fid,d(neural_chan_index,:),'float');
-%fclose(fid);
+filename=[ieeg_prefix taskdate '.ieeg.dat'];
+fid=fopen(filename,'w');
+fwrite(fid,d(neural_chan_index,:),'float');
+fclose(fid);
 write_experiment_file;
 % manually copy .ieeg.dat into [taskdate]/[rec]/
 % manually copy experiment.mat into mat
@@ -5538,19 +6898,23 @@ for A=1:numel(trialInfo) % change to number of trials
     Trials(A).Rec=rec;
     Trials(A).Day=taskdate;
     Trials(A).FilenamePrefix=[ieeg_prefix taskdate];
-    Trials(A).Start = floor(trigTimes_audioAligned(A) * 30000 / h.frequency(1));
+    % Trials(A).Start = floor(trigTimes_audioAligned(A) * 30000 / h.frequency(1));
+    Trials(A).Auditory=floor(trigTimes_audioAligned(A) * 30000 / h.frequency(1));
     if ~iscell(trialInfo)
-        Trials(A).Auditory=Trials(A).Start+floor((trialInfo(A).stimuliStart-trialInfo(A).cueStart)* 30000);
+        % Trials(A).Auditory=Trials(A).Start+floor((trialInfo(A).stimuliStart-trialInfo(A).cueStart)* 30000);
+        Trials(A).Start = Trials(A).Auditory - floor((trialInfo(A).stimuliStart-trialInfo(A).cueStart)* 30000);
         Trials(A).Go=Trials(A).Start-floor( ...
             (trialInfo(A).cueStart- ...
             trialInfo(A).goStart)* 30000);
     elseif (isfield(trialInfo{A}, 'goStart'))
-        Trials(A).Auditory=Trials(A).Start+floor((trialInfo{A}.stimuliStart-trialInfo{A}.cueStart)* 30000);
+        % Trials(A).Auditory=Trials(A).Start+floor((trialInfo{A}.stimuliStart-trialInfo{A}.cueStart)* 30000);
+        Trials(A).Start = Trials(A).Auditory - floor((trialInfo{A}.stimuliStart-trialInfo{A}.cueStart)* 30000);
         Trials(A).Go=Trials(A).Start-floor( ...
             (trialInfo{A}.cueStart- ...
             trialInfo{A}.goStart)* 30000);
     else
-        Trials(A).Auditory=Trials(A).Start+floor((trialInfo{A}.stimuliStart-trialInfo{A}.cueStart)* 30000);
+        % Trials(A).Auditory=Trials(A).Start+floor((trialInfo{A}.stimuliStart-trialInfo{A}.cueStart)* 30000);
+        Trials(A).Start = Trials(A).Auditory - floor((trialInfo{A}.stimuliStart-trialInfo{A}.cueStart)* 30000);
         Trials(A).Go=NaN;
     end
     Trials(A).StartCode=1;
@@ -5652,7 +7016,14 @@ end
 % % Sternberg task: this is meant to check the correct number of triggers (including the list
 % % size (i.e. 3, 5, 7, 9) and the probe)
 for iTrials=1:length(trialInfo);
-    lengthVals(iTrials)=length(trialInfo(iTrials).stimulusAudioStart);
+    if isfield(trialInfo,'stimulusAudioStart')
+        lengthVals(iTrials)=length(trialInfo(iTrials).stimulusAudioStart);
+    elseif isfield(trialInfo,'audioStart')
+        lengthVals(iTrials)=length(trialInfo(iTrials).audioStart);
+    else
+        error('trialInfo columns are not expected')
+    end
+
 end;
 triggerNumIdeal=sum(lengthVals)+length(trialInfo); % should be equivalent to the number of elements in trigTimes
 % 
@@ -5669,12 +7040,21 @@ for A=1:numel(trialInfo) % change to number of trials
   % Trials(A).StimAuditory=[]; %zeros(2,1);
     for s = 1:numel(trialInfo(A).stimulusSounds_name)
       %  Trials(A).StimAuditory(1,s) = tt(i)*30000/h.frequency(1); % convert to 30k sampling
-        Trials(A).StimAuditory(s) = trigTimes(i)*30000/h.frequency(1); % convert to 30k sampling
+        Trials(A).StimAuditory(s) = trigTimes_audioAligned(i)*30000/h.frequency(1); % convert to 30k sampling
         
         i = i + 1;
     end
-    Trials(A).Auditory=Trials(A).FirstStimAuditory;
-     Trials(A).Start=Trials(A).FirstStimAuditory;
+  %  Trials(A).Auditory=Trials(A).FirstStimAuditory;
+    if isfield(trialInfo,'stimulusAudioStart')
+        Trials(A).Start=Trials(A).FirstStimAuditory+(... almost certainly 0.8 seconds but referncing trialInfo to be sure
+        trialInfo(A).ListenCueTime - trialInfo(A).stimulusAudioStart(1))*30000;
+    elseif isfield(trialInfo,'audioStart')
+        Trials(A).Start=Trials(A).FirstStimAuditory+(... almost certainly 0.8 seconds but referncing trialInfo to be sure
+        trialInfo(A).cueStart - trialInfo(A).audioStart(1))*30000;
+    else
+        error('trialInfo columns are not expected')
+    end
+%     Trials(A).Start=Trials(A).FirstStimAuditory;
     % the next trigTime is the probe
 %	Trials(A).ProbeAuditory = tt(i)*30000/h.frequency(1);
 	Trials(A).ProbeAuditory = trigTimes_audioAligned(i)*30000/h.frequency(1);
