@@ -53,6 +53,12 @@ for iF=1:length(fileDir);
                 't atlas parcellation at ' RECONDIR])
             continue
         end
+
+        if ~isfile([TASK_DIR '/' fileDir(iF).name '/mat/experiment.mat'])
+            warning(['Skipping ' fileDir(iF).name ' due to nonexisten' ...
+                't experiment at ' TASK_DIR])
+            continue
+        end
         fIdx(counter+1)=iF;
         counter=counter+1;
     end

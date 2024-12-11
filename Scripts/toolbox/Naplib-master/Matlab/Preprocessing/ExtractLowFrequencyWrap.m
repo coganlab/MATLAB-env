@@ -37,7 +37,8 @@ eTime = time>=etw(1)&time<=etw(2);
 
 % calculate hilbert envelope:
 %[dh,cfs,sigma_fs] = CUprocessingHilbertTransform_filterbankGUI(d, fs, freqRange);
-dh=eegfilt(d,fs,freqRange(1),freqRange(2),0,100);
+
+dh=eegfilt(double(d),fs,freqRange(1),freqRange(2),0,100);
 % dh3 = mean(log10(dh.^2),3);
 % dh3 = mapstd(dh3(:,eTime));
 %
@@ -46,6 +47,7 @@ dh=eegfilt(d,fs,freqRange(1),freqRange(2),0,100);
 if(infs~=outfs)
 dh = resample(dh',outfs,fs)';
 end
+dh = single(dh);
 timeDown = linspace(tw(1),tw(2),size(dh,2));
 eTime = timeDown>=etw(1)&timeDown<=etw(2);
 % Normalization

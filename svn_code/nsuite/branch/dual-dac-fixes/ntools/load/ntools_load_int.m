@@ -41,6 +41,6 @@ function data = ntools_load_int(data_type, filename, start_samp, stop_samp, down
     data = fread(fid, [channels, round(data_range / downsample_factor)], ...
         [num2str(channels) '*' fread_precision], (downsample_factor-1)*channels*sample_size);
 
-   fclose(fid)
+   fclose(fid);
   %fclose all;
 end

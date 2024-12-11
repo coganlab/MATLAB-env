@@ -4,8 +4,8 @@ function channelIds = extractChannelPerSubject(channelNames,subjectNames)
             chanName = channelNames{iChan};
             chanNameParse = strsplit(chanName, '-');  % Split the channel name
             subjName = chanNameParse{1};  % Extract the subject name
-            subjId = strcmp(subjectNames, subjName);  % Use logical indexing to find the subject ID
-            if(subjId)
+            subjId = strcmp(subjName, subjectNames)  % Use logical indexing to find the subject ID
+            if(sum(subjId))
             channelIds(iChan) = true;
             end
     end
